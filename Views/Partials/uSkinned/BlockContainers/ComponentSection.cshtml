@@ -1,0 +1,93 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces 
+@inject ISiteBuilderService _siteBuilderService
+@{
+    bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    var commonBlockSettings = (IUsn_Cmp_CommonBlockSettings)Model.BlockSettings;
+    var websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+    //All components contain minimum settings
+    var minSettings = (IUsn_Cmp_MinSettings)Model.BlockSettings;
+
+    //Intro/Outro content NOT included with all components
+    var introOutro = Model.BlockContent as IUsn_Cmp_IntroOutro;
+
+    //Settings NOT included with all components
+    var animateSettings = Model.BlockSettings as IUsn_Cmp_AnimateSettings;
+    var widthSettings = Model.BlockSettings as IUsn_Cmp_WidthSettings;
+    var backgroundSettings = Model.BlockSettings as IUsn_Cmp_BackgroundSettings;
+
+    //Properties NOT included with all components
+    AnimationSettings animation = animateSettings != null ? _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle) : null;
+    string backgroundImageStyle = backgroundSettings != null ? _siteBuilderService.GetBackgroundImageStyle(backgroundSettings.BackgroundImageOptions, backgroundSettings.BackgroundImage) : String.Empty;
+
+    //Required for class label prefix
+    string backgroundColorLabel = backgroundSettings != null && backgroundSettings.BackgroundColor.label != null ? backgroundSettings.BackgroundColor.label : "base";
+
+    //required for background class
+    string backgroundColorClass = backgroundSettings != null ? _siteBuilderService.GetBackgroundColorClass(backgroundSettings.BackgroundColor.sortOrder, "content", websiteStyle) : "base-bg base-bg-solid";
+
+    //Properties included with all components
+    string anchor = _siteBuilderService.MakeAnchorSafe(minSettings.AnchorName);
+    anchor = anchor != String.Empty ? " id=\"" + anchor + "\"" : String.Empty;
+    string additionalStyles = minSettings.ComponentStyles.HasValue() ? minSettings.ComponentStyles.ToString().Replace(",", " ") : String.Empty;
+
+    string componentStyle = "usn_cmp_" + _siteBuilderService.GetBlockStyleName(Model.BlockContent.ContentType.Alias);
+
+    <section class="content component @componentStyle @backgroundColorClass @additionalStyles @commonBlockSettings.CustomClasses" @Html.Raw(anchor)>  
+
+    @if (backgroundImageStyle.HasValue())
+    {
+        <div class="image lazyload background-image component-background-image" @Html.Raw(backgroundImageStyle)></div>
+    }
+        <div class="component-inner">
+            @if (widthSettings != null && Model.PageLayout == "pageLayoutFull")
+            {
+                if (widthSettings.ComponentWidth == "componentWidthCenter")
+                {
+                    @:<div class="container"><div class="row justify-content-center"><div class="content-col center-col col">
+                }
+                else if (widthSettings.ComponentWidth == "componentWidthFull")
+                {
+                    @:<div class="container-fluid">
+                }
+                else
+                {
+                    @:<div class="container">
+                }
+            }
+
+            @if (introOutro != null)
+            {
+                @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/ComponentIntro", introOutro, new ViewDataDictionary(ViewData) { { "themeFolder", Model.BaseModel.ThemeFolder }, { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel }, { "websiteStyleId", Model.BaseModel.WebsiteStyle.Id }, { "disableModalLinks", disableModalLinks } })
+            }
+
+            @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blocks/" + _siteBuilderService.GetBlockViewName(Model.BlockContent.ContentType.Alias), Model, new ViewDataDictionary(ViewData) { { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel }, { "disableModalLinks", disableModalLinks } })
+
+            @if (introOutro != null)
+            {
+                @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/ComponentOutro", introOutro, new ViewDataDictionary(ViewData) { { "themeFolder", Model.BaseModel.ThemeFolder }, { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel }, { "websiteStyleId", Model.BaseModel.WebsiteStyle.Id }, { "disableModalLinks", disableModalLinks } })
+            }
+
+            @if (widthSettings != null && Model.PageLayout == "pageLayoutFull")
+            {
+                if (widthSettings.ComponentWidth == "componentWidthCenter")
+                {
+                    @:</div></div></div>
+                }
+
+                else
+                {
+                    @:</div>
+                }
+            }
+        </div>
+    </section>
+
+}

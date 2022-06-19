@@ -1,0 +1,127 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@using Umbraco.Cms.Core 
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block, Split Component Block and Pod Block types
+    var content = (IUsn_Cmp_Links_Content)Model.BlockContent;
+
+    //Settings taken from compositions common to all block types
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+    var uniqueSettings = Model.BlockSettings;
+
+    //Headings and secondary headings only present on pods
+    var podContent = Model.BlockContent as Usn_Pb_Links;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    string defaultItems = Model.BlockSettings as IUsn_Cmp_Links_Component_Settings != null ? "items-4" : "items-1";
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    string linksSectionClass = uniqueSettings.Value<bool>("includeLinkDetail") ? "listing_links" : "listing_links listing_links-mini";
+
+    string itemsClass = uniqueSettings.Value<string>("itemsPerRow").HasValue() ? uniqueSettings.Value<string>("itemsPerRow") : defaultItems;
+
+    var links = content.Links.Where(x => !x.Settings.Value<bool>("hideFromWebsite"));
+
+    if (links != null && links.Any())
+    {
+        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", animation }, { "heading", podContent != null ? podContent.Heading : null }, { "secondaryHeading", podContent != null ? podContent.SecondaryHeading : null }, { "backgroundColorLabel", backgroundColorLabel } })
+
+        <div class="component-main row listing @linksSectionClass @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+
+            @foreach (var item in links)
+            {
+                if (item?.ContentUdi != null)
+                {
+                    var itemContent = (Usn_Cbi_Link)item.Content;
+                    var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)item.Settings;
+
+                    if (itemContent.Link.HasValue() && itemContent.Link.link.HasValue() && _siteBuilderService.DisplayLink(itemContent.Link, disableModalLinks))
+                    {
+                        string note = String.Empty;
+                        string iconClass = String.Empty;
+                        bool fileError = false;
+
+                        switch (itemContent.Link.link.LinkType)
+                        {
+                            case SiteBuilderLink.UrlPickerTypes.Url:
+                                iconClass = "icon usn_ion-md-open";
+                                note = Umbraco.GetDictionaryValue("USN Link Component External Web Link") + " - " + itemContent.Link.link.LinkUrl;
+                                break;
+                            case SiteBuilderLink.UrlPickerTypes.Content:
+                                iconClass = "icon usn_ion-md-link";
+
+                                Udi contentUdi = new GuidUdi(new Uri(itemContent.Link.link.LinkUdi));
+                                var contentItem = Umbraco.Content(contentUdi);
+                                if (contentItem == null)
+                                {
+                                    fileError = true;
+                                }
+                                break;
+                            case SiteBuilderLink.UrlPickerTypes.Media:
+                                iconClass = "icon usn_ion-md-download";
+
+                                Udi mediaUdi = new GuidUdi(new Uri(itemContent.Link.link.LinkUdi));
+                                var mediaItem = Umbraco.Media(mediaUdi);
+
+                                if (mediaItem != null)
+                                {
+                                    long fileInMbu = Convert.ToInt64(mediaItem.Value<string>("umbracoBytes")) / 1024;
+
+                                    string fileSizeU = fileInMbu + "KB";
+                                    note = Umbraco.GetDictionaryValue("USN Link Component File Size") + ": " + fileSizeU;
+                                }
+                                else
+                                {
+                                    fileError = true;
+                                }
+
+                                break;
+                        }
+                        if (!fileError)
+                        {
+                            <!-- Item -->
+                            <div class="item @itemsClass item_links col-12 @animation.AnimationClass @itemCommonBlockSettings.CustomClasses" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                                <a href="@itemContent.Link.link.LinkUrl" @Html.Raw(itemContent.Link.link.LinkTitle) @Html.Raw(itemContent.Link.link.LinkTarget)>
+
+                                    @if (uniqueSettings.Value<bool>("includeLinkDetail"))
+                                    {
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <p class="heading sm @(backgroundColorLabel)-heading">@Html.Raw(itemContent.Link.link.LinkText)</p>
+                                            <i class="@iconClass @(backgroundColorLabel)-highlight"></i>
+                                        </div>
+                                        <div class="info @(backgroundColorLabel)-text">
+                                            @if (itemContent.OptionalAdditionalInformation.HasValue())
+                                            {
+                                                <div class="text pt-2">
+                                                    @Html.Raw(itemContent.OptionalAdditionalInformation)
+                                                </div>
+                                            }
+                                            @if (note != String.Empty)
+                                            {
+                                                <div class="meta small">@Html.Raw(note)</div>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(itemContent.Link.link.LinkText)<i class="@iconClass @(backgroundColorLabel)-highlight after"></i>
+                                    }
+                                </a>
+                            </div>
+                            <!--// Item -->
+                        }
+                    }
+                }
+            }
+        </div>
+    }
+}

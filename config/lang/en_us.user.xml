@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en_us" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+  <area alias="login">
+    <key alias="greeting0">uSkinned Site Builder</key>
+    <key alias="greeting1">uSkinned Site Builder</key>
+    <key alias="greeting2">uSkinned Site Builder</key>
+    <key alias="greeting3">uSkinned Site Builder</key>
+    <key alias="greeting4">uSkinned Site Builder</key>
+    <key alias="greeting5">uSkinned Site Builder</key>
+    <key alias="greeting6">uSkinned Site Builder</key>
+  </area>
+</language>

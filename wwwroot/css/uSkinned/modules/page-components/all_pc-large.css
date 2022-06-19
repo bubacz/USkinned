@@ -1,0 +1,99 @@
+/*  
+---------------------------------------------------
+Page Components - Large Breakpoint
+---------------------------------------------------  
+*/
+
+
+/*  
+---------------------------------------------------
+Sticky
+
+Choose preset class 'Sticky' to sticky anything
+---------------------------------------------------  
+*/
+
+body:not(.no-header) .sticky { 
+    top: calc(var(--large-header) - 1px);
+}
+
+html.nav-up body.header-04-lg:not(.no-header):not(.hide_header-on-scroll-lg) .sticky,
+html.nav-up body.header-05-lg:not(.no-header):not(.hide_header-on-scroll-lg) .sticky,
+html.nav-up body.header-09-lg:not(.no-header):not(.hide_header-on-scroll-lg) .sticky,
+html.nav-up body.header-10-lg:not(.no-header):not(.hide_header-on-scroll-lg) .sticky,
+html.nav-up body.header-13-lg:not(.no-header):not(.hide_header-on-scroll-lg) .sticky,
+html.nav-up body.header-14-lg:not(.no-header):not(.hide_header-on-scroll-lg) .sticky,
+html.nav-up body.header-18-lg:not(.no-header):not(.hide_header-on-scroll-lg) .sticky { 
+    top: calc((var(--large-header) / 2) - 1px);
+}
+
+body:not(.no-header) .item_block.sticky { 
+    top: calc(var(--large-header) + var(--base-spacing) - 1px);
+}
+
+html.nav-up body.header-04-lg:not(.no-header):not(.hide_header-on-scroll-lg) .item_block.sticky,
+html.nav-up body.header-05-lg:not(.no-header):not(.hide_header-on-scroll-lg) .item_block.sticky,
+html.nav-up body.header-09-lg:not(.no-header):not(.hide_header-on-scroll-lg) .item_block.sticky,
+html.nav-up body.header-10-lg:not(.no-header):not(.hide_header-on-scroll-lg) .item_block.sticky,
+html.nav-up body.header-13-lg:not(.no-header):not(.hide_header-on-scroll-lg) .item_block.sticky,
+html.nav-up body.header-14-lg:not(.no-header):not(.hide_header-on-scroll-lg) .item_block.sticky,
+html.nav-up body.header-18-lg:not(.no-header):not(.hide_header-on-scroll-lg) .item_block.sticky { 
+    top: calc((var(--large-header) / 2) + var(--base-spacing) - 1px);
+}
+
+/* Extra space for when stick anchor nav is present */
+
+body:not(.no-header) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky { 
+    top: calc((var(--large-header) * 1.5) + var(--base-spacing) - 1px);
+}
+
+html.nav-down body.header-04-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-down body.header-05-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-down body.header-09-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-down body.header-10-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-down body.header-13-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-down body.header-14-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-down body.header-18-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky { 
+    top: calc((var(--large-header) * 1.5) + var(--base-spacing) - 1px);
+}
+
+html.nav-up body.header-04-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-up body.header-05-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-up body.header-09-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-up body.header-10-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-up body.header-13-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-up body.header-14-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+html.nav-up body.header-18-lg:not(.no-header):not(.hide_header-on-scroll-lg) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky { 
+    top: calc(var(--large-header) + var(--base-spacing) - 1px);
+}
+
+
+/* No header or hide header on scroll */
+
+html.nav-up body.hide_header-on-scroll-lg:not(.no-header):not(.header-11-lg):not(.header-12-lg):not(.header-15-lg):not(.header-16-lg) .sticky,
+body.no-header .sticky,
+body:not(.no-header).header-11-lg .sticky,
+body:not(.no-header).header-12-lg .sticky,
+body:not(.no-header).header-15-lg .sticky,
+body:not(.no-header).header-16-lg .sticky { 
+    top: -1px;
+}
+
+html.nav-up body.hide_header-on-scroll-lg:not(.no-header):not(.header-11-lg):not(.header-12-lg):not(.header-15-lg):not(.header-16-lg) .item_block.sticky,
+body.no-header .item_block.sticky,
+body:not(.no-header).header-11-lg .item_block.sticky,
+body:not(.no-header).header-12-lg .item_block.sticky,
+body:not(.no-header).header-15-lg .item_block.sticky,
+body:not(.no-header).header-16-lg .item_block.sticky { 
+    top: calc(var(--base-spacing) - 1px);
+}
+
+html.nav-up body.hide_header-on-scroll-lg:not(.no-header) .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+body:not(.no-header).header-11-lg .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+body:not(.no-header).header-11-lg .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+body:not(.no-header).header-12-lg .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+body:not(.no-header).header-15-lg .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky,
+body:not(.no-header).header-16-lg .component.usn_cmp_anchornavigation.sticky ~ .component .item_block.sticky { 
+    top: calc((var(--base-spacing) * 2.5) - 1px);
+}
+

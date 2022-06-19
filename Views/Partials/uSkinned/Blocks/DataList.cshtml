@@ -1,0 +1,69 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block, Split Component Block and Pod Block types
+
+    var content = (IUsn_Cmp_DataList_Content)Model.BlockContent;
+    var uniqueSettings = Model.BlockSettings;
+
+    //Settings taken from compositions common to all block types
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    string defaultItems = Model.BlockSettings as IUsn_Cmp_DataList_Component_Settings != null ? "items-4" : "items-1";
+
+    string itemsClass = uniqueSettings.Value<string>("itemsPerRow").HasValue() ? uniqueSettings.Value<string>("itemsPerRow") : defaultItems;
+
+    string menuContainer = uniqueSettings.Value<bool>("addContainer") ? String.Format("data-list_boxed has-borders {0}-borders", backgroundColorLabel) : String.Empty;
+
+    var dataItems = content.DataItems.Where(x => !x.Settings.Value<bool>("hideFromWebsite"));
+
+    if (content.TableHeading.HasValue() || (dataItems.HasValue() && dataItems.Any()))
+    {
+        <div class="component-main row listing listing_data-list @menuContainer  @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+
+            @if (content.TableSecondaryHeading.HasValue() || (content.TableHeading.HasValue()))
+            {
+                <div class="col-12 list-title">
+                    @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", null }, { "heading", content.TableHeading }, { "secondaryHeading", content.TableSecondaryHeading }, { "backgroundColorLabel", backgroundColorLabel } })
+                </div>
+            }
+
+            @foreach (var item in dataItems)
+            {
+                if (item?.ContentUdi != null)
+                {
+                    var itemContent = (Usn_Cbi_DataListItem)item.Content;
+                    var itemMinSettings = (IUsn_Cmp_CommonBlockSettings)item.Settings;
+
+                    <!-- Item -->
+                    <div class="item @itemsClass item_data-list col-12 @animation.AnimationClass @itemMinSettings.CustomClasses" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                        <p class="title @(backgroundColorLabel)-heading">
+                            <span class="text-left">@Html.Raw(itemContent.TextLeft)</span>
+                            @if (itemContent.TextRight.HasValue())
+                            {
+                                <span class="text-right">@Html.Raw(itemContent.TextRight)</span>
+                            }
+                        </p>
+                        @if (itemContent.AdditionalInfo.HasValue())
+                        {
+                            <div class="text @(backgroundColorLabel)-text">
+                                @Html.Raw(itemContent.AdditionalInfo)
+                            </div>
+                        }
+                    </div>
+                    <!--// Item -->
+                }
+            }
+        </div>
+    }
+}

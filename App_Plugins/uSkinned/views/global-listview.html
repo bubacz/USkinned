@@ -1,0 +1,25 @@
+﻿<div ng-controller="USN.GlobalListViewController as vm">
+
+    <div class="umb-content-grid usn-global-grid" ng-if="items">
+
+        <div class="umb-content-grid__item umb-outline umb-outline--surrounding usn-global-grid-item" ng-repeat="item in items">
+            <div class="umb-content-grid__content usn-global-grid-item-inner">
+                <a ng-click="vm.clickItem(item)" ng-class="{'-light': !item.published && item.updater != null}">
+                    
+                    <div class="umb-content-grid__item-name umb-outline usn-global-title">
+                        <span>{{item.name}}<div class="umb-badge umb-badge--warning umb-badge--xs" ng-show="!item.published && item.updater != null">Unpublished</div></span>
+                    </div>
+                    
+                    <div class="usn-global-desc">{{item.description}}</div>
+                    
+                    <div class="usn-global-image">
+                        <img ng-src="{{item.documentImage}}" alt="{{item.name}} icon.">
+                    </div>
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

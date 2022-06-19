@@ -1,0 +1,14 @@
+--c{position}-btn-bg-color1:  {backgroundColor1};
+--c{position}-btn-bg-color2:  {backgroundColor2};
+--c{position}-btn-bg-start-perc: {backgroundStartPerc};
+--c{position}-btn-bg-stop-perc: {backgroundStopPerc};
+--c{position}-btn-bg-angle: {backgroundAngle};
+--c{position}-btn-text: {text};
+--c{position}-btn-borders: {border};
+--c{position}-btn-bg-hover-color1:  {backgroundHoverColor1};
+--c{position}-btn-bg-hover-color2:  {backgroundHoverColor2};
+--c{position}-btn-bg-hover-start-perc: {backgroundHoverStartPerc};
+--c{position}-btn-bg-hover-stop-perc: {backgroundHoverStopPerc};
+--c{position}-btn-bg-hover-angle: {backgroundHoverAngle};
+--c{position}-btn-text-hover: {textHover};
+--c{position}-btn-borders-hover: {borderHover};

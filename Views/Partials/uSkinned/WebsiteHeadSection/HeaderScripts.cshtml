@@ -1,0 +1,81 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    if (globalSettings.GoogleReCaptchaversion == "V2" && globalSettings.GoogleReCaptchasiteKey.HasValue() && globalSettings.GoogleReCaptchasecretKey.HasValue())
+    {
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    }
+    else if (globalSettings.GoogleReCaptchaversion == "V3" && globalSettings.GoogleReCaptchav3SiteKey.HasValue() && globalSettings.GoogleReCaptchav3SecretKey.HasValue())
+    {
+        <script src="https://www.google.com/recaptcha/api.js?render=@globalSettings.GoogleReCaptchav3SiteKey" async defer></script>
+    }
+
+    @Html.Raw(globalSettings.HeaderScripts)
+    @Html.Raw(Model.Value<string>("pageHeaderScripts"))
+
+    if (globalSettings.GoogleAnalyticsTrackingID.HasValue())
+    {
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=@globalSettings.GoogleAnalyticsTrackingID"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '@globalSettings.GoogleAnalyticsTrackingID');
+        </script>
+    }
+
+    if (globalSettings.GoogleTagManagerID.HasValue())
+    {
+        <!-- Google Tag Manager -->
+        <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','@globalSettings.GoogleTagManagerID');</script>
+        <!-- End Google Tag Manager -->
+    }
+
+    if (globalSettings.FacebookPixel.HasValue())
+    {
+        <!-- Facebook Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '@globalSettings.FacebookPixel');
+        fbq('track', 'PageView');
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=@(globalSettings.FacebookPixel)&ev=PageView&noscript=1" />
+        </noscript>
+        <!-- End Facebook Pixel Code -->
+    }
+
+    if (globalSettings.TwitterPixel.HasValue())
+    {
+        <!-- Twitter universal website tag code -->
+        <script>
+            !function (e, t, n, s, u, a) {
+                e.twq || (s = e.twq = function () {
+                    s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+                }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+                    a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+            }(window, document, 'script');
+            // Insert Twitter Pixel ID and Standard Event data below
+            twq('init', '@globalSettings.TwitterPixel');
+            twq('track', 'PageView');
+        </script>
+        <!-- End Twitter universal website tag code -->
+    }
+}

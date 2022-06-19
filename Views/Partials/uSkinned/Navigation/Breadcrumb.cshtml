@@ -1,0 +1,63 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    if (!Model.Value<bool>("hideBreadcrumb"))
+    {
+        int catLevel = 1;
+
+        <section class="breadcrumb-trail">
+            <div class="container">
+                <nav aria-label="Breadcrumb Navigation">
+                    <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+                        @if (Model.IsDocumentType(UsnblogPost.ModelTypeAlias))
+                        {
+                            //Start blog breadcrumb 2 level lower than blog post landing
+                            int blogLevel = Model.Level - 2;
+
+                            foreach (var level in Model.Ancestors().Where(x => x.Level <= blogLevel).OrderBy(x => x.Level))
+                            {
+                                string breadcrumbLinkText = level.HasValue("breadcrumbLinkText") ? level.Value<string>("breadcrumbLinkText") : level.Name;
+
+                                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="@level.Url()" itemtype="http://schema.org/Thing" itemprop="item"><span itemprop="name"><i class="icon before"></i>@Html.Raw(breadcrumbLinkText)</span></a><meta itemprop="position" content="@level.Level" /></li>
+                            }
+                        }
+                        else
+                        {
+                            foreach (var level in Model.Ancestors().Where(x => x.IsVisible()).OrderBy(x => x.Level))
+                            {
+                                string breadcrumbLinkText = level.HasValue("breadcrumbLinkText") ? level.Value<string>("breadcrumbLinkText") : level.Name;
+
+                                if (!level.IsDocumentType(UsnblogCategories.ModelTypeAlias))
+                                {
+                                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="@level.Url()" itemtype="http://schema.org/Thing" itemprop="item"><span itemprop="name"><i class="icon before"></i>@Html.Raw(breadcrumbLinkText)</span></a><meta itemprop="position" content="@level.Level" /></li>
+                                    catLevel += 1;
+                                }
+                            }
+                        }
+
+                        @{
+                            string breadcrumbLinkTextPage = Model.HasValue("breadcrumbLinkText") ? Model.Value<string>("breadcrumbLinkText") : Model.Name;
+
+                            if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias))
+                            {
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item active" aria-current="page"><span itemprop="name"><i class="icon before"></i>@Html.Raw(breadcrumbLinkTextPage)</span><meta itemprop="position" content="@Model.Level" /></li>
+                            }
+                            else if (Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+                            {
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item active" aria-current="page"><span itemprop="name"><i class="icon before"></i>@Html.Raw(breadcrumbLinkTextPage)</span><meta itemprop="position" content="@catLevel" /></li>
+                            }
+                            else if (Model.IsDocumentType(UsnblogPost.ModelTypeAlias))
+                            {
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item active" aria-current="page"><span itemprop="name"><i class="icon before"></i>@Html.Raw(breadcrumbLinkTextPage)</span><meta itemprop="position" content="@(Model.Level-1)" /></li>
+                            }
+                            else
+                            {
+                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumb-item active" aria-current="page"><span itemprop="name"><i class="icon before"></i>@Html.Raw(breadcrumbLinkTextPage)</span><meta itemprop="position" content="@(Model.Level)" /></li>
+                            }
+                        }
+                    </ol>
+                </nav>
+            </div>
+        </section>
+    }
+}

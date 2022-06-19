@@ -1,0 +1,10 @@
+<div class="usn-picker" ng-controller="USN.MultiUrlPicker.ColorPicker">
+
+    <label class="usn-color-item usn-color-button item" title="{{color.label}}" ng-repeat="color in model.colors" ng-click="model.setColor(model.item,color)"></>
+        <input name="buttonoptions_{{id}}" type="radio" value="{{color}}" ng-model="color.value">
+        <div class="inner" style="background:{{color.value}}; color:{{color.text}}; border-color:{{color.border}};">
+            <div class="link" style="color:{{color.text}};">Button</div>
+        </div>
+    </label>
+
+</div>

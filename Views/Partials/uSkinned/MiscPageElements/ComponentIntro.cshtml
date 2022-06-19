@@ -1,0 +1,55 @@
+﻿@inherits UmbracoViewPage<IUsn_Cmp_IntroOutro>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    if (Model != null && Model.DisplayIntro)
+    {
+        bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+        AnimationSettings animation = (AnimationSettings)ViewData["animation"];
+        string colorLabel = ViewData["backgroundColorLabel"].ToString();
+        string themeFolder = ViewData["themeFolder"].ToString();
+        Usnstyle websiteStyle = (Usnstyle)Umbraco.Content(ViewData["websiteStyleId"]);
+
+        //Clear view data before calling next partial
+        ViewData.Clear();
+
+        string textAlignmentClass = Model.IntroTextAlignment.HasValue() ? Model.IntroTextAlignment : "justify-content-start text-left";
+
+        <!-- Introduction -->
+        <div class="component-introduction row @textAlignmentClass @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+            <div class="info col">
+
+                @await Html.PartialAsync(themeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", websiteStyle.StyleLayout.headingOrder }, { "animation", null }, { "heading", Model.IntroHeading }, { "secondaryHeading", Model.IntroSecondaryHeading }, { "backgroundColorLabel", colorLabel } })
+
+                @if (Model.IntroText.HasValue())
+                {
+                    <div class="text @(colorLabel)-text">
+                        @Html.Raw(Model.IntroText)
+                    </div>
+                }
+                @if (Model.IntroButtons.HasValue())
+                {
+                    <p class="link">
+                        @foreach (var button in Model.IntroButtons)
+                        {
+                            if (_siteBuilderService.DisplayLink(button, disableModalLinks))
+                            {
+                                string buttonBgClass = _siteBuilderService.GetBackgroundColorClass(button.color.sortOrder, "button", websiteStyle);
+                                string buttonBgHoverClass = _siteBuilderService.GetBackgroundColorClass(button.color.sortOrder, "buttonHover", websiteStyle);
+
+                                <a class="btn @button.sizeStyle @buttonBgClass @buttonBgHoverClass @(button.color.label)-text @(button.color.label)-borders" href="@button.link.LinkUrl" @Html.Raw(button.link.LinkTarget) @Html.Raw(button.link.LinkTitle)>
+                                    <span></span>
+                                    @Html.Raw(button.icon)@Html.Raw(button.link.LinkText)@Html.Raw(button.link.LinkTargetIcon)
+                                </a>
+                            }
+                        }
+                    </p>
+                }
+            </div>
+        </div>
+        <!--// Introduction -->
+    }
+}
+

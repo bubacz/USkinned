@@ -1,0 +1,15 @@
+/*  
+---------------------------------------------------
+Burger Navigation - Large Breakpoint
+---------------------------------------------------  
+*/
+
+header#site-header .expand-header {
+    display:none;
+}
+
+header#site-header .expand-header.active span:before,
+header#site-header .expand-header.active span,
+header#site-header .expand-header.active span:after { 
+    background-color:  rgba(var(--main-navigation-link-active), 1);
+}

@@ -1,0 +1,42 @@
+/*  
+---------------------------------------------------
+Newsletter Form
+---------------------------------------------------  
+*/
+
+/*
+.form.newsletter-form { }*/
+
+.item_form-single_field .form fieldset,
+.item_form-single_field .form fieldset .form-group { 
+    margin:0;
+}
+
+html[dir="ltr"] .item_form-single_field .form .form-control { 
+    border-radius: var(--form-field-border-radius) var(--btn-border-radius) var(--btn-border-radius) var(--form-field-border-radius);
+}
+
+html[dir="rtl"] .item_form-single_field .form .form-control { 
+    border-radius: var(--btn-border-radius) var(--form-field-border-radius) var(--form-field-border-radius) var(--btn-border-radius);
+}
+
+.item_form-single_field .form .form-inner { 
+    position:relative;
+}
+
+.item_form-single_field .form fieldset.buttons { 
+    position:absolute; 
+    top:var(--base-border-width); right:var(--base-border-width);
+    top: 0; right: 0;
+    margin: 0;
+}
+
+.item_form-single_field .form label { 
+    display:none;
+}
+
+.item_form-single_field .form fieldset.buttons .btn { 
+    height:calc(40px - var(--base-border-width) - var(--base-border-width));
+    height: 40px;
+    margin: 0;
+}

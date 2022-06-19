@@ -1,0 +1,7 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    @Html.Raw(globalSettings.HeaderOpeningScripts)
+    @Html.Raw(Model.Value<string>("pageHeaderOpeningScripts"))
+}

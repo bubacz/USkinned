@@ -1,0 +1,127 @@
+/*  
+---------------------------------------------------
+CTA Strip 
+---------------------------------------------------  
+*/
+
+/*
+.component.usn_cmp_ctastrip {}*/
+
+/* Not available as part of Split Component
+.item_block.usn_cmp_ctastrip { }*/
+
+
+.component.usn_cmp_ctastrip .info {
+    position: relative;
+    margin-bottom: 0;
+}
+
+.component.usn_cmp_ctastrip .link { 
+    margin-bottom:0;
+}
+
+.component.usn_cmp_ctastrip .info,
+.component.usn_cmp_ctastrip .link { 
+    padding:0 var(--base-half-spacing);
+}
+.component.usn_cmp_ctastrip .text-center .info,
+.component.usn_cmp_ctastrip .text-center .link { 
+    margin:0 auto;
+}
+.component.usn_cmp_ctastrip .text-center .info + .link {
+    margin-top:var(--base-half-spacing);
+}
+
+@media (min-width:0) and (max-width:575px) {
+    .component.usn_cmp_ctastrip .text-center .info,
+    .component.usn_cmp_ctastrip .text-center .link { 
+        flex: 0 0 var(--outro-col);
+        -ms-flex: 0 0 var(--outro-col);
+        max-width:var(--outro-col);
+    }
+}
+
+@media (min-width:576px) {
+    .component.usn_cmp_ctastrip .text-center .info,
+    .component.usn_cmp_ctastrip .text-center .link { 
+        flex: 0 0 var(--outro-col_sm);
+        -ms-flex: 0 0 var(--outro-col_sm);
+        max-width:var(--outro-col_sm);
+    }
+}
+
+@media (min-width:768px) {
+    .component.usn_cmp_ctastrip .text-center .info,
+    .component.usn_cmp_ctastrip .text-center .link { 
+        flex: 0 0 var(--intro-col_md);
+        -ms-flex: 0 0 var(--intro-col_md);
+        max-width:var(--outro-col_md);
+    }
+}
+
+@media (min-width:992px) {
+
+    .component.usn_cmp_ctastrip .text-center .info,
+    .component.usn_cmp_ctastrip .text-center .link { 
+        flex: 0 0 var(--intro-col_lg);
+        -ms-flex: 0 0 var(--intro-col_lg);
+        max-width:var(--outro-col_lg);
+    }
+
+    .component.usn_cmp_ctastrip .text-right .info,
+    .component.usn_cmp_ctastrip .text-left .info { 
+        flex: 0 0 70%;
+        -ms-flex: 0 0 70%;
+        max-width: 70%;
+    }
+    .component.usn_cmp_ctastrip .text-left .link,
+    .component.usn_cmp_ctastrip .text-right .link {
+        flex: 0 0 30%;
+        -ms-flex: 0 0 30%;
+        max-width: 30%;
+    }
+    .component.usn_cmp_ctastrip .text-left .link a.btn,
+    .component.usn_cmp_ctastrip .text-right .link a.btn { 
+        display:block;
+    }
+
+    .component.usn_cmp_ctastrip .text-right .info { 
+        order: 2; 
+    }
+    .component.usn_cmp_ctastrip .text-right .link { 
+        order: 1; 
+    }
+
+    .component.usn_cmp_ctastrip .text-left .link,
+    .component.usn_cmp_ctastrip .text-right .link { 
+        margin:0;
+    }
+
+    .component.usn_cmp_ctastrip .text-center .info + .link {
+        margin-top:var(--base-spacing);
+    }
+
+}
+
+@media (min-width:1200px) { 
+
+    .component.usn_cmp_ctastrip .text-center .info,
+    .component.usn_cmp_ctastrip .text-center .link { 
+        flex: 0 0 var(--intro-col_xl);
+        -ms-flex: 0 0 var(--intro-col_xl);
+        max-width:var(--outro-col_xl);
+    }
+
+    .component.usn_cmp_ctastrip .text-right .info,
+    .component.usn_cmp_ctastrip .text-left .info { 
+        flex: 0 0 75%;
+        -ms-flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .component.usn_cmp_ctastrip .text-left .link,
+    .component.usn_cmp_ctastrip .text-right .link {
+        flex: 0 0 25%;
+        -ms-flex: 0 0 25%;
+        max-width: 25%;
+    }
+}

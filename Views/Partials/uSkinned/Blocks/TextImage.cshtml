@@ -1,0 +1,105 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    // Available as Pod Block type only
+
+    var content = (Usn_Pb_TextImage)Model.BlockContent;
+
+    //Settings taken from compositions common to all pod block types
+    var uniqueSettings = (IUsn_Cmp_TextImage_Settings)Model.BlockSettings;
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+    var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)Model.BlockSettings;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+    string blockLocation = ViewData["blockLocation"] != null ? ViewData["blockLocation"].ToString() : String.Empty;
+    string leftOffsetDesktop = ViewData["leftOffsetDesktop"] != null ? ViewData["leftOffsetDesktop"].ToString() : String.Empty;
+    string leftOffsetTablet = ViewData["leftOffsetTablet"] != null ? ViewData["leftOffsetTablet"].ToString() : String.Empty;
+    string colWidthDesktop = ViewData["colWidthDesktop"] != null ? ViewData["colWidthDesktop"].ToString() : String.Empty;
+    string colWidthTablet = ViewData["colWidthTablet"] != null ? ViewData["colWidthTablet"].ToString() : String.Empty;
+    string itemClass = ViewData["itemClass"] != null ? ViewData["itemClass"].ToString() : String.Empty;
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    string overlayImageClass = uniqueSettings.TextPosition == "item_text-boxed item_overlay" ? _siteBuilderService.GetBackgroundColorClass(uniqueSettings.OverlayBackgroundColor.sortOrder, "content", websiteStyle) : String.Empty;
+    backgroundColorLabel = uniqueSettings.TextPosition == "item_text-boxed item_overlay" ? uniqueSettings.OverlayBackgroundColor.label : backgroundColorLabel;
+    string itemTextAlignment = uniqueSettings.TextAlignment.HasValue() ? uniqueSettings.TextAlignment : "text-left";
+    ImageSettings imageSettings = _siteBuilderService.GetImageSettings(uniqueSettings.ImageStyle, uniqueSettings.BoxPad);
+    string itemStyleClass = uniqueSettings.TextPosition.HasValue() ? uniqueSettings.TextPosition : "item_text-below";
+    string blockLocationClass = blockLocation == "footer" ? "footer-item " + leftOffsetDesktop + " " + leftOffsetTablet + " " + colWidthDesktop + " " + colWidthTablet + " col-12 col" : String.Empty;
+    string itemBackgroundClass = uniqueSettings.TextPosition != "item_text-boxed item_overlay" && uniqueSettings.AddBackgroundColor ? "item_has-bg" : String.Empty;
+    backgroundColorLabel = uniqueSettings.TextPosition != "item_text-boxed item_overlay" && uniqueSettings.AddBackgroundColor ? uniqueSettings.BackgroundColor.label : backgroundColorLabel;
+    string innerBackgroundClass = uniqueSettings.TextPosition != "item_text-boxed item_overlay" && uniqueSettings.AddBackgroundColor ? _siteBuilderService.GetBackgroundColorClass(uniqueSettings.BackgroundColor.sortOrder, "content", websiteStyle) : String.Empty;
+    string podStyle = "usn_pod_" + _siteBuilderService.GetBlockStyleName(content.ContentType.Alias);
+
+    <div class="item @itemBackgroundClass @blockLocationClass @itemClass @itemStyleClass @podStyle @itemTextAlignment @itemCommonBlockSettings.CustomClasses @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+        @if (!itemCommonBlockSettings.HideFromWebsite)
+        {
+            //Note this check only gets hit with footer pods, this check is done before this partial view in other scenarios.
+            //This maintains the gap in the footer for this element.
+
+            <div class="inner @innerBackgroundClass @overlayImageClass @imageSettings.CircleClass">
+                @if (content.PodButton.HasValue())
+                {
+                    @:<a href="@(content.PodButton.link.LinkUrl)" @Html.Raw(content.PodButton.link.LinkTarget) @Html.Raw(content.PodButton.link.LinkTitle)>
+                    }
+                @if (content.PodImage.HasValue() && uniqueSettings.TextPosition != "item_text-above")
+                {
+                    <div class="image @overlayImageClass @imageSettings.CircleClass">
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Image", content.PodImage, new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+                    </div>
+                }
+                @if (content.PodHeading.HasValue() || content.PodSecondaryHeading.HasValue() || content.PodText.HasValue() || (!content.HidePodButton && content.PodButton.HasValue()))
+                {
+                    string verticalAlignmentClass = uniqueSettings.TextPosition == "item_text-boxed item_overlay" ? (uniqueSettings.OverlayTextPosition.HasValue() ? uniqueSettings.OverlayTextPosition.ToString() : "align-self-center") : String.Empty;
+
+                    <div class="info @verticalAlignmentClass">
+
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", null }, { "heading", content.PodHeading }, { "secondaryHeading", content.PodSecondaryHeading }, { "backgroundColorLabel", backgroundColorLabel } })
+
+                        @if (content.PodText.HasValue())
+                        {
+                            <div class="text @(backgroundColorLabel)-text">
+                                @Html.Raw(content.PodText)
+                            </div>
+                        }
+
+                        @if (!content.HidePodButton && content.PodButton.HasValue())
+                        {
+                            if (_siteBuilderService.DisplayLink(content.PodButton, disableModalLinks))
+                            {
+                                string buttonBgClass = _siteBuilderService.GetBackgroundColorClass(content.PodButton.color.sortOrder, "button", websiteStyle);
+                                string buttonBgHoverClass = _siteBuilderService.GetBackgroundColorClass(content.PodButton.color.sortOrder, "buttonHover", websiteStyle);
+
+                                <p class="link">
+                                    <span class="btn @content.PodButton.sizeStyle @buttonBgClass @buttonBgHoverClass @(content.PodButton.color.label)-text @(content.PodButton.color.label)-borders">
+                                        <span></span>
+                                        @Html.Raw(content.PodButton.icon)@Html.Raw(content.PodButton.link.LinkText)@Html.Raw(content.PodButton.link.LinkTargetIcon)
+                                    </span>
+                                </p>
+                            }
+                        }
+                    </div>
+                }
+                @if (content.PodImage.HasValue() && uniqueSettings.TextPosition == "item_text-above")
+                {
+                    <div class="image @overlayImageClass @imageSettings.CircleClass">
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Image", content.PodImage, new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+                    </div>
+                }
+                @if (content.PodButton.HasValue())
+                {
+                @:</a>
+            }
+            </div>
+        }
+    </div>
+}

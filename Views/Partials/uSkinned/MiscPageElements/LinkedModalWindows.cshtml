@@ -1,0 +1,80 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using Umbraco.Cms.Core.Models.Blocks
+@using Microsoft.AspNetCore.Http
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@if (Context.Session.GetString("ModalIds") != null)
+{
+    var modalIds = Context.Session.Get<List<Int32>>("ModalIds");
+
+    foreach (var item in modalIds)
+    {
+        var modalItem = Umbraco.Content(item);
+
+        if (modalItem != null)
+        {
+            //Check if pod or component
+            string modalClass = modalItem.IsDocumentType(UsncomponentGroup.ModelTypeAlias) ? "modal-components" : "modal-pods";
+
+            BlockListModel componentsPods = modalItem.IsDocumentType(UsncomponentGroup.ModelTypeAlias) ? modalItem.Value<BlockListModel>("components") : modalItem.Value<BlockListModel>("pods");
+
+            if (componentsPods != null && componentsPods.Where(x => !x.Settings.Value<bool>("hideFromWebsite")).Any())
+            {
+                <!-- Reusable — Modal box -->
+                <div class="modal fade @modalClass" tabindex="-1" id="modal_@(item)" aria-labelledby="@modalItem.Name" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            @if (modalItem.IsDocumentType(UsncomponentGroup.ModelTypeAlias))
+                            {
+                                foreach (var component in componentsPods.Where(x => !x.Settings.Value<bool>("hideFromWebsite")))
+                                {
+                                    if (component?.ContentUdi != null)
+                                    {
+                                        var pageComponent = new SiteBuilderBlock(Model, component, "pageLayoutFull");
+
+                                        @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/ComponentSection", pageComponent, new ViewDataDictionary(ViewData) { { "disableModalLinks", true } })
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach (var pod in componentsPods)
+                                {
+                                    if (pod?.ContentUdi != null)
+                                    {
+                                        var podItem = new SiteBuilderBlock(Model, pod);
+                                        string uniqueID = Guid.NewGuid().ToString();
+
+                                        var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)pod.Settings;
+                                        string blockViewName = _siteBuilderService.GetBlockViewName(pod.Content.ContentType.Alias);
+
+                                        if (blockViewName == "RelatedContent" || blockViewName == "TextImage"
+                                            || blockViewName == "ReusablePods")
+                                        {
+                                            @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", "base" }, { "itemClass", "swp-item" }, { "uniqueID", uniqueID }, { "disableModalLinks", true } })
+                                        }
+                                        else
+                                        {
+                                            string podStyle = "usn_pod_" + _siteBuilderService.GetBlockStyleName(podItem.BlockContent.ContentType.Alias);
+
+                                            <div class="item swp-item @podStyle @itemCommonBlockSettings.CustomClasses">
+                                                <div class="inner">
+                                                    @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", "base" }, { "uniqueID", uniqueID }, { "disableModalLinks", true } })
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!--// Reusable — Modal box -->
+            }
+        }
+    }
+}
+

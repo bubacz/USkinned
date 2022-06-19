@@ -1,0 +1,16 @@
+<div ng-controller="USN.AdditionalClassesController">
+    <div class="usn-checkbox-list"  ng-repeat="group in selectedGroups">
+        <label class="usn-heading-label">{{group.heading}}</label>
+        <label class="usn-checkbox-list-item" ng-repeat="item in group.items">
+            <input type="checkbox" name="{{item.value}}" value="{{item.value}}" ng-model="item.selected">
+            <span></span>
+            <div class="inner">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                </svg>
+            </div>
+            <div class="name">{{item.text}}</div>
+        </label>
+    </div>
+</div>

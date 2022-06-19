@@ -1,0 +1,416 @@
+/*	
+--------------------------------------------------
+Theme 
+-------------------------------------------------- 
+*/
+
+
+/* 	
+--------------------------------------------------
+Table of contents
+-------------------------------------------------- 
+
+Body
+Header
+Footer
+Generic
+Base Backgrounds
+- Background
+- Secondary heading
+- Heading
+- Text
+- Borders 
+- Links
+Base Buttons
+- Background
+- Borders
+- Text
+	
+*/
+
+
+
+/* Body */
+
+body { 
+    background: rgba(var(--body-bg-color1), 1); 
+}
+body.body-bg-linear { 
+    background: linear-gradient(var(--body-bg-angle), rgba(var(--body-bg-color1), 1) 0%, rgba(var(--body-bg-color2), 1) 100%); 
+}
+body.body-bg-radial { 
+    background: radial-gradient(farthest-side at var(--body-bg-start-perc) var(--body-bg-stop-perc), rgba(var(--body-bg-color1), 1) 0%, rgba(var(--body-bg-color2), 1) 100%); 
+}
+
+
+/* Header */
+
+header#site-header {
+    color: rgba(var(--header-text), 1);
+}
+
+header#site-header { 
+    background: rgba(var(--header-bg-color1), 1); 
+}
+header#site-header.header-bg-linear { 
+    background: linear-gradient(var(--header-bg-angle), rgba(var(--header-bg-color1), 1) 0%, rgba(var(--header-bg-color2), 1) 100%); 
+}
+header#site-header.header-bg-radial { 
+    background: radial-gradient(farthest-side at var(--header-bg-start-perc) var(--header-bg-stop-perc), rgba(var(--header-bg-color1), 1) 0%, rgba(var(--header-bg-color2), 1) 100%); 
+}
+
+header#site-header #logo a { 
+    color: rgba(var(--logo-link), 1);
+}
+header#site-header #logo a:hover,
+header#site-header #logo a:focus,
+header#site-header #logo a:active { 
+    color: rgba(var(--logo-link-hover), 1);
+}
+
+
+/* Footer */
+
+footer#site-footer {
+    color: rgba(var(--footer-text), 1);
+}
+
+footer#site-footer { 
+    background: rgba(var(--footer-bg-color1), 1); 
+}
+footer#site-footer.footer-bg-linear { 
+    background: linear-gradient(var(--footer-bg-angle), rgba(var(--footer-bg-color1), 1) 0%, rgba(var(--footer-bg-color2), 1) 100%); 
+}
+footer#site-footer.footer-bg-radial { 
+    background: radial-gradient(farthest-side at var(--footer-bg-start-perc) var(--footer-bg-stop-perc), rgba(var(--footer-bg-color1), 1) 0%, rgba(var(--footer-bg-color2), 1) 100%); 
+}
+
+
+/*	
+--------------------------------------------------
+White and Black
+-------------------------------------------------- 
+*/
+
+.white-bg { 
+    background: rgba(var(--true-white), 1);
+}
+
+.white-text { 
+    color: rgba(var(--true-white), 1);
+}
+
+.black-bg { 
+    background: rgba(var(--true-black), 1);
+}
+
+.black-text { 
+    color: rgba(var(--true-black), 1);
+}
+
+
+/*	
+--------------------------------------------------
+Base Colours - Backgrounds
+-------------------------------------------------- 
+*/
+
+
+/* Backgrounds */
+
+/* Backgrounds Solid */
+.base-bg,
+.item.item_overlay .inner .image.base-bg::before,
+.usn_cmp_banner .item.item_overlay.base-bg .inner::before { 
+    background: rgba(var(--base-bg-color1), 1); 
+}
+
+
+/* Backgrounds Linear */
+
+.base-bg.base-bg-linear,
+.item.item_overlay .inner .image.base-bg.base-bg-linear::before,
+.usn_cmp_banner .item.item_overlay.base-bg.base-bg-linear .inner::before { 
+    background: linear-gradient(var(--base-bg-angle), rgba(var(--base-bg-color1), 1) 0%, rgba(var(--base-bg-color2), 1) 100%); 
+}
+
+/* Backgrounds Radial */
+
+.base-bg.base-bg-radial,
+.item.item_overlay .inner .image.base-bg.base-bg-radial::before,
+.usn_cmp_banner .item.item_overlay.base-bg.base-bg-radial .inner::before { 
+    background: radial-gradient(farthest-side at var(--base-bg-start-perc) var(--base-bg-stop-perc), rgba(var(--base-bg-color1), 1) 0%, rgba(var(--base-bg-color2), 1) 100%); 
+}
+
+
+/* Tables */
+
+table,
+table tr:nth-of-type(even) td,
+.tables table tr:nth-of-type(even) td { 
+    background:transparent;
+}
+
+
+/* Headings */
+
+h1:not(.heading), 
+h2:not(.heading), 
+h3:not(.heading), 
+h4:not(.heading), 
+h5:not(.heading), 
+h6:not(.heading),
+thead {
+    color: rgba(var(--base-heading), 1);
+}
+
+.base-heading {
+    color: rgba(var(--base-heading), 1)!important;
+}
+
+
+/* Secondary Headings */
+
+.base-secondary-heading {
+    color: rgba(var(--base-secondary-heading), 1)!important;
+}
+
+
+/* Text */
+
+body,
+.base-text {
+    color: rgba(var(--base-text), 1);
+}
+
+
+/* Borders */
+
+.base-borders,
+table, table th, table td {
+    border-color: rgba(var(--base-borders), 1);
+}
+thead,
+.quick-links ul li a::after { 
+    background-color: rgba(var(--base-borders), 1);
+}
+
+
+/* Links */
+
+a,
+.base-link,
+.base-bg a:not(.btn),
+.base-text a:not(.btn),
+.base-bg .base-text a:not(.btn) {
+    color: rgba(var(--base-link), 1);
+}
+
+a:hover,
+a:focus,
+a:active,
+.base-link:hover,
+.base-link:focus,
+.base-link:active,
+.base-bg a:not(.btn):hover,
+.base-bg a:not(.btn):focus,
+.base-bg a:not(.btn):active,
+.base-text a:not(.btn):hover,
+.base-text a:not(.btn):focus,
+.base-text a:not(.btn):active,
+.base-bg .base-text a:not(.btn):hover,
+.base-bg .base-text a:not(.btn):focus,
+.base-bg .base-text a:not(.btn):active  {
+    color: rgba(var(--base-link-hover), 1);
+}
+
+
+/* Highlights */
+
+.base-highlight-bg {
+    background-color: rgba(var(--base-highlight), 1);
+}
+
+blockquote::before,
+.base-bg blockquote::before,
+.component .component.base-bg div > blockquote::before { 
+    color: rgba(var(--base-highlight), 1);
+}
+
+
+/* Used in rich text editors */
+
+.heading {
+    color: rgba(var(--base-heading), 1);
+}
+.secondary-heading {
+    color: rgba(var(--base-secondary-heading), 1);
+}
+blockquote,
+.quote {
+    color: rgba(var(--base-heading), 1);
+}
+blockquote::before,
+.quote::before {
+    color: rgba(var(--base-highlight), 1);
+}
+
+.base-highlight-text {
+    color: rgba(var(--base-highlight-text), 1);
+}
+
+.base-bg .label {
+    background-color: rgba(var(--base-highlight), 1);
+    color: rgba(var(--base-highlight-text), 1);
+}
+
+
+/*	
+--------------------------------------------------
+Buttons
+-------------------------------------------------- 
+*/
+
+
+/*	
+--------------------------------------------------
+Base Colours - Buttons
+-------------------------------------------------- 
+*/
+
+/* Solid Buttons */
+.btn.base-btn-bg, 
+.btn-bg_base-btn-bg .btn {
+    background: rgba(var(--base-btn-bg-color1), 1);
+}
+
+.base-btn-bg:hover, 
+.btn-bg_base-btn-bg .btn:hover,
+.btn.base-btn-bg:focus, 
+.btn-bg_base-btn-bg .btn:focus,
+.btn.base-btn-bg:active, 
+.btn-bg_base-btn-bg .btn:active {
+    background: rgba(var(--base-btn-bg-color1), 1);
+}
+
+/* Linear Buttons */
+.btn.base-btn-bg.base-btn-bg-linear, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-linear .btn {
+    background: linear-gradient(var(--base-btn-bg-angle), rgba(var(--base-btn-bg-color1), 1) 0%, rgba(var(--base-btn-bg-color2), 1) 100%); 
+}
+
+.base-btn-bg.base-btn-bg-linear:hover, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-linear .btn:hover,
+.btn.base-btn-bg.base-btn-bg-linear:focus, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-linear .btn:focus,
+.btn.base-btn-bg.base-btn-bg-linear:active, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-linear .btn:active {
+    background: linear-gradient(var(--base-btn-bg-angle), rgba(var(--base-btn-bg-color1), 1) 0%, rgba(var(--base-btn-bg-color2), 1) 100%); 
+}
+
+/* Radial Buttons */
+.btn.base-btn-bg.base-btn-bg-radial, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-radial .btn {
+    background: radial-gradient(farthest-side at var(--base-btn-bg-start-perc) var(--base-btn-bg-stop-perc), rgba(var(--base-btn-bg-color1), 1) 0%, rgba(var(--base-btn-bg-color2), 1) 100%); 
+}
+
+.base-btn-bg.base-btn-bg-radial:hover, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-radial .btn:hover,
+.btn.base-btn-bg.base-btn-bg-radial:focus, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-radial .btn:focus,
+.btn.base-btn-bg.base-btn-bg-radial:active, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-radial .btn:active {
+    background: radial-gradient(farthest-side at var(--base-btn-bg-start-perc) var(--base-btn-bg-stop-perc), rgba(var(--base-btn-bg-color1), 1) 0%, rgba(var(--base-btn-bg-color2), 1) 100%); 
+}
+
+/* Solid Buttons - inner <span> hover */
+.btn.base-btn-bg-hover:hover > span, 
+.btn.base-btn-bg-hover:focus > span, 
+.btn.base-btn-bg-hover:active > span, 
+.btn-bg_base-btn-bg-hover .btn:hover > span, 
+.btn-bg_base-btn-bg-hover .btn:focus > span, 
+.btn-bg_base-btn-bg-hover .btn:active > span,
+a:hover .btn.base-btn-bg-hover > span, 
+a:focus .btn.base-btn-bg-hover > span, 
+a:active .btn.base-btn-bg-hover > span,
+.btn.base-btn-bg-hover-solid:hover > span, 
+.btn.base-btn-bg-hover-solid:focus > span, 
+.btn.base-btn-bg-hover-solid:active > span, 
+.btn-bg_base-btn-bg-hover-solid .btn:hover > span, 
+.btn-bg_base-btn-bg-hover-solid .btn:focus > span, 
+.btn-bg_base-btn-bg-hover-solid .btn:active > span,
+a:hover .btn.base-btn-bg-hover-solid > span, 
+a:focus .btn.base-btn-bg-hover-solid > span, 
+a:active .btn.base-btn-bg-hover-solid > span {
+    background: rgba(var(--base-btn-bg-hover-color1), 1);
+}
+
+/* Linear Buttons - inner <span> hover */
+.btn.base-btn-bg.base-btn-bg-hover-linear:hover > span, 
+.btn.base-btn-bg.base-btn-bg-hover-linear:focus > span, 
+.btn.base-btn-bg.base-btn-bg-hover-linear:active > span, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-hover-linear .btn:hover > span, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-hover-linear .btn:focus > span, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-hover-linear .btn:active > span,
+a:hover .btn.base-btn-bg.base-btn-bg-hover-linear > span, 
+a:focus .btn.base-btn-bg.base-btn-bg-hover-linear > span, 
+a:active .btn.base-btn-bg.base-btn-bg-hover-linear > span {
+    background: linear-gradient(var(--base-btn-bg-hover-angle), rgba(var(--base-btn-bg-hover-color1), 1) 0%, rgba(var(--base-btn-bg-hover-color2), 1) 100%); 
+}
+
+/* Radial Buttons - inner <span> hover */
+.btn.base-btn-bg.base-btn-bg-hover-radial:hover > span, 
+.btn.base-btn-bg.base-btn-bg-hover-radial:focus > span, 
+.btn.base-btn-bg.base-btn-bg-hover-radial:active > span, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-hover-radial .btn:hover > span, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-hover-radial .btn:focus > span, 
+.btn-bg_base-btn-bg.btn-bg_base-btn-bg-hover-radial .btn:active > span,
+a:hover .btn.base-btn-bg.base-btn-hover-bg-radial > span, 
+a:focus .btn.base-btn-bg.base-btn-hover-bg-radial > span, 
+a:active .btn.base-btn-bg.base-btn-hover-bg-radial > span {
+    background: radial-gradient(farthest-side at var(--base-btn-bg-hover-start-perc) var(--base-btn-bg-hover-stop-perc), rgba(var(--base-btn-bg-hover-color1), 1) 0%, rgba(var(--base-btn-bg-hover-color2), 1) 100%); 
+}
+
+
+/* Button Borders */
+
+.btn.base-btn-borders, 
+.btn-borders_base-btn-borders .btn {
+    border-color: rgba(var(--base-btn-borders), 1);
+}
+
+/* Button Borders Hover */
+
+.btn.base-btn-borders:hover, 
+.btn-borders_base-btn-borders .btn:hover,
+.btn.base-btn-borders:focus, 
+.btn-borders_base-btn-borders .btn:focus,
+.btn.base-btn-borders:active, 
+.btn-borders_base-btn-borders .btn:active,
+a:hover .btn.base-btn-borders, 
+a:focus .btn.base-btn-borders, 
+a:active .btn.base-btn-borders {
+    border-color: rgba(var(--base-btn-borders-hover), 1);
+}
+
+
+/* Button Text */
+
+.btn.base-btn-text, 
+.btn-text_base-btn-text .btn {
+    color: rgba(var(--base-btn-text), 1);
+}
+
+/* Button Text Hover */
+
+.btn.base-btn-text:hover, 
+.btn-text_base-btn-text .btn:hover,
+.btn.base-btn-text:focus, 
+.btn-text_base-btn-text .btn:focus,
+.btn.base-btn-text:active, 
+.btn-text_base-btn-text .btn:active,
+a:hover .btn.base-btn-text, 
+a:focus .btn.base-btn-text, 
+a:active .btn.base-btn-text {
+    color: rgba(var(--base-btn-text-hover), 1);
+}

@@ -1,0 +1,24 @@
+﻿<div ng-controller="USN.SEOMetaController">
+    <section class="usn-seo-helper">
+
+        <div class="usn-google-search">
+            <div class="usn-google-url">{{model.pageUrl}}</div>
+            <div class="usn-google-title">{{model.pageTitle}}</div>
+            <div class="usn-google-description">{{model.value.description}}</div>
+        </div>
+
+        <div class="usn-input-field input-field">
+            <div class="form-group">
+                <input type="text" class="usn-text-field" placeholder="Your web page title goes here" ng-model="model.value.title" ng-change="updatePageTitle()">
+                <span class="usn-note"><strong ng-class="{'text-success': !model.value.title.length || model.value.title.length < model.titleTo,'text-error': model.value.title.length && model.value.title.length >= model.titleTo}"><i ng-class="{'icon icon-checkbox before': !model.value.title.length || model.value.title.length < model.titleTo,'icon icon-alert-alt before': model.value.title.length && model.value.title.length >= model.titleTo}"></i>{{model.value.title.length ? model.value.title.length : '0'}} characters</strong> <em>— recommended {{model.titleFrom}} to {{model.titleTo}}</em></span>
+            </div>
+        </div>
+        <div class="usn-input-field input-field">
+            <div class="form-group">
+                <textarea type="text" rows="2" class="usn-text-field usn-text-area" placeholder="Your web page description goes here" ng-model="model.value.description"></textarea>
+                <span class="usn-note"><strong ng-class="{'text-success': !model.value.description.length || model.value.description.length < model.descriptionTo,'text-error': model.value.description.length && model.value.description.length >= model.descriptionTo}"><i ng-class="{'icon icon-checkbox before': !model.value.description.length || model.value.description.length < model.descriptionTo,'icon icon-alert-alt before': model.value.description.length && model.value.description.length >= model.descriptionTo}"></i>{{model.value.description.length ? model.value.description.length : '0'}} characters</strong> <em>— recommended {{model.descriptionFrom}} to {{model.descriptionTo}}</em></span>
+            </div>
+        </div>
+
+    </section>
+</div>

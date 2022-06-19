@@ -1,0 +1,61 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+
+    SmidgeHelper
+    .CreateJsBundle("sitebuilder-js-bundle")
+    .RequiresJs("/uSkinned/scripts/libraries/jquery.min.js",
+        "/uSkinned/scripts/libraries/popper.min.js",
+        "/uSkinned/scripts/libraries/bootstrap.min.js",
+        "/uSkinned/scripts/libraries/jquery.validate.min.js",
+        "/uSkinned/scripts/libraries/jquery.validation-unobtrusive.min.js",
+        "/uSkinned/scripts/libraries/slick-carousel.js",
+        "/uSkinned/scripts/libraries/ekko-lightbox.js",
+        "/scripts/" + Model.ThemeFolder + "/plugins.js",
+        "/scripts/" + Model.ThemeFolder + "/application.js",
+        "/uSkinned/scripts/libraries/jquery.unobtrusive-ajax.js",
+        "/uSkinned/scripts/libraries/css-vars-ponyfill.js");
+
+    if (UmbracoContext.InPreviewMode)
+    {
+        SmidgeHelper
+        .CreateJsBundle("sitebuilder-js-preview-bundle")
+        .RequiresJs("/uSkinned/scripts/libraries/jquery-ui.min.js",
+        "/uSkinned/scripts/libraries/angular.min.js",
+        "/uSkinned/scripts/libraries/usn-spectrum.js",
+        "/uSkinned/scripts/libraries/sortable.js",
+        "/uSkinned/scripts/design-panel/design-panel.js");
+    }
+
+
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+}
+<script src="sitebuilder-js-bundle" type="text/javascript"></script>
+
+@if (websiteStyle.CustomJS.HasValue())
+{
+    <script src="/uSkinned/scripts/generated/@(websiteStyle.Key).js?version=@(websiteStyle.UpdateDate.Ticks)" type="text/javascript"></script>
+}
+@if (UmbracoContext.InPreviewMode)
+{
+    <script src="sitebuilder-js-preview-bundle" type="text/javascript" debug="true"></script>
+}
+
+<!-- CSS VARS Ponyfill -->
+<script>cssVars({ onlyLegacy: true });</script>
+
+@if (globalSettings.EnableShop && globalSettings.Ecwid.HasValue() && globalSettings.ShopPage.HasValue())
+{
+    var ecwid = globalSettings.Ecwid;
+    var shopPageUrl = globalSettings.ShopPage.Url();
+
+    <script defer data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?@(ecwid)&data_platform=code" charset="utf-8"></script>
+    <script defer type="text/javascript">
+        window.addEventListener('load', function () {
+            Ecwid.init();
+        })
+        var ecwid_ProductBrowserURL = "@(shopPageUrl)";
+    </script>
+}

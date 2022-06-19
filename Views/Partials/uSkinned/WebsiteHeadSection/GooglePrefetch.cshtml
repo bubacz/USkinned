@@ -1,0 +1,16 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    if (globalSettings.GoogleAnalyticsTrackingID.HasValue())
+    {
+        <!-- Google Analytics -->
+        <link rel="dns-prefetch" href="//www.google-analytics.com">
+    }
+    if (globalSettings.GoogleTagManagerID.HasValue())
+    {
+        <!-- Google Tag Manager -->
+        <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    }
+}

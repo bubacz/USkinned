@@ -1,0 +1,115 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces 
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block and Split Component Block and Pod Block Types
+
+    var content = (IUsn_Cmp_AccordionTab_Content)Model.BlockContent;
+
+    //Settings taken from compositions common to all block types
+    var uniqueSettings = (IUsn_Cmp_AccordionTab_Settings)Model.BlockSettings;
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    //Headings and secondary headings only present on pods
+    var podContent = Model.BlockContent as Usn_Pb_AccordionTab;
+
+    var accordionTabs = content.AccordionTabs.Where(x => !x.Settings.Value<bool>("hideFromWebsite"));
+
+    if (accordionTabs.HasValue() && accordionTabs.Any())
+    {
+        AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+        int itemCount = 1;
+        string uniqueID = Guid.NewGuid().ToString();
+        string tabStyle = uniqueSettings.AccordionTabStyle.HasValue() ? uniqueSettings.AccordionTabStyle : "tab-basic";
+
+        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", Model.BaseModel, new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", animation }, { "heading", podContent != null ? podContent.Heading : null }, { "secondaryHeading", podContent != null ? podContent.SecondaryHeading : null }, { "backgroundColorLabel", backgroundColorLabel } })
+
+        if (uniqueSettings.RepeaterStyle == "layoutAccordion")
+        {
+            int itemTotal = accordionTabs.Count();
+
+            <div class="repeatable accordion @tabStyle @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                @foreach (var item in accordionTabs)
+                {
+                    if (item?.ContentUdi != null)
+                    {
+                        var itemContent = (Usn_Cbi_AccordionTabItem)item.Content;
+                        var itemSettings = (Usn_Cbis_AccordionTabItem)item.Settings;
+
+                        bool openAccordion = _siteBuilderService.GetAccordionTabOpen(itemCount, itemTotal, uniqueSettings.AccordionOptions);
+                        string ariaTag = openAccordion ? "aria-expanded=\"true\"" : String.Empty;
+                        string openClass = openAccordion ? "show" : String.Empty;
+                        string collapseClass = openAccordion ? String.Empty : "collapsed";
+                        <p class="tab @itemSettings.CustomClasses" @Html.Raw(ariaTag)>
+                            <a class="nav-link nav-button-link @collapseClass" data-toggle="collapse" href="#collapse_@(uniqueID)_@itemCount" aria-expanded="false" aria-controls="collapse_@(uniqueID)_@itemCount" role="button">
+                                @Html.Raw(itemContent.ItemHeading)
+                            </a>
+                        </p>
+                        <div id="collapse_@(uniqueID)_@itemCount" class="info repeatable-content collapse @itemSettings.CustomClasses @openClass">
+                            <div class="text">@Html.Raw(itemContent.RepeaterText)</div>
+                        </div>
+
+                        itemCount += 1;
+                    }
+                }
+            </div>
+        }
+        else
+        {
+            <div class="repeatable tabbed @tabStyle @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                <!-- Tabs -->
+                <nav class="tabs">
+                    <ul class="nav" role="tablist">
+                        @foreach (var item in accordionTabs)
+                        {
+                            if (item?.ContentUdi != null)
+                            {
+                                var itemContent = (Usn_Cbi_AccordionTabItem)item.Content;
+                                var itemSettings = (Usn_Cbis_AccordionTabItem)item.Settings;
+
+                                <li class="tab @itemSettings.CustomClasses" role="presentation">
+                                    <a class="nav-item nav-button-link nav-link @(itemCount == 1 ? "active" : "")" id="nav_tab_@(uniqueID)_@itemCount" data-toggle="tab" href="#nav_@(uniqueID)_@itemCount" role="tab" aria-controls="nav_@(uniqueID)_@itemCount" aria-selected="true">
+                                        @Html.Raw(itemContent.ItemHeading)
+                                    </a>
+                                </li>
+
+                                itemCount += 1;
+                            }
+                        }
+                    </ul>
+                </nav>
+                <!--// Tabs -->
+                <!-- Tab content -->
+                <div id="nav-tabContent" class="repeatable-content tab-content">
+                    @{
+                        itemCount = 1;
+
+                        foreach (var item in accordionTabs)
+                        {
+                            if (item?.ContentUdi != null)
+                            {
+                                var itemContent = (Usn_Cbi_AccordionTabItem)item.Content;
+                                var itemSettings = (Usn_Cbis_AccordionTabItem)item.Settings;
+
+                                <div class="info tab-pane fade @itemSettings.CustomClasses @(itemCount == 1 ? "show active" : "")" id="nav_@(uniqueID)_@itemCount" role="tabpanel" aria-labelledby="nav_tab_@(uniqueID)_@itemCount">
+                                    <div class="text">@Html.Raw(itemContent.RepeaterText)</div>
+                                </div>
+
+                                itemCount += 1;
+                            }
+                        }
+                    }
+                </div>
+                <!--// Tab content -->
+            </div>
+        }
+    }
+}

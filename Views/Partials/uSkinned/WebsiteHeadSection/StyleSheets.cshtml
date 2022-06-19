@@ -1,0 +1,179 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    Usnstyle style = (Usnstyle)Model.WebsiteStyle;
+
+    int largeBreakpoint = (int)style.StyleSpacing.headerBreakpoint;
+    int smallBreakpoint = largeBreakpoint - 1;
+    string smallMedia = String.Format("screen and (min-width:0) and (max-width:{0}px)", smallBreakpoint);
+    string largeMedia = String.Format("screen and (min-width:{0}px)", largeBreakpoint);
+
+    if (Model.TextDirection == "rtl")
+    {
+        SmidgeHelper
+        .CreateCssBundle("sitebuilder-rtl-css-bundle")
+        .RequiresCss("/uSkinned/css/libraries/bootstrap.min.rtl.css",
+        "/css/" + Model.ThemeFolder + "/layouts/rtl.css");
+
+        SmidgeHelper
+        .CreateCssBundle("sitebuilder-css-rtl-small-bundle")
+        .RequiresCss("/css/" + Model.ThemeFolder + "/layouts/rtl-small.css");
+
+        SmidgeHelper
+        .CreateCssBundle("sitebuilder-css-rtl-large-bundle")
+        .RequiresCss("/css/" + Model.ThemeFolder + "/layouts/rtl-large.css");
+    }
+    else
+    {
+        SmidgeHelper
+        .CreateCssBundle("sitebuilder-ltr-css-bundle")
+        .RequiresCss("/uSkinned/css/libraries/bootstrap.min.css");
+
+    }
+
+    if (UmbracoContext.InPreviewMode)
+    {
+        SmidgeHelper
+        .CreateCssBundle("sitebuilder-css-preview-bundle")
+        .RequiresCss("/uSkinned/css/design-panel/design-panel.css",
+        "/uSkinned/css/libraries/usn-spectrum.css");
+    }
+
+    SmidgeHelper
+    .CreateCssBundle("sitebuilder-css-bundle")
+    .RequiresCss("/uSkinned/css/libraries/slick-carousel.min.css",
+    "/uSkinned/css/libraries/ekko-lightbox.min.css",
+    "/css/" + Model.ThemeFolder + "/icons/icons.css",
+    "/css/" + Model.ThemeFolder + "/base/theme.css",
+    "/css/" + Model.ThemeFolder + "/base/plugins.css",
+    "/css/" + Model.ThemeFolder + "/base/typography.css",
+    "/css/" + Model.ThemeFolder + "/layouts/body.css",
+    "/css/" + Model.ThemeFolder + "/layouts/header.css",
+    "/css/" + Model.ThemeFolder + "/layouts/footer.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/all_nav.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_breadcrumb.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_burger.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_cta.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_main.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_secondary.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_sub.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_pagination.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_quick-links.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_sitemap.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_social.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_footer.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/all_pc.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_alerts.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_anchors.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_banner.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_codeblock.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_cta.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_data-list.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_forms.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_gallery.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_instagram-feed.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_grid.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_links.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_listing.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_pods.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_split.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_tabs-accordions.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_windows.css",
+    "/css/" + Model.ThemeFolder + "/modules/sitewide-pods/all_swp.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/all_forms.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_contact.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_login.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_newsletter.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_site-search.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_loading.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/all_misc.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_authors.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_back-to-top.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_buttons.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_images.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_lazyframe-video.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_lightbox.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_links.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_meta.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_notification.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_overlay-icons.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_scroll-prompt.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_tables.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_directions.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/all_shop.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/shop_snipcart.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/shop_ecwid.css");
+
+    SmidgeHelper
+    .CreateCssBundle("sitebuilder-css-small-bundle")
+    .RequiresCss("/css/" + Model.ThemeFolder + "/layouts/body-small.css",
+    "/css/" + Model.ThemeFolder + "/layouts/header-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_cta-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_main-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_secondary-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/all_pc-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_anchors-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_banner-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_windows-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_back-to-top-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_notification-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_scroll-prompt-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_directions-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/all_shop-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/shop_snipcart-small.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/shop_ecwid-small.css");
+
+
+    SmidgeHelper
+    .CreateCssBundle("sitebuilder-css-large-bundle")
+    .RequiresCss("/css/" + Model.ThemeFolder + "/layouts/body-large.css",
+    "/css/" + Model.ThemeFolder + "/layouts/header-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_burger-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_cta-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_main-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_secondary-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/navigation/nav_social-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/all_pc-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_anchors-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_banner-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_data-list-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_links-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_split-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/page-components/pc_windows-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/all_forms-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_login-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_newsletter-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/forms/form_site-search-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_back-to-top-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_notification-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_scroll-prompt-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/misc/misc_directions-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/all_shop-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/shop_snipcart-large.css",
+    "/css/" + Model.ThemeFolder + "/modules/shop/shop_ecwid-large.css");
+
+    SmidgeHelper
+    .CreateCssBundle("sitebuilder-css-prnt-bundle")
+    .RequiresCss("/css/" + Model.ThemeFolder + "/print.css");
+}
+@if (Model.TextDirection == "rtl")
+{
+    <link rel="stylesheet" href="sitebuilder-rtl-css-bundle" media="screen" />
+    <link rel="stylesheet" href="sitebuilder-css-rtl-small-bundle" media="@smallMedia" />
+    <link rel="stylesheet" href="sitebuilder-css-rtl-large-bundle" media="@largeMedia" />
+}
+else
+{
+    <link rel="stylesheet" href="sitebuilder-ltr-css-bundle" media="screen" />
+}
+<link rel="stylesheet" href="sitebuilder-css-bundle" media="screen" />
+<link rel="stylesheet" href="/uSkinned/css/generated/@(style.Key).css?version=@(style.UpdateDate.Ticks)" media="screen" />
+<link rel="stylesheet" href="sitebuilder-css-small-bundle" media="@smallMedia" />
+<link rel="stylesheet" href="sitebuilder-css-large-bundle" media="@largeMedia" />
+<link rel="stylesheet" href="sitebuilder-css-prnt-bundle" media="print" />
+@if (UmbracoContext.InPreviewMode)
+{
+    <link rel="stylesheet" href="sitebuilder-css-preview-bundle" media="screen" />
+}

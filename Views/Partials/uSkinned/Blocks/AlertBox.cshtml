@@ -1,0 +1,47 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block, Split Component Block and Pod Block types
+
+    var content = (IUsn_Cmp_AlertBox_Content)Model.BlockContent;
+
+    //Settings taken from compositions common to all block types
+    var uniqueSettings = (IUsn_Cmp_AlertBox_Settings)Model.BlockSettings;
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    string alertClass = String.Empty;
+
+    switch (uniqueSettings.Color)
+    {
+        case "d9edf7":
+            alertClass = "alert-info";
+            break;
+        case "dff0d8":
+            alertClass = "alert-success";
+            break;
+        case "fcf8e3":
+            alertClass = "alert-warning";
+            break;
+        case "f2dede":
+            alertClass = "alert-danger";
+            break;
+        default:
+            alertClass = "alert-info";
+            break;
+    }
+
+    <div class="alert @alertClass @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration" role="alert">
+        @if (!uniqueSettings.HideCloseOption)
+        {
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        }
+        <div class="info">@Html.Raw(content.Text)</div>
+    </div>
+
+}

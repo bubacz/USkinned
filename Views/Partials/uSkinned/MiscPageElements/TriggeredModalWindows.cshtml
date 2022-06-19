@@ -1,0 +1,121 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using Umbraco.Cms.Core.Models.Blocks
+@using USNSiteBuilder.Core.Interfaces
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor _httpContextAccessor
+@inject ISiteBuilderService _siteBuilderService
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    if (Model.HasValue("modalWindow") || globalSettings.GlobalModalWindow.HasValue())
+    {
+        var modalItem = Model.HasValue("modalWindow") ? Model.Value<IPublishedContent>("selectReusableContent") : globalSettings.GlobalSelectReusableContent;
+        string modalTrigger = Model.HasValue("modalWindow") ? Model.Value<string>("modalWindow") : globalSettings.GlobalModalWindow;
+        int timerMilliseconds = Model.HasValue("modalWindow") ? Convert.ToInt32(Model.Value<decimal>("openAfter") * 1000) : Convert.ToInt32(globalSettings.GlobalOpenAfter * 1000);
+        int scrollPercent = Model.HasValue("modalWindow") ? Convert.ToInt32(Model.Value<decimal>("scrollPercentage")) : Convert.ToInt32(globalSettings.GlobalScrollPercentage);
+        string cookieName = Model.HasValue("modalWindow") ? "USN_Modal_" + Model.Id.ToString() : "USN_Modal_Global";
+        int hidePeriod = Model.HasValue("modalWindow") ? Model.Value<int>("hidePeriod") : globalSettings.GlobalHidePeriod;
+        hidePeriod = hidePeriod > 0 ? hidePeriod : 365;
+
+        if (modalItem != null)
+        {
+            //Check if pod or component
+            string modalClass = modalItem.IsDocumentType(UsncomponentGroup.ModelTypeAlias) ? "modal-components" : "modal-pods";
+            DateTime updateDate = modalItem.UpdateDate;
+
+            BlockListModel componentsPods = modalItem.IsDocumentType(UsncomponentGroup.ModelTypeAlias) ? modalItem.Value<BlockListModel>("components") : modalItem.Value<BlockListModel>("pods");
+
+            if (componentsPods != null && componentsPods.Where(x => !x.Settings.Value<bool>("hideFromWebsite")).Any())
+            {
+                bool outputModal = true;
+
+                //Only build modal source if its not already present in linked modals.
+                if (_httpContextAccessor.HttpContext.Session.GetString("ModalIds") != null)
+                {
+                    var list = _httpContextAccessor.HttpContext.Session.Get<List<Int32>>("ModalIds");
+
+                    if (list.Contains(modalItem.Id))
+                    {
+                        outputModal = false;
+                    }
+                }
+                if (outputModal)
+                {
+                    <!-- Reusable — Modal box -->
+                    <div class="modal fade @modalClass" tabindex="-1" id="modal_@(modalItem.Id)" aria-labelledby="@modalItem.Name" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+
+                                @if (modalItem.IsDocumentType(UsncomponentGroup.ModelTypeAlias))
+                                {
+                                    foreach (var component in componentsPods.Where(x => !x.Settings.Value<bool>("hideFromWebsite")))
+                                    {
+                                        if (component?.ContentUdi != null)
+                                        {
+                                            var pageComponent = new SiteBuilderBlock(Model, component, "pageLayoutFull");
+
+                                            @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/ComponentSection", pageComponent, new ViewDataDictionary(ViewData) { { "disableModalLinks", true } })
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (var pod in componentsPods)
+                                    {
+                                        if (pod?.ContentUdi != null)
+                                        {
+                                            var podItem = new SiteBuilderBlock(Model, pod);
+                                            string uniqueID = Guid.NewGuid().ToString();
+
+                                            var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)pod.Settings;
+                                            string blockViewName = _siteBuilderService.GetBlockViewName(pod.Content.ContentType.Alias);
+
+                                            if (blockViewName == "RelatedContent" || blockViewName == "TextImage"
+                                                || blockViewName == "ReusablePods")
+                                            {
+                                                @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", "base" }, { "itemClass", "swp-item" }, { "uniqueID", uniqueID }, { "disableModalLinks", true } })
+                                            }
+                                            else
+                                            {
+                                                string podStyle = "usn_pod_" + _siteBuilderService.GetBlockStyleName(podItem.BlockContent.ContentType.Alias);
+
+                                                <div class="item swp-item @podStyle @itemCommonBlockSettings.CustomClasses">
+                                                    <div class="inner">
+                                                        @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", "base" }, { "uniqueID", uniqueID }, { "disableModalLinks", true } })
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Reusable — Modal box -->
+                }
+                <script>
+                    var displayModal = false;
+                    var modalValue = getCookie("@cookieName");
+                    if (modalValue == null || modalValue == "" || modalValue != @updateDate.Ticks) {
+                        setCookie("@cookieName", @updateDate.Ticks, @hidePeriod);
+                        displayModal = true;
+                    }
+                    else
+                        displayModal = false;
+
+                    @if(modalTrigger ==  "modal-timed")
+                    {
+                        @Html.Raw(String.Format("if(displayModal){{setTimeout(function(){{ $('#modal_{0}').modal('show') }}, {1});}}", modalItem.Id.ToString(), timerMilliseconds));
+                    }
+                    else
+                    {
+                        @Html.Raw(String.Format("if(displayModal){{var scrollHit = false;$(window).on('scroll', function(){{var percentScrolled = amountscrolled();if(percentScrolled >= {0} && !scrollHit) {{ scrollHit = true; $('#modal_{1}').modal('show')}}}});}}", scrollPercent,modalItem.Id.ToString()));
+                    }
+                </script>
+            }
+        }
+    }
+}
+

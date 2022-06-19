@@ -1,0 +1,46 @@
+﻿<div ng-controller="USN.ComponentListViewController">
+
+    <div class="umb-content-grid usn-design-grid" ng-if="items">
+
+        <div class="umb-content-grid__item umb-outline umb-outline--surrounding usn-design-grid-item" ng-repeat="item in items">
+            <div class="umb-content-grid__content usn-design-grid-item-inner">
+                <a ng-click="viewItem(item)" ng-class="{'-light': !item.published && item.updater != null}">
+                    <div class="umb-content-grid__item-name umb-outline usn-design-title">
+                        <span>{{item.name}}<div class="umb-badge umb-badge--warning umb-badge--xs" ng-show="!item.published && item.updater != null">Unpublished</div></span>
+                    </div>
+
+                    <ul class="umb-content-grid__details-list" ng-class="{'-light': !item.published && item.updater != null}">
+                        <li class="umb-content-grid__details-item">
+                            <div class="umb-content-grid__details-label">Components:</div> 
+                            <div class="umb-content-grid__details-value">{{item.componentCount ? item.componentCount : 0}}</div>
+                        </li>
+                        <li class="umb-content-grid__details-item">
+                            <div class="umb-content-grid__details-label">Status:</div> 
+                            <div class="umb-content-grid__details-value">{{item.state}}</div>
+                        </li>
+                        <li class="umb-content-grid__details-item">
+                            <div class="umb-content-grid__details-label">Last edited:</div> 
+                            <div class="umb-content-grid__details-value">{{item.updateDate}}</div>
+                        </li>
+                        <li class="umb-content-grid__details-item">
+                            <div class="umb-content-grid__details-label">Updated by:</div> 
+                            <div class="umb-content-grid__details-value">{{item.updater}}</div>
+                        </li>
+                        <li class="umb-content-grid__details-item">
+                            <div class="umb-content-grid__details-label">Created by:</div> 
+                            <div class="umb-content-grid__details-value">{{item.owner}}</div>
+                        </li>
+                    </ul>
+                
+                    <div class="usn-reusable-items usn-horz-reusable" ng-show="item.componentItems.length > 0">
+                        <div class="usn-reusable-used" ng-repeat="componentImage in item.componentItems track by $index" title="{{componentImage[1]}}">
+                            <img width="80px" ng-src="{{componentImage[2]}}" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

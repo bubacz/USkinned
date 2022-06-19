@@ -1,0 +1,38 @@
+/*  
+---------------------------------------------------
+Body - Small Breakpoint
+---------------------------------------------------  
+*/
+
+#site {
+    width:calc(100% - var(--site-spacing_sm) - var(--site-spacing_sm));
+}
+
+body.max-width #site {
+    max-width: calc(var(--site-max-width) - var(--site-spacing_sm) - var(--site-spacing_sm));
+}
+
+body.transparent-header-sm #site-content > .component:first-of-type:not(.usn_cmp_banner):not(.p-0) { 
+    padding-top: calc(var(--pc-spacing) + var(--small-header));
+}
+body.transparent-header-sm #site-content > .component.p-0:first-of-type:not(.usn_cmp_banner) { 
+    margin-top: var(--small-header);
+}
+
+.content-col { 
+    margin-bottom:var(--base-spacing);
+}
+.content-col:only-child { 
+    margin:0;
+}
+
+
+/*  
+---------------------------------------------------
+Content Columns
+---------------------------------------------------  
+*/
+
+.heading-col { 
+    padding-bottom:var(--base-half-spacing);
+}

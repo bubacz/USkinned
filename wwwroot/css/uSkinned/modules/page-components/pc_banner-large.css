@@ -1,0 +1,194 @@
+/*  
+---------------------------------------------------
+Banner - Large Breakpoint
+---------------------------------------------------  
+*/
+
+.component.usn_cmp_banner .item.item_short-banner,
+.component.usn_cmp_banner .item.item_short-banner .container,
+.component.usn_cmp_banner .item.item_short-banner .row,
+.component.usn_cmp_banner .item.item_short-banner .image,
+.component.usn_cmp_banner .item.item_short-banner .image .video {
+    height: var(--short-banner);
+    height: calc(var(--short-banner) - var(--large-header));
+    min-height: calc(var(--short-bannerPX) - var(--large-header));
+}
+
+body.header-11-lg .component.usn_cmp_banner .item.item_short-banner,
+body.header-11-lg .component.usn_cmp_banner .item.item_short-banner .container,
+body.header-11-lg .component.usn_cmp_banner .item.item_short-banner .row,
+body.header-11-lg .component.usn_cmp_banner .item.item_short-banner .image,
+body.header-11-lg .component.usn_cmp_banner .item.item_short-banner .image .video,
+body.header-12-lg .component.usn_cmp_banner .item.item_short-banner,
+body.header-12-lg .component.usn_cmp_banner .item.item_short-banner .container,
+body.header-12-lg .component.usn_cmp_banner .item.item_short-banner .row,
+body.header-12-lg .component.usn_cmp_banner .item.item_short-banner .image,
+body.header-12-lg .component.usn_cmp_banner .item.item_short-banner .image .video,
+body.header-15-lg .component.usn_cmp_banner .item.item_short-banner,
+body.header-15-lg .component.usn_cmp_banner .item.item_short-banner .container,
+body.header-15-lg .component.usn_cmp_banner .item.item_short-banner .row,
+body.header-15-lg .component.usn_cmp_banner .item.item_short-banner .image,
+body.header-15-lg .component.usn_cmp_banner .item.item_short-banner .image .video,
+body.header-16-lg .component.usn_cmp_banner .item.item_short-banner,
+body.header-16-lg .component.usn_cmp_banner .item.item_short-banner .container,
+body.header-16-lg .component.usn_cmp_banner .item.item_short-banner .row,
+body.header-16-lg .component.usn_cmp_banner .item.item_short-banner .image,
+body.header-16-lg .component.usn_cmp_banner .item.item_short-banner .image .video,
+body.no-header .component.usn_cmp_banner .item.item_short-banner,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .container,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .row,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .image,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .image .video,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_short-banner,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_short-banner .container,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_short-banner .row,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_short-banner .image,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_short-banner .image .video { 
+    height: var(--short-banner); 
+    min-height: var(--short-bannerPX);
+}
+
+.component.usn_cmp_banner .item.item_medium-banner,
+.component.usn_cmp_banner .item.item_medium-banner .container,
+.component.usn_cmp_banner .item.item_medium-banner .row,
+.component.usn_cmp_banner .item.item_medium-banner .image,
+.component.usn_cmp_banner .item.item_medium-banner .image .video {
+    height: var(--medium-banner);
+    height: calc(var(--medium-banner) - var(--large-header));
+    min-height: calc(var(--medium-bannerPX) - var(--large-header));
+}
+
+body.header-11-lg .component.usn_cmp_banner .item.item_medium-banner,
+body.header-11-lg .component.usn_cmp_banner .item.item_medium-banner .container,
+body.header-11-lg .component.usn_cmp_banner .item.item_medium-banner .row,
+body.header-11-lg .component.usn_cmp_banner .item.item_medium-banner .image,
+body.header-11-lg .component.usn_cmp_banner .item.item_medium-banner .image .video,
+body.header-12-lg .component.usn_cmp_banner .item.item_medium-banner,
+body.header-12-lg .component.usn_cmp_banner .item.item_medium-banner .container,
+body.header-12-lg .component.usn_cmp_banner .item.item_medium-banner .row,
+body.header-12-lg .component.usn_cmp_banner .item.item_medium-banner .image,
+body.header-12-lg .component.usn_cmp_banner .item.item_medium-banner .image .video,
+body.header-15-lg .component.usn_cmp_banner .item.item_medium-banner,
+body.header-15-lg .component.usn_cmp_banner .item.item_medium-banner .container,
+body.header-15-lg .component.usn_cmp_banner .item.item_medium-banner .row,
+body.header-15-lg .component.usn_cmp_banner .item.item_medium-banner .image,
+body.header-15-lg .component.usn_cmp_banner .item.item_medium-banner .image .video,
+body.header-16-lg .component.usn_cmp_banner .item.item_medium-banner,
+body.header-16-lg .component.usn_cmp_banner .item.item_medium-banner .container,
+body.header-16-lg .component.usn_cmp_banner .item.item_medium-banner .row,
+body.header-16-lg .component.usn_cmp_banner .item.item_medium-banner .image,
+body.header-16-lg .component.usn_cmp_banner .item.item_medium-banner .image .video,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .container,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .row,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .image,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .image .video,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_medium-banner,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_medium-banner .container,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_medium-banner .row,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_medium-banner .image,
+body.transparent-header-lg .component.usn_cmp_banner .item.item_medium-banner .image .video { 
+    height: var(--medium-banner); 
+    min-height: var(--medium-bannerPX);
+}
+
+.component.usn_cmp_banner .item.item_takeover-banner,
+.component.usn_cmp_banner .item.item_takeover-banner .container,
+.component.usn_cmp_banner .item.item_takeover-banner .row,
+.component.usn_cmp_banner .item.item_takeover-banner .image,
+.component.usn_cmp_banner .item.item_takeover-banner .image .video {
+    height: var(--takeover-banner);
+    height: calc(var(--takeover-banner) - var(--large-header));
+}
+
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video {
+    height: var(--takeover-banner);
+    height: calc(var(--takeover-banner) - var(--large-header) - 30px);
+}
+
+body.header-11-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-11-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-11-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-11-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-11-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.header-12-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-12-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-12-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-12-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-12-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.header-15-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-15-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-15-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-15-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-15-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.header-16-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-16-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-16-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-16-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-16-lg.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video { 
+    height: var(--takeover-banner);
+    height: calc(var(--takeover-banner) - 30px);
+}
+
+body.header-11-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-11-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-11-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-11-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-11-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.header-12-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-12-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-12-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-12-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-12-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.header-15-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-15-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-15-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-15-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-15-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.header-16-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner,
+body.header-16-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.header-16-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.header-16-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.header-16-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.no-header:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner,
+body.no-header:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.no-header:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.no-header:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.no-header:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image .video,
+body.transparent-header-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner,
+body.transparent-header-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.transparent-header-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.transparent-header-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.transparent-header-lg:not(.browser-ios) .component.usn_cmp_banner .item.item_takeover-banner .image .video { 
+    height: var(--takeover-banner);
+}
+
+body.browser-ios.transparent-header-lg .component.usn_cmp_banner .item.item_takeover-banner,
+body.browser-ios.transparent-header-lg .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.browser-ios.transparent-header-lg .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.browser-ios.transparent-header-lg .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.browser-ios.transparent-header-lg .component.usn_cmp_banner .item.item_takeover-banner .image .video {
+    height: var(--takeover-banner);
+    height: calc(var(--takeover-banner) - 30px);
+}
+
+.component.usn_cmp_banner .item .info {
+    padding: 90px var(--base-half-spacing);
+}
+
+body.transparent-header-lg:not(.no-header) .component.usn_cmp_banner .item.item_short-banner .info,
+body.transparent-header-lg:not(.no-header) .component.usn_cmp_banner .item.item_medium-banner .info { 
+    padding-top: calc(var(--large-header) + 90px);
+}
+
+
+

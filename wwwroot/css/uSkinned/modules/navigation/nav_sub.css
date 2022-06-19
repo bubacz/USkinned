@@ -1,0 +1,133 @@
+/*  
+---------------------------------------------------
+Sub Navigation
+---------------------------------------------------  
+*/
+
+nav.sub { 
+    border-width: var(--base-border-width) 0 0; border-style: solid; 
+    border-color: rgba(var(--base-borders), 1);
+    padding-top:20px;
+    margin-bottom:var(--base-spacing);
+}
+
+nav.sub > p.heading { 
+    padding:0 0 10px;
+    color: rgba(var(--base-heading), 1);
+}
+
+nav.sub > p.heading a { 
+    color: rgba(var(--base-heading), 1);
+}
+
+nav.sub > ul { 
+}
+
+nav.sub ul li { 
+    position:relative;
+    padding:3px 0;
+}
+
+nav.sub ul li span { 
+    position:relative;
+    display:block;
+}
+
+nav.sub ul li span a { 
+    display:block;
+    color: rgba(var(--base-link), 1);
+    transition:all 0.2s ease-in-out 0s;
+}
+
+nav.sub ul > li.active > span > a { 
+    color: rgba(var(--base-heading), 1);
+    opacity:0.6;
+}
+
+html.no-touch nav.sub ul li:not(.active) span a:hover { 
+    padding-left:3px;
+}
+html.no-touch nav.sub ul li:not(.active) span a:hover,
+nav.sub ul li:not(.active) span a:focus,
+nav.sub ul li:not(.active) span a:active { 
+    color: rgba(var(--base-link-hover), 1);
+}
+
+
+/* Levels */
+nav.sub ul ul { 
+    padding:5px 0 2px;
+}
+nav.sub ul ul ul { 
+    padding-left:12px;
+}
+nav.sub ul ul li {
+    padding:3px 0;
+}
+nav.sub ul ul li span a { 
+    padding-left:12px;
+}
+html.no-touch nav.sub ul ul li:not(.active) span a:hover { 
+    padding-left:15px;
+}
+nav.sub ul ul li span a::before { 
+    content:"";
+    position:absolute; top:11px; left:0;
+    width:5px; height:var(--base-border-width);
+    background-color: rgba(var(--base-borders), 1);
+    transition:all 0.2s ease-in-out 0s;
+}
+html.no-touch nav.sub ul ul li:not(.active) span a:hover::before { 
+    width:8px;
+    background-color: rgba(var(--base-borders), 0.2);
+}
+nav.sub ul ul li.active span a::before { 
+    background-color: rgba(var(--base-heading), 1);
+}
+
+
+/*  
+---------------------------------------------------
+In this section
+---------------------------------------------------  
+*/
+
+.in-this-section {
+    position: relative; 
+    border: var(--base-border-width) solid rgba(var(--base-borders), 1);
+    margin-bottom:var(--base-spacing);
+    border-radius: var(--base-border-radius);
+}
+
+.in-this-section > p.expand-sub { 
+    position: relative; 
+    cursor: pointer;
+    padding:var(--base-half-spacing);
+    margin:0;
+    color: rgba(var(--base-heading), 1);
+    font-weight: var(--p-heading-typography_font-weight);
+}
+
+.in-this-section > p.expand-sub > i { 
+    position: relative; top:2px;
+    float:right;
+    color: rgba(var(--base-highlight), 1);
+    transition: all 0.25s ease-in-out 0s;
+}
+
+.in-this-section > p.expand-sub.active > i { 
+    transform: rotate(45deg);
+}
+
+.in-this-section > nav.sub { 
+    margin:0; 
+    padding:var(--base-half-spacing);
+}
+
+.in-this-section > nav.sub > .heading { 
+    margin-top:0;
+}
+
+.in-this-section > nav.sub:not(.open) { 
+    display:none;
+}

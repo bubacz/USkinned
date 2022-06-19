@@ -1,0 +1,716 @@
+/*  
+---------------------------------------------------
+Author: uSkinned
+License: uSkinned Commercial License (https://uSkinned.net/license)
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+Contents
+
+1. Font Imports
+2. Global non-generated variables
+3. Global generated variables
+---------------------------------------------------  
+*/
+
+{fontImports}
+
+:root {
+
+    /* Expand navigation width */
+    --expand-nav-width: 60px;
+
+    /* More header sizes */
+    --small-header-half: calc(var(--small-header) / 2);
+    --large-header-half: calc(var(--large-header) / 2);
+    --large-header-quarter: calc(var(--large-header) / 4);
+
+    /* Main navigation sizes */
+    --nav-main-height: var(--large-header);
+
+    /* Generic palette */
+    --true-black:0,0,0;
+    --true-white:255,255,255;
+    --form-errors:193,108,107;
+    --form-warning:240,173,78;
+    --form-success:92,184,92;
+
+    /* Item widths */
+    --items-1:100%;
+    --items-2:50%;
+    --items-3:33.3333333%;
+    --items-4:25%;
+    --items-5:20%;
+    --items-6:16.6666667%;
+    --items-7:14.2857143%;
+    --items-8:12.5%;
+
+    /* Window heights */
+    --windows_basic: 50vh;
+    --windows_basic_PX: 375px;
+
+    --windows-1_basic: 100vh;
+    --windows-1_basic_PX: 62.5%;
+    --windows-2_basic: 100vh;
+    --windows-2_basic_PX: 75%;
+    --windows-3_basic: 70vh;
+    --windows-3_basic_PX: 100%;
+    --windows-4_basic: 50vh;
+    --windows-4_basic_PX: 75%;
+
+    --windows-3_big-item: 100vh;
+    --windows-3_big-item_PX: 750px;
+    --windows-3_small-item: 50vh;
+    --windows-3_small-item_PX: 375px;
+
+    --windows-4_big-item: 55vh;
+    --windows-4_big-item_PX: 475px;
+    --windows-4_small-item: 45vh;
+    --windows-4_small-item_PX: 375px;
+
+    /* Banner heights */
+    --takeover-banner: 100vh;
+    --medium-banner: 65vh;
+    --medium-bannerPX: 450px;
+    --short-banner: 50vh;
+    --short-bannerPX: 340px;
+
+    /* Lazyframe buttons*/
+    --youtube-bg: 229,45,39;
+    --vimeo-bg: 0,173,239;
+
+    /* Component max-width */
+    --component-max-width: 1350px;
+
+    /* Modal max-width */
+    --modal-opacity: {modalOpacity};
+    --modal-components-max-width: {modalComponentMaxWidth}px;
+    --modal-pods-max-width: {modalPodMaxWidth}px;
+    
+
+    /* 
+    All configurable variables below 
+    */
+
+    /* Spacing tab */
+
+    --site-max-width: {siteWidth}px;
+
+    --site-spacing_sm: {sitePaddingSmall}px;
+    --site-spacing_lg: {sitePaddingLarge}px;
+
+    --notification-spacing_below_sm: {notificationPaddingBottomSmall}px;
+    --notification-spacing_side_sm: {notificationPaddingSideSmall}px;
+    --notification-spacing_below_lg: {notificationPaddingBottomLarge}px;
+    --notification-spacing_side_lg: {notificationPaddingSideLarge}px;
+    
+    --backtotop-size_sm: {backToTopSizeSmall}px;
+    --backtotop-size_lg: {backToTopSizeLarge}px;
+    
+    --backtotop-spacing_side_sm: {backToTopPaddingSideSmall}px;
+    --backtotop-spacing_below_sm: {backToTopPaddingBottomSmall}px;
+    --backtotop-spacing_side_lg: {backToTopPaddingSideLarge}px;
+    --backtotop-spacing_below_lg: {backToTopPaddingBottomLarge}px;
+
+    --site-box-shadow_h: {siteBoxShadowHorizontal}px;
+    --site-box-shadow_v: {siteBoxShadowVertical}px;
+    --site-box-shadow_b: {siteBoxShadowBlur}px;
+    --site-box-shadow_o: {siteBoxShadowOpacity};
+
+    --small-breakpoint: {headerBreakpointSmall}px;
+    --large-breakpoint: {headerBreakpointLarge}px;
+
+    --header-max-width: {headerWidth}px;
+    --small-header: {headerSmallHeight}px;
+    --large-header: {headerLargeHeight}px;
+
+    --header-box-shadow_h: {headerBoxShadowHorizontal}px;
+    --header-box-shadow_v: {headerBoxShadowVertical}px;
+    --header-box-shadow_b: {headerBoxShadowBlur}px;
+    --header-box-shadow_o: {headerBoxShadowOpacity};
+
+    --nav-main-dropdown-width: {mainNavSingleColumnWidth}px;
+    --nav-main-dropdown-width_wide: {mainNavMultiColumnWidth}px;
+
+    --logo_sm-padding_top: {logoSmallPaddingTop}px;
+    --logo_sm-padding_right: {logoSmallPaddingRight}px;
+    --logo_sm-padding_bottom: {logoSmallPaddingBottom}px;
+    --logo_sm-padding_left: {logoSmallPaddingLeft}px;
+
+    --logo_lg-padding_top: {logoLargePaddingTop}px;
+    --logo_lg-padding_right: {logoLargePaddingRight}px;
+    --logo_lg-padding_bottom: {logoLargePaddingBottom}px;
+    --logo_lg-padding_left: {logoLargePaddingLeft}px;
+
+    --base-spacing: {generalPaddingLargeItems}px;
+    --base-half-spacing: {generalPaddingSmallItems}px;
+    --base-border-width: {generalBorderWidth}px;
+    --base-border-radius: {generalBorderRadius}px;
+
+    --base-box-shadow_h: {generalBoxShadowHorizontal}px;
+    --base-box-shadow_v: {generalBoxShadowVertical}px;
+    --base-box-shadow_b: {generalBoxShadowBlur}px;
+    --base-box-shadow_o: {generalBoxShadowOpacity};
+
+    --content-col_pc-spacing: {componentPaddingFullLayout}px;
+    --pc-spacing: {componentPaddingPortraitMobile}px;
+    --pc-spacing_sm: {componentPaddingLandscapeMobile}px;
+    --pc-spacing_md: {componentPaddingTablet}px;
+    --pc-spacing_lg: {componentPaddingLaptop}px;
+    --pc-spacing_xl: {componentPaddingDesktop}px;
+
+    --intro-col: {componentIntroWidthPortraitMobile}%;
+    --intro-col_sm: {componentIntroWidthLandscapeMobile}%;
+    --intro-col_md: {componentIntroWidthTablet}%;
+    --intro-col_lg: {componentIntroWidthLaptop}%;
+    --intro-col_xl: {componentIntroWidthDesktop}%;
+
+    --outro-col: {componentOutroWidthPortraitMobile}%;
+    --outro-col_sm: {componentOutroWidthLandscapeMobile}%;
+    --outro-col_md: {componentOutroWidthTablet}%;
+    --outro-col_lg: {componentOutroWidthLaptop}%;
+    --outro-col_xl: {componentOutroWidthDesktop}%;
+
+    --center-col: {componentCenterWidthPortraitMobile}%;
+    --center-col_sm: {componentCenterWidthLandscapeMobile}%;
+    --center-col_md: {componentCenterWidthTablet}%;
+    --center-col_lg: {componentCenterWidthLaptop}%;
+    --center-col_xl: {componentCenterWidthDesktop}%;
+
+    --banner-col: {componentBannerWidthPortraitMobile}%;
+    --banner-col_sm: {componentBannerWidthLandscapeMobile}%;
+    --banner-col_md: {componentBannerWidthTablet}%;
+    --banner-col_lg: {componentBannerWidthLaptop}%;
+    --banner-col_xl: {componentBannerWidthDesktop}%;
+
+    --form-field-border-width: {formBorderWidth}px;
+    --form-field-border-radius: {formBorderRadius}px;
+
+    --btn-border-width: {buttonBorderWidth}px;
+    --btn-border-radius: {buttonBorderRadius}px;
+
+    --btn-box-shadow_h: {buttonBoxShadowHorizontal}px;
+    --btn-box-shadow_v: {buttonBoxShadowVertical}px;
+    --btn-box-shadow_b: {buttonBoxShadowBlur}px;
+    --btn-box-shadow_o: {buttonBoxShadowOpacity};
+
+    --btn_sm-padding_top: {buttonSmallPaddingTop}px;
+    --btn_sm-padding_right: {buttonSmallPaddingRight}px;
+    --btn_sm-padding_bottom: {buttonSmallPaddingBottom}px;
+    --btn_sm-padding_left: {buttonSmallPaddingLeft}px;
+
+    --btn-padding_top: {buttonMediumPaddingTop}px;
+    --btn-padding_right: {buttonMediumPaddingRight}px;
+    --btn-padding_bottom: {buttonMediumPaddingBottom}px;
+    --btn-padding_left: {buttonMediumPaddingLeft}px;
+
+    --btn_lg-padding_top:  {buttonLargePaddingTop}px;
+    --btn_lg-padding_right:  {buttonLargePaddingRight}px;
+    --btn_lg-padding_bottom:  {buttonLargePaddingBottom}px;
+    --btn_lg-padding_left:  {buttonLargePaddingLeft}px;
+
+    /* Colors tab */
+    
+    /* Body */
+    --body-bg-color1: {bodyBackgroundColor1};
+    --body-bg-color2:  {bodyBackgroundColor2};
+    --body-bg-start-perc: {bodyBackgroundStartPerc};
+    --body-bg-stop-perc: {bodyBackgroundStopPerc};
+    --body-bg-angle: {bodyBackgroundAngle};
+    
+    /* Header */
+    --header-bg-color1: {headerBackgroundColor1};
+    --header-bg-color2:  {headerBackgroundColor2};
+    --header-bg-start-perc: {headerBackgroundStartPerc};
+    --header-bg-stop-perc: {headerBackgroundStopPerc};
+    --header-bg-angle: {headerBackgroundAngle};
+    --header-text: {headerText};
+    --header-borders: {headerBorder};
+    --header-highlight: {headerHighlight};
+    
+    /* Main Navigation */
+    --main-navigation-link: {mainNavigationLink};
+    --main-navigation-link-hover: {mainNavigationLinkHover};
+    --main-navigation-link-active: {mainNavigationLinkActive};
+
+    /* Logo */
+    --logo-link: {logoLink};
+    --logo-link-hover: {logoLinkHover};
+    
+    /* Secondary Navigation */
+    --secondary-navigation-link: {secondaryNavLink};
+    --secondary-navigation-link-hover: {secondaryNavLinkHover};
+    
+    /* Navigation dropdown */
+    --navigation-dropdown-color1: {navDropdownBackgroundColor1};
+    --navigation-dropdown-color2:  {navDropdownBackgroundColor2};
+    --navigation-dropdown-start-perc: {navDropdownBackgroundStartPerc};
+    --navigation-dropdown-stop-perc: {navDropdownBackgroundStopPerc};
+    --navigation-dropdown-angle: {navDropdownBackgroundAngle};
+    --navigation-dropdown-link: {navDropdownLink};
+    --navigation-dropdown-link-hover: {navDropdownLinkHover};
+    --navigation-dropdown-link-active: {navDropdownLinkActive};
+    
+    /* Content */
+    --base-bg-color1: {contentBackgroundColor1};
+    --base-bg-color2:  {contentBackgroundColor2};
+    --base-bg-start-perc: {contentBackgroundStartPerc};
+    --base-bg-stop-perc: {contentBackgroundStopPerc};
+    --base-bg-angle: {contentBackgroundAngle};
+    --base-heading: {contentHeading};
+    --base-secondary-heading: {contentSecondaryHeading};
+    --base-text: {contentText};
+    --base-link: {contentLink};
+    --base-link-hover: {contentLinkHover};
+    --base-borders: {contentBorder};
+    --base-highlight: {contentHighlightBackground};
+    --base-highlight-text: {contentHighlightText};
+    
+    /* Button */
+    --base-btn-bg-color1: {buttonBackgroundColor1};
+    --base-btn-bg-color2:  {buttonBackgroundColor2};
+    --base-btn-bg-start-perc: {buttonBackgroundStartPerc};
+    --base-btn-bg-stop-perc: {buttonBackgroundStopPerc};
+    --base-btn-bg-angle: {buttonBackgroundAngle};
+    --base-btn-text: {buttonText};
+    --base-btn-borders: {buttonBorder};
+    --base-btn-bg-hover-color1: {buttonBackgroundHoverColor1};
+    --base-btn-bg-hover-color2:  {buttonBackgroundHoverColor2};
+    --base-btn-bg-hover-start-perc: {buttonBackgroundHoverStartPerc};
+    --base-btn-bg-hover-stop-perc: {buttonBackgroundHoverStopPerc};
+    --base-btn-bg-hover-angle: {buttonBackgroundHoverAngle};
+    --base-btn-text-hover: {buttonTextHover};
+    --base-btn-borders-hover: {buttonBorderHover};
+    
+    /* Footer */
+    --footer-bg-color1: {footerBackgroundColor1};
+    --footer-bg-color2:  {footerBackgroundColor2};
+    --footer-bg-start-perc: {footerBackgroundStartPerc};
+    --footer-bg-stop-perc: {footerBackgroundStopPerc};
+    --footer-bg-angle: {footerBackgroundAngle};
+    --footer-heading: {footerHeading};
+    --footer-secondary-heading: {footerSecondaryHeading};
+    --footer-text: {footerText};
+    --footer-link: {footerLink};
+    --footer-link-hover: {footerLinkHover};
+    --footer-borders: {footerBorder};
+    --footer-highlight: {footerHighlight};
+
+    {contentColorVariables}
+
+    {buttonColorVariables}
+
+    /* Fonts tab */
+    
+    --body-typography_font-name: {bodyFontName};
+    --body-typography_font-weight: {bodyFontWeight};
+    --body-typography_font-style: {bodyFontStyle};
+    --body-typography_font-line-height: {bodyFontLineHeight}%;
+    --body-typography_font-letter-spacing: {bodyFontLetterSpacing}px;
+    --body-typography_font-transform: {bodyFontTransform};
+
+    --body-typography_font-size: {bodyFontMobilePortraitSize}px; 
+    --body-typography_font-size_sm: {bodyFontMobileLandscapeSize}px; 
+    --body-typography_font-size_md: {bodyFontTabletSize}px; 
+    --body-typography_font-size_lg: {bodyFontLaptopSize}px; 
+    --body-typography_font-size_xl: {bodyFontDesktopSize}px; 
+
+    --h1-typography_font-name: {h1FontName};
+    --h1-typography_font-weight: {h1FontWeight};
+    --h1-typography_font-style: {h1FontStyle};
+    --h1-typography_font-line-height: {h1FontLineHeight}%;
+    --h1-typography_font-letter-spacing: {h1FontLetterSpacing}px;
+    --h1-typography_font-transform: {h1FontTransform};
+
+    --h1-typography_font-size: {h1FontMobilePortraitSize}px; 
+    --h1-typography_font-size_sm: {h1FontMobileLandscapeSize}px; 
+    --h1-typography_font-size_md: {h1FontTabletSize}px; 
+    --h1-typography_font-size_lg: {h1FontLaptopSize}px; 
+    --h1-typography_font-size_xl: {h1FontDesktopSize}px; 
+
+    --h2-typography_font-name: {h2FontName};
+    --h2-typography_font-weight: {h2FontWeight};
+    --h2-typography_font-style: {h2FontStyle};
+    --h2-typography_font-line-height: {h2FontLineHeight}%;
+    --h2-typography_font-letter-spacing: {h2FontLetterSpacing}px;
+    --h2-typography_font-transform: {h2FontTransform};
+
+    --h2-typography_font-size: {h2FontMobilePortraitSize}px; 
+    --h2-typography_font-size_sm: {h2FontMobileLandscapeSize}px; 
+    --h2-typography_font-size_md: {h2FontTabletSize}px; 
+    --h2-typography_font-size_lg: {h2FontLaptopSize}px; 
+    --h2-typography_font-size_xl: {h2FontDesktopSize}px; 
+
+    --h3-typography_font-name: {h3FontName};
+    --h3-typography_font-weight: {h3FontWeight};
+    --h3-typography_font-style: {h3FontStyle};
+    --h3-typography_font-line-height: {h3FontLineHeight}%;
+    --h3-typography_font-letter-spacing: {h3FontLetterSpacing}px;
+    --h3-typography_font-transform: {h3FontTransform};
+
+    --h3-typography_font-size: {h3FontMobilePortraitSize}px; 
+    --h3-typography_font-size_sm: {h3FontMobileLandscapeSize}px; 
+    --h3-typography_font-size_md: {h3FontTabletSize}px; 
+    --h3-typography_font-size_lg: {h3FontLaptopSize}px; 
+    --h3-typography_font-size_xl: {h3FontDesktopSize}px; 
+
+    --h4-typography_font-name: {h4FontName};
+    --h4-typography_font-weight: {h4FontWeight};
+    --h4-typography_font-style: {h4FontStyle};
+    --h4-typography_font-line-height: {h4FontLineHeight}%;
+    --h4-typography_font-letter-spacing: {h4FontLetterSpacing}px;
+    --h4-typography_font-transform: {h4FontTransform};
+
+    --h4-typography_font-size: {h4FontMobilePortraitSize}px; 
+    --h4-typography_font-size_sm: {h4FontMobileLandscapeSize}px; 
+    --h4-typography_font-size_md: {h4FontTabletSize}px; 
+    --h4-typography_font-size_lg: {h4FontLaptopSize}px; 
+    --h4-typography_font-size_xl: {h4FontDesktopSize}px; 
+
+    --h5-typography_font-name: {h5FontName};
+    --h5-typography_font-weight: {h5FontWeight};
+    --h5-typography_font-style: {h5FontStyle};
+    --h5-typography_font-line-height: {h5FontLineHeight}%;
+    --h5-typography_font-letter-spacing: {h5FontLetterSpacing}px;
+    --h5-typography_font-transform: {h5FontTransform};
+
+    --h5-typography_font-size: {h5FontMobilePortraitSize}px; 
+    --h5-typography_font-size_sm: {h5FontMobileLandscapeSize}px; 
+    --h5-typography_font-size_md: {h5FontTabletSize}px; 
+    --h5-typography_font-size_lg: {h5FontLaptopSize}px; 
+    --h5-typography_font-size_xl: {h5FontDesktopSize}px; 
+
+    --h6-typography_font-name: {h6FontName};
+    --h6-typography_font-weight: {h6FontWeight};
+    --h6-typography_font-style: {h6FontStyle};
+    --h6-typography_font-line-height: {h6FontLineHeight}%;
+    --h6-typography_font-letter-spacing: {h6FontLetterSpacing}px;
+    --h6-typography_font-transform: {h6FontTransform};
+
+    --h6-typography_font-size: {h6FontMobilePortraitSize}px; 
+    --h6-typography_font-size_sm: {h6FontMobileLandscapeSize}px; 
+    --h6-typography_font-size_md: {h6FontTabletSize}px; 
+    --h6-typography_font-size_lg: {h6FontLaptopSize}px; 
+    --h6-typography_font-size_xl: {h6FontDesktopSize}px; 
+
+    --p-heading-typography_font-name: {headingMediumFontName};
+    --p-heading-typography_font-weight: {headingMediumFontWeight};
+    --p-heading-typography_font-style: {headingMediumFontStyle};
+    --p-heading-typography_font-line-height: {headingMediumFontLineHeight}%;
+    --p-heading-typography_font-letter-spacing: {headingMediumFontLetterSpacing}px;
+    --p-heading-typography_font-transform: {headingMediumFontTransform};
+
+    --p-heading-typography_font-size: {headingMediumFontMobilePortraitSize}px; 
+    --p-heading-typography_font-size_sm: {headingMediumFontMobileLandscapeSize}px; 
+    --p-heading-typography_font-size_md: {headingMediumFontTabletSize}px; 
+    --p-heading-typography_font-size_lg: {headingMediumFontLaptopSize}px; 
+    --p-heading-typography_font-size_xl: {headingMediumFontDesktopSize}px; 
+
+    --p-heading_small-typography_font-name: {headingSmallFontName};
+    --p-heading_small-typography_font-weight: {headingSmallFontWeight};
+    --p-heading_small-typography_font-style: {headingSmallFontStyle};
+    --p-heading_small-typography_font-line-height: {headingSmallFontLineHeight}%;
+    --p-heading_small-typography_font-letter-spacing: {headingSmallFontLetterSpacing}px;
+    --p-heading_small-typography_font-transform: {headingSmallFontTransform};
+
+    --p-heading_small-typography_font-size: {headingSmallFontMobilePortraitSize}px; 
+    --p-heading_small-typography_font-size_sm: {headingSmallFontMobileLandscapeSize}px; 
+    --p-heading_small-typography_font-size_md: {headingSmallFontTabletSize}px; 
+    --p-heading_small-typography_font-size_lg: {headingSmallFontLaptopSize}px; 
+    --p-heading_small-typography_font-size_xl: {headingSmallFontDesktopSize}px; 
+
+    --p-heading_large-typography_font-name: {headingLargeFontName};
+    --p-heading_large-typography_font-weight: {headingLargeFontWeight};
+    --p-heading_large-typography_font-style: {headingLargeFontStyle};
+    --p-heading_large-typography_font-line-height: {headingLargeFontLineHeight}%;
+    --p-heading_large-typography_font-letter-spacing: {headingLargeFontLetterSpacing}px;
+    --p-heading_large-typography_font-transform: {headingLargeFontTransform};
+
+    --p-heading_large-typography_font-size: {headingLargeFontMobilePortraitSize}px; 
+    --p-heading_large-typography_font-size_sm: {headingLargeFontMobileLandscapeSize}px; 
+    --p-heading_large-typography_font-size_md: {headingLargeFontTabletSize}px; 
+    --p-heading_large-typography_font-size_lg: {headingLargeFontLaptopSize}px; 
+    --p-heading_large-typography_font-size_xl: {headingLargeFontDesktopSize}px; 
+
+    --p-intro-typography_font-name: {introMediumFontName};
+    --p-intro-typography_font-weight: {introMediumFontWeight};
+    --p-intro-typography_font-style: {introMediumFontStyle};
+    --p-intro-typography_font-line-height: {introMediumFontLineHeight}%;
+    --p-intro-typography_font-letter-spacing: {introMediumFontLetterSpacing}px;
+    --p-intro-typography_font-transform: {introMediumFontTransform};
+
+    --p-intro-typography_font-size: {introMediumFontMobilePortraitSize}px; 
+    --p-intro-typography_font-size_sm: {introMediumFontMobileLandscapeSize}px; 
+    --p-intro-typography_font-size_md: {introMediumFontTabletSize}px; 
+    --p-intro-typography_font-size_lg: {introMediumFontLaptopSize}px; 
+    --p-intro-typography_font-size_xl: {introMediumFontDesktopSize}px; 
+
+    --p-intro_small-typography_font-name: {introSmallFontName};
+    --p-intro_small-typography_font-weight: {introSmallFontWeight};
+    --p-intro_small-typography_font-style: {introSmallFontStyle};
+    --p-intro_small-typography_font-line-height: {introSmallFontLineHeight}%;
+    --p-intro_small-typography_font-letter-spacing: {introSmallFontLetterSpacing}px;
+    --p-intro_small-typography_font-transform: {introSmallFontTransform};
+
+    --p-intro_small-typography_font-size: {introSmallFontMobilePortraitSize}px; 
+    --p-intro_small-typography_font-size_sm: {introSmallFontMobileLandscapeSize}px; 
+    --p-intro_small-typography_font-size_md: {introSmallFontTabletSize}px; 
+    --p-intro_small-typography_font-size_lg: {introSmallFontLaptopSize}px; 
+    --p-intro_small-typography_font-size_xl: {introSmallFontDesktopSize}px;  
+
+    --p-intro_large-typography_font-name: {introLargeFontName};
+    --p-intro_large-typography_font-weight: {introLargeFontWeight};
+    --p-intro_large-typography_font-style: {introLargeFontStyle};
+    --p-intro_large-typography_font-line-height: {introLargeFontLineHeight}%;
+    --p-intro_large-typography_font-letter-spacing: {introLargeFontLetterSpacing}px;
+    --p-intro_large-typography_font-transform: {introLargeFontTransform};
+
+    --p-intro_large-typography_font-size: {introLargeFontMobilePortraitSize}px; 
+    --p-intro_large-typography_font-size_sm: {introLargeFontMobileLandscapeSize}px; 
+    --p-intro_large-typography_font-size_md: {introLargeFontTabletSize}px; 
+    --p-intro_large-typography_font-size_lg: {introLargeFontLaptopSize}px; 
+    --p-intro_large-typography_font-size_xl: {introLargeFontDesktopSize}px;  
+
+    --secondary-heading-typography_font-name: {secHeadingMediumFontName};
+    --secondary-heading-typography_font-weight: {secHeadingMediumFontWeight};
+    --secondary-heading-typography_font-style: {secHeadingMediumFontStyle};
+    --secondary-heading-typography_font-line-height: {secHeadingMediumFontLineHeight}%;
+    --secondary-heading-typography_font-letter-spacing: {secHeadingMediumFontLetterSpacing}px;
+    --secondary-heading-typography_font-transform: {secHeadingMediumFontTransform};
+
+    --secondary-heading-typography_font-size: {secHeadingMediumFontMobilePortraitSize}px; 
+    --secondary-heading-typography_font-size_sm: {secHeadingMediumFontMobileLandscapeSize}px; 
+    --secondary-heading-typography_font-size_md: {secHeadingMediumFontTabletSize}px; 
+    --secondary-heading-typography_font-size_lg: {secHeadingMediumFontLaptopSize}px; 
+    --secondary-heading-typography_font-size_xl: {secHeadingMediumFontDesktopSize}px;  
+
+    --secondary-heading_small-typography_font-name: {secHeadingSmallFontName};
+    --secondary-heading_small-typography_font-weight: {secHeadingSmallFontWeight};
+    --secondary-heading_small-typography_font-style: {secHeadingSmallFontStyle};
+    --secondary-heading_small-typography_font-line-height: {secHeadingSmallFontLineHeight}%;
+    --secondary-heading_small-typography_font-letter-spacing: {secHeadingSmallFontLetterSpacing}px;
+    --secondary-heading_small-typography_font-transform: {secHeadingSmallFontTransform};
+
+    --secondary-heading_small-typography_font-size: {secHeadingSmallFontMobilePortraitSize}px; 
+    --secondary-heading_small-typography_font-size_sm: {secHeadingSmallFontMobileLandscapeSize}px; 
+    --secondary-heading_small-typography_font-size_md: {secHeadingSmallFontTabletSize}px; 
+    --secondary-heading_small-typography_font-size_lg: {secHeadingSmallFontLaptopSize}px; 
+    --secondary-heading_small-typography_font-size_xl: {secHeadingSmallFontDesktopSize}px;  
+
+    --secondary-heading_large-typography_font-name: {secHeadingLargeFontName};
+    --secondary-heading_large-typography_font-weight: {secHeadingLargeFontWeight};
+    --secondary-heading_large-typography_font-style: {secHeadingLargeFontStyle};
+    --secondary-heading_large-typography_font-line-height: {secHeadingLargeFontLineHeight}%;
+    --secondary-heading_large-typography_font-letter-spacing: {secHeadingLargeFontLetterSpacing}px;
+    --secondary-heading_large-typography_font-transform: {secHeadingLargeFontTransform};
+
+    --secondary-heading_large-typography_font-size: {secHeadingLargeFontMobilePortraitSize}px; 
+    --secondary-heading_large-typography_font-size_sm: {secHeadingLargeFontMobileLandscapeSize}px; 
+    --secondary-heading_large-typography_font-size_md: {secHeadingLargeFontTabletSize}px; 
+    --secondary-heading_large-typography_font-size_lg: {secHeadingLargeFontLaptopSize}px; 
+    --secondary-heading_large-typography_font-size_xl: {secHeadingLargeFontDesktopSize}px;  
+
+    --blockquote-typography_font-name: {blockquoteMediumFontName};
+    --blockquote-typography_font-weight: {blockquoteMediumFontWeight};
+    --blockquote-typography_font-style: {blockquoteMediumFontStyle};
+    --blockquote-typography_font-line-height: {blockquoteMediumFontLineHeight}%;
+    --blockquote-typography_font-letter-spacing: {blockquoteMediumFontLetterSpacing}px;
+    --blockquote-typography_font-transform: {blockquoteMediumFontTransform};
+
+    --blockquote-typography_font-size: {blockquoteMediumFontMobilePortraitSize}px; 
+    --blockquote-typography_font-size_sm: {blockquoteMediumFontMobileLandscapeSize}px; 
+    --blockquote-typography_font-size_md: {blockquoteMediumFontTabletSize}px; 
+    --blockquote-typography_font-size_lg: {blockquoteMediumFontLaptopSize}px; 
+    --blockquote-typography_font-size_xl: {blockquoteMediumFontDesktopSize}px;  
+
+    --blockquote_small-typography_font-name: {blockquoteSmallFontName};
+    --blockquote_small-typography_font-weight: {blockquoteSmallFontWeight};
+    --blockquote_small-typography_font-style: {blockquoteSmallFontStyle};
+    --blockquote_small-typography_font-line-height: {blockquoteSmallFontLineHeight}%;
+    --blockquote_small-typography_font-letter-spacing: {blockquoteSmallFontLetterSpacing}px;
+    --blockquote_small-typography_font-transform: {blockquoteSmallFontTransform};
+
+    --blockquote_small-typography_font-size: {blockquoteSmallFontMobilePortraitSize}px; 
+    --blockquote_small-typography_font-size_sm: {blockquoteSmallFontMobileLandscapeSize}px; 
+    --blockquote_small-typography_font-size_md: {blockquoteSmallFontTabletSize}px; 
+    --blockquote_small-typography_font-size_lg: {blockquoteSmallFontLaptopSize}px; 
+    --blockquote_small-typography_font-size_xl: {blockquoteSmallFontDesktopSize}px;  
+
+    --blockquote_large-typography_font-name: {blockquoteLargeFontName};
+    --blockquote_large-typography_font-weight: {blockquoteLargeFontWeight};
+    --blockquote_large-typography_font-style: {blockquoteLargeFontStyle};
+    --blockquote_large-typography_font-line-height: {blockquoteLargeFontLineHeight}%;
+    --blockquote_large-typography_font-letter-spacing: {blockquoteLargeFontLetterSpacing}px;
+    --blockquote_large-typography_font-transform: {blockquoteLargeFontTransform};
+
+    --blockquote_large-typography_font-size: {blockquoteLargeFontMobilePortraitSize}px; 
+    --blockquote_large-typography_font-size_sm: {blockquoteLargeFontMobileLandscapeSize}px; 
+    --blockquote_large-typography_font-size_md: {blockquoteLargeFontTabletSize}px; 
+    --blockquote_large-typography_font-size_lg: {blockquoteLargeFontLaptopSize}px; 
+    --blockquote_large-typography_font-size_xl: {blockquoteLargeFontDesktopSize}px;  
+
+    --btn-typography_font-name: {buttonMediumFontName};
+    --btn-typography_font-weight: {buttonMediumFontWeight};
+    --btn-typography_font-style: {buttonMediumFontStyle};
+    --btn-typography_font-line-height: {buttonMediumFontLineHeight}%;
+    --btn-typography_font-letter-spacing: {buttonMediumFontLetterSpacing}px;
+    --btn-typography_font-transform: {buttonMediumFontTransform};
+
+    --btn-typography_font-size: {buttonMediumFontMobilePortraitSize}px; 
+    --btn-typography_font-size_sm: {buttonMediumFontMobileLandscapeSize}px; 
+    --btn-typography_font-size_md: {buttonMediumFontTabletSize}px; 
+    --btn-typography_font-size_lg: {buttonMediumFontLaptopSize}px; 
+    --btn-typography_font-size_xl: {buttonMediumFontDesktopSize}px;  
+
+    --btn_small-typography_font-name: {buttonSmallFontName};
+    --btn_small-typography_font-weight: {buttonSmallFontWeight};
+    --btn_small-typography_font-style: {buttonSmallFontStyle};
+    --btn_small-typography_font-line-height: {buttonSmallFontLineHeight}%;
+    --btn_small-typography_font-letter-spacing: {buttonSmallFontLetterSpacing}px;
+    --btn_small-typography_font-transform: {buttonSmallFontTransform};
+
+    --btn_small-typography_font-size: {buttonSmallFontMobilePortraitSize}px; 
+    --btn_small-typography_font-size_sm: {buttonSmallFontMobileLandscapeSize}px; 
+    --btn_small-typography_font-size_md: {buttonSmallFontTabletSize}px; 
+    --btn_small-typography_font-size_lg: {buttonSmallFontLaptopSize}px; 
+    --btn_small-typography_font-size_xl: {buttonSmallFontDesktopSize}px;   
+
+    --btn_large-typography_font-name: {buttonLargeFontName};
+    --btn_large-typography_font-weight: {buttonLargeFontWeight};
+    --btn_large-typography_font-style: {buttonLargeFontStyle};
+    --btn_large-typography_font-line-height: {buttonLargeFontLineHeight}%;
+    --btn_large-typography_font-letter-spacing: {buttonLargeFontLetterSpacing}px;
+    --btn_large-typography_font-transform: {buttonLargeFontTransform};
+
+    --btn_large-typography_font-size: {buttonLargeFontMobilePortraitSize}px; 
+    --btn_large-typography_font-size_sm: {buttonLargeFontMobileLandscapeSize}px; 
+    --btn_large-typography_font-size_md: {buttonLargeFontTabletSize}px; 
+    --btn_large-typography_font-size_lg: {buttonLargeFontLaptopSize}px; 
+    --btn_large-typography_font-size_xl: {buttonLargeFontDesktopSize}px;  
+
+    --main-navigation-typography_font-name: {mainNavFontName};
+    --main-navigation-typography_font-weight: {mainNavFontWeight};
+    --main-navigation-typography_font-style: {mainNavFontStyle};
+    --main-navigation-typography_font-line-height: {mainNavFontLineHeight}%;
+    --main-navigation-typography_font-letter-spacing: {mainNavFontLetterSpacing}px;
+    --main-navigation-typography_font-transform: {mainNavFontTransform};
+
+    --main-navigation-typography_font-size: {mainNavFontMobilePortraitSize}px; 
+    --main-navigation-typography_font-size_sm: {mainNavFontMobileLandscapeSize}px; 
+    --main-navigation-typography_font-size_md: {mainNavFontTabletSize}px; 
+    --main-navigation-typography_font-size_lg: {mainNavFontLaptopSize}px; 
+    --main-navigation-typography_font-size_xl: {mainNavFontDesktopSize}px; 
+
+    --main-navigation_dropdowns-typography_font-name: {mainNavDropdownFontName};
+    --main-navigation_dropdowns-typography_font-weight: {mainNavDropdownFontWeight};
+    --main-navigation_dropdowns-typography_font-style: {mainNavDropdownFontStyle};
+    --main-navigation_dropdowns-typography_font-line-height: {mainNavDropdownFontLineHeight}%;
+    --main-navigation_dropdowns-typography_font-letter-spacing: {mainNavDropdownFontLetterSpacing}px;
+    --main-navigation_dropdowns-typography_font-transform: {mainNavDropdownFontTransform};
+
+    --main-navigation_dropdowns-typography_font-size: {mainNavDropdownFontMobilePortraitSize}px; 
+    --main-navigation_dropdowns-typography_font-size_sm: {mainNavDropdownFontMobileLandscapeSize}px; 
+    --main-navigation_dropdowns-typography_font-size_md: {mainNavDropdownFontTabletSize}px; 
+    --main-navigation_dropdowns-typography_font-size_lg: {mainNavDropdownFontLaptopSize}px; 
+    --main-navigation_dropdowns-typography_font-size_xl: {mainNavDropdownFontDesktopSize}px;  
+
+    --secondary-navigation-typography_font-name: {secondaryNavFontName};
+    --secondary-navigation-typography_font-weight: {secondaryNavFontWeight};
+    --secondary-navigation-typography_font-style: {secondaryNavFontStyle};
+    --secondary-navigation-typography_font-line-height: {secondaryNavFontLineHeight}%;
+    --secondary-navigation-typography_font-letter-spacing: {secondaryNavFontLetterSpacing}px;
+    --secondary-navigation-typography_font-transform: {secondaryNavFontTransform};
+
+    --secondary-navigation-typography_font-size: {secondaryNavFontMobilePortraitSize}px; 
+    --secondary-navigation-typography_font-size_sm: {secondaryNavFontMobileLandscapeSize}px; 
+    --secondary-navigation-typography_font-size_md: {secondaryNavFontTabletSize}px; 
+    --secondary-navigation-typography_font-size_lg: {secondaryNavFontLaptopSize}px; 
+    --secondary-navigation-typography_font-size_xl: {secondaryNavFontDesktopSize}px;  
+
+    --sub-navigation-typography_font-name: {subNavFontName};
+    --sub-navigation-typography_font-weight: {subNavFontWeight};
+    --sub-navigation-typography_font-style: {subNavFontStyle};
+    --sub-navigation-typography_font-line-height: {subNavFontLineHeight}%;
+    --sub-navigation-typography_font-letter-spacing: {subNavFontLetterSpacing}px;
+    --sub-navigation-typography_font-transform: {subNavFontTransform};
+
+    --sub-navigation-typography_font-size: {subNavFontMobilePortraitSize}px; 
+    --sub-navigation-typography_font-size_sm: {subNavFontMobileLandscapeSize}px; 
+    --sub-navigation-typography_font-size_md: {subNavFontTabletSize}px; 
+    --sub-navigation-typography_font-size_lg: {subNavFontLaptopSize}px; 
+    --sub-navigation-typography_font-size_xl: {subNavFontDesktopSize}px;  
+
+    --footer-navigation-typography_font-name: {footerNavFontName};
+    --footer-navigation-typography_font-weight: {footerNavFontWeight};
+    --footer-navigation-typography_font-style: {footerNavFontStyle};
+    --footer-navigation-typography_font-line-height: {footerNavFontLineHeight}%;
+    --footer-navigation-typography_font-letter-spacing: {footerNavFontLetterSpacing}px;
+    --footer-navigation-typography_font-transform: {footerNavFontTransform};
+
+    --footer-navigation-typography_font-size: {footerNavFontMobilePortraitSize}px; 
+    --footer-navigation-typography_font-size_sm: {footerNavFontMobileLandscapeSize}px; 
+    --footer-navigation-typography_font-size_md: {footerNavFontTabletSize}px; 
+    --footer-navigation-typography_font-size_lg: {footerNavFontLaptopSize}px; 
+    --footer-navigation-typography_font-size_xl: {footerNavFontDesktopSize}px;  
+
+    --breadcrumb-navigation-typography_font-name: {breadcrumbNavFontName};
+    --breadcrumb-navigation-typography_font-weight: {breadcrumbNavFontWeight};
+    --breadcrumb-navigation-typography_font-style: {breadcrumbNavFontStyle};
+    --breadcrumb-navigation-typography_font-line-height: {breadcrumbNavFontLineHeight}%;
+    --breadcrumb-navigation-typography_font-letter-spacing: {breadcrumbNavFontLetterSpacing}px;
+    --breadcrumb-navigation-typography_font-transform: {breadcrumbNavFontTransform};
+
+    --breadcrumb-navigation-typography_font-size: {breadcrumbNavFontMobilePortraitSize}px; 
+    --breadcrumb-navigation-typography_font-size_sm: {breadcrumbNavFontMobileLandscapeSize}px; 
+    --breadcrumb-navigation-typography_font-size_md: {breadcrumbNavFontTabletSize}px; 
+    --breadcrumb-navigation-typography_font-size_lg: {breadcrumbNavFontLaptopSize}px; 
+    --breadcrumb-navigation-typography_font-size_xl: {breadcrumbNavFontDesktopSize}px;  
+
+    --anchor-navigation-typography_font-name: {anchorNavFontName};
+    --anchor-navigation-typography_font-weight: {anchorNavFontWeight};
+    --anchor-navigation-typography_font-style: {anchorNavFontStyle};
+    --anchor-navigation-typography_font-line-height: {anchorNavFontLineHeight}%;
+    --anchor-navigation-typography_font-letter-spacing: {anchorNavFontLetterSpacing}px;
+    --anchor-navigation-typography_font-transform: {anchorNavFontTransform};
+
+    --anchor-navigation-typography_font-size: {anchorNavFontMobilePortraitSize}px; 
+    --anchor-navigation-typography_font-size_sm: {anchorNavFontMobileLandscapeSize}px; 
+    --anchor-navigation-typography_font-size_md: {anchorNavFontTabletSize}px; 
+    --anchor-navigation-typography_font-size_lg: {anchorNavFontLaptopSize}px; 
+    --anchor-navigation-typography_font-size_xl: {anchorNavFontDesktopSize}px;  
+
+    --acc-tab-typography_font-name: {accordionTabNavFontName};
+    --acc-tab-typography_font-weight: {accordionTabNavFontWeight};
+    --acc-tab-typography_font-style: {accordionTabNavFontStyle};
+    --acc-tab-typography_font-line-height: {accordionTabNavFontLineHeight}%;
+    --acc-tab-typography_font-letter-spacing: {accordionTabNavFontLetterSpacing}px;
+    --acc-tab-typography_font-transform: {accordionTabNavFontTransform};
+
+    --acc-tab-typography_font-size: {accordionTabNavFontMobilePortraitSize}px; 
+    --acc-tab-typography_font-size_sm: {accordionTabNavFontMobileLandscapeSize}px; 
+    --acc-tab-typography_font-size_md: {accordionTabNavFontTabletSize}px; 
+    --acc-tab-typography_font-size_lg: {accordionTabNavFontLaptopSize}px; 
+    --acc-tab-typography_font-size_xl: {accordionTabNavFontDesktopSize}px;
+    
+    --logo-typography_font-name: {logoFontName};
+    --logo-typography_font-weight: {logoFontWeight};
+    --logo-typography_font-style: {logoFontStyle};
+    --logo-typography_font-line-height: {logoFontLineHeight}%;
+    --logo-typography_font-letter-spacing: {logoFontLetterSpacing}px;
+    --logo-typography_font-transform: {logoFontTransform};
+
+    --logo-typography_font-size: {logoFontMobilePortraitSize}px; 
+    --logo-typography_font-size_sm: {logoFontMobileLandscapeSize}px; 
+    --logo-typography_font-size_md: {logoFontTabletSize}px; 
+    --logo-typography_font-size_lg: {logoFontLaptopSize}px; 
+    --logo-typography_font-size_xl: {logoFontDesktopSize}px; 
+
+}
+
+{contentColorStyles}
+
+{buttonColorStyles}
+
+{customCSS}

@@ -1,0 +1,149 @@
+/*  
+---------------------------------------------------
+Burger Navigation
+---------------------------------------------------  
+*/
+
+header#site-header .expand-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 300;
+    width: var(--expand-nav-width);
+    height: var(--small-header);
+    display: block;
+    text-indent: -9999px;
+    text-decoration: none!important;
+    cursor: pointer;
+    background:none; border:0 none; outline:none;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+header#site-header .expand-header:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+    outline: rgba(var(--base-highlight), 1) auto 2px!important;
+}
+
+header#site-header .expand-header span:before,
+header#site-header .expand-header span,
+header#site-header .expand-header span:after {
+    content: "";
+    display: block;
+    width: calc(var(--expand-nav-width) / 2);
+    height: var(--base-border-width);
+    position: absolute;
+    left: 0;
+    background-color:  rgba(var(--main-navigation-link), 1);
+    opacity: 1;
+
+    -webkit-transition: 
+        transform 0.4s ease-in-out 0s, 
+        left 0.4s ease-in-out 0s, 
+        top 0.4s ease-in-out 0s, 
+        background-color 0.3s ease-in-out 0s, 
+        width 0.3s ease-in-out 0s;
+    transition: 
+        transform 0.4s ease-in-out 0s, 
+        left 0.4s ease-in-out 0s, 
+        top 0.4s ease-in-out 0s, 
+        background-color 0.3s ease-in-out 0s, 
+        width 0.3s ease-in-out 0s;
+}
+header#site-header .expand-header.expand-uneven-lines:not(.active) span:before {
+    width: calc((var(--expand-nav-width) / 2) - 10px);
+}
+header#site-header .expand-header.expand-uneven-lines:not(.active) span:after {
+    width: calc((var(--expand-nav-width) / 2) - 5px);
+}
+
+header#site-header .expand-header span {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+header#site-header .expand-header span:before {
+    top: -8px;
+}
+
+header#site-header .expand-header span:after {
+    top: 8px;
+}
+
+header#site-header .expand-header.expand-2-bars span { 
+    background-color:transparent;
+}
+
+header#site-header .expand-header.expand-2-bars span:before {
+    top: -4px;
+}
+
+header#site-header .expand-header.expand-2-bars span:after {
+    top: 4px;
+}
+
+header#site-header .expand-header.expand-active-cross.active span {
+    background-color:transparent;
+}
+
+header#site-header .expand-header.expand-active-cross.active span:before,
+header#site-header .expand-header.expand-active-cross.active span:after {
+    top: 0;
+}
+
+header#site-header .expand-header.expand-active-cross.active span::before {
+    transform: rotate(-45deg);
+}
+
+header#site-header .expand-header.expand-active-cross.active span::after {
+    transform: rotate(45deg);
+}
+
+header#site-header .expand-header.expand-active-minus.active span {
+    background-color:  rgba(var(--main-navigation-link-active), 1);
+}
+
+header#site-header .expand-header.expand-active-minus.active span::before,
+header#site-header .expand-header.expand-active-minus.active span::after {
+    background-color:transparent;
+}

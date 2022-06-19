@@ -1,0 +1,113 @@
+/*  
+---------------------------------------------------
+Pods 
+---------------------------------------------------  
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_pods { }*/
+
+/* Split component block */
+/*
+.item_block.usn_cmp_pods { }*/
+
+
+/*  
+---------------------------------------------------
+Pod items
+---------------------------------------------------  
+*/
+
+/* Code */
+/*
+.item.usn_pod_code { }*/
+.item.usn_pod_code .secondary-heading + .code-item,
+.item.usn_pod_code .heading + .code-item { 
+    margin-top: var(--base-half-spacing);
+}
+
+/* Accordion & Tabs */
+.item.usn_pod_accordiontab .secondary-heading + .repeatable,
+.item.usn_pod_accordiontab .heading + .repeatable { 
+    margin-top: var(--base-half-spacing);
+}
+
+/* Alert */
+/*
+.item.usn_pod_alertbox { }*/
+/* Does not need the margin top after secondary-heading or heading */
+
+/* Form */
+.item.usn_pod_form .secondary-heading + .form,
+.item.usn_pod_form .heading + .form { 
+    margin-top: var(--base-half-spacing);
+}
+
+.component.usn_cmp_pods .item.usn_pod_form:not(.items-1):not(.items-2) .form-group.col-md-6 {
+    flex:0 0 100%; max-width:100%;
+}
+
+/* Image */
+.item.usn_pod_image .secondary-heading + .image,
+.item.usn_pod_image .heading + .image { 
+    margin-top: var(--base-half-spacing);
+}
+
+/* Links */
+.item.usn_pod_links .secondary-heading + .listing_links,
+.item.usn_pod_links .heading + .listing_links { 
+    margin-top: var(--base-half-spacing);
+}
+
+/* Price list */
+/*
+.item.usn_pod_datalist { }*/
+/* Does not need the margin top after secondary-heading or heading */
+
+/* Subpage listing (POD tabbed) */
+.item.usn_pod_podsubpagelisting .secondary-heading + .repeatable-content,
+.item.usn_pod_podsubpagelisting .heading + .repeatable-content,
+.item.usn_pod_podsubpagelisting .secondary-heading + .repeatable,
+.item.usn_pod_podsubpagelisting .heading + .repeatable {
+    margin-top:var(--base-half-spacing);
+}
+
+.item.usn_pod_podsubpagelisting .repeatable-content .listing .item { 
+    margin-bottom:var(--base-half-spacing);
+}
+
+.item.usn_pod_podsubpagelisting .repeatable-content .listing .item:last-child { 
+    margin-bottom:0;
+}
+
+/* Text with image */
+/*
+.item.usn_pod_textimage { }*/
+/* Does not need the margin top after secondary-heading or heading */
+
+/* Quote */
+.item.usn_pod_quote .secondary-heading + .item-quote,
+.item.usn_pod_quote .heading + .item-quote { 
+    margin-top: var(--base-half-spacing);
+}
+
+/* Search with links */
+.item.usn_pod_searchlinks .secondary-heading + .site-search,
+.item.usn_pod_searchlinks .heading + .site-search,
+.item.usn_pod_searchlinks .secondary-heading + nav.quick-links,
+.item.usn_pod_searchlinks .heading + nav.quick-links { 
+    margin-top: var(--base-half-spacing);
+}
+
+/* Social links */
+.item.usn_pod_sociallinks .secondary-heading + nav.social,
+.item.usn_pod_sociallinks .heading + nav.social { 
+    margin-top: var(--base-half-spacing);
+}
+
+/* Video */
+.item.usn_pod_video .secondary-heading + a,
+.item.usn_pod_video .heading + a { 
+    margin-top: var(--base-half-spacing);
+}

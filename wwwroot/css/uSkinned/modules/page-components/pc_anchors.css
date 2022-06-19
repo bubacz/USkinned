@@ -1,0 +1,533 @@
+/*  
+---------------------------------------------------
+Anchors 
+---------------------------------------------------  
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_anchornavigation { }*/
+
+/* Not available as part of Split
+.item_block.usn_cmp_anchornavigation { }*/
+
+
+.component.usn_cmp_anchornavigation { 
+    position: relative;
+    top: 0; z-index:901;
+    padding: var(--base-half-spacing) 0!important;
+    width:100%;
+    box-shadow: var(--header-box-shadow_h) var(--header-box-shadow_v) var(--header-box-shadow_b) rgba(var(--true-black), 0);
+    transition:top 0.5s ease-in-out 0s, box-shadow 0.5s ease-in-out 0s;
+}
+
+html.nav-down:not(.reached-top) .component.usn_cmp_anchornavigation, 
+html.nav-up:not(.reached-top) .component.usn_cmp_anchornavigation {
+    opacity:1;
+    box-shadow: var(--header-box-shadow_h) var(--header-box-shadow_v) var(--header-box-shadow_b) rgba(var(--true-black), var(--header-box-shadow_o));
+}
+
+.component.usn_cmp_anchornavigation,
+.component.usn_cmp_anchornavigation ul.nav { 
+    margin: 0;
+}
+
+.component.usn_cmp_anchornavigation ul.nav.justify-content-center { 
+    text-align:center;
+}
+.component.usn_cmp_anchornavigation ul.nav.justify-content-start { 
+    text-align:left;
+}
+.component.usn_cmp_anchornavigation ul.nav.justify-content-end { 
+    text-align:right;
+}
+
+.component.usn_cmp_anchornavigation ul.nav li.nav-item { 
+    position:relative;
+}
+
+.component.usn_cmp_anchornavigation ul.nav li.nav-item span {
+    position: relative;
+    display:inline-block;
+}
+
+.component.usn_cmp_anchornavigation ul.nav li.nav-item a.nav-link { 
+    color:  rgba(var(--base-heading), 1);
+    position:relative;
+    display: block;
+    cursor: pointer;
+    outline: 0 none;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+
+/* 
+---------------------------------------------------
+Anchors Styles
+
+Basic
+Buttons
+Underline
+Linethrough
+---------------------------------------------------  
+*/
+
+
+/*	
+--------------------------------------------------
+Tab Basic Style 
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item .nav-link { 
+    padding: calc(var(--base-half-spacing) / 1.5) var(--base-half-spacing);
+    border-width: var(--base-border-width); border-style: solid;
+    border-radius: var(--base-border-radius) var(--base-border-radius) 0 0;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item .nav-link { 
+    border-width: var(--base-border-width) var(--base-border-width) 0;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item a.nav-link.active::after { 
+    content: '';
+    position:absolute; right:0; bottom:0; left:0;
+    height: calc(var(--base-border-width) * 2);
+    background: var(--base-highlight);
+}
+
+/* Tabs */
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item .nav-link { 
+    color: var(--base-link-hover);
+    border-color: var(--base-borders);
+    background: transparent;
+}
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item .nav-link:not(.active) { 
+    background: rgba(var(--base-borders), 0.15);
+}
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item .nav-link:not(.active):hover { 
+    color: var(--base-link-hover);
+    background: rgba(var(--base-borders), 0.25);
+}
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item .nav-link.active { 
+    color: var(--base-heading);
+}
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav li.nav-item .nav-link.active { 
+    border-bottom-color: transparent!important;
+}
+
+
+/*	
+--------------------------------------------------
+Tab Button Style 
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav li.nav-item .nav-link { 
+    padding:var(--btn_sm-padding_top) var(--btn_sm-padding_right) var(--btn_sm-padding_bottom) var(--btn_sm-padding_left);
+    border-width: var(--base-border-width); border-style: solid;
+    border-radius: var(--btn-border-radius);
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-btn-borders), var(--btn-box-shadow_o));
+}
+
+/* Tabs */
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav li.nav-item .nav-link { 
+    color: rgba(var(--base-heading), 1); 
+    border-color: rgba(var(--base-borders), 0.25);
+    background:transparent; 
+}
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav li.nav-item .nav-link:not(.active):hover { 
+    color: rgba(var(--base-heading), 1); 
+    border-color: rgba(var(--base-borders), 1);
+}
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav li.nav-item .nav-link.active { 
+    color: rgba(var(--base-heading), 1); 
+    border-color: rgba(var(--base-heading), 1);
+}
+/* Tab Box shadows */
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav li.nav-item .nav-link { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-borders), 0.25);
+}
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav li.nav-item .nav-link:not(.active):hover { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-borders), var(--btn-box-shadow_o));
+}
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav li.nav-item .nav-link.active { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-borders), var(--btn-box-shadow_o));
+}
+
+
+/*	
+--------------------------------------------------
+Tab Underline Style
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item .nav-link { 
+    padding: 5px 0 2px;
+    border-radius: 0;
+    background:transparent;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item a.nav-link::after { 
+    content: '';
+    position:absolute; bottom:2px; 
+    width:0; height:var(--base-border-width);
+    opacity: 0;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+html[dir="ltr"] .component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item a.nav-link::after { 
+    left:0;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item .nav-link { 
+    color:  rgba(var(--base-link), 1);
+}
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item .nav-link:not(.active):hover { 
+    color:  rgba(var(--base-link-hover), 1);
+}
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item a.nav-link.active { 
+    color:  rgba(var(--base-heading), 1);
+}
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item a.nav-link:not(.active):hover::after { 
+    width:100%;
+    background:  rgba(var(--base-link-hover), 1);
+    opacity: 1;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav li.nav-item a.nav-link.active::after { 
+    width:100%;
+    background:  rgba(var(--base-heading), 1);
+    opacity: 1;
+}
+
+
+/*	
+--------------------------------------------------
+Tab Linethrough Style
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item .nav-link { 
+    padding: 5px 5px 2px;
+    border-radius: 0;
+    background:transparent;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item a.nav-link::after { 
+    content: '';
+    position:absolute; top:50%; 
+    width:0;
+    height:var(--base-border-width);
+    opacity: 0;
+    transform: translateY(-50%);
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+html[dir="ltr"] .component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item a.nav-link::after { 
+    left:0;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item .nav-link:not(.active) { 
+    color:  rgba(var(--base-link), 1);
+}
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item .nav-link:not(.active):hover { 
+    color:  rgba(var(--base-link-hover), 1);
+}
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item a.nav-link.active { 
+    color:  rgba(var(--base-heading), 1);
+}
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item a.nav-link:not(.active):hover::after { 
+    background:  rgba(var(--base-link-hover), 1);
+    opacity: 1; width:100%;
+}
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav li.nav-item a.nav-link.active::after { 
+    background:  rgba(var(--base-heading), 1);
+    opacity: 1;  width:100%;
+}
+
+
+/* 
+---------------------------------------------------
+Anchors Expand
+---------------------------------------------------  
+*/
+
+.component.usn_cmp_anchornavigation .expand {
+    position:relative;
+    color:  rgba(var(--base-heading), 1);
+    width:100%; height:15px;
+    display: block;
+    cursor: pointer;
+    text-indent: -9999px;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+.component.usn_cmp_anchornavigation .expand span:before,
+.component.usn_cmp_anchornavigation .expand span,
+.component.usn_cmp_anchornavigation .expand span:after {
+    content: "";
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius:50%;
+    position: absolute;
+    left: 0;
+    background:  rgba(var(--base-heading), 1);
+    opacity: 1;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+.component.usn_cmp_anchornavigation .expand span {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.component.usn_cmp_anchornavigation .expand span:before {
+    top:0;
+    left: -12px;
+}
+
+.component.usn_cmp_anchornavigation .expand span:after {
+    top:0;
+    left:auto;
+    right: -12px;
+}
+
+.component.usn_cmp_anchornavigation .expand.anchor-active span {
+    width: 0;
+}
+
+.component.usn_cmp_anchornavigation .expand.anchor-active span:before,
+.component.usn_cmp_anchornavigation .expand.anchor-active span:after {
+    top: 2px;
+    left: -9px;
+    border-radius:0; 
+    width:20px; height:3px;
+}
+
+.component.usn_cmp_anchornavigation .expand.anchor-active span::before {
+    transform: rotate(-45deg);
+}
+
+.component.usn_cmp_anchornavigation .expand.anchor-active span::after {
+    transform: rotate(45deg);
+}
+
+
+.component.usn_cmp_anchornavigation .expand.justify-content-center { 
+    text-align:center;
+}
+.component.usn_cmp_anchornavigation .expand.justify-content-start { 
+    text-align:left;
+}
+.component.usn_cmp_anchornavigation .expand.justify-content-end { 
+    text-align:right;
+}
+

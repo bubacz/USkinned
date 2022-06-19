@@ -1,0 +1,21 @@
+/*  
+---------------------------------------------------
+Shop - Large Breakpoint
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+Mini Shopping Cart in header
+---------------------------------------------------  
+*/
+
+header#site-header nav.shopping-cart {
+    width: 22px; 
+    height: var(--large-header);
+}
+
+header#site-header nav.shopping-cart button.open-cart { 
+    width: 22px;
+    height: var(--large-header);
+}

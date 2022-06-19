@@ -1,0 +1,87 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block only
+
+    var content = (Usn_Cb_SplitComponent)Model.BlockContent;
+    var settings = (Usn_Cbs_SplitComponent)Model.BlockSettings;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    var splitSection1Items = content.SplitSection1.Where(x => !x.Settings.Value<bool>("hideFromWebsite"));
+    var splitSection2Items = content.SplitSection2.Where(x => !x.Settings.Value<bool>("hideFromWebsite"));
+
+    if ((splitSection1Items.HasValue() && splitSection1Items.Any()) || (splitSection2Items.HasValue() && splitSection2Items.Any()))
+    {
+        Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+        <div class="component-main row justify-content-between align-items-center">
+
+            @if (splitSection1Items.HasValue() && splitSection1Items.Any())
+            {
+                var splitSection1 = splitSection1Items.First();
+
+                if (splitSection1?.ContentUdi != null)
+                {
+                    var pageComponent = new SiteBuilderBlock(Model.BaseModel, splitSection1);
+
+                    var splitCommonSettings = (IUsn_Cmp_SplitCommonSettings)splitSection1.Settings;
+                    var animateSettings = splitSection1.Settings as IUsn_Cmp_AnimateSettings;
+                    var introOutro = splitSection1.Content as IUsn_Cmp_IntroOutro;
+                    string colWidthDesktop = "col-xl-" + splitCommonSettings.DesktopColumnWidth;
+                    string colWidthTablet = "col-md-" + splitCommonSettings.TabletColumnWidth;
+                    string itemDesktopOrder = settings.DesktopTabletOrder.HasValue() ? _siteBuilderService.GetSplitDesktopTabletOrderClass("First", settings.DesktopTabletOrder) : "1";
+                    string itemMobileOrder = settings.MobileOrder.HasValue() ? _siteBuilderService.GetSplitMobileOrderClass("First", settings.MobileOrder) : "order-1";
+                    string verticalAlignmentClass = splitCommonSettings.VerticalPosition.HasValue() ? splitCommonSettings.VerticalPosition.ToString() : "align-self-center";
+                    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+                    string additionalStyles = splitCommonSettings.ItemSplitStyles.HasValue() ? splitCommonSettings.ItemSplitStyles.ToString().Replace(",", " ") : String.Empty;
+                    string componentStyle = "usn_cmp_" + _siteBuilderService.GetBlockStyleName(splitSection1.Content.ContentType.Alias);
+                    string blockViewName = _siteBuilderService.GetBlockViewName(splitSection1.Content.ContentType.Alias);
+
+                    <div class="item item_block @componentStyle @verticalAlignmentClass @colWidthDesktop @colWidthTablet order-md-@itemDesktopOrder @itemMobileOrder col-12 @animation.AnimationClass @additionalStyles @splitCommonSettings.CustomSplitSectionClasses" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/ComponentIntro", introOutro as IUsn_Cmp_IntroOutro, new ViewDataDictionary(ViewData) { { "themeFolder", Model.BaseModel.ThemeFolder }, { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel }, { "websiteStyleId", Model.BaseModel.WebsiteStyle.Id } })
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blocks/" + blockViewName, pageComponent, new ViewDataDictionary(ViewData) { { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel } })
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/ComponentOutro", introOutro as IUsn_Cmp_IntroOutro, new ViewDataDictionary(ViewData) { { "themeFolder", Model.BaseModel.ThemeFolder }, { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel }, { "websiteStyleId", Model.BaseModel.WebsiteStyle.Id } })
+                    </div>
+
+                }
+            }
+
+            @if (splitSection2Items.HasValue() && splitSection2Items.Any())
+            {
+                var splitSection2 = splitSection2Items.First();
+
+                if (splitSection2?.ContentUdi != null)
+                {
+                    var pageComponent = new SiteBuilderBlock(Model.BaseModel, splitSection2);
+
+                    var splitCommonSettings = (IUsn_Cmp_SplitCommonSettings)splitSection2.Settings;
+                    var animateSettings = splitSection2.Settings as IUsn_Cmp_AnimateSettings;
+                    var introOutro = splitSection2.Content as IUsn_Cmp_IntroOutro;
+                    string colWidthDesktop = "col-xl-" + splitCommonSettings.DesktopColumnWidth;
+                    string colWidthTablet = "col-md-" + splitCommonSettings.TabletColumnWidth;
+                    string itemDesktopOrder = settings.DesktopTabletOrder.HasValue() ? _siteBuilderService.GetSplitDesktopTabletOrderClass("Second", settings.DesktopTabletOrder) : "2";
+                    string itemMobileOrder = settings.MobileOrder.HasValue() ? _siteBuilderService.GetSplitMobileOrderClass("Second", settings.MobileOrder) : "order-2";
+                    string verticalAlignmentClass = splitCommonSettings.VerticalPosition.HasValue() ? splitCommonSettings.VerticalPosition.ToString() : "align-self-center";
+                    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+                    string additionalStyles = splitCommonSettings.ItemSplitStyles.HasValue() ? splitCommonSettings.ItemSplitStyles.ToString().Replace(",", " ") : String.Empty;
+                    string componentStyle = "usn_cmp_" + _siteBuilderService.GetBlockStyleName(splitSection2.Content.ContentType.Alias);
+                    string blockViewName = _siteBuilderService.GetBlockViewName(splitSection2.Content.ContentType.Alias);
+
+                    <div class="item item_block @componentStyle @verticalAlignmentClass @colWidthDesktop @colWidthTablet order-md-@itemDesktopOrder @itemMobileOrder col-12 @animation.AnimationClass @additionalStyles @splitCommonSettings.CustomSplitSectionClasses" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/ComponentIntro", introOutro as IUsn_Cmp_IntroOutro, new ViewDataDictionary(ViewData) { { "themeFolder", Model.BaseModel.ThemeFolder }, { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel }, { "websiteStyleId", Model.BaseModel.WebsiteStyle.Id } })
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blocks/" + blockViewName, pageComponent, new ViewDataDictionary(ViewData) { { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel } })
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/ComponentOutro", introOutro as IUsn_Cmp_IntroOutro, new ViewDataDictionary(ViewData) { { "themeFolder", Model.BaseModel.ThemeFolder }, { "animation", animation }, { "backgroundColorLabel", backgroundColorLabel }, { "websiteStyleId", Model.BaseModel.WebsiteStyle.Id } })
+                    </div>
+                }
+            }
+
+        </div>
+    }
+}

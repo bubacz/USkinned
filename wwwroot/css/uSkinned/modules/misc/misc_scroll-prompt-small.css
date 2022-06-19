@@ -1,0 +1,29 @@
+/*  
+---------------------------------------------------
+Scroll Prompt - Small Breakpoint
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+- Mouse wheel .scroll-prompt-wheel
+---------------------------------------------------  
+*/
+
+.scroll-prompt.scroll-prompt-wheel .mouse-scroll {
+    transform: scale(0.7);
+}
+
+/*  
+---------------------------------------------------
+- Line .scroll-prompt-line
+---------------------------------------------------  
+*/
+
+.scroll-prompt.scroll-prompt-line .mouse-scroll {
+    height: 20px;
+}
+
+.scroll-prompt.scroll-prompt-line a { 
+    height:20px;
+}

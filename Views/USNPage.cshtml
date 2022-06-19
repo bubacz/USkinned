@@ -1,0 +1,74 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{ 
+    Layout = "USNMaster.cshtml";
+    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+}
+
+@section BodyTag
+{
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/BodyTag", Model)
+}
+
+@await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "aboveMainContent" }, { "pageLayout", "pageLayoutFull" } })
+
+@if (Model.PageLayoutSettings.PageLayout == "pageLayoutFull")
+{
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/PageTitle", Model, new ViewDataDictionary(ViewData) { { "pageLayout", Model.PageLayoutSettings.PageLayout } })
+
+    @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "mainContent" }, { "pageLayout", "pageLayoutFull" } })
+}
+
+@if (Model.PageLayoutSettings.PageLayout != "pageLayoutFull")
+{
+    @:<section class="content component @websiteStyle.StyleColors.contentBackgroundClass"><div class="container">@await Html.PartialAsync(Model.ThemeFolder + "/Navigation/SubNavigation", Model, new ViewDataDictionary(ViewData) { { "inThisSection", true } })@await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/PageTitle", Model)<div class="row justify-content-between">
+
+    <!-- Content column -->
+    <div class="@Model.PageLayoutSettings.FirstDivColumnClass">
+
+        @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "mainContent" }, { "pageLayout", Model.PageLayoutSettings.PageLayout } })
+
+    </div>
+    <!--// Content column -->
+
+    <!-- Second column -->
+    <div class="@Model.PageLayoutSettings.SecondDivColumnClass">
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutRight" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavLeft")
+        {
+            @await Html.PartialAsync(Model.ThemeFolder + "/Navigation/SubNavigation", Model, new ViewDataDictionary(ViewData) { { "inThisSection", false } })
+        }
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutRight" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavRight")
+        {
+            @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/SitewidePods", Model)
+        }
+    </div>
+    <!--// Second column -->
+}
+
+@if (Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavRight")
+{
+    <!-- Third column -->
+    <div class="@Model.PageLayoutSettings.ThirdDivColumnClass">
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavRight")
+        {
+             @await Html.PartialAsync(Model.ThemeFolder + "/Navigation/SubNavigation", Model, new ViewDataDictionary(ViewData) { { "inThisSection", false } })
+        }
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavLeft")
+        {
+             @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/SitewidePods", Model)
+        }
+    </div>
+    <!--// Third column -->
+}
+
+@if (Model.PageLayoutSettings.PageLayout != "pageLayoutFull")
+{
+    @:</div></div></section> 
+}
+
+@await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "belowMainContent" }, { "pageLayout", "pageLayoutFull" } })
+
+@if (Model.PageLayoutSettings.PageLayout == "pageLayoutFull")
+{
+    @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/SitewidePods", Model)
+}

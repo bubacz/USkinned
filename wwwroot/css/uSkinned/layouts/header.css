@@ -1,0 +1,132 @@
+/*  
+---------------------------------------------------
+Header
+---------------------------------------------------  
+*/
+
+header#site-header {
+    position: relative;
+    position: -webkit-sticky;
+    position: sticky; 
+    top: 0; right: 0; left: 0; z-index: 1001;
+    width: 100%;
+    min-height: var(--small-header);
+    margin: 0 auto;
+    right:auto; left:auto;
+    box-shadow: 0 0 0 rgba(var(--true-black), 0);
+
+    /* Safari OSX, iOS performance improvements */ 
+    will-change: transform, opacity, top;
+
+    -webkit-transition: 
+        box-shadow 0.4s ease-in-out 0s, 
+        top 0.3s ease-in-out 0s, 
+        background-color 0.3s ease-in-out 0s;
+    transition: 
+        box-shadow 0.4s ease-in-out 0s, 
+        top 0.3s ease-in-out 0s, 
+        background-color 0.3s ease-in-out 0s;
+}
+
+html.nav-down:not(.reached-top) header#site-header, 
+html.nav-up:not(.reached-top) header#site-header {
+    box-shadow: var(--header-box-shadow_h) var(--header-box-shadow_v) var(--header-box-shadow_b) rgba(var(--true-black), var(--header-box-shadow_o));
+}
+html.nav-down:not(.reached-top) header#site-header,
+html.nav-up:not(.reached-top) header#site-header,
+html.nav-down:not(.reached-top) header#site-header.header-bg-solid,
+html.nav-up:not(.reached-top) header#site-header.header-bg-solid { 
+    background: rgba(var(--header-bg-color1), 1); 
+}
+html.nav-down:not(.reached-top) header#site-header.header-bg-linear,
+html.nav-up:not(.reached-top) header#site-header.header-bg-linear { 
+    background: linear-gradient(var(--header-bg-angle), rgba(var(--header-bg-color1), 1) 0%, rgba(var(--header-bg-color2), 1) 100%); 
+}
+html.nav-down:not(.reached-top) header#site-header.header-bg-radial,
+html.nav-up:not(.reached-top) header#site-header.header-bg-radial { 
+    background: radial-gradient(farthest-side at var(--header-bg-start-perc) var(--header-bg-stop-perc), rgba(var(--header-bg-color1), 1) 0%, rgba(var(--header-bg-color2), 1) 100%); 
+}
+
+header#site-header .container-fluid,
+header#site-header .container { 
+    position:absolute; top:0; right:0; bottom:0; left:0;
+}
+
+header#site-header .row { 
+    position: relative;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-justify-content: flex-start;
+    justify-content: flex-start;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+header#site-header #logo {
+    position: relative; top: 0;
+    padding: var(--logo_sm-padding_top) var(--logo_sm-padding_right) var(--logo_sm-padding_bottom) var(--logo_sm-padding_left);
+    height: var(--small-header);
+}
+
+header#site-header #logo a {
+    display: block;
+}
+
+header#site-header #logo picture,
+header#site-header #logo img { 
+    width:auto; max-width:100%; height:auto; 
+    height: calc(var(--small-header) - var(--logo_sm-padding_top) - var(--logo_sm-padding_bottom));
+    max-height: calc(var(--small-header) - var(--logo_sm-padding_top) - var(--logo_sm-padding_bottom));
+    border-radius:0;
+}
+
+header#site-header #logo img[src*='svg'],
+header#site-header #logo img[src*="svg"] {
+    width:100%;
+}
+
+body.browser-safari header#site-header #logo img[src*='svg'],
+body.browser-safari header#site-header #logo img[src*="svg"] {
+    width:auto;
+}
+
+header#site-header #logo:not(.no-image) span { 
+    display:none;
+}
+
+header#site-header #logo.no-image span { 
+    display: table-cell;
+    vertical-align: middle;
+    height: calc(var(--small-header) - var(--logo_sm-padding_top) - var(--logo_sm-padding_bottom));
+    max-height: calc(var(--small-header) - var(--logo_sm-padding_top) - var(--logo_sm-padding_bottom));
+}
+
+
+/*  
+---------------------------------------------------
+Header
+
+- Burger Navigation Open
+---------------------------------------------------  
+*/
+
+
+/*  
+---------------------------------------------------
+Header
+
+- Transparent header
+---------------------------------------------------  
+*/
+
+
+/*  
+---------------------------------------------------
+Header
+
+- On scroll
+---------------------------------------------------  
+*/
+
+
+

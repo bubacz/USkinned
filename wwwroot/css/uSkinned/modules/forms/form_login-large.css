@@ -1,0 +1,21 @@
+/*  
+---------------------------------------------------
+Login Form - Large Breakpoint
+---------------------------------------------------  
+*/
+
+
+/*  
+---------------------------------------------------
+Show / hide password
+---------------------------------------------------  
+*/
+
+.form .show-password label span { 
+    width: calc(50px - var(--form-field-border-width)); 
+    height: calc(50px - var(--form-field-border-width)); 
+}
+.form .show-password label i { 
+    font-size:30px;
+}
+    

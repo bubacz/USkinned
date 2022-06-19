@@ -1,0 +1,182 @@
+
+/*	
+--------------------------------------------------
+Additional Colors - Content
+-------------------------------------------------- 
+*/
+
+/* Solid Buttons */
+
+.btn.c{position}-btn-bg, 
+.btn-bg_c{position}-btn-bg .btn {
+    background: rgba(var(--c{position}-btn-bg-color1), 1);
+}
+
+.c{position}-btn-bg:hover, 
+.btn-bg_c{position}-btn-bg .btn:hover,
+.btn.c{position}-btn-bg:focus, 
+.btn-bg_c{position}-btn-bg .btn:focus,
+.btn.c{position}-btn-bg:active, 
+.btn-bg_c{position}-btn-bg .btn:active {
+    background: rgba(var(--c{position}-btn-bg-color1), 1);
+}
+
+/* Linear Buttons */
+
+.btn.c{position}-btn-bg.c{position}-btn-bg-linear, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-linear .btn {
+    background: linear-gradient(var(--c{position}-btn-bg-angle), rgba(var(--c{position}-btn-bg-color1), 1) 0%, rgba(var(--c{position}-btn-bg-color2), 1) 100%); 
+}
+
+.c{position}-btn-bg.c{position}-btn-bg-linear:hover, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-linear .btn:hover,
+.btn.c{position}-btn-bg.c{position}-btn-bg-linear:focus, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-linear .btn:focus,
+.btn.c{position}-btn-bg.c{position}-btn-bg-linear:active, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-linear .btn:active {
+    background: linear-gradient(var(--c{position}-btn-bg-angle), rgba(var(--c{position}-btn-bg-color1), 1) 0%, rgba(var(--c{position}-btn-bg-color2), 1) 100%); 
+}
+
+/* Radial Buttons */
+
+.btn.c{position}-btn-bg.c{position}-btn-bg-radial, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-radial .btn {
+    background: radial-gradient(farthest-side at var(--c{position}-btn-bg-start-perc) var(--c{position}-btn-bg-stop-perc), rgba(var(--c{position}-btn-bg-color1), 1) 0%, rgba(var(--c{position}-btn-bg-color2), 1) 100%); 
+}
+
+.c{position}-btn-bg.c{position}-btn-bg-radial:hover, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-radial .btn:hover,
+.btn.c{position}-btn-bg.c{position}-btn-bg-radial:focus, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-radial .btn:focus,
+.btn.c{position}-btn-bg.c{position}-btn-bg-radial:active, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-radial .btn:active {
+    background: radial-gradient(farthest-side at var(--c{position}-btn-bg-start-perc) var(--c{position}-btn-bg-stop-perc), rgba(var(--c{position}-btn-bg-color1), 1) 0%, rgba(var(--c{position}-btn-bg-color2), 1) 100%); 
+}
+
+
+/* Solid Buttons - inner <span> hover */
+
+.btn.c{position}-btn-bg-hover:hover > span, 
+.btn.c{position}-btn-bg-hover:focus > span, 
+.btn.c{position}-btn-bg-hover:active > span, 
+.btn-bg_c{position}-btn-bg-hover .btn:hover > span, 
+.btn-bg_c{position}-btn-bg-hover .btn:focus > span, 
+.btn-bg_c{position}-btn-bg-hover .btn:active > span,
+a:hover .btn.c{position}-btn-bg-hover > span, 
+a:focus .btn.c{position}-btn-bg-hover > span, 
+a:active .btn.c{position}-btn-bg-hover > span,
+.btn.c{position}-btn-bg-hover-solid:hover > span, 
+.btn.c{position}-btn-bg-hover-solid:focus > span, 
+.btn.c{position}-btn-bg-hover-solid:active > span, 
+.btn-bg_c{position}-btn-bg-hover-solid .btn:hover > span, 
+.btn-bg_c{position}-btn-bg-hover-solid .btn:focus > span, 
+.btn-bg_c{position}-btn-bg-hover-solid .btn:active > span,
+a:hover .btn.c{position}-btn-bg-hover-solid > span, 
+a:focus .btn.c{position}-btn-bg-hover-solid > span, 
+a:active .btn.c{position}-btn-bg-hover-solid > span {
+    background: rgba(var(--c{position}-btn-bg-hover-color1), 1);
+}
+
+
+/* Linear Buttons - inner <span> hover */
+
+.btn.c{position}-btn-bg.c{position}-btn-bg-hover-linear:hover > span, 
+.btn.c{position}-btn-bg.c{position}-btn-bg-hover-linear:focus > span, 
+.btn.c{position}-btn-bg.c{position}-btn-bg-hover-linear:active > span, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-hover-linear .btn:hover > span, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-hover-linear .btn:focus > span, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-hover-linear .btn:active > span,
+a:hover .btn.c{position}-btn-bg.c{position}-btn-bg-hover-linear > span, 
+a:focus .btn.c{position}-btn-bg.c{position}-btn-bg-hover-linear > span, 
+a:active .btn.c{position}-btn-bg.c{position}-btn-bg-hover-linear > span {
+    background: linear-gradient(var(--c{position}-btn-bg-hover-angle), rgba(var(--c{position}-btn-bg-hover-color1), 1) 0%, rgba(var(--c{position}-btn-bg-hover-color2), 1) 100%); 
+}
+
+
+/* Radial Buttons - inner <span> hover */
+
+.btn.c{position}-btn-bg.c{position}-btn-bg-hover-radial:hover > span, 
+.btn.c{position}-btn-bg.c{position}-btn-bg-hover-radial:focus > span, 
+.btn.c{position}-btn-bg.c{position}-btn-bg-hover-radial:active > span, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-hover-radial .btn:hover > span, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-hover-radial .btn:focus > span, 
+.btn-bg_c{position}-btn-bg.c{position}-btn-bg-hover-radial .btn:active > span,
+a:hover .btn.c{position}-btn-bg.c{position}-btn-bg-hover-radial > span, 
+a:focus .btn.c{position}-btn-bg.c{position}-btn-bg-hover-radial > span, 
+a:active .btn.c{position}-btn-bg.c{position}-btn-bg-hover-radial > span { 
+    background: radial-gradient(farthest-side at var(--c{position}-btn-bg-hover-start-perc) var(--c{position}-btn-bg-hover-stop-perc), rgba(var(--c{position}-btn-bg-hover-color1), 1) 0%, rgba(var(--c{position}-btn-bg-hover-color2), 1) 100%); 
+}
+
+
+/* Button Borders */
+
+.btn.c{position}-btn-borders, 
+.btn-borders_c{position}-btn-borders .btn {
+    border-color: rgba(var(--c{position}-btn-borders), 1);
+}
+
+/* Button Borders Hover */
+
+.btn.c{position}-btn-borders:hover, 
+.btn-borders_c{position}-btn-borders .btn:hover,
+.btn.c{position}-btn-borders:focus, 
+.btn-borders_c{position}-btn-borders .btn:focus,
+.btn.c{position}-btn-borders:active, 
+.btn-borders_c{position}-btn-borders .btn:active,
+a:hover .btn.c{position}-btn-borders, 
+a:focus .btn.c{position}-btn-borders, 
+a:active .btn.c{position}-btn-borders {
+    border-color: rgba(var(--c{position}-btn-borders-hover), 1);
+}
+
+
+/* Button Text */
+
+.btn.c{position}-btn-text, 
+.btn-text_c{position}-btn-text .btn {
+    color: rgba(var(--c{position}-btn-text), 1);
+}
+
+/* Button Text Hover */
+
+.btn.c{position}-btn-text:hover, 
+.btn-text_c{position}-btn-text .btn:hover,
+.btn.c{position}-btn-text:focus, 
+.btn-text_c{position}-btn-text .btn:focus,
+.btn.c{position}-btn-text:active, 
+.btn-text_c{position}-btn-text .btn:active,
+a:hover .btn.c{position}-btn-text, 
+a:focus .btn.c{position}-btn-text, 
+a:active .btn.c{position}-btn-text {
+    color: rgba(var(--c{position}-btn-text-hover), 1);
+}
+
+
+/* Buttons box shadows */
+.btn.c{position}-btn-borders:hover, 
+.btn.c{position}-btn-borders:focus, 
+.btn.c{position}-btn-borders:active { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--c{position}-btn-borders-hover), var(--btn-box-shadow_o)); 
+}
+
+.btn-borders_c{position}-btn-borders .btn:hover, 
+.btn-borders_c{position}-btn-borders .btn:focus, 
+.btn-borders_c{position}-btn-borders .btn:active { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--c{position}-btn-borders-hover), var(--btn-box-shadow_o)); 
+}
+
+
+/* Basic buttons */
+.basic-buttons .btn.c{position}-btn-text, 
+.basic-buttons .btn-text_c{position}-btn-text .btn { 
+    color: rgba(var(--c{position}-btn-bg), 1); 
+}
+
+.basic-buttons .btn.c{position}-btn-text:hover, 
+.basic-buttons .btn.c{position}-btn-text:focus, 
+.basic-buttons .btn.c{position}-btn-text:active, 
+.basic-buttons .btn-text_c{position}-btn-text .btn:hover, 
+.basic-buttons .btn-text_c{position}-btn-text .btn:focus, 
+.basic-buttons .btn-text_c{position}-btn-text .btn:active { 
+    color: rgba(var(--c{position}-btn-bg-hover), 1); 
+}

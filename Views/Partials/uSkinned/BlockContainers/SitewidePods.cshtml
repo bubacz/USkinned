@@ -1,0 +1,93 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using Umbraco.Cms.Core.Models.Blocks
+@using USNSiteBuilder.Core.Interfaces 
+@inject ISiteBuilderService _siteBuilderService
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+
+    IEnumerable<BlockListItem> globalPods = null;
+    IEnumerable<BlockListItem> pagePods = null;
+
+    string pageLayout = Model.HasValue("pageLayout") ? Model.Value<string>("pageLayout") : "pageLayoutFull";
+    string itemClass = "swp-item";
+
+    globalPods = !Model.Value<bool>("hideDefaultPods") && globalSettings.Value<BlockListModel>("defaultPods") != null ? globalSettings.Value<BlockListModel>("defaultPods").Where(x => !x.Settings.Value<bool>("hideFromWebsite")) : null;
+    pagePods = Model.Value<BlockListModel>("pagePods") != null ? Model.Value<BlockListModel>("pagePods").Where(x => !x.Settings.Value<bool>("hideFromWebsite")) : null;
+
+    if ((globalPods != null && globalPods.Any()) || (pagePods != null && pagePods.Any()))
+    {
+        <!-- Pods -->
+        <div class="swp">
+
+            @if (pageLayout == "pageLayoutFull")
+            {
+                itemClass = itemClass + " items-3 col-12";
+
+                @:<section class="content component usn_cmp_pods swp-wide base-bg"><div class="container"><div class="component-main row listing listing-pods">
+            }
+            else
+            {
+                @:<div class="listing listing-pods">
+            }
+
+            @if(globalPods != null && globalPods.Any())
+            {
+                foreach (var item in globalPods)
+                {
+                    OutputPod(item, itemClass);
+                }
+            }
+
+            @if(pagePods != null && pagePods.Any())
+            {
+                foreach (var item in pagePods)
+                {
+                    OutputPod(item, itemClass);
+                }
+            }
+
+            @if (pageLayout == "pageLayoutFull")
+            {
+                @:</div></div></section>
+            }
+            else
+            {
+                @:</div>
+            }
+
+        </div>
+        <!--// Pods -->
+    }
+}
+
+@{ 
+    async void OutputPod(BlockListItem item, string itemClass)
+    {
+        if (item?.ContentUdi != null)
+        {
+            var podItem = new SiteBuilderBlock(Model, item);
+            string uniqueID = Guid.NewGuid().ToString();
+            string blockViewName = _siteBuilderService.GetBlockViewName(item.Content.ContentType.Alias);
+
+            if (blockViewName == "RelatedContent" || blockViewName == "TextImage"
+                    || blockViewName == "ReusablePods")
+            {
+                @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", "base" }, { "itemClass", itemClass }, { "uniqueID", uniqueID } })
+            }
+            else
+            {
+                var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)item.Settings;
+
+                string podStyle = "usn_pod_" + _siteBuilderService.GetBlockStyleName(podItem.BlockContent.ContentType.Alias);
+
+                <div class="item @podStyle @itemClass @itemCommonBlockSettings.CustomClasses">
+                    <div class="inner">
+                        @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", "base" }, { "uniqueID", uniqueID } })
+                    </div>
+                </div>
+            }
+        }
+    }
+}

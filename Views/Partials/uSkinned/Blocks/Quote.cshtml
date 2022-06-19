@@ -1,0 +1,42 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    // Available as Pod Block type only
+
+    var content = (Usn_Pb_Quote)Model.BlockContent;
+
+    //Settings taken from compositions common to all pod block types
+    var uniqueSettings = (IUsn_Cmp_Quote_Settings)Model.BlockSettings;
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    //Headings and secondary headings only present on pods
+    var podContent = Model.BlockContent as Usn_Pb_Quote;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    string textAlignmentClass = uniqueSettings.TextAlignment.HasValue() ? uniqueSettings.TextAlignment : "text-left";
+    string quote = content.Quote.Replace("\n", "</br>");
+
+    @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", animation }, { "heading", podContent != null ? podContent.Heading : null }, { "secondaryHeading", podContent != null ? podContent.SecondaryHeading : null }, { "backgroundColorLabel", backgroundColorLabel } })
+
+    <div class="item-quote @textAlignmentClass @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+        <blockquote>
+            <p class="quote @(backgroundColorLabel)-heading">@Html.Raw(quote)</p>
+        </blockquote>
+        @if (content.Cite.HasValue())
+        {
+            <div class="meta @(backgroundColorLabel)-text">
+                <p class="person">@Html.Raw(content.Cite)</p>
+            </div>
+        }
+    </div>
+
+}

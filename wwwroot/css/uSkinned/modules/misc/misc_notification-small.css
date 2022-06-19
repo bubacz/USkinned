@@ -1,0 +1,17 @@
+/*  
+--------------------------------------------------
+Notification - Small Breakpoint
+-------------------------------------------------- 
+*/
+
+.usn-notification {
+    bottom: calc((100% + var(--notification-spacing_below_sm)) * -1);
+}
+
+.usn-notification.open {
+    bottom: var(--notification-spacing_below_sm);
+}
+
+.usn-notification {
+    left:var(--notification-spacing_side_sm); right:var(--notification-spacing_side_sm);
+}

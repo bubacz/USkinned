@@ -1,0 +1,117 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    Layout = "USNMaster.cshtml";
+    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+    int blogLandingPageID = Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) ? Model.Id : Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias).Id;
+}
+
+@section BodyTag
+{
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/BodyTag", Model, new ViewDataDictionary(ViewData) { { "pageLayout", Model.PageLayoutSettings.PageLayout } })
+}
+
+@await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "aboveMainContent" }, { "pageLayout", "pageLayoutFull" } })
+
+@if (Model.PageLayoutSettings.PageLayout == "pageLayoutFull")
+{
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/PageTitle", Model, new ViewDataDictionary(ViewData) { { "pageLayout", Model.PageLayoutSettings.PageLayout } })
+
+    @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "mainContent" }, { "pageLayout", "pageLayoutFull" } })
+
+    <section class="content component meta-author-comments @websiteStyle.StyleColors.contentBackgroundClass pt-0 mt-0">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="content-col center-col col">
+
+                    <!-- Meta -->
+                    <section class="content component meta base-bg">
+
+                        <p class="date base-text"><time>@(Model.Value<DateTime>("postDate").ToString("dd MMM yyyy"))</time></p>
+                        @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogPostCategories", Model)
+
+                    </section>
+                    <!--// Meta -->
+
+                    @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogAuthorship", Model, new ViewDataDictionary(ViewData) { { "blogLandingPageID", blogLandingPageID } })
+
+                    @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogComments", Model, new ViewDataDictionary(ViewData) { { "blogLandingPageID", blogLandingPageID } })
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+}
+
+@if (Model.PageLayoutSettings.PageLayout != "pageLayoutFull")
+{
+    @:<section class="content base-bg"><div class="container">@await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/PageTitle", Model)<div class="row justify-content-between">
+
+        <!-- Content column -->
+        <div class="@Model.PageLayoutSettings.FirstDivColumnClass">
+
+            @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "mainContent" }, { "pageLayout", Model.PageLayoutSettings.PageLayout } })
+
+            <!-- Meta -->
+            <section class="content component meta base-bg">
+
+                <p class="date base-text"><time>@(Model.Value<DateTime>("postDate").ToString("dd MMM yyyy"))</time></p>
+                @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogPostCategories", Model)
+
+            </section>
+            <!--// Meta -->
+
+            @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogAuthorship", Model, new ViewDataDictionary(ViewData) { { "blogLandingPageID", blogLandingPageID } })
+
+            @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogComments", Model, new ViewDataDictionary(ViewData) { { "blogLandingPageID", blogLandingPageID } })
+
+        </div>
+        <!--// Content column -->
+}
+
+@if (Model.PageLayoutSettings.PageLayout == "pageLayoutLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutRight" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavRight")
+{
+    <!-- Second column -->
+    <div class="@Model.PageLayoutSettings.SecondDivColumnClass">
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutRight" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavLeft")
+        {
+            @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogCategoryNavigation", Model, new ViewDataDictionary(ViewData) { { "blogLandingPageID", blogLandingPageID } })
+        }
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutRight" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavRight")
+        {
+            @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/SitewidePods", Model)
+        }
+    </div>
+    <!--// Second column -->
+}
+
+@if (Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavLeft" || Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavRight")
+{
+    <!-- Third column -->
+    <div class="@Model.PageLayoutSettings.ThirdDivColumnClass">
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavRight")
+        {
+            @await Html.PartialAsync(Model.ThemeFolder + "/Blog/BlogCategoryNavigation", Model, new ViewDataDictionary(ViewData) { { "blogLandingPageID", blogLandingPageID } })
+        }
+        @if (Model.PageLayoutSettings.PageLayout == "pageLayoutCenterNavLeft")
+        {
+            @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/SitewidePods", Model)
+        }
+    </div>
+    <!--// Third column -->
+}
+
+@if (Model.PageLayoutSettings.PageLayout != "pageLayoutFull")
+{
+    @:</div></div></section>
+}
+
+@await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BlockComponents", Model, new ViewDataDictionary(ViewData) { { "blockFieldAlias", "belowMainContent" }, { "pageLayout", Model.PageLayoutSettings.PageLayout } })
+
+@if (Model.PageLayoutSettings.PageLayout == "pageLayoutFull")
+{
+    @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/SitewidePods", Model)
+}

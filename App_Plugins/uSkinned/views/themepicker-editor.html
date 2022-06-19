@@ -1,0 +1,32 @@
+﻿<div ng-controller="USN.ThemePicker.Controller">
+    <div ng-show="error == false">
+        <select name="themePickerList" ng-model="model.value" ng-options="theme for theme in themes" ng-show="themes.length > 1"></select>
+        <span ng-show="themes.length == 1">{{model.value}}</span>
+        <span ng-show="themes.length == 0" style="color: red">There are no available themes. Please check the following file exists: ~/config/usntheme.config</span>
+    </div>
+    <div ng-show="error == true">
+        <div class="alert alert-danger">An issue has occured getting your frontend source files.</div>
+        <p>Please follow these steps to make sure that your uSkinned theme is configured correctly.</p>
+        <p>1. Check the following file exists: ~/config/usntheme.config</p>
+        <p>2. Check this file contains at least the following:</p>
+<pre class="code"><code>&lt;USNThemeConfig&gt;
+&nbsp;&nbsp;&lt;themes&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;add name="uSkinned" /&gt;
+&nbsp;&nbsp;&lt;/themes&gt;
+&lt;/USNThemeConfig&gt;</code></pre>
+        <p>3. If adding your own customisations to the base code it is recommended that you duplicate the uSkinned folder within ~/css, ~/scripts, ~/views/partials with your own folder name and add your folder name as shown below.</p>
+<pre class="code"><code>&lt;USNThemeConfig&gt;
+&nbsp;&nbsp;&lt;themes&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;add name="uSkinned" /&gt;
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&lt;add name="yourfoldername" /&gt;</strong>
+&nbsp;&nbsp;&lt;/themes&gt;
+&lt;/USNThemeConfig&gt;</code></pre>
+        <p>4. Check ~/web.config contains the following:</p>
+<pre class="code"><code>&lt;configuration&gt;
+&nbsp;&nbsp;&lt;configSections&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;section name="USNThemeConfig" type="USNStarterKit.USNHelpers.USNThemesConfigsSection" /&gt;
+&nbsp;&nbsp;&lt;configSections/&gt;
+&nbsp;&nbsp;&lt;USNThemeConfig configSource="config\usntheme.config" /&gt;
+&lt;configuration/&gt;</code></pre>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    AnimationSettings animation = (AnimationSettings)ViewData["animation"];
+    SiteBuilderHeading heading = (SiteBuilderHeading)ViewData["heading"];
+    SiteBuilderHeading secondaryHeading = (SiteBuilderHeading)ViewData["secondaryHeading"];
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    string headingOrder = Convert.ToString(ViewData["headingOrder"]);
+
+    string animationAttributes = animation.HasValue() ? String.Format(" data-os-animation=\"{0}\" data-os-animation-delay=\"{1}\" data-os-animation-duration=\"{2}\" ", animation.AnimationStyle, animation.AnimationDelay, animation.AnimationDuration) : String.Empty;
+    string animationClass = animation.HasValue() ? animation.AnimationClass : String.Empty;
+
+    if (secondaryHeading.HasValue() && headingOrder != "heading-first")
+    {
+        <p class="secondary-heading @secondaryHeading.Style @(backgroundColorLabel)-secondary-heading @animationClass" @Html.Raw(animationAttributes)>@Html.Raw(secondaryHeading.Text)</p>
+    }
+    if (heading.HasValue())
+    {
+        @Html.Raw(String.Format("<{0} class=\"heading {1} {2}-heading {3}\" {4}>{5}</{0}>", heading.HeadingTag, heading.Style, backgroundColorLabel, animationClass, animationAttributes, heading.Text))
+    }
+    if (secondaryHeading.HasValue() && headingOrder == "heading-first")
+    {
+        <p class="secondary-heading @secondaryHeading.Style @(backgroundColorLabel)-secondary-heading @animationClass" @Html.Raw(animationAttributes)>@Html.Raw(secondaryHeading.Text)</p>
+    }
+}

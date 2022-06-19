@@ -1,0 +1,12 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    Layout = null;
+    Context.Response.ContentType = "text/plain";
+}
+@Html.Raw(Model.Value<string>("crawlInstructions"))
+
+@if (Model.HasValue("sitemapXmllocation"))
+{
+    @("Sitemap: " + Model.Value<IPublishedContent>("sitemapXmllocation").Url(mode:UrlMode.Absolute))
+}

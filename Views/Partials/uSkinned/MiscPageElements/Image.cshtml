@@ -1,0 +1,86 @@
+﻿@inherits UmbracoViewPage<IPublishedContent>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using Microsoft.Extensions.Options
+@inject IOptions<USNAppSettings> _appSettings
+@{
+    ImageSettings imageSettings = (ImageSettings)ViewData["imageSettings"];
+
+    if (Model != null && Model.Url().IsNotNullOrEmpty())
+    {
+        int imageWidth = imageSettings.Width;
+        int imageHeight = imageSettings.Height;
+
+        if (Model.Value<string>("umbracoExtension") != "svg" && Model.Value<int>("umbracoBytes") < 4194304)
+        {
+            string smallImage = String.Empty;
+            string displayImageX1 = String.Empty;
+            string displayImageX2 = String.Empty;
+            bool webPEnabled = _appSettings.Value.WebPEnabled;
+
+            if (imageSettings.CropAlias == "NO CROP")
+            {
+                imageWidth = Model.Value<int>("umbracoWidth");
+                imageHeight = Model.Value<int>("umbracoHeight");
+                smallImage = Model.Url() + "?width=" + (imageWidth / 10) + "&height=" + (imageHeight / 10);
+                displayImageX1 = Model.Url() + "?width=" + (imageWidth / 2) + "&height=" + (imageHeight / 2);
+                displayImageX2 = Model.Url() + "?width=" + imageWidth + "&height=" + imageHeight;
+            }
+            else if (imageSettings.BoxPad)
+            {
+                smallImage = Model.Url() + "?width=" + (imageWidth / 10) + "&height=" + (imageHeight / 10) + "&mode=boxpad";
+                displayImageX1 = Model.Url() + "?width=" + (imageWidth / 2) + "&height=" + (imageHeight / 2) + "&mode=boxpad";
+                displayImageX2 = Model.Url() + "?width=" + imageWidth + "&height=" + imageHeight + "&mode=boxpad";
+            }
+            else
+            {
+                smallImage = Model.GetCropUrl(cropAlias: imageSettings.CropAlias, width: (imageWidth / 10), height: (imageHeight / 10));
+                displayImageX1 = Model.GetCropUrl(cropAlias: imageSettings.CropAlias, width: (imageWidth / 2), height: (imageHeight / 2));
+                displayImageX2 = Model.GetCropUrl(cropAlias: imageSettings.CropAlias, width: imageWidth, height: imageHeight);
+            }
+
+            <picture>
+                @if (webPEnabled)
+                {
+                    <source type="image/webp" data-srcset="@(displayImageX1)&format=webp 1x, @(displayImageX2)&format=webp 2x" width="@(imageWidth / 2)" height="@(imageHeight / 2)">
+                }
+                <img class="lazyload @imageSettings.CircleClass" src="@smallImage" width="@(imageWidth / 2)" height="@(imageHeight / 2)" data-srcset="@displayImageX1 1x, @displayImageX2 2x" alt="@(GetAlternativeText(Model.Value<string>("alternativeText")))">
+            </picture>
+        }
+        else if (Model.Value<string>("umbracoExtension") != "svg" && Model.Value<int>("umbracoBytes") >= 4194304)
+        {
+            if (imageSettings.CropAlias == "NO CROP")
+            {
+                imageWidth = Model.Value<int>("umbracoWidth");
+                imageHeight = Model.Value<int>("umbracoHeight");
+            }
+
+            <div class="image-error" data-error-title="@Umbraco.GetDictionaryValue("USN Image Size Error")">
+                <img class="@imageSettings.CircleClass image-error" src="/uSkinned/images/grey.gif" width="@(imageWidth)" height="@(imageHeight)" alt="@(GetAlternativeText(Model.Value<string>("alternativeText")))">
+            </div>
+        }
+        else
+        {
+            <img src="@Model.Url()" alt="@(Model.Value<string>("alternativeText"))">
+        }
+    }
+}
+
+@functions{
+
+    private string GetAlternativeText(string altText)
+    {
+        string output = altText;
+
+        if (altText.Length >= 3)
+        {
+            if (altText[0].ToString() == "[" && altText[altText.Length - 1].ToString() == "]")
+            {
+                string dictionaryLabel = altText.Substring(1, altText.Length - 2);
+                output = Umbraco.GetDictionaryValue(dictionaryLabel);
+            }
+        }
+
+        return output;
+    }
+}

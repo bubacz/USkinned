@@ -1,0 +1,110 @@
+/*  
+---------------------------------------------------
+Miscellaneous
+---------------------------------------------------  
+*/
+
+
+a:focus-visible,
+.btn:focus-visible,
+button:focus-visible  {
+    outline: -webkit-focus-ring-color auto 2px!important;
+    outline: rgba(var(--base-highlight), 1) auto 2px!important;
+    outline-offset: 2px!important;
+}
+
+.has-borders { 
+    border-width: var(--base-border-width); border-style: solid;
+}
+
+.has-box-shadows .form > .inner,
+.has-box-shadows .listing.listing_no-spacing,
+.has-box-shadows .listing:not(.listing_no-spacing):not(.listing_window-mosaic) .item.item_has-bg > .inner,
+.has-box-shadows .listing:not(.listing_no-spacing) .image,
+.listing .item.has-box-shadows .image,
+.has-box-shadows .listing.listing_window-mosaic.basic-windows:not(.listing_no-spacing) .item,
+.has-box-shadows:not(.usn_cmp_banner) .slick-slider .slick-prev,
+.has-box-shadows:not(.usn_cmp_banner) .slick-slider .slick-next { 
+    box-shadow: var(--base-box-shadow_h) var(--base-box-shadow_v) var(--base-box-shadow_b) rgba(var(--true-black), var(--base-box-shadow_o));
+}
+
+.item .inner,
+.form > .inner,
+.item .image,
+.item .image::before,
+img,
+.listing.listing_no-spacing,
+.image-component .image,
+.listing_window-mosaic .item,
+.usn_cmp_splitcomponent .item.item_slideshow-block .slides,
+.has-box-shadows .listing:not(.listing_no-spacing):not(.listing_window-mosaic) .item.item_has-bg > .inner {
+    border-radius: var(--base-border-radius);
+}
+
+.listing:not(.listing_window-mosaic) .item.item_has-bg .image:not(.rounded-circle),
+.listing:not(.listing_window-mosaic) .item.item_has-bg .image:not(.rounded-circle) img {
+    border-radius: var(--base-border-radius) var(--base-border-radius) 0 0!important;
+}
+
+.listing.listing_no-spacing .item,
+.listing.listing_no-spacing .item .image,
+.listing.listing_no-spacing .item .image *,
+.usn_cmp_banner .item > .inner,
+.usn_cmp_banner .item .image,
+.usn_cmp_banner .item .image::before,
+.usn_cmp_banner img { 
+    border-radius:0;
+}
+
+.has-box-shadows footer#site-footer .form > .inner,
+.has-box-shadows .listing.listing_no-spacing .item,
+.has-box-shadows .listing.listing_no-spacing .item .image,
+.has-box-shadows .listing.listing_no-spacing .item .image::before,
+.has-box-shadows .listing.listing_no-spacing .item .image img,
+.component.p-0 .listing.listing_no-spacing { 
+    border-radius: 0!important; box-shadow: none!important;
+}
+
+/* Image circle and has background but not overlay text */
+.item.item_has-bg.item_text-above .inner.rounded-circle,
+.item.item_has-bg.item_text-below .inner.rounded-circle,
+.item.item_has-bg.item_text-left .inner.rounded-circle,
+.item.item_has-bg.item_text-right .inner.rounded-circle { 
+    border-radius: var(--base-border-radius)!important;
+}
+.item.item_has-bg.item_text-above .inner.rounded-circle .image,
+.item.item_has-bg.item_text-below .inner.rounded-circle .image,
+.item.item_has-bg.item_text-left .inner.rounded-circle .image,
+.item.item_has-bg.item_text-right .inner.rounded-circle .image { 
+    padding: var(--base-half-spacing);
+}
+
+iframe, object, embed { 
+    display:block;
+}
+
+video { 
+    width:100%; height:auto;
+}
+
+/* Pre — Basic styling for code examples */
+pre {
+    display: block;
+    font: normal 14px/32px Monaco,Monospace!important;
+    color: #000000;
+    border: var(--base-border-width) solid rgba(var(--base-borders), 1);
+    background: #f7f7f7;
+    background-image: -webkit-repeating-linear-gradient(top,#f7f7f7 0px,#f7f7f7 32px,#ececec 32px,#ececec 64px);
+    background-image: -moz-repeating-linear-gradient(top,#f7f7f7 0px,#f7f7f7 32px,#ececec 32px,#ececec 64px);
+    background-image: -ms-repeating-linear-gradient(top,#f7f7f7 0px,#f7f7f7 32px,#ececec 32px,#ececec 64px);
+    background-image: repeating-linear-gradient(top,#f7f7f7 0px,#f7f7f7 32px,#ececec 32px,#ececec 64px);
+    box-shadow: inset 0 0 15px rgba(var(--true-black), 0.05);
+    padding: 0em var(--base-half-spacing);
+    margin-bottom: var(--base-spacing);
+    
+    overflow: auto;
+    height: auto;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: pre;
+}

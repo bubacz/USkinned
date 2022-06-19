@@ -1,0 +1,151 @@
+﻿
+
+.usn-block-list-image,
+.usn-block-list-image > img,
+.usn-block-list-item .usn-block-item-icon,
+.usn-block-list-item {
+    height: 82.5px;
+}
+.usn-block-list-image,
+.usn-block-list-image > img,
+.usn-block-list-item .usn-block-item-icon {
+    width: 132px; 
+}
+.usn-block-list-image {
+    flex: 0 0 132px;
+}
+
+.usn-block-list-item {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    border-radius: 3px;
+    background: rgba(65,54,89,00);
+    color: #413659;
+    box-shadow: 0 0 10px rgba(16,31,60, 0);
+    transition: all 0.35s ease-in-out 0s;
+}
+
+.usn-block-list-item:hover {
+    box-shadow: 0 2px 3px rgba(16, 31, 60, 0.1);
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.usn-block-list-item:active {
+    box-shadow: 0 0 10px rgba(28, 38, 79, 0.1);
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.usn-block-list-item > .usn-block-list-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 3px;
+    border: 1px solid #d8d7d9;
+    transition: all 0.35s ease-in-out 0s;
+}
+
+.usn-block-list-item:hover > .usn-block-list-wrap {
+    border: 1px solid rgba(28,38,79,0.5);
+    box-shadow: 0 2px 3px rgba(16,31,60,0.1);
+    border-radius: 5px;
+}
+
+.usn-block-list-item:active > .usn-block-list-wrap {
+    border: 2px solid rgba(28,38,79,1);
+    box-shadow: 0 0 10px rgba(28, 38, 79, 0.1);
+    border-radius: 5px;
+}
+
+.usn-block-list-image {
+    border-radius: 3px 0 0 3px;
+    background: rgba(65,54,89,1);
+    align-self: center;
+}
+
+.usn-block-list-image > img {
+    border-radius: 3px 0 0 3px;
+}
+
+.usn-block-list-info {
+    padding: 0 30px;
+    align-self: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.usn-block-list-title {
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 90px;
+}
+
+.usn-block-list-details {
+    padding-top: 4px;
+    font-size: 9px;
+    line-height: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-weight: normal;
+}
+
+.usn-block-list-details .ng-hide {
+    display:none;
+}
+
+.usn-block-list-details > div {
+    padding-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 90px;
+}
+
+.usn-block-list-details > div > div {
+    display: inline-block;
+    padding-right: 10px;
+}
+
+.usn-block-list-details > div span {
+    font-weight: normal;
+    font-weight: 700;
+}
+
+
+/* Hidden */
+.usn-block-item-hidden .usn-block-list-image,
+.usn-block-item-hidden .usn-block-list-info {
+    opacity: 0.5;
+}
+
+.usn-block-list-item .usn-block-item-icon {
+    position: absolute;
+    top: 0; left: 0;
+    border-radius: 3px 0 0 3px;
+    background: rgba(16,31,60,0.75);
+}
+
+.usn-block-list-item:not(.usn-block-item-hidden) .usn-block-item-icon {
+    display:none;
+}
+
+.usn-block-list-item .usn-block-item-icon > svg { 
+    position: relative;
+    top:50%; left:50%;
+    z-index: 5;
+    transform: translate(-50%,-50%);
+}

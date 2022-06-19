@@ -1,0 +1,75 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html dir="@Model.TextDirection" lang="@Model.HrefLangTag" class="no-js usn">
+<head>
+    @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/GooglePrefetch", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/HeaderOpeningScripts", Model)
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=2">
+    @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/SEOPageHead", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/StyleSheets", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/Icons", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/ScriptVariables", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/HeaderScripts", Model)
+</head>
+<!body @RenderSection("BodyTag", false)>
+
+    @if (Model.BodyBgImageStyle.HasValue())
+    {
+        <div class="image background-image body-background-image" @Html.Raw(Model.BodyBgImageStyle)></div>
+    }
+
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/AfterOpeningBodyScripts", Model)
+
+    <!-- Skip to content -->
+    <a class="skip-to-content sr-only sr-only-focusable" href="#site-content">@Umbraco.GetDictionaryValue("USN Skip to Content")</a>
+    <!--// Skip to content -->
+    <!-- Site -->
+    <div id="site">
+
+        <!-- Header -->
+        @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/HeaderSection", Model)
+        <!--// Header -->
+        <!-- Content -->
+        <main id="site-content">
+
+            @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/TopComponents", Model)
+            @RenderBody()
+            @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/BottomComponents", Model)
+
+        </main>
+        <!--// Content -->
+        <!-- Footer -->
+        @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteFooterSection/FooterSection", Model)
+        <!--// Footer -->
+
+    </div>
+    <!--// Site -->
+
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/Notification", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteFooterSection/FooterScripts", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/BeforeClosingBodyScripts", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/LinkedModalWindows", Model)
+    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/TriggeredModalWindows", Model)
+</!body>
+<!--
+    ____        _ ____              _ __  __             _____ __   _                      __
+   / __ )__  __(_) / /_   _      __(_) /_/ /_     __  __/ ___// /__(_)___  ____  ___  ____/ /
+  / __  / / / / / / __/  | | /| / / / __/ __ \   / / / /\__ \/ //_/ / __ \/ __ \/ _ \/ __  /
+ / /_/ / /_/ / / / /_    | |/ |/ / / /_/ / / /  / /_/ /___/ / ,< / / / / / / / /  __/ /_/ /
+/_____/\__,_/_/_/\__/    |__/|__/_/\__/_/ /_/   \__,_//____/_/|_/_/_/ /_/_/ /_/\___/\__,_/
+
+Find out more at uSkinned.net
+
+-->
+@if (UmbracoContext.InPreviewMode)
+{
+    @await Html.PartialAsync("DesignPanel/DesignPanel", Model)
+}
+</html>
+@Html.RenderProfiler()

@@ -1,0 +1,70 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using Umbraco.Cms.Core.Models.Blocks
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    // Available as Pod Block type only
+
+    var content = (Usn_Pb_ReusablePods)Model.BlockContent;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    string itemClass = ViewData["itemClass"] != null ? ViewData["itemClass"].ToString() : String.Empty;
+    string uniqueID = ViewData["uniqueID"].ToString();
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    if (content.ReusablePodGroups.HasValue() && content.ReusablePodGroups.Any())
+    {
+        //This loops around the reusable nodes that have been created. Inside these nodes pods can be added.
+        //Need to loop around all nodes and all pods to build up a full block list.
+
+        List<BlockListItem> allBlocks = new List<BlockListItem>();
+
+        foreach (IPublishedContent component in content.ReusablePodGroups)
+        {
+            BlockListModel pageComponents = component.Value<BlockListModel>("pods");
+
+            if (pageComponents != null && pageComponents.Where(x => !x.Settings.Value<bool>("hideFromWebsite")).Any())
+            {
+                foreach (var item in pageComponents.Where(x => !x.Settings.Value<bool>("hideFromWebsite")))
+                {
+                    if (item?.ContentUdi != null)
+                    {
+                        allBlocks.Add(item);
+
+                    }
+                }
+            }
+        }
+
+        if (allBlocks.HasValue() && allBlocks.Any())
+        {
+            Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+            foreach (var item in allBlocks)
+            {
+                var podItem = new SiteBuilderBlock(Model.BaseModel, item);
+                var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)item.Settings;
+                string blockViewName = _siteBuilderService.GetBlockViewName(item.Content.ContentType.Alias);
+
+                if (blockViewName == "RelatedContent" || blockViewName == "TextImage")
+                {
+                    @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", backgroundColorLabel }, { "itemClass", itemClass }, { "uniqueID", uniqueID } })
+                }
+                else
+                {
+                    string podStyle = "usn_pod_" + _siteBuilderService.GetBlockStyleName(podItem.BlockContent.ContentType.Alias);
+
+                    <div class="item @podStyle @itemClass @itemCommonBlockSettings.CustomClasses">
+                        <div class="inner">
+                            @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", backgroundColorLabel }, { "uniqueID", uniqueID } })
+                        </div>
+                    </div>
+                }
+            }
+        }
+    }
+}

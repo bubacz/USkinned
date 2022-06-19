@@ -1,0 +1,9 @@
+/*  
+---------------------------------------------------
+Data List - Large Breakpoint
+---------------------------------------------------  
+*/
+
+.listing.listing_data-list.data-list_boxed { 
+    padding:var(--base-half-spacing);
+}

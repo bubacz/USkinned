@@ -1,0 +1,54 @@
+/*  
+---------------------------------------------------
+Shop
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+Mini Shopping Cart in header
+---------------------------------------------------  
+*/
+
+header#site-header nav.shopping-cart > *:not(.icon) { 
+    font-size:0!important;
+}
+
+header#site-header nav.shopping-cart {
+    position: relative;
+    z-index: 200;
+}
+
+header#site-header nav.shopping-cart i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 25px;
+    color:  rgba(var(--main-navigation-link), 1);
+    transform: translate(-50%, -50%);
+}
+
+header#site-header nav.shopping-cart button.open-cart { 
+    position: relative;
+    background: none; border: 0 none; padding: 0;
+}
+
+header#site-header nav.shopping-cart span.amount {
+    position: absolute; top: calc(50% - 10px); left: calc(50% + 10px);
+    min-width: 22px; height: 22px;
+    padding: 0 4px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 22px;
+    color: rgba(var(--base-highlight-text), 1);
+    background-color: rgba(var(--base-highlight), 1);
+    transform: translate(-50%,-50%);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s, top 0.3s ease-in-out 0s, background-color 0.3s ease-in-out 0.3s;
+}
+
+/* header#site-header nav.shopping-cart.snipcart-summary-empty span.amount {
+    opacity: 0;
+    background-color:  rgba(var(--form-success), 1);
+    transform: scale(2.5) translate(-50%,-50%);
+} */

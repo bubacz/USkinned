@@ -1,0 +1,23 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    @Html.Raw(globalSettings.AfterOpeningBodyScripts)
+
+    if (Model.HasValue("pageAfterOpeningBodyScripts"))
+    {
+        @Html.Raw(Model.Value<string>("pageAfterOpeningBodyScripts"))
+    }
+
+    if (globalSettings.GoogleTagManagerID.HasValue())
+    {
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=@(globalSettings.GoogleTagManagerID)"
+                    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    }
+}

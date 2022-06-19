@@ -1,0 +1,8 @@
+﻿.usn-code-editor.tall {
+    border: 1px solid #e9e9eb;
+    min-height: calc(100vh - 378px);
+}
+
+.usn-code-editor.short {
+    border: 1px solid #e9e9eb;
+}

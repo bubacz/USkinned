@@ -1,0 +1,57 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@using Umbraco.Cms.Core.Strings
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block and Split Component Block types
+
+    //Different content model used for Component Block and Split Block so not strongly typed.
+    var content = Model.BlockContent;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+    //Settings taken from compositions common to all block types
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+    var uniqueSettings = Model.BlockSettings as Usn_Cbss_Text;
+
+    string textAlignmentClass = uniqueSettings != null ? (uniqueSettings.TextAlignment.HasValue() ? uniqueSettings.TextAlignment : "text-left") : String.Empty;
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    <div class="info @textAlignmentClass">
+
+        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", animation }, { "heading", content.Value<SiteBuilderHeading>("heading") }, { "secondaryHeading", content.Value<SiteBuilderHeading>("secondaryHeading") }, { "backgroundColorLabel", backgroundColorLabel } })
+
+        <div class="text @(backgroundColorLabel)-text @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay">
+            @(content.Value<IHtmlEncodedString>("text"))
+        </div>
+
+        @if (content.Value<IEnumerable<SiteBuilderMultiUrlPicker>>("buttons") != null)
+        {
+            <p class="link @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                @foreach (var button in content.Value<IEnumerable<SiteBuilderMultiUrlPicker>>("buttons"))
+                {
+                    if (_siteBuilderService.DisplayLink(button, disableModalLinks))
+                    {
+                        string buttonBgClass = _siteBuilderService.GetBackgroundColorClass(button.color.sortOrder, "button", websiteStyle);
+                        string buttonBgHoverClass = _siteBuilderService.GetBackgroundColorClass(button.color.sortOrder, "buttonHover", websiteStyle);
+
+                        <a class="btn @button.sizeStyle @buttonBgClass @buttonBgHoverClass @(button.color.label)-text @(button.color.label)-borders" href="@button.link.LinkUrl" @Html.Raw(button.link.LinkTarget) @Html.Raw(button.link.LinkTitle)>
+                            <span></span>
+                            @Html.Raw(button.icon)@Html.Raw(button.link.LinkText)@Html.Raw(button.link.LinkTargetIcon)
+                        </a>
+                    }
+                }
+            </p>
+        }
+
+    </div>
+}

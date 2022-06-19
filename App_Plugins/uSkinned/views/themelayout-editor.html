@@ -1,0 +1,1132 @@
+﻿<div ng-controller="USN.ThemeLayout.Controller">
+    <div class="usn-Loading" ng-show="!isLoaded">Loading ...</div>
+    <section class="usn-layout-manager" ng-show="isLoaded">
+        <div class="usn-layout-grouping usn-layout">
+
+            <!-- Layout accordion -->
+            <div class="usn-layout-accordion">
+
+                <!-- Item -->
+                <div class="usn-accordion-tab" ng-class="{'tab-closed' : headerTabStyle, 'tab-open' : !headerTabStyle}">
+                    <a ng-click="headerTabStyle = !headerTabStyle">
+                        <span class="accordion-name">Site Header</span>
+                    </a>
+                </div>
+                <div class="usn-accordion-content" ng-class="{'tab-closed' : headerTabStyle, 'tab-open' : !headerTabStyle}">
+                    <!-- USN Row -->
+                    <div class="usn-row usn-layout-row">
+
+                        <!-- USN Col -->
+                        <div class="usn-col usn-layout-options">
+
+                            <label>Header on large screens</label>
+                            <span class="note">Preview and select the header layout you would like to use on large screens.</span>
+
+                            <div class="usn-radio-list">
+                                <label class="usn-radio-list-item">
+                                    <input value="header-01-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">01</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-02-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">02</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-03-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">03</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-04-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">04</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-05-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">05</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-06-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">06</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-07-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">07</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-08-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">08</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-09-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">09</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-10-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">10</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-11-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">11</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-12-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">12</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-13-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">13</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-14-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">14</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-15-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">15</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-16-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">16</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-17-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">17</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-18-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">18</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-19-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">19</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-20-lg" name="headerLargeScreens" type="radio" ng-model="model.value.headerLarge">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">20</div>
+                                </label>
+                            </div>
+
+                            <div class="usn-preview-picker-list">
+
+                                <label class="usn-preview-picker-item">
+                                    Initial
+                                    <label class="usn-select-preview">
+                                        <input name="headerLargePreview" type="radio" value="Initial" ng-model="headerLargePreview">
+                                        <span></span>
+                                        <div class="inner">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="55px" width="80px" fill="#fff" viewBox="0 0 100 100" version="1.1" x="0px" y="0px"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M59.4887893,49.8151186 C59.4887893,55.0558637 55.2399321,59.3030949 50.000813,59.3030949 C44.7600679,59.3030949 40.5112107,55.0558637 40.5112107,49.8151186 C40.5112107,44.5743735 44.7600679,40.3271423 50.000813,40.3271423 C55.2399321,40.3271423 59.4887893,44.5743735 59.4887893,49.8151186 M49.999187,67.7812969 C40.0770565,67.7812969 32.0330087,59.7372491 32.0330087,49.8151186 C32.0330087,39.8929881 40.0770565,31.8489404 49.999187,31.8489404 C59.9229435,31.8489404 67.9669913,39.8929881 67.9669913,49.8151186 C67.9669913,59.7372491 59.9229435,67.7812969 49.999187,67.7812969 M50.000813,23 C25.1467055,23 5,49.6834089 5,49.6834089 C5,49.6834089 25.1467055,76.6302372 50.000813,76.6302372 C74.8532945,76.6302372 95,49.6834089 95,49.6834089 C95,49.6834089 74.8532945,23 50.000813,23" fill="#fff" /></g></svg>
+
+                                        </div>
+                                    </label>
+                                </label>
+
+                                <label class="usn-preview-picker-item">
+                                    Dropdown open
+                                    <label class="usn-select-preview">
+                                        <input name="headerLargePreview" type="radio" value="Open" ng-model="headerLargePreview">
+                                        <span></span>
+                                        <div class="inner">
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="55px" width="80px" fill="#fff" viewBox="0 0 100 100" version="1.1" x="0px" y="0px"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M59.4887893,49.8151186 C59.4887893,55.0558637 55.2399321,59.3030949 50.000813,59.3030949 C44.7600679,59.3030949 40.5112107,55.0558637 40.5112107,49.8151186 C40.5112107,44.5743735 44.7600679,40.3271423 50.000813,40.3271423 C55.2399321,40.3271423 59.4887893,44.5743735 59.4887893,49.8151186 M49.999187,67.7812969 C40.0770565,67.7812969 32.0330087,59.7372491 32.0330087,49.8151186 C32.0330087,39.8929881 40.0770565,31.8489404 49.999187,31.8489404 C59.9229435,31.8489404 67.9669913,39.8929881 67.9669913,49.8151186 C67.9669913,59.7372491 59.9229435,67.7812969 49.999187,67.7812969 M50.000813,23 C25.1467055,23 5,49.6834089 5,49.6834089 C5,49.6834089 25.1467055,76.6302372 50.000813,76.6302372 C74.8532945,76.6302372 95,49.6834089 95,49.6834089 C95,49.6834089 74.8532945,23 50.000813,23" fill="#fff" /></g></svg>
+
+                                        </div>
+                                    </label>
+                                </label>
+
+                            </div>
+
+                            <div class="usn-form-group">
+                                <label>Show header on scroll</label>
+                                <switch ng-model="model.value.showHeaderScrollLarge"></switch>
+                                <span class="switcher-status" ng-class="{ active: model.value.showHeaderScrollLarge }">{{model.value.showHeaderScrollLarge ? 'Yes' : 'No'}}</span>
+                            </div>
+
+                            <div class="usn-form-group">
+                                <label>Transparent header</label>
+                                <switch ng-model="model.value.transparentLargeHeader"></switch>
+                                <span class="switcher-status" ng-class="{ active: model.value.transparentLargeHeader }">{{model.value.transparentLargeHeader ? 'Yes' : 'No'}}</span>
+                            </div>
+
+                        </div>
+                        <!-- USN Col -->
+                        <!-- USN Col -->
+                        <div class="usn-col usn-layout-preview">
+
+                            <div class="usn-device usn-desktop-device">
+                                <div class="usn-device-inner">
+
+                                    <div class="usn-device-content">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_1_initial.png" ng-show="model.value.headerLarge == 'header-01-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_2_initial.png" ng-show="model.value.headerLarge == 'header-02-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_3_initial.png" ng-show="model.value.headerLarge == 'header-03-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_4_initial.png" ng-show="model.value.headerLarge == 'header-04-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_5_initial.png" ng-show="model.value.headerLarge == 'header-05-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_6_initial.png" ng-show="model.value.headerLarge == 'header-06-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_7_initial.png" ng-show="model.value.headerLarge == 'header-07-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_8_initial.png" ng-show="model.value.headerLarge == 'header-08-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_9_initial.png" ng-show="model.value.headerLarge == 'header-09-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_10_initial.png" ng-show="model.value.headerLarge == 'header-10-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_11_initial.png" ng-show="model.value.headerLarge == 'header-11-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_12_initial.png" ng-show="model.value.headerLarge == 'header-12-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_13_initial.png" ng-show="model.value.headerLarge == 'header-13-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_14_initial.png" ng-show="model.value.headerLarge == 'header-14-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_15_initial.png" ng-show="model.value.headerLarge == 'header-15-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_16_initial.png" ng-show="model.value.headerLarge == 'header-16-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_17_initial.png" ng-show="model.value.headerLarge == 'header-17-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_18_initial.png" ng-show="model.value.headerLarge == 'header-18-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_19_initial.png" ng-show="model.value.headerLarge == 'header-19-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_20_initial.png" ng-show="model.value.headerLarge == 'header-20-lg' && headerLargePreview == 'Initial'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_1_open.png" ng-show="model.value.headerLarge == 'header-01-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_2_open.png" ng-show="model.value.headerLarge == 'header-02-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_3_open.png" ng-show="model.value.headerLarge == 'header-03-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_4_open.png" ng-show="model.value.headerLarge == 'header-04-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_5_open.png" ng-show="model.value.headerLarge == 'header-05-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_6_open.png" ng-show="model.value.headerLarge == 'header-06-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_7_open.png" ng-show="model.value.headerLarge == 'header-07-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_8_open.png" ng-show="model.value.headerLarge == 'header-08-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_9_open.png" ng-show="model.value.headerLarge == 'header-09-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_10_open.png" ng-show="model.value.headerLarge == 'header-10-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_11_open.png" ng-show="model.value.headerLarge == 'header-11-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_12_open.png" ng-show="model.value.headerLarge == 'header-12-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_13_open.png" ng-show="model.value.headerLarge == 'header-13-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_14_open.png" ng-show="model.value.headerLarge == 'header-14-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_15_open.png" ng-show="model.value.headerLarge == 'header-15-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_16_open.png" ng-show="model.value.headerLarge == 'header-16-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_17_open.png" ng-show="model.value.headerLarge == 'header-17-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_18_open.png" ng-show="model.value.headerLarge == 'header-18-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_19_open.png" ng-show="model.value.headerLarge == 'header-19-lg' && headerLargePreview == 'Open'">
+                                        <img src="/App_Plugins/uSkinned/resources/headerlg_20_open.png" ng-show="model.value.headerLarge == 'header-20-lg' && headerLargePreview == 'Open'">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- USN Col -->
+
+                    </div>
+                    <!-- USN Row -->
+                    <!-- USN Row -->
+                    <div class="usn-row usn-layout-row">
+
+                        <!-- USN Col -->
+                        <div class="usn-col usn-layout-options">
+
+                            <label>Header on small screens</label>
+                            <span class="note">Preview and select the header layout you would like to use on small screens.</span>
+                            <div class="usn-radio-list">
+                                <label class="usn-radio-list-item">
+                                    <input value="header-01-sm" name="headerSmallScreens" type="radio" ng-model="model.value.headerSmall">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">01</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-02-sm" name="headerSmallScreens" type="radio" ng-model="model.value.headerSmall">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">02</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-03-sm" name="headerSmallScreens" type="radio" ng-model="model.value.headerSmall">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">03</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="header-04-sm" name="headerSmallScreens" type="radio" ng-model="model.value.headerSmall">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">04</div>
+                                </label>
+                            </div>
+
+                            <div class="usn-form-group">
+                                <label>Show header on scroll</label>
+                                <switch ng-model="model.value.showHeaderScrollSmall"></switch>
+                                <span class="switcher-status" ng-class="{ active: model.value.showHeaderScrollSmall }">{{model.value.showHeaderScrollSmall ? 'Yes' : 'No'}}</span>
+                            </div>
+
+                            <div class="usn-form-group">
+                                <label>Transparent header</label>
+                                <switch ng-model="model.value.transparentSmallHeader"></switch>
+                                <span class="switcher-status" ng-class="{ active: model.value.transparentSmallHeader }">{{model.value.transparentSmallHeader ? 'Yes' : 'No'}}</span>
+                            </div>
+
+                        </div>
+                        <!-- USN Col -->
+                        <!-- USN Col -->
+                        <div class="usn-col usn-layout-preview">
+
+                            <div class="usn-device usn-mobile-device">
+                                <div class="usn-device-inner">
+
+                                    <div class="usn-device-content">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_1_initial.png" ng-show="model.value.headerSmall == 'header-01-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_2_initial.png" ng-show="model.value.headerSmall == 'header-02-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_3_initial.png" ng-show="model.value.headerSmall == 'header-03-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_4_initial.png" ng-show="model.value.headerSmall == 'header-04-sm'">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="usn-device usn-mobile-device">
+                                <div class="usn-device-inner">
+
+                                    <div class="usn-device-content">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_1_expanded.png" ng-show="model.value.headerSmall == 'header-01-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_2_expanded.png" ng-show="model.value.headerSmall == 'header-02-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_3_expanded.png" ng-show="model.value.headerSmall == 'header-03-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_4_expanded.png" ng-show="model.value.headerSmall == 'header-04-sm'">
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="usn-device usn-mobile-device">
+                                <div class="usn-device-inner">
+
+                                    <div class="usn-device-content">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_1_open.png" ng-show="model.value.headerSmall == 'header-01-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_2_open.png" ng-show="model.value.headerSmall == 'header-02-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_3_open.png" ng-show="model.value.headerSmall == 'header-03-sm'">
+                                        <img src="/App_Plugins/uSkinned/resources/headersm_4_open.png" ng-show="model.value.headerSmall == 'header-04-sm'">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- USN Col -->
+
+                    </div>
+                    <!-- USN Row -->
+
+
+                </div>
+                <!--// Item -->
+                <!-- Item -->
+                <div class="usn-accordion-tab" ng-class="{'tab-closed' : burgerTabStyle, 'tab-open' : !burgerTabStyle}">
+                    <a ng-click="burgerTabStyle = !burgerTabStyle">
+                        <span class="accordion-name">Navigation</span>
+                    </a>
+                </div>
+                <div class="usn-accordion-content" ng-class="{'tab-closed' : burgerTabStyle, 'tab-open' : !burgerTabStyle}">
+
+                    <!-- USN Col -->
+                    <div class="usn-col usn-layout-options usn-wide-col">
+
+                        <label>Number of lines</label>
+                        <span class="note">Choose the number of lines that should appear for your burger navigation icon.</span>
+
+                        <div class="usn-radio-list usn-radio-list_with-icons">
+                            <label class="usn-radio-list-item">
+                                <input value="expand-2-bars expand-even-lines" name="burgerNavStyle" type="radio" ng-model="model.value.burgerNavStyle">
+                                <span></span>
+                                <div class="inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="50px" height="18px">
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M50.000,15.000 L50.000,17.000 C50.000,17.552 49.552,18.000 49.000,18.000 L1.000,18.000 C0.448,18.000 0.000,17.552 0.000,17.000 L0.000,15.000 C0.000,14.448 0.448,14.000 1.000,14.000 L49.000,14.000 C49.552,14.000 50.000,14.448 50.000,15.000 Z" />
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M50.000,1.000 L50.000,3.000 C50.000,3.552 49.552,4.000 49.000,4.000 L1.000,4.000 C0.448,4.000 0.000,3.552 0.000,3.000 L0.000,1.000 C0.000,0.448 0.448,-0.000 1.000,-0.000 L49.000,-0.000 C49.552,-0.000 50.000,0.448 50.000,1.000 Z" />
+                                    </svg>
+                                </div>
+                                <div class="name">2 even</div>
+                            </label>
+                            <label class="usn-radio-list-item">
+                                <input value="expand-2-bars expand-uneven-lines" name="burgerNavStyle" type="radio" ng-model="model.value.burgerNavStyle">
+                                <span></span>
+                                <div class="inner">
+                                    <svg width="50px" height="18px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M50.000,15.000 L50.000,17.000 C50.000,17.552 49.552,18.000 49.000,18.000 L1.000,18.000 C0.448,18.000 0.000,17.552 0.000,17.000 L0.000,15.000 C0.000,14.448 0.448,14.000 1.000,14.000 L49.000,14.000 C49.552,14.000 50.000,14.448 50.000,15.000 Z" />
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M40.000,1.000 L40.000,3.000 C40.000,3.552 39.552,4.000 39.000,4.000 L1.000,4.000 C0.448,4.000 0.000,3.552 0.000,3.000 L0.000,1.000 C0.000,0.448 0.448,-0.000 1.000,-0.000 L39.000,-0.000 C39.552,-0.000 40.000,0.448 40.000,1.000 Z" />
+                                    </svg>
+                                </div>
+                                <div class="name">2 uneven</div>
+                            </label>
+                            <label class="usn-radio-list-item">
+                                <input value="expand-3-bars expand-even-lines" name="burgerNavStyle" type="radio" ng-model="model.value.burgerNavStyle">
+                                <span></span>
+                                <div class="inner">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="50px" height="32px">
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M50.000,29.000 L50.000,31.000 C50.000,31.552 49.552,32.000 49.000,32.000 L1.000,32.000 C0.448,32.000 0.000,31.552 0.000,31.000 L0.000,29.000 C0.000,28.448 0.448,28.000 1.000,28.000 L49.000,28.000 C49.552,28.000 50.000,28.448 50.000,29.000 Z" />
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M50.000,15.000 L50.000,17.000 C50.000,17.552 49.552,18.000 49.000,18.000 L1.000,18.000 C0.448,18.000 0.000,17.552 0.000,17.000 L0.000,15.000 C0.000,14.448 0.448,14.000 1.000,14.000 L49.000,14.000 C49.552,14.000 50.000,14.448 50.000,15.000 Z" />
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M50.000,1.000 L50.000,3.000 C50.000,3.552 49.552,4.000 49.000,4.000 L1.000,4.000 C0.448,4.000 0.000,3.552 0.000,3.000 L0.000,1.000 C0.000,0.448 0.448,-0.000 1.000,-0.000 L49.000,-0.000 C49.552,-0.000 50.000,0.448 50.000,1.000 Z" />
+                                    </svg>
+                                </div>
+                                <div class="name">3 even</div>
+                            </label>
+                            <label class="usn-radio-list-item">
+                                <input value="expand-3-bars expand-uneven-lines" name="burgerNavStyle" type="radio" ng-model="model.value.burgerNavStyle">
+                                <span></span>
+                                <div class="inner">
+                                    <svg width="50px" height="32px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M45.000,29.000 L45.000,31.000 C45.000,31.552 44.552,32.000 44.000,32.000 L1.000,32.000 C0.448,32.000 0.000,31.552 0.000,31.000 L0.000,29.000 C0.000,28.448 0.448,28.000 1.000,28.000 L44.000,28.000 C44.552,28.000 45.000,28.448 45.000,29.000 Z" />
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M50.000,15.000 L50.000,17.000 C50.000,17.552 49.552,18.000 49.000,18.000 L1.000,18.000 C0.448,18.000 0.000,17.552 0.000,17.000 L0.000,15.000 C0.000,14.448 0.448,14.000 1.000,14.000 L49.000,14.000 C49.552,14.000 50.000,14.448 50.000,15.000 Z" />
+                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                              d="M40.000,1.000 L40.000,3.000 C40.000,3.552 39.552,4.000 39.000,4.000 L1.000,4.000 C0.448,4.000 0.000,3.552 0.000,3.000 L0.000,1.000 C0.000,0.448 0.448,-0.000 1.000,-0.000 L39.000,-0.000 C39.552,-0.000 40.000,0.448 40.000,1.000 Z" />
+                                    </svg>
+                                </div>
+                                <div class="name">3 uneven</div>
+                            </label>
+                        </div>
+
+                    </div>
+                    <!-- USN Col -->
+
+                </div>
+                <!--// Item -->
+                <!-- Item -->
+                <div class="usn-accordion-tab" ng-class="{'tab-closed' : arrowsTabStyle, 'tab-open' : !arrowsTabStyle}">
+                    <a ng-click="arrowsTabStyle = !arrowsTabStyle">
+                        <span class="accordion-name">Icons</span>
+                    </a>
+                </div>
+                <div class="usn-accordion-content" ng-class="{'tab-closed' : arrowsTabStyle, 'tab-open' : !arrowsTabStyle}">
+
+                    <!-- USN Col -->
+                    <div class="usn-col usn-layout-options usn-wide-col">
+
+                        <label>Directional icon options</label>
+                        <span class="note">These are used globally, from your navigation dropdowns to your back to top button. Choose the global style to be used.</span>
+
+                        <div class="usn-radio-list usn-radio-list_with-icons">
+                            <label class="usn-radio-list-item">
+                                <input value="directional-icons-triangle" name="arrowStyle" type="radio" ng-model="model.value.arrowStyle">
+                                <span></span>
+                                <div class="inner">
+                                    <svg width="35px" height="35px" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="rgb(65, 54, 89)" d="m31.258 12.523 37.477 37.477-37.477 37.477z" />
+                                    </svg>
+                                </div>
+                                <div class="name">Triangle</div>
+                            </label>
+                            <label class="usn-radio-list-item">
+                                <input value="directional-icons-arrow" name="arrowStyle" type="radio" ng-model="model.value.arrowStyle">
+                                <span></span>
+                                <div class="inner">
+                                    <svg width="40px" height="40px" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <g>
+                                            <path fill="rgb(65, 54, 89)" d="m12.5 45.832h64.582v8.332h-64.582z" />
+                                            <path fill="rgb(65, 54, 89)" d="m59.168 77.918l-5.8359-5.8359 22.086-22.082-22.086-22.082 5.8359-5.8359 27.914 27.918z" />
+                                        </g>
+                                    </svg>
+
+                                </div>
+                                <div class="name">Arrow</div>
+                            </label>
+                            <label class="usn-radio-list-item">
+                                <input value="directional-icons-chevron" name="arrowStyle" type="radio" ng-model="model.value.arrowStyle">
+                                <span></span>
+                                <div class="inner">
+                                    <svg width="60px" height="60px" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="rgb(65, 54, 89)" d="m38.23 68.23c-0.97266 0.97656-0.97266 2.5625 0 3.5391 0.97656 0.97266 2.5625 0.97266 3.5391 0l20-20c0.97266-0.97656 0.97266-2.5625 0-3.5391l-20-20c-0.97656-0.97266-2.5625-0.97266-3.5391 0-0.97266 0.97656-0.97266 2.5625 0 3.5391l18.234 18.23z" fill-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="name">Chevron</div>
+                            </label>
+                        </div>
+
+                    </div>
+                    <!-- USN Col -->
+
+                </div>
+                <!--// Item -->
+                <!-- Item -->
+                <div class="usn-accordion-tab" ng-class="{'tab-closed' : headingTabStyle, 'tab-open' : !headingTabStyle}">
+                    <a ng-click="headingTabStyle = !headingTabStyle">
+                        <span class="accordion-name">Headings</span>
+                    </a>
+                </div>
+                <div class="usn-accordion-content" ng-class="{'tab-closed' : headingTabStyle, 'tab-open' : !headingTabStyle}">
+
+                    <!-- USN Col -->
+                    <div class="usn-col usn-layout-options usn-wide-col">
+                        
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Heading order</label>
+                            <span class="note usn-note">Choose the global options for your heading and secondary heading layout order.</span>
+    
+                            <div class="usn-radio-list">
+                                <label class="usn-radio-list-item">
+                                    <input value="heading-first" name="headingOrder" type="radio" ng-model="model.value.headingOrder">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">Heading first</div>
+                                </label>
+                                <label class="usn-radio-list-item">
+                                    <input value="secondary-heading-first" name="headingOrder" type="radio" ng-model="model.value.headingOrder">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">Secondary heading first</div>
+                                </label>
+                            </div>
+    
+                        </div>
+                        <!--// Group section -->
+
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Heading separators</label>
+                            <span class="note usn-note">Choose the global options for your heading and secondary heading separators.</span>
+
+                            <div class="usn-checkbox-list">
+                                <label class="usn-checkbox-list-item" ng-repeat="style in selectedHeadingItems">
+                                    <input type="checkbox" name="{{style.Value}}" value="{{style.Value}}" ng-model="style.Selected">
+                                    <span></span>
+                                    <div class="inner">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22px" height="16px">
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M20.192,0.050 L21.607,1.464 L7.464,15.607 L6.050,14.192 L20.192,0.050 Z"></path>
+                                            <path fill-rule="evenodd" fill="rgb(65, 54, 89)" d="M1.808,7.121 L8.879,14.192 L7.464,15.607 L0.393,8.536 L1.808,7.121 Z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="name">{{style.Text}}</div>
+                                </label>
+                            </div>
+
+                        </div>
+                        <!--// Group section -->
+
+                    </div>
+                    <!-- USN Col -->
+
+                </div>
+                <!--// Item -->
+                <!-- Item -->
+                <div class="usn-accordion-tab" ng-class="{'tab-closed' : linksTabStyle, 'tab-open' : !linksTabStyle}">
+                    <a ng-click="linksTabStyle = !linksTabStyle">
+                        <span class="accordion-name">Links</span>
+                    </a>
+                </div>
+                <div class="usn-accordion-content" ng-class="{'tab-closed' : linksTabStyle, 'tab-open' : !linksTabStyle}">
+
+                    <!-- USN Col -->
+                    <div class="usn-col usn-layout-options usn-wide-col">
+
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Logo link</label>
+                            <span class="note usn-note">Choose the global style of your logo link.</span>
+
+                            <!-- Form Group -->
+                            <div class="usn-form-group">
+
+                                <!-- Input Row -->
+                                <div class="usn-input-row">
+
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on initial</label>
+                                            <switch ng-model="model.value.logoLinkUnderlineInitial"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.logoLinkUnderlineInitial }">{{model.value.logoLinkUnderlineInitial ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on hover</label>
+                                            <switch ng-model="model.value.logoLinkUnderlineHover"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.logoLinkUnderlineHover }">{{model.value.logoLinkUnderlineHover ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+
+                                </div>
+                                <!--// Input Row -->
+
+                            </div>
+                            <!--// Form Group -->
+
+                        </div>
+                        <!--// Group section -->
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Main navigation links</label>
+                            <span class="note usn-note">Choose the global style of your main navigation links.</span>
+
+                            <!-- Form Group -->
+                            <div class="usn-form-group">
+
+                                <!-- Input Row -->
+                                <div class="usn-input-row">
+
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on initial</label>
+                                            <switch ng-model="model.value.mainNavLinkUnderlineInitial"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.mainNavLinkUnderlineInitial }">{{model.value.mainNavLinkUnderlineInitial ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on hover</label>
+                                            <switch ng-model="model.value.mainNavLinkUnderlineHover"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.mainNavLinkUnderlineHover }">{{model.value.mainNavLinkUnderlineHover ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+
+                                </div>
+                                <!--// Input Row -->
+
+                            </div>
+                            <!--// Form Group -->
+
+                        </div>
+                        <!--// Group section -->
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Secondary navigation links</label>
+                            <span class="note usn-note">Choose the global style of your secondary navigation links.</span>
+
+                            <!-- Form Group -->
+                            <div class="usn-form-group">
+
+                                <!-- Input Row -->
+                                <div class="usn-input-row">
+
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on initial</label>
+                                            <switch ng-model="model.value.secondaryNavLinkUnderlineInitial"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.secondaryNavLinkUnderlineInitial }">{{model.value.secondaryNavLinkUnderlineInitial ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on hover</label>
+                                            <switch ng-model="model.value.secondaryNavLinkUnderlineHover"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.secondaryNavLinkUnderlineHover }">{{model.value.secondaryNavLinkUnderlineHover ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+
+                                </div>
+                                <!--// Input Row -->
+
+                            </div>
+                            <!--// Form Group -->
+
+                        </div>
+                        <!--// Group section -->
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Content links</label>
+                            <span class="note usn-note">Choose the global style of your content links.</span>
+
+                            <!-- Form Group -->
+                            <div class="usn-form-group">
+
+                                <!-- Input Row -->
+                                <div class="usn-input-row">
+
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on initial</label>
+                                            <switch ng-model="model.value.contentLinkUnderlineInitial"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.contentLinkUnderlineInitial }">{{model.value.contentLinkUnderlineInitial ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on hover</label>
+                                            <switch ng-model="model.value.contentLinkUnderlineHover"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.contentLinkUnderlineHover }">{{model.value.contentLinkUnderlineHover ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+
+                                </div>
+                                <!--// Input Row -->
+
+                            </div>
+                            <!--// Form Group -->
+
+                        </div>
+                        <!--// Group section -->
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Footer links</label>
+                            <span class="note usn-note">Choose the global style of your footer links.</span>
+
+                            <!-- Form Group -->
+                            <div class="usn-form-group">
+
+                                <!-- Input Row -->
+                                <div class="usn-input-row">
+
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on initial</label>
+                                            <switch ng-model="model.value.footerLinkUnderlineInitial"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.footerLinkUnderlineInitial }">{{model.value.footerLinkUnderlineInitial ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on hover</label>
+                                            <switch ng-model="model.value.footerLinkUnderlineHover"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.footerLinkUnderlineHover }">{{model.value.footerLinkUnderlineHover ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+
+                                </div>
+                                <!--// Input Row -->
+
+                            </div>
+                            <!--// Form Group -->
+
+                        </div>
+                        <!--// Group section -->
+                        <!-- Group section -->
+                        <div class="usn-group-section">
+
+                            <label class="usn-label">Button links</label>
+                            <span class="note usn-note">Choose the global style of your button links.</span>
+
+                            <!-- Form Group -->
+                            <div class="usn-form-group">
+
+                                <!-- Input Row -->
+                                <div class="usn-input-row">
+
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on initial</label>
+                                            <switch ng-model="model.value.buttonLinkUnderlineInitial"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.buttonLinkUnderlineInitial }">{{model.value.buttonLinkUnderlineInitial ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+                                    <!-- Input Col -->
+                                    <div class="usn-input-col usn-input-col-quarter">
+
+                                        <div class="usn-form-group">
+                                            <label class="usn-label">Underline on hover</label>
+                                            <switch ng-model="model.value.buttonLinkUnderlineHover"></switch>
+                                            <span class="switcher-status" ng-class="{ active: model.value.buttonLinkUnderlineHover }">{{model.value.buttonLinkUnderlineHover ? 'Yes' : 'No'}}</span>
+                                        </div>
+
+                                    </div>
+                                    <!--// Input Col -->
+
+                                </div>
+                                <!--// Input Row -->
+
+                            </div>
+                            <!--// Form Group -->
+
+                        </div>
+                        <!--// Group section -->
+                    </div>
+                    <!-- USN Col -->
+
+                </div>
+                <!--// Item -->
+                <!-- Item -->
+                <div class="usn-accordion-tab" ng-class="{'tab-closed' : miscTabStyle, 'tab-open' : !miscTabStyle}">
+                    <a ng-click="miscTabStyle = !miscTabStyle">
+                        <span class="accordion-name">Miscellaneous</span>
+                    </a>
+                </div>
+                <div class="usn-accordion-content" ng-class="{'tab-closed' : miscTabStyle, 'tab-open' : !miscTabStyle}">
+
+                    <!-- Group section -->
+                    <div class="usn-group-section">
+
+                        <label class="usn-label">Back to top</label>
+                        <span class="note usn-note">Choose to display and set the horizontal position of your 'Back to top' link.</span>
+
+                        <!-- Form Group -->
+                        <div class="usn-form-group">
+
+                            <!-- Input Row -->
+                            <div class="usn-input-row">
+
+                                <!-- Input Col -->
+                                <div class="usn-input-col usn-input-col-quarter">
+
+                                    <switch ng-model="model.value.displayBackToTopOption"></switch>
+                                    <span class="switcher-status" ng-class="{ active: model.value.displayBackToTopOption }">{{model.value.displayBackToTopOption ? 'Yes' : 'No'}}</span>
+
+                                </div>
+                                <!--// Input Col -->
+                                <!-- Input Col -->
+                                <div class="usn-input-col usn-input-col-quarter">
+
+                                    <div ng-show="model.value.displayBackToTopOption">
+                                        <div class="usn-cms horizontal-position">
+                                            <label class="usn-item item smallItem position-item">
+                                                <input value="position-left" name="backToTopHorizontalPosition" type="radio" ng-model="model.value.backToTopHorizontalPosition">
+                                                <span></span>
+                                                <div class="inner">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         width="20px" height="12px">
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M1.000,5.000 L20.000,5.000 L20.000,6.000 L1.000,6.000 L1.000,5.000 Z" />
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M1.525,5.318 L7.182,10.975 L6.475,11.682 L0.818,6.025 L1.525,5.318 Z" />
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M1.671,5.995 L6.995,0.671 L6.329,0.005 L1.005,5.329 L1.671,5.995 Z" />
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                            <label class="usn-item item smallItem position-item">
+                                                <input value="position-center" name="backToTopHorizontalPosition" type="radio" ng-model="model.value.backToTopHorizontalPosition">
+                                                <span></span>
+                                                <div class="inner">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         width="27.5px" height="27.5px">
+                                                        <path fill-rule="evenodd" stroke="rgb(65, 54, 89)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+                                                              d="M9.000,6.000 L18.000,6.000 C19.657,6.000 21.000,7.343 21.000,9.000 L21.000,18.000 C21.000,19.657 19.657,21.000 18.000,21.000 L9.000,21.000 C7.343,21.000 6.000,19.657 6.000,18.000 L6.000,9.000 C6.000,7.343 7.343,6.000 9.000,6.000 Z" />
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M13.000,-0.000 L14.000,-0.000 L14.000,6.000 L13.000,6.000 L13.000,-0.000 Z" />
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M13.000,21.000 L14.000,21.000 L14.000,27.000 L13.000,27.000 L13.000,21.000 Z" />
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                            <label class="usn-item item smallItem position-item">
+                                                <input value="position-right" name="backToTopHorizontalPosition" type="radio" ng-model="model.value.backToTopHorizontalPosition">
+                                                <span></span>
+                                                <div class="inner">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                         width="20px" height="12px">
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M1.000,5.000 L20.000,5.000 L20.000,6.000 L1.000,6.000 L1.000,5.000 Z" />
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M1.525,5.318 L7.182,10.975 L6.475,11.682 L0.818,6.025 L1.525,5.318 Z" />
+                                                        <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                              d="M1.671,5.995 L6.995,0.671 L6.329,0.005 L1.005,5.329 L1.671,5.995 Z" />
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!--// Input Col -->
+
+                            </div>
+                            <!--// Input Row -->
+
+                        </div>
+                        <!--// Form Group -->
+
+                    </div>
+                    <!--// Group section -->
+                    <!-- Group section -->
+                    <div class="usn-group-section">
+
+                        <label class="usn-label">Notification</label>
+                        <span class="note usn-note">Set the horizontal position of your 'Notification' pop-out.</span>
+
+                        <!-- Form Group -->
+                        <div class="usn-form-group">
+
+                            <!-- Input Row -->
+                            <div class="usn-input-row">
+
+                                <!-- Input Col -->
+                                <div class="usn-input-col usn-input-col-full">
+
+                                    <div class="usn-cms horizontal-position">
+                                        <label class="usn-item item smallItem position-item">
+                                            <input value="position-left" name="notificationHorizontalPosition" type="radio" ng-model="model.value.notificationHorizontalPosition">
+                                            <span></span>
+                                            <div class="inner">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                     width="20px" height="12px">
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M1.000,5.000 L20.000,5.000 L20.000,6.000 L1.000,6.000 L1.000,5.000 Z" />
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M1.525,5.318 L7.182,10.975 L6.475,11.682 L0.818,6.025 L1.525,5.318 Z" />
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M1.671,5.995 L6.995,0.671 L6.329,0.005 L1.005,5.329 L1.671,5.995 Z" />
+                                                </svg>
+                                            </div>
+                                        </label>
+                                        <label class="usn-item item smallItem position-item">
+                                            <input value="position-center" name="notificationHorizontalPosition" type="radio" ng-model="model.value.notificationHorizontalPosition">
+                                            <span></span>
+                                            <div class="inner">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                     width="27.5px" height="27.5px">
+                                                    <path fill-rule="evenodd" stroke="rgb(65, 54, 89)" stroke-width="1px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+                                                          d="M9.000,6.000 L18.000,6.000 C19.657,6.000 21.000,7.343 21.000,9.000 L21.000,18.000 C21.000,19.657 19.657,21.000 18.000,21.000 L9.000,21.000 C7.343,21.000 6.000,19.657 6.000,18.000 L6.000,9.000 C6.000,7.343 7.343,6.000 9.000,6.000 Z" />
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M13.000,-0.000 L14.000,-0.000 L14.000,6.000 L13.000,6.000 L13.000,-0.000 Z" />
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M13.000,21.000 L14.000,21.000 L14.000,27.000 L13.000,27.000 L13.000,21.000 Z" />
+                                                </svg>
+                                            </div>
+                                        </label>
+                                        <label class="usn-item item smallItem position-item">
+                                            <input value="position-right" name="notificationHorizontalPosition" type="radio" ng-model="model.value.notificationHorizontalPosition">
+                                            <span></span>
+                                            <div class="inner">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                     width="20px" height="12px">
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M1.000,5.000 L20.000,5.000 L20.000,6.000 L1.000,6.000 L1.000,5.000 Z" />
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M1.525,5.318 L7.182,10.975 L6.475,11.682 L0.818,6.025 L1.525,5.318 Z" />
+                                                    <path fill-rule="evenodd" fill="rgb(65, 54, 89)"
+                                                          d="M1.671,5.995 L6.995,0.671 L6.329,0.005 L1.005,5.329 L1.671,5.995 Z" />
+                                                </svg>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <!--// Input Col -->
+
+                            </div>
+                            <!--// Input Row -->
+
+                        </div>
+                        <!--// Form Group -->
+
+                    </div>
+                    <!--// Group section -->
+                    
+                </div>
+                <!--// Item -->
+            </div>
+        </div>
+    </section>
+ 
+</div>

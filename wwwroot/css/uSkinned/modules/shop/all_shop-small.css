@@ -1,0 +1,25 @@
+/*  
+---------------------------------------------------
+Shop - Small Breakpoint
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+Mini Shopping Cart in header
+---------------------------------------------------  
+*/
+
+header#site-header nav.shopping-cart {
+    position: absolute;
+    top: 0;
+    right: 60px;
+    z-index: 200;
+    width: var(--expand-nav-width);
+    height: var(--small-header);
+}
+
+header#site-header nav.shopping-cart button.open-cart { 
+    width: var(--expand-nav-width);
+    height: var(--small-header);
+}

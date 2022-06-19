@@ -1,0 +1,104 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    if (!Model.Value<bool>("hideWebsiteFooterSection"))
+    {
+        UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+        Usnfooter footer = (Usnfooter)Model.Footer;
+
+        if (footer != null)
+        {
+            Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+            string backgroundImageStyle = _siteBuilderService.GetBackgroundImageStyle(websiteStyle.FooterBgimageOptions, websiteStyle.FooterBackgroundImage);
+
+            var pods = footer.FooterItems;
+            string uniqueID = Guid.NewGuid().ToString();
+
+            <footer id="site-footer" class="@websiteStyle.StyleColors.footerBackgroundClass">
+                @if (backgroundImageStyle.HasValue())
+                {
+                    <div class="image background-image footer-background-image" @Html.Raw(backgroundImageStyle)></div>
+                }
+
+                <!-- Breadcrumb -->
+                @await Html.PartialAsync(Model.ThemeFolder + "/Navigation/Breadcrumb", Model)
+                <!--// Breadcrumb -->
+
+                <div class="container">
+
+                    @if (pods != null && pods.Any())
+                    {
+                        <!-- Row -->
+                        <div class="row listing">
+
+                            @for (int i = 0; i < pods.Count(); i++)
+                            {
+                                var item = footer.FooterItems.ElementAt(i);
+                                var itemColumnSettings = item.Settings != null ? item.Settings : item.Content;
+
+                                var previousItem = i > 0 ? footer.FooterItems.ElementAt(i - 1) : null;
+
+                                string leftOffsetDesktop = (previousItem != null && previousItem.Content.ContentType.Alias == Usn_Pb_SpacerColumn.ModelTypeAlias && previousItem.Content.Value<int>("desktopColumnWidth") != 0) ? "offset-lg-" + previousItem.Content.Value<int>("desktopColumnWidth").ToString() : String.Empty;
+                                string leftOffsetTablet = (previousItem != null && previousItem.Content.ContentType.Alias == Usn_Pb_SpacerColumn.ModelTypeAlias && previousItem.Content.Value<int>("tabletColumnWidth") != 0) ? "offset-md-" + previousItem.Content.Value<int>("tabletColumnWidth").ToString() : String.Empty;
+                                string colWidthDesktop = "col-lg-" + itemColumnSettings.Value<int>("desktopColumnWidth").ToString();
+                                string colWidthTablet = "col-md-" + itemColumnSettings.Value<int>("tabletColumnWidth").ToString();
+
+                                if (item.Content.ContentType.Alias != Usn_Pb_SpacerColumn.ModelTypeAlias)
+                                {
+                                    var podItem = new SiteBuilderBlock(Model, item);
+                                    var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)podItem.BlockSettings;
+                                    string blockViewName = _siteBuilderService.GetBlockViewName(item.Content.ContentType.Alias);
+
+                                    if (blockViewName == "RelatedContent" || blockViewName == "TextImage")
+                                    {
+                                        @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "footer" }, { "backgroundColorLabel", "footer" }, { "uniqueID", uniqueID }, { "leftOffsetDesktop", leftOffsetDesktop }, { "leftOffsetTablet", leftOffsetTablet }, { "colWidthDesktop", colWidthDesktop }, { "colWidthTablet", colWidthTablet } })
+                                    }
+                                    else
+                                    {
+                                        string podStyle = "usn_pod_" + _siteBuilderService.GetBlockStyleName(podItem.BlockContent.ContentType.Alias);
+
+                                        <div class="item footer-item @podStyle @leftOffsetDesktop @leftOffsetTablet @colWidthDesktop @colWidthTablet col-12 col @itemCommonBlockSettings.CustomClasses">
+                                            @if (!podItem.BlockSettings.Value<bool>("hideFromWebsite"))
+                                            {
+                                                <div class="inner">
+                                                    @await Html.PartialAsync(Model.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "footer" }, { "backgroundColorLabel", "footer" }, { "uniqueID", uniqueID } })
+                                                </div>
+                                            }
+                                        </div>
+
+                                    }
+                                }
+                            }
+
+                        </div>
+                        <!--// Row -->
+                    }
+                    <!-- Row -->
+                    <div class="row">
+
+                        <div class="col">
+                            <nav aria-label="Footer Navigation" class="footer-navigation">
+                                <ul>
+                                    <li><div>&copy; @DateTime.Now.ToString("yyyy") @Html.Raw(footer.CopyrightMessage)</div></li>
+                                    @await Html.PartialAsync(Model.ThemeFolder + "/Navigation/FooterNavigation", Model)
+                                    <li class="site-credit">
+                                        <div>Made with </div>
+                                        <span><a target="_blank" rel="noopener" title="@Umbraco.GetDictionaryValue("USN New Window Title Tag")" href="http://www.uskinned.net">uSkinned</a></span>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                    <!--// Row -->
+
+                    @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/BackToTop", Model)
+
+                </div>
+            </footer>
+        }
+    }
+}

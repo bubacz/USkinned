@@ -1,0 +1,94 @@
+/*  
+---------------------------------------------------
+Body
+---------------------------------------------------  
+*/
+
+html { 
+    overflow-x: hidden;
+    overflow-y: auto;
+} 
+
+body { 
+    position:relative;
+
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-delay: 0;
+    animation-delay: 0;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+body.no-header {
+    padding: 0;
+}
+
+#site { 
+    position:relative; z-index:2; 
+    padding: 0;
+    margin: 0 auto;
+}
+
+body.max-width #site {
+    box-shadow: var(--site-box-shadow_h) var(--site-box-shadow_v) var(--site-box-shadow_b) rgba(var(--true-black), var(--site-box-shadow_o));
+}
+
+@media (min-width:1350px) {
+    .container {
+        max-width: var(--component-max-width);
+    }
+}
+
+a,
+a::before, a::after { 
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+/* IE10+ specific styles go here */ 
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    html, body { 
+        overflow-x: hidden!important;
+    }
+}

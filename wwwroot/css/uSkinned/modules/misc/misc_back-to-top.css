@@ -1,0 +1,14 @@
+/*  
+---------------------------------------------------
+Back to top
+---------------------------------------------------  
+*/
+
+.usn_back-to-top { 
+    display:block;
+    transition: bottom 0.3s ease-in-out 0s, opacity 0.3s ease-in-out 0s, box-shadow 0.3s ease-in-out 0s;
+}
+.usn_back-to-top a.btn i { 
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+}

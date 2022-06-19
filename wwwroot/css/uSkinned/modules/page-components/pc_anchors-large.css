@@ -1,0 +1,103 @@
+/*  
+---------------------------------------------------
+Anchors - Large Breakpoint
+---------------------------------------------------  
+*/
+
+.component.usn_cmp_anchornavigation { 
+    padding-bottom:0!important;
+}
+.component.usn_cmp_anchornavigation nav:not(.tab-basic) { 
+    padding-bottom:var(--base-half-spacing);
+}
+
+
+/* 
+---------------------------------------------------
+Anchors Styles
+
+Basic
+Buttons
+Underline
+Linethrough
+---------------------------------------------------  
+*/
+
+
+/*	
+--------------------------------------------------
+Tab Basic Style 
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav.justify-content-center li.nav-item { 
+    margin: 0 2.5px;
+}
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav.justify-content-start li.nav-item { 
+    margin-right:5px;
+}
+.component.usn_cmp_anchornavigation nav.tab-basic ul.nav.justify-content-end li.nav-item { 
+    margin-left:5px;
+}
+
+
+/*	
+--------------------------------------------------
+Tab Button Style 
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav.justify-content-center li.nav-item { 
+    margin: 0 5px;
+}
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav.justify-content-start li.nav-item { 
+    margin-right:10px;
+}
+.component.usn_cmp_anchornavigation nav.tab-buttons ul.nav.justify-content-end li.nav-item { 
+    margin-left:10px;
+}
+
+
+/*	
+--------------------------------------------------
+Tab Underline Style
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav.justify-content-center li.nav-item { 
+    margin: 0 5px;
+}
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav.justify-content-start li.nav-item { 
+    margin-right:10px;
+}
+.component.usn_cmp_anchornavigation nav.tab-underline ul.nav.justify-content-end li.nav-item { 
+    margin-left:10px;
+}
+
+
+/*	
+--------------------------------------------------
+Tab Linethrough Style
+-------------------------------------------------- 
+*/
+
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav.justify-content-center li.nav-item { 
+    margin: 0 5px;
+}
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav.justify-content-start li.nav-item { 
+    margin-right:10px;
+}
+.component.usn_cmp_anchornavigation nav.tab-linethrough ul.nav.justify-content-end li.nav-item { 
+    margin-left:10px;
+}
+
+
+/* 
+---------------------------------------------------
+Anchors Expand
+---------------------------------------------------  
+*/
+
+.component.usn_cmp_anchornavigation .expand { 
+    display:none
+}

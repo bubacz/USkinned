@@ -1,0 +1,19 @@
+/*  
+---------------------------------------------------
+Back to top - Small Breakpoint
+---------------------------------------------------  
+*/
+    
+.usn_back-to-top {  
+    padding:var(--backtotop-size_sm) 0 var(--backtotop-spacing_below_sm);
+}
+body.header-02-sm .usn_back-to-top {  
+    padding: var(--backtotop-size_sm) 0 calc(var(--backtotop-size_sm) * 1.25);
+}
+
+.usn_back-to-top a.btn { 
+    display:block;
+    height: var(--backtotop-size_sm);
+    font-size:25px; 
+}
+

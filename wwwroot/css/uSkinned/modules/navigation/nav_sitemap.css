@@ -1,0 +1,63 @@
+/*  
+---------------------------------------------------
+Sitemap navigation
+---------------------------------------------------  
+*/
+
+nav.sitemap {
+    position: relative;
+}
+
+nav.sitemap ul.nav {
+    display: block;
+    margin: 0;
+    padding: 0 0 8px;
+}
+nav.sitemap ul.nav ul.nav { 
+    margin-left:var(--base-half-spacing);
+}
+
+nav.sitemap ul li {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+nav.sitemap ul li::before,
+nav.sitemap ul li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: block;
+    background-color:  rgba(var(--base-borders), 1);
+    transition: all 0.2s ease-in-out 0s;
+}
+
+nav.sitemap ul li::before {
+    top: 0;
+    bottom: 0;
+    width: var(--base-border-width);
+    height: 100%;
+}
+
+nav.sitemap ul li::after {
+    top: 18px;
+    width: 5px;
+    height: var(--base-border-width);
+}
+
+/*
+nav.sitemap ul li a:hover {
+    padding-left: 18px;
+}
+*/
+
+nav.sitemap ul li:hover::after {
+    width: 8px;
+    background-color: rgba(var(--base-borders), 0.5);
+}
+
+nav.sitemap ul ul {
+    margin-left: 16px;
+}

@@ -1,0 +1,296 @@
+﻿
+/* Design Grid */
+
+.umb-content-grid.usn-global-grid .umb-content-grid__item,
+.umb-content-grid.usn-design-grid .umb-content-grid__item { 
+    box-shadow:0 3px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out 0s;
+} 
+
+.umb-content-grid.usn-global-grid .umb-content-grid__item:hover,
+.umb-content-grid.usn-design-grid .umb-content-grid__item:hover {
+    box-shadow:0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.umb-content-grid.usn-global-grid .umb-content-grid__item:before,
+.umb-content-grid.usn-design-grid .umb-content-grid__item:before {
+    display: none;
+}
+
+.usn-design-grid-item-inner,
+.usn-global-grid-item-inner { 
+    position: relative;
+}
+
+.usn-design-grid-item-inner::before,
+.usn-global-grid-item-inner::before { 
+    content: "";
+    position: absolute; top:0; right:0; bottom:0; left:0; z-index:15;
+    border:1px solid #e9e9eb;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out 0s;
+}
+.umb-content-grid.usn-global-grid .umb-content-grid__item:hover .usn-global-grid-item-inner::before, 
+.umb-content-grid.usn-design-grid .umb-content-grid__item:hover .usn-design-grid-item-inner::before {
+    border-color: rgba(28, 38, 79, 0.5);
+}
+
+.usn-color-palette {
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
+    position: absolute; top: -14px; right: -14px; bottom: -14px;
+    width: 40px; height: calc(100% + 18px);
+    overflow: hidden;
+    border-radius: 0 2px 2px 0;
+    padding: 6px 6px 4px 6px;
+    border-left:1px solid #e9e9eb;
+    box-shadow: -4px 0 4px rgba(0, 0, 0, 0.02);
+    background:#fff;
+}
+
+.usn-color-palette > .usn-color {
+    position: relative; overflow: visible;
+    flex: 1;
+    width: 100%;
+    flex-grow: 5;
+    border-radius: 2px;
+    margin-bottom: 2px;
+}
+
+.umb-content-grid.usn-global-grid .usn-global-desc { 
+    margin-bottom:10px;
+}
+
+.umb-content-grid.usn-design-grid a,
+.umb-content-grid.usn-global-grid a { 
+    display: block;
+    position: relative; z-index: 16;
+}
+
+.umb-content-grid.usn-design-grid a,
+.umb-content-grid.usn-design-grid a:hover,
+.umb-content-grid.usn-design-grid a:active,
+.umb-content-grid.usn-design-grid a:focus,
+.umb-content-grid.usn-global-grid a,
+.umb-content-grid.usn-global-grid a:hover,
+.umb-content-grid.usn-global-grid a:active,
+.umb-content-grid.usn-global-grid a:focus { 
+    text-decoration: none!important;
+}
+.umb-content-grid.usn-global-grid .umb-content-grid__item:hover .usn-global-title span,
+.umb-content-grid.usn-design-grid .umb-content-grid__item:hover .usn-design-title span,
+.umb-content-grid.usn-design-grid a:hover .usn-design-title span,
+.umb-content-grid.usn-design-grid a:active .usn-design-title span,
+.umb-content-grid.usn-design-grid a:focus .usn-design-title span,
+.umb-content-grid.usn-global-grid a:hover .usn-global-title span,
+.umb-content-grid.usn-global-grid a:active .usn-global-title span,
+.umb-content-grid.usn-global-grid a:focus .usn-global-title span { 
+    text-decoration: underline!important;
+}
+
+.umb-content-grid.usn-global-grid a.-light,
+.umb-content-grid.usn-design-grid a.-light {
+}
+.umb-content-grid.usn-global-grid a:not(.-light) .usn-global-title .alert.alert-usn,
+.umb-content-grid.usn-design-grid a:not(.-light) .usn-design-title .alert.alert-usn { 
+    display:none;
+}
+.umb-content-grid.usn-global-grid .usn-global-title .umb-badge,
+.umb-content-grid.usn-design-grid .usn-design-title .umb-badge { 
+    content:"Unpublished";
+    display: inline-block;
+    border-radius: 40px;
+    margin: 0 0 0 7px; padding:6px 10px 4px;
+    font-size:10px; line-height: 1;
+}
+
+.umb-content-grid.usn-global-grid a.-light .usn-global-title span,
+.umb-content-grid.usn-design-grid a.-light .usn-design-title span { 
+    color:#817f85!important;
+}
+
+/* Global edits after including icon image */
+
+.umb-content-grid.usn-global-grid .usn-global-grid-item,
+.umb-content-grid.usn-global-grid .usn-global-grid-item-inner {
+    height: 125px;
+    overflow: hidden;
+}
+
+.umb-content-grid.usn-global-grid .usn-global-title > span,
+.umb-content-grid.usn-design-grid .usn-design-title > span {
+    padding-right:210px;
+
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.umb-content-grid.usn-design-grid .usn-design-title > span {
+    padding-right:60px
+}
+
+.umb-content-grid.usn-global-grid .umb-content-grid__item-name {
+    margin-bottom:4px;
+}
+
+.umb-content-grid.usn-global-grid .usn-global-desc {
+    font-size: 87.5%;
+    padding-right:210px;
+    width: calc(100% - 210px);
+    height: 62px;
+    color:#494949;
+
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.umb-content-grid.usn-global-grid .usn-global-image { 
+    position:absolute; top:-14px; right:-14px; 
+    width:200px; height:123px;
+    background:#f6f4f4; 
+    border-radius:0 3px 3px 0;
+    border-left:1px solid #e9e9eb;
+}
+
+.umb-content-grid.usn-global-grid .usn-global-image > img { 
+    width:100%; max-width:100%; height:123px;
+}
+
+/* Global edits after including icon image END */
+
+.umb-content-grid.usn-global-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width:400px) {
+
+    .usn-global-grid .umb-content-grid__icon { 
+        position:absolute; top:50%; right:15px;
+        transform: translateY(-50%);
+        font-size: 40px;
+    }
+
+}
+
+@media (min-width:655px) {
+
+    .umb-content-grid.usn-design-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(380px,1fr));
+    }
+
+    .umb-content-grid.usn-design-grid > .usn-global-design-item a { 
+        padding-right:100px;
+    }
+
+    .usn-global-grid .umb-content-grid__icon { 
+        font-size: 50px;
+    }
+
+}
+
+@media (min-width:800px) {
+
+    .usn-global-grid .umb-content-grid__icon { 
+        font-size: 60px;
+    }
+
+    .usn-design-grid .umb-content-grid__icon { 
+        font-size:21px;
+        margin-top:1px;
+    }
+    .usn-design-grid .usn-design-title,
+    .usn-global-grid .usn-global-title { 
+        font-size:16px;
+    }
+    
+}
+
+@media (min-width:1200px) {
+
+    .umb-content-grid.usn-global-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .umb-content-grid.usn-global-grid > .usn-global-grid-item:first-child { 
+        grid-area: 1 / 1 / 2 / 3; 
+    }
+
+    .usn-design-grid .umb-content-grid__icon { 
+        font-size:22px;
+    }
+    .usn-design-grid .usn-design-title,
+    .usn-global-grid .usn-global-title { 
+        font-size:17px;
+    }
+}
+
+
+
+/* Custom List View — reusable components & Pods */
+
+
+.usn-reusable-items {
+    display: flex;
+    align-content: stretch;
+    overflow: hidden;
+    background:#fff;
+    box-sizing: border-box;
+}
+.usn-reusable-items.usn-horz-reusable { 
+    flex-direction: row;
+    position:relative; right: -14px; bottom: -14px; left: -14px; 
+    width: calc(100% + 28px); 
+    padding: 15px 0 15px 15px;
+    border-radius: 0 0 2px 2px;
+    border-top:1px solid #e9e9eb;
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.02);
+}
+.usn-reusable-items:not(.usn-horz-reusable) {
+    flex-direction: column;
+    position: absolute; top: -14px; right: -14px; bottom: -14px;
+    width: 65px; height: calc(100% + 28px);
+    border-radius: 0 2px 2px 0;
+    padding: 10px;
+    border-left:1px solid #e9e9eb;
+    box-shadow: -4px 0 4px rgba(0, 0, 0, 0.02);
+}
+
+.usn-reusable-items::after { 
+    content:"";
+    width:40px; height:100%; 
+    position:absolute; bottom:0; right:0; z-index: 10;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 100%);
+}
+.usn-reusable-items > .usn-reusable-used {
+    position: relative; 
+    width: 100%; 
+}
+.usn-reusable-items.usn-horz-reusable > .usn-reusable-used {
+    flex: 0 0 80px;
+    width: 80px;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+.usn-reusable-items:not(.usn-horz-reusable) > .usn-reusable-used {
+    border-radius: 2px;
+    margin-bottom: 8px;
+}
+
+.usn-reusable-items > .usn-reusable-used > img {
+    width: 100%; max-width: 100%; height: auto;
+    width: 80px;
+}

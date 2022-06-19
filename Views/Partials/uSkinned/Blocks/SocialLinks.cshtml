@@ -1,0 +1,70 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@using Microsoft.Extensions.Options
+@inject ISiteBuilderService _siteBuilderService
+@inject IOptions<USNAppSettings> _appSettings
+@{
+    // Available as Pod Block type only
+
+    var content = (Usn_Pb_SocialLinks)Model.BlockContent;
+
+    //Settings taken from compositions common to all block types
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", animation }, { "heading", content.Heading }, { "secondaryHeading", content.SecondaryHeading }, { "backgroundColorLabel", backgroundColorLabel } })
+
+    if (content.SocialLinks.HasValue() && content.SocialLinks.Any())
+    {
+        <nav class="social @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+
+            <ul>
+                @foreach (var item in content.SocialLinks)
+                {
+                    if (_siteBuilderService.DisplayLink(item, disableModalLinks))
+                    {
+                        <li>
+                            <span>
+                                <a href="@item.link.LinkUrl" @Html.Raw(item.link.LinkTarget) @Html.Raw(item.link.LinkTitle)>
+                                    @if (item.image.HasValue())
+                                    {
+                                        bool webPEnabled = _appSettings.Value.WebPEnabled;
+
+                                        if (item.image.Value<string>("umbracoExtension") != "svg")
+                                        {
+                                            <picture>
+                                                @if (webPEnabled)
+                                                {
+                                                    <source type="image/webp" data-srcset="@item.image.Url()?format=webp&height=80 1x, @item.image.Url()?format=webp&height=160 2x">
+                                                }
+                                                <img class="lazyload" src="@item.image.Url()?height=16" data-srcset="@item.image.Url()?height=80 1x, @item.image.Url()?height=160 2x" alt="@(item.image.Value<string>("alternativeText"))">
+                                            </picture>
+                                        }
+                                        else
+                                        {
+                                            <img src="@item.image.Url()" alt="@(item.image.Value<string>("alternativeText"))">
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw(item.link.LinkText)
+                                    }
+                                </a>
+                            </span>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+    }
+
+}

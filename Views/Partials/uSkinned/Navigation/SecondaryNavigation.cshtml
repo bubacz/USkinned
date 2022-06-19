@@ -1,0 +1,148 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@using Umbraco.Cms.Core.Security
+@using Microsoft.Extensions.Options
+@using System.Threading
+@inject ISiteBuilderService _siteBuilderService
+@inject IMemberManager _memberManager
+@inject IOptions<USNAppSettings> _appSettings
+@{
+    Usnnavigation navigation = (Usnnavigation)Model.Navigation;
+    var routeCultures = _siteBuilderService.GetRootCultures();
+
+    if (navigation != null && ((navigation.SecondaryNavigation != null && navigation.SecondaryNavigation.Any()) ||
+        (navigation.MultilingualConfiguration.HasValue() && navigation.MultilingualConfiguration == "multitenant" && navigation.LanguageNavigation != null && navigation.LanguageNavigation.Any()) ||
+        (navigation.MultilingualConfiguration.HasValue() && navigation.MultilingualConfiguration == "onetoone" && routeCultures != null && routeCultures.Count() > 1) ||
+        (!_memberManager.IsLoggedIn() && navigation.LoggedOutMembersNavigation != null && navigation.LoggedOutMembersNavigation.Any()) ||
+        _memberManager.IsLoggedIn()))
+    {
+        Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+
+        <nav aria-label="Secondary Navigation" class="secondary nav-dropdown @websiteStyle.StyleColors.navDropdownBackgroundClass">
+            <ul>
+                @if (navigation.SecondaryNavigation != null && navigation.SecondaryNavigation.Any())
+                {
+                    foreach (var secNavItem in navigation.SecondaryNavigation)
+                    {
+                        if (_siteBuilderService.DisplayLink(secNavItem))
+                        {
+                            <li><span><a href="@secNavItem.link.LinkUrl" @Html.Raw(secNavItem.link.LinkTarget) @Html.Raw(secNavItem.link.LinkTitle)>@Html.Raw(secNavItem.icon)@Html.Raw(secNavItem.link.LinkText)@Html.Raw(secNavItem.link.LinkTargetIcon)</a></span></li>
+                        }
+                    }
+                }
+                @if (_memberManager.IsLoggedIn())
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="myAccountDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon usn_ion-md-contact before"></i><span>@Context.User.Identity.Name</span></a>
+
+                        @if (navigation.LoggedInMembersNavigation != null)
+                        {
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="myAccountDropdown">
+                                @foreach (var memNavItem in navigation.LoggedInMembersNavigation)
+                                {
+                                    if (_siteBuilderService.DisplayLink(memNavItem))
+                                    {
+                                        <a class="dropdown-item" href="@memNavItem.link.LinkUrl" @Html.Raw(memNavItem.link.LinkTarget) @Html.Raw(memNavItem.link.LinkTitle)>@Html.Raw(memNavItem.icon)@Html.Raw(memNavItem.link.LinkText)@Html.Raw(memNavItem.link.LinkTargetIcon)</a>
+                                    }
+                                }<a class="dropdown-item" href="@Url.SurfaceAction("Logout", "MemberSurface")"><i class="icon usn_ion-md-log-out before"></i>@Umbraco.GetDictionaryValue("USN Members Navigation Logout")</a>
+                            </div>
+                        }
+                    </li>
+                }
+                else if (!_memberManager.IsLoggedIn() && (navigation.LoggedOutMembersNavigation != null && navigation.LoggedOutMembersNavigation.Any()))
+                {
+                    string navigationHeading = navigation.MembersNavigationHeading.HasValue() ? navigation.MembersNavigationHeading : Umbraco.GetDictionaryValue("USN Members Navigation Default Heading");
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="myAccountDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon usn_ion-md-contact before"></i><span>@navigationHeading</span></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="myAccountDropdown">
+                            @foreach (var memNavItem in navigation.LoggedOutMembersNavigation)
+                            {
+                                if (_siteBuilderService.DisplayLink(memNavItem))
+                                {
+                                    <a class="dropdown-item" href="@memNavItem.link.LinkUrl" @Html.Raw(memNavItem.link.LinkTarget) @Html.Raw(memNavItem.link.LinkTitle)>@Html.Raw(memNavItem.icon)@Html.Raw(memNavItem.link.LinkText)@Html.Raw(memNavItem.link.LinkTargetIcon)</a>
+                                }
+                            }
+                        </div>
+                    </li>
+                }
+
+                @if (navigation.MultilingualConfiguration.HasValue())
+                {
+                    bool webPEnabled = _appSettings.Value.WebPEnabled;
+
+                    if (navigation.MultilingualConfiguration == "multitenant" && navigation.LanguageNavigation != null && navigation.LanguageNavigation.Any())
+                    {
+                        string heading = navigation.LanguageHeading.HasValue() ? navigation.LanguageHeading : Umbraco.GetDictionaryValue("USN Language Navigation");
+
+                        <li class="language-selector dropdown">
+                            <a href="#" class="dropdown-toggle" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@if (navigation.LanguageHeadingIconImage.HasValue() && navigation.LanguageHeadingIconImage.Value<string>("umbracoExtension") != "svg"){<picture> @if (webPEnabled){<source type="image/webp" data-srcset="@navigation.LanguageHeadingIconImage.Url()?format=webp&height=70 1x, @navigation.LanguageHeadingIconImage.Url()?format=webp&height=140 2x">}<img class="lazyload" src="@navigation.LanguageHeadingIconImage.Url()?height=14" data-srcset="@navigation.LanguageHeadingIconImage.Url()?height=70 1x, @navigation.LanguageHeadingIconImage.Url()?height=140 2x" alt="@(navigation.LanguageHeadingIconImage.Value<string>("alternativeText"))"></picture>}else if (navigation.LanguageHeadingIconImage.HasValue() && navigation.LanguageHeadingIconImage.Value<string>("umbracoExtension") == "svg"){<img class="lazyload" src="@navigation.LanguageHeadingIconImage.Url()" alt="@(navigation.LanguageHeadingIconImage.Value<string>("alternativeText"))">}<span>@heading</span></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
+                                @foreach (var languageNavItem in navigation.LanguageNavigation)
+                                {
+                                    if (_siteBuilderService.DisplayLink(languageNavItem))
+                                    {
+                                        <a class="dropdown-item" href="@languageNavItem.link.LinkUrl" @Html.Raw(languageNavItem.link.LinkTarget) @Html.Raw(languageNavItem.link.LinkTitle)>
+                                            @if (languageNavItem.image.HasValue() && languageNavItem.image.Value<string>("umbracoExtension") != "svg")
+                                            {<picture>
+                                                    @if (webPEnabled)
+                                                    {
+                                                        <source type="image/webp" data-srcset="@languageNavItem.image.Url()?format=webp&height=70 1x, @languageNavItem.image.Url()?format=webp&height=140 2x">
+                                                    }
+                                                    <img class="lazyload" src="@languageNavItem.image.Url()?height=14" data-srcset="@languageNavItem.image.Url()?height=70 1x, @languageNavItem.image.Url()?height=140 2x" alt="@(languageNavItem.image.Value<string>("alternativeText"))">
+                                                </picture>}
+                                            else if (languageNavItem.image.HasValue() && languageNavItem.image.Value<string>("umbracoExtension") == "svg")
+                                            {<img class="lazyload" src="@languageNavItem.image.Url()" alt="@(languageNavItem.image.Value<string>("alternativeText"))">}<span>@Html.Raw(languageNavItem.link.LinkText)</span>
+                                        </a>
+                                    }
+                                }
+                            </div>
+                        </li>
+                    }
+                    else if (navigation.MultilingualConfiguration == "onetoone")
+                    {
+                        if (routeCultures != null && routeCultures.Count() > 1)
+                        {
+                            var site = Model.Root();
+
+                            string currentCulture = Thread.CurrentThread.CurrentUICulture.Name;
+                            string currentLanguageName = site.Value("languageName", fallback: Fallback.ToDefaultValue, defaultValue: Thread.CurrentThread.CurrentUICulture.NativeName);
+                            string currentFlagUrl = site.Value<IPublishedContent>("languageFlag")?.Url() != null ? site.Value<IPublishedContent>("languageFlag").Url() : _siteBuilderService.GetFlag(currentCulture, Model.ThemeFolder);
+
+                            <li class="language-selector dropdown">
+                                <a href="#" class="dropdown-toggle" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@if (System.IO.Path.GetExtension(currentFlagUrl) != "svg"){<picture>@if (webPEnabled){<source type="image/webp" data-srcset="@currentFlagUrl?format=webp&height=70 1x, @currentFlagUrl?format=webp&height=140 2x">}<img class="lazyload" src="@currentFlagUrl?height=14" data-srcset="@currentFlagUrl?height=70 1x,@currentFlagUrl?height=140 2x" alt="@currentLanguageName"></picture>}else{<img src="@currentFlagUrl" alt="@currentLanguageName">}<span>@currentLanguageName</span></a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
+                                    @foreach (var language in routeCultures)
+                                    {
+                                        if (currentCulture != language.CultureInfo.Name)
+                                        {
+                                            var title = site.Value("languageName", fallback: Fallback.ToDefaultValue, defaultValue: language.CultureInfo.NativeName.ToString(), culture: language.CultureInfo.Name);
+                                            var flagUrl = site.Value<IPublishedContent>("languageFlag", culture: language.CultureInfo.Name)?.Url() != null ? site.Value<IPublishedContent>("languageFlag", culture: language.CultureInfo.Name).Url() : _siteBuilderService.GetFlag(language.CultureInfo.Name, Model.ThemeFolder);
+
+                                            <a class="dropdown-item" href="@(!Model.Cultures.ContainsKey(language.CultureInfo.Name) ? site.Url(language.CultureInfo.Name) : Model.Url(language.CultureInfo.Name) )">
+                                                @if (System.IO.Path.GetExtension(currentFlagUrl) != "svg")
+                                                {<picture>
+                                                        @if (webPEnabled)
+                                                        {
+                                                            <source type="image/webp" data-srcset="@flagUrl?format=webp&height=70 1x, @flagUrl?format=webp&height=140 2x">
+                                                        }
+                                                        <img class="lazyload" src="@flagUrl?height=14" data-srcset="@flagUrl?height=140 1x, @flagUrl?height=140 2x" alt="@title">
+                                                    </picture>}
+                                                else
+                                                {<img src="@flagUrl" alt="@title">}
+                                                <span>@Html.Raw(title)</span>
+                                            </a>
+                                        }
+
+                                    }
+                                </div>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    }
+}

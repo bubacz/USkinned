@@ -1,0 +1,225 @@
+/*  
+---------------------------------------------------
+Banner 
+---------------------------------------------------  
+*/
+
+/* Component only */
+.component.usn_cmp_banner {
+    padding: 0;
+    overflow: hidden;
+    z-index: 801;
+}
+
+/* Not available as part of Split Component
+.item_block.usn_cmp_banner { }*/
+
+.component.usn_cmp_banner .item {
+    position: relative;
+}
+
+.component.usn_cmp_banner .item.item_scale-banner,
+.component.usn_cmp_banner .item.item_scale-banner .image,
+.component.usn_cmp_banner .item.item_scale-banner .image .video {
+    height: auto!important;
+}
+
+.component.usn_cmp_banner .item.item_scale-banner .container,
+.component.usn_cmp_banner .item.item_scale-banner .row {
+    height: 100%;
+}
+
+.component.usn_cmp_banner .item.item_short-banner,
+.component.usn_cmp_banner .item.item_short-banner .container,
+.component.usn_cmp_banner .item.item_short-banner .row,
+.component.usn_cmp_banner .item.item_short-banner .image,
+.component.usn_cmp_banner .item.item_short-banner .image .video {
+    height: var(--short-banner);
+    height: calc(var(--short-banner) - var(--small-header));
+    min-height: calc(var(--short-bannerPX) - var(--small-header));
+}
+
+body.no-header .component.usn_cmp_banner .item.item_short-banner,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .container,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .row,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .image,
+body.no-header .component.usn_cmp_banner .item.item_short-banner .image .video {
+    height: var(--short-banner);
+    min-height: var(--short-bannerPX);
+}
+
+.component.usn_cmp_banner .item.item_medium-banner,
+.component.usn_cmp_banner .item.item_medium-banner .container,
+.component.usn_cmp_banner .item.item_medium-banner .row,
+.component.usn_cmp_banner .item.item_medium-banner .image,
+.component.usn_cmp_banner .item.item_medium-banner .image .video {
+    height: var(--medium-banner);
+    height: calc(var(--medium-banner) - var(--small-header));
+    min-height: calc(var(--medium-bannerPX) - var(--small-header));
+}
+
+body.no-header .component.usn_cmp_banner .item.item_medium-banner,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .container,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .row,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .image,
+body.no-header .component.usn_cmp_banner .item.item_medium-banner .image .video {
+    height: var(--medium-banner);
+    min-height: var(--medium-bannerPX);
+}
+
+.component.usn_cmp_banner .item.item_takeover-banner,
+.component.usn_cmp_banner .item.item_takeover-banner .container,
+.component.usn_cmp_banner .item.item_takeover-banner .row,
+.component.usn_cmp_banner .item.item_takeover-banner .image,
+.component.usn_cmp_banner .item.item_takeover-banner .image .video {
+    height: var(--takeover-banner);
+    height: calc(var(--takeover-banner) - var(--small-header));
+}
+
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video {
+    height: var(--takeover-banner);
+    height: calc(var(--takeover-banner) - var(--small-header) - 110px);
+}
+
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .container,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .row,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image,
+body.no-header.browser-ios .component.usn_cmp_banner .item.item_takeover-banner .image .video { 
+    height: calc(var(--takeover-banner) - 110px);
+}
+
+.component.usn_cmp_banner .item:not(.item_scale-banner) .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    background-repeat: no-repeat; background-position: center;
+}
+
+body:not(.browser-ios):not(.browser-safari) .parallax:not(.item_scale-banner) .image {
+    background-attachment: fixed;
+    transform: none;
+}
+
+.component.usn_cmp_banner .item .image img { 
+    position:relative;
+    z-index:1;
+}
+
+.component.usn_cmp_banner .item .image .video { 
+    z-index:2;
+}
+
+.component.usn_cmp_banner .item:not(.item_scale-banner) .image .video .video-player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width:100%; height:100%;
+    transform: translate(-50%, -50%);
+}
+
+.component.usn_cmp_banner .item.item_scale-banner .image picture + .video,
+.component.usn_cmp_banner .item.item_scale-banner .image img + .video { 
+    position: absolute;
+    top: 0;
+    right:0;
+    left: 0;
+}
+
+.component.usn_cmp_banner .item:not(.item_scale-banner) .inner,
+.component.usn_cmp_banner .item.item_scale-banner .image + .inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.component.usn_cmp_banner .item .inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.55;
+}
+
+.component.usn_cmp_banner .item .info {
+    position: relative;
+    height: 100%;
+    padding: 70px var(--base-half-spacing);
+    z-index: 2;
+}
+
+.component.usn_cmp_banner .item .info .d-table {
+    height: 100%;
+}
+
+.component.usn_cmp_banner .item .info .d-table,
+.component.usn_cmp_banner .item .info .d-table-cell {
+    width: 100%;
+}
+
+.component.usn_cmp_banner .item .row.info_align-middle .info .d-table-cell {
+    vertical-align: middle;
+}
+
+.component.usn_cmp_banner .item .row.info_align-bottom .info .d-table-cell {
+    vertical-align: bottom;
+}
+
+
+/*  
+---------------------------------------------------
+Banner Info Column
+---------------------------------------------------  
+*/
+
+@media (min-width:0) and (max-width:575px) {
+    .component.usn_cmp_banner .item .info.col { 
+        flex: 0 0 var(--banner-col);
+        -ms-flex: 0 0 var(--banner-col);
+        max-width:var(--banner-col);
+    }
+}
+
+@media (min-width:576px) {
+    .component.usn_cmp_banner .item .info.col { 
+        flex: 0 0 var(--banner-col_sm);
+        -ms-flex: 0 0 var(--banner-col_sm);
+        max-width:var(--banner-col_sm);
+    }
+}
+
+@media (min-width:768px) {
+    .component.usn_cmp_banner .item .info.col { 
+        flex: 0 0 var(--banner-col_md);
+        -ms-flex: 0 0 var(--banner-col_md);
+        max-width:var(--banner-col_md);
+    }
+}
+
+@media (min-width:992px) {
+    .component.usn_cmp_banner .item .info.col { 
+        flex: 0 0 var(--banner-col_lg);
+        -ms-flex: 0 0 var(--banner-col_lg);
+        max-width:var(--banner-col_lg);
+    }
+}
+
+@media (min-width:1200px) {
+    .component.usn_cmp_banner .item .info.col { 
+        flex: 0 0 var(--banner-col_xl);
+        -ms-flex: 0 0 var(--banner-col_xl);
+        max-width:var(--banner-col_xl);
+    }
+}

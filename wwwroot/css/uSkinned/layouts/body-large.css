@@ -1,0 +1,31 @@
+/*  
+---------------------------------------------------
+Body - Large Breakpoint
+---------------------------------------------------  
+*/
+
+#site {
+    width:calc(100% - var(--site-spacing_lg) - var(--site-spacing_lg));
+}
+
+body.max-width #site {
+    max-width:calc(var(--site-max-width) - var(--site-spacing_lg) - var(--site-spacing_lg));
+}
+
+body.transparent-header-lg #site-content > .component:first-of-type:not(.usn_cmp_banner):not(.p-0) { 
+    padding-top: calc(var(--pc-spacing_md) + var(--large-header));
+}
+body.transparent-header-lg #site-content > .component.p-0:first-of-type:not(.usn_cmp_banner) { 
+    margin-top: var(--large-header);
+}
+
+
+/*  
+---------------------------------------------------
+Content Columns
+---------------------------------------------------  
+*/
+
+.heading-col { 
+    padding-bottom:var(--base-spacing);
+}

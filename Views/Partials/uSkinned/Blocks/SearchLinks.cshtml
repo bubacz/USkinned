@@ -1,0 +1,71 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    // Available as Pod Block type only
+
+    var content = (Usn_Pb_SearchLinks)Model.BlockContent;
+
+    //Settings taken from compositions common to all pod block types
+    var uniqueSettings = (IUsn_Cmp_SearchLinks_Settings)Model.BlockSettings;
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    string formButtonColor = uniqueSettings.SearchButtonColor.label;
+
+    @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", animation }, { "heading", content.Heading }, { "secondaryHeading", content.SecondaryHeading }, { "backgroundColorLabel", backgroundColorLabel } })
+
+    if (!uniqueSettings.HideSearch)
+    {
+        UsnglobalSettings globalSettings = (UsnglobalSettings)Model.BaseModel.GlobalSettings;
+
+        IPublishedContent searchResultsPage = globalSettings.SearchResultsPage;
+
+        if (searchResultsPage != null)
+        {
+            <!-- Site search -->
+            <div class="site-search @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                <form role="search" action="@searchResultsPage.Url()" method="get" name="searchForm">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label d-none" for="search_field">@Umbraco.GetDictionaryValue("USN Search Form Placeholder")</label>
+                            <input type="text" class="form-control" name="search_field" aria-label="@Umbraco.GetDictionaryValue("USN Search Form Placeholder")" placeholder="@Umbraco.GetDictionaryValue("USN Search Form Placeholder")" value="@Context.Request.Query["search_field"]">
+                        </div>
+                        <button type="submit" role="button" aria-label="Search" class="btn @(formButtonColor)-btn-bg @(formButtonColor)-btn-bg-hover @(formButtonColor)-btn-text @(formButtonColor)-btn-borders btn-search">
+                            <span></span>
+                            <i class="icon usn_ion-ios-search"></i>
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+            <!--// Site search -->
+        }
+    }
+    if (content.Links.HasValue() && content.Links.Any())
+    {
+        <!-- Quick Links -->
+        <nav aria-label="Quick Link Navigation" class="quick-links @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+
+            <ul>
+                @foreach (SiteBuilderMultiUrlPicker item in content.Links)
+                {
+                    if (_siteBuilderService.DisplayLink(item, disableModalLinks))
+                    {
+                        <li><span><a href="@item.link.LinkUrl" @Html.Raw(item.link.LinkTarget) @Html.Raw(item.link.LinkTitle)>@Html.Raw(item.link.LinkText)@Html.Raw(item.link.LinkTargetIcon)</a></span></li>
+                    }
+                }
+            </ul>
+        </nav>
+        <!--// Quick Links -->
+    }
+
+}

@@ -1,0 +1,71 @@
+/*  
+---------------------------------------------------
+Data List 
+---------------------------------------------------  
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_datalist { }*/
+
+/* Split component block */
+/*
+.item_block.usn_cmp_datalist { }*/
+
+
+.listing.listing_data-list.data-list_boxed { 
+    margin:0;
+    padding:var(--base-half-spacing) 0;
+}
+
+.listing.listing_data-list .col-12:not(.item) { 
+    margin-bottom: var(--base-half-spacing);
+}
+
+.listing.listing_data-list.data-list_boxed .list-title .heading { 
+    margin-top:8px!important;
+}
+
+.listing.listing_data-list .item { 
+    margin:8px 0!important;
+}
+
+.listing.listing_data-list .item.items-1:not(:last-child)::before { 
+    content: "";
+    position: absolute; bottom:-8px; right:15px; left:15px; 
+    height:var(--base-border-width);
+    background-color: rgba(var(--base-borders), 1);
+}
+
+footer#site-footer .listing.listing_data-list .item.items-1:not(:last-child)::before { 
+    background-color: rgba(var(--footer-borders), 1);
+}
+
+footer#site-footer .listing.listing_data-list.data-list_boxed.has-borders.footer-borders {
+    border-color: rgba(var(--footer-borders), 1);
+}
+
+.listing.listing_data-list .item > .title { 
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    width: 100%;
+    margin:0;
+}
+
+.listing.listing_data-list .item > .title + .text { 
+    margin-top:4px;
+}
+
+.listing.listing_data-list .item > .title > span { 
+    flex: auto;
+}
+
+.listing.listing_data-list .item > .title > span.text-left { 
+    align-self: flex-start;
+}
+
+.listing.listing_data-list .item > .title > span.text-right { 
+    align-self: flex-end;
+    font-weight: bold;
+}

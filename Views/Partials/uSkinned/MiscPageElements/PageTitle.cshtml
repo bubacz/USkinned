@@ -1,0 +1,41 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    string pageType = ViewData["pageLayout"] != null ? ViewData["pageLayout"].ToString() : String.Empty;
+
+    if (pageType == "pageLayoutFull" && !Model.Value<bool>("hidePageTitle"))
+    {
+        @:<section class="content base-bg pb-0"><div class="container">
+    }
+
+    if (!Model.Value<bool>("hidePageTitle"))
+    {
+        var websiteStyle = (Usnstyle)Model.WebsiteStyle;
+
+        <!-- Row -->
+        <div class="row">
+            <div class="heading-col col">
+
+                @if (Model.Value<SiteBuilderHeading>("secondaryHeading").HasValue() && websiteStyle.StyleLayout.headingOrder != "heading-first")
+                {
+                    <p class="secondary-heading @(Model.Value<SiteBuilderHeading>("secondaryHeading").Style) base-secondary-heading">@Html.Raw(Model.Value<SiteBuilderHeading>("secondaryHeading").Text)</p>
+                }
+
+                <h1 class="heading main base-heading">@(Model.HasValue("onPageTitle") ? Html.Raw(Model.Value<string>("onPageTitle")) : Html.Raw(Model.Name))</h1>
+
+                @if (Model.Value<SiteBuilderHeading>("secondaryHeading").HasValue() && websiteStyle.StyleLayout.headingOrder == "heading-first")
+                {
+                    <p class="secondary-heading @(Model.Value<SiteBuilderHeading>("secondaryHeading").Style) base-secondary-heading">@Html.Raw(Model.Value<SiteBuilderHeading>("secondaryHeading").Text)</p>
+                }
+
+            </div>
+        </div>
+        <!--// Row -->
+    }
+
+    if (pageType == "pageLayoutFull" && !Model.Value<bool>("hidePageTitle"))
+    {
+        @:</div></section>
+    }
+}

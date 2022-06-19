@@ -1,0 +1,24 @@
+@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using Umbraco.Cms.Core.Models.Blocks 
+@{
+    string blockFieldAlias = ViewData["blockFieldAlias"].ToString();
+    string pageLayout = ViewData["pageLayout"].ToString();
+
+    var blockList = Model.Value<BlockListModel>(blockFieldAlias);
+
+    if (blockList != null && blockList.Where(x => !x.Settings.Value<bool>("hideFromWebsite")).Any())
+    {
+        foreach (var component in blockList.Where(x => !x.Settings.Value<bool>("hideFromWebsite")))
+        {
+            if (component?.ContentUdi != null)
+            {
+                var pageComponent = new SiteBuilderBlock(Model, component, pageLayout);
+
+                @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/ComponentSection", pageComponent)
+            }
+        }
+    }
+}
+
+

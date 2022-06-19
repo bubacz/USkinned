@@ -1,0 +1,55 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    Layout = null;
+    Context.Response.ContentType = "text/xml";
+
+    int pageSize = Model.HasValue("blogPostsToReturn") ? Model.Value<int>("blogPostsToReturn") : -1;
+
+    // get landing page
+    var landing = Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+
+    // get all posts
+    var blogPages = landing.Children.First(x => x.IsDocumentType(UsnblogPostsFolder.ModelTypeAlias)).Children.OrderByDescending(y => y.Value<DateTime>("postDate"));
+
+    //Only get requested number of pages
+    blogPages = pageSize != -1 && blogPages.Any() ? blogPages.Take(pageSize).OrderByDescending(y => y.Value<DateTime>("postDate")) : blogPages;
+
+    DateTime lastPubDate = blogPages.Any() ? blogPages.FirstOrDefault().Value<DateTime>("postDate") : DateTime.Now;
+
+    // get blog url
+    string blogUrl = Model.Url(mode: UrlMode.Absolute);
+}
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>@(Model.Value<string>("rssTitle"))</title>
+        <description>@(Model.Value<string>("ssDescription"))</description>
+        <copyright>@(Model.Value<string>("rssCopyright")) @DateTime.Now.Year</copyright>
+        @Html.Raw("<link>")
+        @Html.Raw(blogUrl)
+        @Html.Raw("</link>")
+        <lastBuildDate>@lastPubDate.ToString("ddd, dd MMMM yyyy HH:mm:ss")</lastBuildDate>
+        <pubDate>@lastPubDate.ToString("ddd, dd MMMM yyyy HH:mm:ss")</pubDate>
+
+        @foreach (var p in blogPages)
+        {
+            string postName = p.HasValue("onPageTitle") ? p.Value<string>("onPageTitle") : p.Name;
+
+            var metaDescription = p.Value<SiteBuilderSEOMeta>("titleAndDescription") != null ? p.Value<SiteBuilderSEOMeta>("titleAndDescription").Description : String.Empty;
+
+            <item>
+                <title>@postName</title>
+                <description><![CDATA[@metaDescription <a href="@blogUrl@p.Url()">@Umbraco.GetDictionaryValue("USN Blog RSS Continue Reading")</a>]]></description>
+                @Html.Raw("<link>")
+                @Html.Raw(blogUrl + p.Url())
+                @Html.Raw("</link>")
+                <pubDate>@(p.Value<DateTime>("postDate").ToString("ddd, dd MMMM yyyy HH:mm:ss"))</pubDate>
+            </item>
+        }
+    </channel>
+</rss>
+
+
+
+

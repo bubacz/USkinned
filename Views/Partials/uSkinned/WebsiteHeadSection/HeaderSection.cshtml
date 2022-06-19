@@ -1,0 +1,70 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Interfaces
+@using USNSiteBuilder.Core.Extensions
+@using Umbraco.Cms.Core.Security
+@inject IMemberManager _memberManager
+@inject ISiteBuilderService _siteBuilderService
+@if (!Model.Value<bool>("hideWebsiteHeaderSection"))
+{
+
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+    Usnnavigation navigation = (Usnnavigation)Model.Navigation;
+    var routeCultures = _siteBuilderService.GetRootCultures();
+    IPublishedContent searchResultsPage = globalSettings.SearchResultsPage;
+    string containerClass = websiteStyle.StyleSpacing.headerFixedWidth ? "container" : "container-fluid";
+
+    <header id="site-header" class="@websiteStyle.StyleColors.headerBackgroundClass">
+        <div class="@containerClass">
+
+            <div class="row">
+
+                @await Html.PartialAsync(Model.ThemeFolder + "/WebsiteHeadSection/WebsiteLogo", Model)
+
+                @if (navigation != null && ((navigation.MainNavigation != null && navigation.MainNavigation.Any()) ||
+                (navigation.SecondaryNavigation != null && navigation.SecondaryNavigation.Any()) ||
+    (navigation.MultilingualConfiguration.HasValue() && navigation.MultilingualConfiguration == "multitenant" && navigation.LanguageNavigation != null && navigation.LanguageNavigation.Any()) ||
+    (navigation.MultilingualConfiguration.HasValue() && navigation.MultilingualConfiguration == "onetoone" && routeCultures != null && routeCultures.Count() > 1) ||
+    (!_memberManager.IsLoggedIn() && navigation.LoggedOutMembersNavigation != null && navigation.LoggedOutMembersNavigation.Any()) ||
+    _memberManager.IsLoggedIn() ||
+    navigation.CtaButtons != null && navigation.CtaButtons.Any() ||
+    searchResultsPage != null))
+                {
+                    <!-- Expand -->
+                    <button id="burgerNavStyle" class="expand-header @websiteStyle.StyleLayout.burgerNavStyle expand-active-cross" data-toggle="collapse" type="button" aria-expanded="false" aria-label="Expand Header Button">
+                        <span>@Umbraco.GetDictionaryValue("USN Menu")</span>
+                    </button>
+                    <!--// Expand -->
+                }
+
+                <!-- Main navigation -->
+                @await Html.PartialAsync(Model.ThemeFolder + "/Navigation/MainNavigation", Model)
+                <!--// Main navigation -->
+                <!-- Secondary navigation -->
+                @await Html.PartialAsync(Model.ThemeFolder + "/Navigation/SecondaryNavigation", Model)
+                <!--// Secondary navigation -->
+                <!-- CTA Links -->
+                @await Html.PartialAsync(Model.ThemeFolder + "/Navigation/CTANavigation", Model)
+                <!--// CTA Links -->
+                <!-- Site search -->
+                @await Html.PartialAsync(Model.ThemeFolder + "/Forms/SearchForm", Model)
+                <!--// Site search -->
+
+                @if (globalSettings.EnableShop && globalSettings.Ecwid.HasValue() && globalSettings.ShopPage.HasValue())
+                {
+                    <!-- Shop - Ecwid Cart -->
+                    <nav class="shopping-cart ecwid-cart" aria-label="Shopping Cart">
+                        <i class="icon usn_ion-ios-cart"></i>
+                        <span class="d-none">Cart</span>
+                        <div data-responsive="false" class="ec-cart-widget"></div>
+                    </nav>
+                    <!--// Shop - Ecwid Cart -->
+                }
+
+            </div>
+
+        </div>
+    </header>
+}
+

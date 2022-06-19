@@ -1,0 +1,439 @@
+/*  
+----------------------------------------------------------------------------------------------------
+All Forms
+---------------------------------------------------------------------------------------------------- 
+*/
+
+.umbraco-forms-fieldset .row-fluid,
+.umbraco-forms-navigation.row-fluid { 
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media (min-width: 0) and (max-width: 767px) {
+    .umbraco-forms-fieldset .row-fluid .umbraco-forms-container,
+    .umbraco-forms-navigation.row-fluid .umbraco-forms-container {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    } 
+}
+
+.form > .inner { 
+    padding:var(--base-spacing);
+}
+
+.form > .inner .info { 
+    margin-bottom:var(--base-half-spacing);
+}
+
+footer#site-footer .form .inner { 
+    padding:0!important; border:0 none!important;
+} 
+
+textarea {
+    resize: none;
+}
+
+fieldset {
+    margin: 0 0 var(--base-half-spacing);
+}
+
+fieldset.buttons {
+    margin: 0;
+}
+
+.heading.umbraco-forms-caption:not(.main) {
+    color: inherit;
+}
+
+legend {
+    color: inherit;
+    border-color: inherit;
+    padding: 0 0 8px;
+    margin: 10px 0 var(--base-half-spacing);
+}
+
+.form-group, 
+.umbraco-forms-field:not(.hidden) {
+    position: relative;
+    margin-bottom:1rem;
+}
+
+.umbraco-forms-field .umbraco-forms-field-wrapper { 
+    position: relative;
+}
+
+.form-group.titleanddescription:not(:first-child) {
+    margin-top: var(--base-spacing);
+}
+
+/*
+.form-group.shortanswer {}*/
+
+/*
+.form-group.date {}*/
+
+/*
+.form-group.longanswer {}*/
+
+/*
+.form-group.uploadafile {}*/
+
+/*
+.form-group.password {}*/
+
+/*
+.form-group.dropdown {}*/
+
+/*
+.form-group.dropdownselect {}*/
+
+/*
+.form-group.checkbox {}*/
+
+.form-group.checkbox > label {
+    padding-left:0;
+}
+
+/*
+.form-group.checkbox.checkboxlist {}*/
+
+/*
+.form-group.singlecheckbox {}*/
+
+/*
+.form-group.radiobutton {}*/
+
+/*
+.form-group.multiplechoice {}*/
+
+/*
+.form-group.singlechoice {}*/
+
+/*
+.form-group.titleanddescription {}*/
+
+.form-group.titleanddescription:first-child .heading {
+    margin-top: 0;
+}
+
+label {
+    position: relative;
+    font-weight: normal;
+    display: block;
+}
+
+.radio label,
+.checkbox label {
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+label em.req,
+.umbraco-forms-indicator {
+    font-style: normal;
+    color: rgba(var(--form-errors), 1);
+}
+
+.form-group .note,
+.umbraco-forms-tooltip.help-block { 
+    display:block;
+    margin-top:5px; font-size:85%; opacity:0.8;
+}
+.umbraco-forms-tooltip.help-block { 
+    margin:0 0 5px;
+}
+
+.umbraco-forms-field:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input,
+.umbraco-forms-field.longanswer textarea,
+.umbraco-forms-field.dropdown select {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    min-height: 40px;
+    box-shadow: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: var(--form-field-border-width) solid rgba(var(--base-borders), 1);
+    border-radius: var(--form-field-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.umbraco-forms-field.longanswer textarea { 
+    height: 200px;
+}
+
+.form-control {
+    min-height: 40px;
+    border: var(--form-field-border-width) solid rgba(var(--base-borders), 1);
+    border-radius: var(--form-field-border-radius);
+    box-shadow:none;
+}
+
+header#site-header .form-control:not(:focus) {
+    border: var(--form-field-border-width) solid rgba(var(--header-borders), 1);
+}
+footer#site-footer .form-control:not(:focus) {
+    border: var(--form-field-border-width) solid rgba(var(--footer-borders), 1);
+}
+
+.form-control:focus,
+.umbraco-forms-field:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input:focus,
+.umbraco-forms-field.longanswer textarea:focus,
+.umbraco-forms-field.dropdown select:focus {
+    border-color: rgba(var(--base-highlight), 1);
+    box-shadow: 0 0 5px rgba(var(--base-highlight), 1);
+    box-shadow:none!important;
+}
+
+.form-control:focus-visible,
+.umbraco-forms-field:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input:focus-visible,
+.umbraco-forms-field.longanswer textarea:focus-visible,
+.umbraco-forms-field.dropdown select:focus-visible {
+    outline: -webkit-focus-ring-color auto 2px!important;
+    outline: rgba(var(--base-highlight), 1) auto 2px!important;
+    outline-offset: 2px!important;
+}
+
+.form-group.uploadafile .form-control,
+.umbraco-forms-field.fileupload:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input {
+    padding-top: 5px;
+}
+
+/*
+.form-group.shortanswer .form-control {}*/
+
+/*
+.form-group.date .form-control {}*/
+
+/*
+.form-group.longanswer .form-control {}*/
+
+/*
+.form-group.uploadafile .form-control {}*/
+
+/*
+.form-group.password .form-control {}*/
+
+/*
+.form-group.dropdown .form-control {}*/
+
+/*
+.form-group.dropdownselect .form-control {}*/
+
+.umbraco-forms-field.checkbox .umbraco-forms-field-wrapper {
+    position: absolute; top:0;
+}
+
+.form-group.checkbox .form-control {
+    min-height:auto; height:auto;
+    width: auto;
+}
+
+.form-group.checkbox.checkboxlist .form-control {
+    min-height:auto; height:auto;
+    width: auto;
+}
+
+.form-group.singlecheckbox {
+    min-height:auto; height:auto;
+}
+
+.form-group.radio .form-control,
+.form-group.radiobutton .form-control {
+    min-height:auto; height:auto;
+    width: auto;
+}
+
+.form-group.multiplechoice .form-control {
+    min-height:auto; height:auto;
+    width: auto;
+}
+
+.form-group.singlechoice .form-control {
+    min-height:auto; height:auto;
+    width: auto;
+}
+
+.radio label input[type="radio"],
+.checkbox label input[type="checkbox"] {
+    position:absolute;
+    top: 3px;
+    left: -2px;
+    margin: 0;
+    width: auto;
+}
+
+.umbraco-forms-field.dataconsent .umbraco-forms-field-wrapper input,
+.umbraco-forms-field.multiplechoice .umbraco-forms-field-wrapper input,
+.umbraco-forms-field.singlechoice .umbraco-forms-field-wrapper input { 
+    position:relative; top:1px;
+}
+
+.umbraco-forms-field.dataconsent .umbraco-forms-field-wrapper label,
+.umbraco-forms-field.multiplechoice .umbraco-forms-field-wrapper label,
+.umbraco-forms-field.singlechoice .umbraco-forms-field-wrapper label {
+    display: inline-block;
+    width: calc(100% - 30px); 
+    padding-left:5px;
+}
+
+select,
+select option {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.form-group.dropdown .form-control,
+.form-group.date .form-control,
+.umbraco-forms-field.date .umbraco-forms-field-wrapper input,
+.umbraco-forms-field.dropdown .umbraco-forms-field-wrapper select {
+    position: relative;
+    z-index: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: none!important;
+}
+
+.form-group.dropdown::after,
+.form-group.date::after,
+.umbraco-forms-field.date .umbraco-forms-field-wrapper::after,
+.umbraco-forms-field.dropdown .umbraco-forms-field-wrapper::after {
+    font-family: "Ionicons";
+    content: "\f280";
+    position: absolute;
+    top: 32px;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    min-height: 38px;
+    padding: 6px 15px 3px 0;
+    font-size: 20px;
+    text-align: right;
+    color: rgba(var(--base-text), 1);
+    background-color: rgba(var(--true-white), 1);
+    box-sizing: border-box;
+    border-radius: var(--form-field-border-radius);
+}
+
+/* Triangle */
+.directional-icons-triangle .form-group.dropdown::after,
+.directional-icons-triangle .umbraco-forms-field.dropdown .umbraco-forms-field-wrapper::after { 
+    content: "\f280";
+}
+/* Arrow */
+.directional-icons-arrow .form-group.dropdown::after,
+.directional-icons-arrow .umbraco-forms-field.dropdown .umbraco-forms-field-wrapper::after { 
+    content: "\f118";
+}
+/* Chevron */
+.directional-icons-chevron .form-group.dropdown::after,
+.directional-icons-chevron .umbraco-forms-field.dropdown .umbraco-forms-field-wrapper::after { 
+    content: "\f3d0";
+}
+
+.form-group.date::after,
+.umbraco-forms-field.date .umbraco-forms-field-wrapper::after { 
+    content: "\f2ab";
+}
+
+.form-group.dropdown.no-label::after,
+.form-group.date.no-label::after,
+.umbraco-forms-field.date .umbraco-forms-field-wrapper::after,
+.umbraco-forms-field.dropdown .umbraco-forms-field-wrapper::after {
+    top: 0;
+}
+
+.buttons .btn.prev+.btn.submit {
+    float: right;
+}
+
+
+/* VALIDATION */
+
+.form-control.input-validation-error,
+.umbraco-forms-field:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input.input-validation-error,
+.umbraco-forms-field.longanswer textarea.input-validation-error,
+.umbraco-forms-field.dropdown select.input-validation-error {
+    border-color: rgba(var(--form-errors), 1)!important;
+    box-shadow:none;
+    border-radius: var(--form-field-border-radius) var(--form-field-border-radius) 0 0;
+}
+
+.form-control.input-validation-error:focus {
+    border-color: rgba(var(--form-errors), 1)!important;
+    box-shadow: 0 1px 1px rgba(var(--true-black), 0.75) inset, 0 0 8px rgba(var(--form-errors), 0.5)!important;
+    box-shadow:none!important;
+    border-radius: var(--form-field-border-radius) var(--form-field-border-radius) 0 0;
+}
+
+.field-validation-error {
+    display: block;
+    padding: 5px;
+    font-size: 12px;
+    background-color: rgba(var(--form-errors), 1);
+    color: rgba(var(--true-white), 1);
+}
+
+.validation-summary-errors {
+    color: rgba(var(--form-errors), 1);
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.form .info + .alert,
+.form .info + .form-inner { 
+    margin-top: var(--base-half-spacing);
+}
+.form .info + .form-inner > .alert {
+    margin-bottom: var(--base-half-spacing);
+}
+
+
+/* Recaptcha */
+
+.item_form-single_field .g-recaptcha { 
+    margin-top:var(--base-half-spacing);
+}
+
+.justify-content-center .item_form-single_field .g-recaptcha > div { 
+    margin:0 auto;
+}
+
+.grecaptcha-badge { visibility: hidden!important; }
+
+.note-recaptcha { 
+    margin-top: var(--base-spacing);
+}
+
+.note-recaptcha > p {
+    margin:0;
+}
+
+.note-recaptcha a {
+    display: inline!important;
+}
+
+.note-recaptcha span { 
+    opacity:0.8;
+}
+
+

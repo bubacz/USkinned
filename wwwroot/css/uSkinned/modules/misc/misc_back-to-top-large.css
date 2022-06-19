@@ -1,0 +1,37 @@
+/*  
+---------------------------------------------------
+Back to top - Large Breakpoint
+---------------------------------------------------  
+*/
+
+.usn_back-to-top { 
+    position:fixed; 
+    bottom: calc((var(--backtotop-size_lg) + var(--base-half-spacing)) * -1); z-index:903;
+    width: var(--backtotop-size_lg); height: var(--backtotop-size_lg);
+    border-radius: var(--btn-border-radius);
+    
+    /* Safari OSX, iOS performance improvements */ 
+    will-change: transform, bottom;
+}
+
+html.nav-down:not(.reached-top) .usn_back-to-top,
+html.nav-up .usn_back-to-top {
+    bottom: var(--backtotop-spacing_below_lg);
+}
+
+.usn_back-to-top a.btn { 
+    font-size:25px; 
+    margin:0;
+    width:var(--backtotop-size_lg); height:var(--backtotop-size_lg);
+}
+
+.usn_back-to-top.position-left {
+    left: var(--backtotop-spacing_side_lg);
+}
+.usn_back-to-top.position-center {
+    left: 50%; 
+    transform:translateX(-50%);
+}
+.usn_back-to-top.position-right {
+    right: var(--backtotop-spacing_side_lg);
+}

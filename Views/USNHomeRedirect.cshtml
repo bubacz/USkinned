@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage
+@{
+    IEnumerable<IPublishedContent> rootNode = Umbraco.ContentAtRoot();
+    var home = rootNode.FirstOrDefault(x => x.IsDocumentType(Usnhomepage.ModelTypeAlias));
+
+    if (home != null)
+    {
+        Context.Response.Redirect(home.Url());
+    }
+    else
+    {
+        <h2>@Umbraco.GetDictionaryValue("USN Website Not Published")</h2>
+    }
+}

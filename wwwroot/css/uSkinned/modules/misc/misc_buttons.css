@@ -1,0 +1,159 @@
+/*  
+---------------------------------------------------
+Buttons
+---------------------------------------------------  
+*/
+
+.btn, button.btn { 
+    margin: 5px 0;
+}
+
+.btn, button.btn {
+    border-radius: var(--btn-border-radius);
+    border-width: var(--btn-border-width); 
+    border-style: solid;
+    outline: none;
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--true-black), var(--btn-box-shadow_o));
+}
+
+.btn:hover, button.btn:hover,
+.btn:focus, button.btn:focus,
+.btn:active, button.btn:active {
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-btn-borders-hover), var(--btn-box-shadow_o));
+}
+
+.btn, button.btn, button {
+
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s;
+}
+
+.btn, button.btn {
+    padding:var(--btn-padding_top) var(--btn-padding_right) var(--btn-padding_bottom) var(--btn-padding_left);
+}
+
+.btn.btn-sm, button.btn.btn-sm {
+    padding:var(--btn_sm-padding_top) var(--btn_sm-padding_right) var(--btn_sm-padding_bottom) var(--btn_sm-padding_left);
+}
+
+.btn.btn-lg, button.btn.btn-lg {
+    padding:var(--btn_lg-padding_top) var(--btn_lg-padding_right) var(--btn_lg-padding_bottom) var(--btn_lg-padding_left);
+}
+
+.basic-buttons .btn, .basic-buttons button.btn, .btn.basic-btn, button.btn.basic-btn {
+    padding:2px 0!important;
+    background:none!important;
+    border-width:0 0 var(--base-border-width) 0!important;
+    border-radius: 0!important;
+}
+
+
+/*  
+---------------------------------------------------
+Button hovers 
+
+This could is related to the inclusion of gradient backgrounds. 
+We need to include empty <span> inside buttons to activate hover.
+---------------------------------------------------  
+*/
+
+.btn { 
+    position:relative;
+    z-index: 1; /* matters! */
+}
+.btn > span { 
+    position: absolute; top:0; right:0; bottom:0; left:0; z-index: -1;
+    border-radius: calc(var(--btn-border-radius) - var(--btn-border-width));
+    opacity: 0;
+
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+a:hover .btn > span, 
+a:focus .btn > span, 
+a:active .btn > span, 
+.btn:hover > span,
+.btn:focus > span,
+.btn:active > span {
+  opacity: 1;
+}
+
+.basic-buttons .btn > span, 
+.basic-buttons button.btn > span, 
+.btn.basic-btn > span, button.btn.basic-btn > span {
+    display:none!important;
+}

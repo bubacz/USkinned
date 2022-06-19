@@ -1,0 +1,143 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Interfaces
+@using USNSiteBuilder.Core.Extensions
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block, Split Component Block and Pod Block types
+
+    var content = (IUsn_Cmp_Form)Model.BlockContent;
+    var uniqueSettings = Model.BlockSettings;
+
+    //Settings taken from compositions common to all block types
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    string blockLocation = ViewData["blockLocation"] != null ? ViewData["blockLocation"].ToString() : String.Empty;
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    string formColorLabel = blockLocation == "footer" ? "footer" : uniqueSettings.Value<SiteBuilderSelectedColor>("formContainerBackgroundColor").label;
+    string formBgColorClass = blockLocation == "footer" ? String.Empty : _siteBuilderService.GetBackgroundColorClass(uniqueSettings.Value<SiteBuilderSelectedColor>("formContainerBackgroundColor").sortOrder, "content", websiteStyle);
+
+    string formButtonColorLabel = uniqueSettings.Value<SiteBuilderSelectedColor>("FormButtonColor").label;
+    string formButtonColorClass = _siteBuilderService.GetBackgroundColorClass(uniqueSettings.Value<SiteBuilderSelectedColor>("FormButtonColor").sortOrder, "button", websiteStyle);
+    string formButtonHoverColorClass = _siteBuilderService.GetBackgroundColorClass(uniqueSettings.Value<SiteBuilderSelectedColor>("FormButtonColor").sortOrder, "buttonHover", websiteStyle);
+
+    string formSize = (blockLocation == "footer" || blockLocation == "pod") ? "compact" : "normal";
+    string newsletterClass = (content.FormType == "signupForm" && content.HideFields) ? "item_form-single_field" : String.Empty;
+
+    <div class="@newsletterClass @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+        @switch (content.FormType)
+        {
+            case "contactForm":
+                @await Component.InvokeAsync("ContactForm", new
+                {
+                    GlobalSettingsID = Model.BaseModel.GlobalSettings.Id,
+                    ThemeFolder = Model.BaseModel.ThemeFolder,
+                    HeadingOrder = websiteStyle.StyleLayout.headingOrder,
+                    DataSize = formSize,
+                    FormColorLabel = formColorLabel,
+                    FormBgColorClass = formBgColorClass,
+                    FormButtonColorLabel = formButtonColorLabel,
+                    FormButtonColorClass = formButtonColorClass,
+                    FormButtonHoverColorClass = formButtonHoverColorClass,
+                    Content = content,
+                    PageName = Model.BaseModel.Name
+                });
+                break;
+            case "signupForm":
+                @await Component.InvokeAsync("NewsletterForm", new
+                    {
+                        GlobalSettingsID = Model.BaseModel.GlobalSettings.Id,
+                        ThemeFolder = Model.BaseModel.ThemeFolder,
+                        HeadingOrder = websiteStyle.StyleLayout.headingOrder,
+                        DataSize = formSize,
+                        FormColorLabel = formColorLabel,
+                        FormBgColorClass = formBgColorClass,
+                        FormButtonColorLabel = formButtonColorLabel,
+                        FormButtonColorClass = formButtonColorClass,
+                        FormButtonHoverColorClass = formButtonHoverColorClass,
+                        Content = content
+                    })
+                break;
+            case "loginForm":
+                @await Component.InvokeAsync("LoginForm", new
+                {
+                    GlobalSettingsID = Model.BaseModel.GlobalSettings.Id,
+                    ThemeFolder = Model.BaseModel.ThemeFolder,
+                    HeadingOrder = websiteStyle.StyleLayout.headingOrder,
+                    DataSize = formSize,
+                    FormColorLabel = formColorLabel,
+                    FormBgColorClass = formBgColorClass,
+                    FormButtonColorLabel = formButtonColorLabel,
+                    FormButtonColorClass = formButtonColorClass,
+                    FormButtonHoverColorClass = formButtonHoverColorClass,
+                    Content = content
+                })
+                break;
+            case "resetRequestForm":
+                @await Component.InvokeAsync("ResetRequestForm", new
+                {
+                    GlobalSettingsID = Model.BaseModel.GlobalSettings.Id,
+                    ThemeFolder = Model.BaseModel.ThemeFolder,
+                    HeadingOrder = websiteStyle.StyleLayout.headingOrder,
+                    DataSize = formSize,
+                    FormColorLabel = formColorLabel,
+                    FormBgColorClass = formBgColorClass,
+                    FormButtonColorLabel = formButtonColorLabel,
+                    FormButtonColorClass = formButtonColorClass,
+                    FormButtonHoverColorClass = formButtonHoverColorClass,
+                    Content = content
+                })
+                break;
+            case "resetPasswordForm":
+                @await Component.InvokeAsync("ResetPasswordForm", new
+                {
+                    GlobalSettingsID = Model.BaseModel.GlobalSettings.Id,
+                    ThemeFolder = Model.BaseModel.ThemeFolder,
+                    HeadingOrder = websiteStyle.StyleLayout.headingOrder,
+                    DataSize = formSize,
+                    FormColorLabel = formColorLabel,
+                    FormBgColorClass = formBgColorClass,
+                    FormButtonColorLabel = formButtonColorLabel,
+                    FormButtonColorClass = formButtonColorClass,
+                    FormButtonHoverColorClass = formButtonHoverColorClass,
+                    Content = content
+                })
+                break;
+            case "registerForm":
+                @await Component.InvokeAsync("RegisterForm", new
+                {
+                    GlobalSettingsID = Model.BaseModel.GlobalSettings.Id,
+                    CurrentPageID = Model.BaseModel.Id,
+                    ThemeFolder = Model.BaseModel.ThemeFolder,
+                    HeadingOrder = websiteStyle.StyleLayout.headingOrder,
+                    DataSize = formSize,
+                    FormColorLabel = formColorLabel,
+                    FormBgColorClass = formBgColorClass,
+                    FormButtonColorLabel = formButtonColorLabel,
+                    FormButtonColorClass = formButtonColorClass,
+                    FormButtonHoverColorClass = formButtonHoverColorClass,
+                    Content = content
+                })
+                break;
+            case "umbracoForm":
+                <div class="umbraco-forms form">
+                    <div class="inner @formBgColorClass @(formColorLabel)-text btn-bg_@formButtonColorClass @formButtonHoverColorClass btn-text_@(formButtonColorLabel)-btn-text btn-borders_@(formButtonColorLabel)-btn-borders">
+                        @if (content.UmbracoForm.HasValue())
+                        {
+                            var formGuid = content.UmbracoForm;
+
+                            @await Umbraco.RenderMacroAsync("renderUmbracoForm", new { FormGuid = formGuid, FormTheme = "uSkinned", ExcludeScripts = "0" })
+                        }
+                    </div>
+                </div>
+                break;
+        }
+    </div>
+}

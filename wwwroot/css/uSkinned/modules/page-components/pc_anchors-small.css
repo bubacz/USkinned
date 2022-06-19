@@ -1,0 +1,19 @@
+/*  
+---------------------------------------------------
+Anchors  - Small Breakpoint
+---------------------------------------------------  
+*/
+
+.component.usn_cmp_anchornavigation nav:not(.open-mobile) { 
+    display:none;
+}
+.component.usn_cmp_anchornavigation nav { 
+    padding-top:var(--base-half-spacing);
+}
+.component.usn_cmp_anchornavigation ul.nav li.nav-item { 
+    width:100%;
+    margin:0;
+}
+.component.usn_cmp_anchornavigation ul.nav li.nav-item:not(:first-child) { 
+    margin-top:5px;
+}

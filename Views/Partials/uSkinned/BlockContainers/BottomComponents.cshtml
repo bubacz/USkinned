@@ -1,0 +1,24 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using Umbraco.Cms.Core.Models.Blocks
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    if (!Model.Value<bool>("hideDefaultBottomComponents") && globalSettings.Value<BlockListModel>("defaultBottomComponents") != null)
+    {
+        BlockListModel pageComponents = globalSettings.Value<BlockListModel>("defaultBottomComponents");
+
+        if (pageComponents != null && pageComponents.Where(x => !x.Settings.Value<bool>("hideFromWebsite")).Any())
+        {
+            foreach (var component in pageComponents.Where(x => !x.Settings.Value<bool>("hideFromWebsite")))
+            {
+                if (component?.ContentUdi != null)
+                {
+                    var pageComponent = new SiteBuilderBlock(Model, component, "pageLayoutFull");
+
+                    @await Html.PartialAsync(Model.ThemeFolder + "/BlockContainers/ComponentSection", pageComponent)
+                }
+            }
+        }
+    }
+}

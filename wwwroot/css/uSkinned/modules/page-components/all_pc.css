@@ -1,0 +1,610 @@
+/*  
+---------------------------------------------------
+Page Components
+---------------------------------------------------  
+*/
+
+section.content {
+    position: relative;
+    display: block;
+    height: auto; 
+}
+
+section.content.p-0 .component-inner > .container-fluid { 
+    padding: 0;
+}
+section.content.p-0 .component-inner > .container-fluid > .row { 
+    margin:0;
+}
+
+.content-col .component .component-inner > .container { 
+    padding: 0;
+}
+
+body:not(.full-page) section.content .content-col > section.content.component {
+    padding: 0;
+}
+
+body:not(.full-page) section.content .content-col > section.content.component.base-bg { 
+    background:transparent!important;
+}
+
+body:not(.full-page) section.content .content-col > section.content.component:not(.base-bg):not(.p-0) {
+    padding: var(--base-half-spacing);
+}
+
+body:not(.full-page) section.content .content-col > section.content.component:not(.base-bg):not(.p-0):not(:last-child) {
+    margin-bottom: var(--pc-spacing);
+}
+
+body:not(.full-page) section.content .content-col > section.content.component:not(:last-child):not(.p-0) {
+    padding-bottom: var(--pc-spacing);
+}
+
+body:not(.full-page) section.content .content-col > section.content.component.meta { 
+    padding-top: var(--content-col_pc-spacing);
+}
+
+body:not(.full-page) section.content .content-coll > section.content.component:not(.usn_cmp_banner):not(.base-bg):not(.p-0):first-child,
+body:not(.full-page) section.content .content-coll > section.content.component:not(.usn_cmp_banner):not(.base-bg):not(.p-0) { 
+    padding: var(--base-spacing)!important;
+}
+
+.content .component-introduction {
+    padding-bottom: var(--pc-spacing);
+}
+
+body:not(.full-page) section.content section.content.component .component-introduction {
+    padding-bottom: var(--content-col_pc-spacing);
+}
+
+section.content .component-outro {
+    padding-top: var(--pc-spacing);
+}
+
+body:not(.full-page) section.content section.content.component .component-outro {
+    padding-top: var(--content-col_pc-spacing);
+}
+
+@media (min-width:0) and (max-width:575px) {
+    section.content:not(.usn_cmp_banner) {
+        padding: var(--pc-spacing) 0;
+    }
+}
+
+@media (min-width:576px) {
+    section.content:not(.usn_cmp_banner) {
+        padding: var(--pc-spacing_sm) 0;
+    }
+}
+
+@media (min-width:768px) {
+    section.content:not(.usn_cmp_banner) {
+        padding: var(--pc-spacing_md) 0;
+    }
+}
+
+@media (min-width:992px) {
+    section.content:not(.usn_cmp_banner) {
+        padding: var(--pc-spacing_lg) 0;
+    }
+
+    body:not(.full-page) section.content .content-col > section.content.component:not(.base-bg):not(.p-0) {
+        padding: var(--base-spacing);
+    }
+}
+
+@media (min-width:1200px) {
+    section.content:not(.usn_cmp_banner) {
+        padding: var(--pc-spacing_xl) 0;
+    }
+}
+
+
+
+/*  
+---------------------------------------------------
+Max Width on a component
+
+Custom class 'component-max-width' to max width any component. 
+Adds spacing around the main component <section>.
+Only works on layout 'Full Page'.
+---------------------------------------------------  
+*/
+
+body.full-page section.content.component-max-width {
+    margin: var(--pc-spacing);
+    padding: var(--pc-spacing);
+    max-width: calc(var(--component-max-width) - 30px);
+    border-radius: var(--base-border-radius);
+}
+body.full-page section.content.component-max-width.usn_cmp_banner {
+    padding:0!important;
+}
+
+@media (min-width:0) and (max-width:575px) {
+    body.full-page section.content.component-max-width {
+        margin: var(--pc-spacing);
+        padding: var(--pc-spacing);
+    }
+}
+
+@media (min-width:576px) {
+    body.full-page section.content.component-max-width {
+        margin: var(--pc-spacing_sm);
+        padding: var(--pc-spacing_sm);
+    }
+}
+
+@media (min-width:768px) {
+    body.full-page section.content.component-max-width {
+        margin: var(--pc-spacing_md);
+        padding: var(--pc-spacing_md);
+    }
+}
+
+@media (min-width:992px) {
+    body.full-page section.content.component-max-width {
+        margin: var(--pc-spacing_lg);
+        padding: var(--pc-spacing_lg);
+    }
+}
+
+@media (min-width:1200px) {
+    body.full-page section.content.component-max-width {
+        margin: var(--pc-spacing_xl);
+        padding: var(--pc-spacing_xl);
+    }
+}
+
+@media (min-width:1350px) {
+    body.full-page section.content.component-max-width {
+        margin: var(--pc-spacing_xl) auto;
+        padding: var(--pc-spacing_xl);
+    }
+}
+
+
+
+/*  
+---------------------------------------------------
+Intro / Outro column widths
+---------------------------------------------------  
+*/
+
+@media (min-width:0) and (max-width:575px) {
+    section.content .component-introduction .info.col { 
+        flex: 0 0 var(--intro-col);
+        -ms-flex: 0 0 var(--intro-col);
+        max-width:var(--intro-col);
+    }
+    section.content .component-outro .info.col { 
+        flex: 0 0 var(--outro-col);
+        -ms-flex: 0 0 var(--outro-col);
+        max-width:var(--outro-col);
+    }
+}
+
+@media (min-width:576px) {
+    section.content .component-introduction .info.col { 
+        flex: 0 0 var(--intro-col_sm);
+        -ms-flex: 0 0 var(--intro-col_sm);
+        max-width:var(--intro-col_sm);
+    }
+    section.content .component-outro .info.col {
+        flex: 0 0 var(--outro-col_sm);
+        -ms-flex: 0 0 var(--outro-col_sm);
+        max-width:var(--outro-col_sm);
+    }
+}
+
+@media (min-width:768px) {
+    section.content .component-introduction .info.col { 
+        flex: 0 0 var(--outro-col_md);
+        -ms-flex: 0 0 var(--outro-col_md);
+        max-width:var(--intro-col_md);
+    }
+    section.content .component-outro .info.col { 
+        flex: 0 0 var(--intro-col_md);
+        -ms-flex: 0 0 var(--intro-col_md);
+        max-width:var(--outro-col_md);
+    }
+}
+
+@media (min-width:992px) {
+    section.content .component-introduction .info.col { 
+        flex: 0 0 var(--intro-col_lg);
+        -ms-flex: 0 0 var(--intro-col_lg);
+        max-width:var(--intro-col_lg);
+    }
+    section.content .component-outro .info.col { 
+        flex: 0 0 var(--outro-col_lg);
+        -ms-flex: 0 0 var(--outro-col_lg);
+        max-width:var(--outro-col_lg);
+    }
+}
+
+@media (min-width:1200px) {
+    section.content .component-introduction .info.col {  
+        flex: 0 0 var(--intro-col_xl);
+        -ms-flex: 0 0 var(--intro-col_xl);
+        max-width:var(--intro-col_xl);
+    }
+    section.content .component-outro .info.col { 
+        flex: 0 0 var(--outro-col_xl);
+        -ms-flex: 0 0 var(--outro-col_xl);
+        max-width:var(--outro-col_xl);
+    }
+}
+
+section.content.component .content-col.center-col.col .component-introduction .info.col,
+section.content.component .content-col.center-col.col .component-outro .info.col,
+body:not(.full-page) section.content .content-col .component-introduction .info.col,
+body:not(.full-page) section.content .content-col .component-outro .info.col {  
+    flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    max-width: 100%;
+}
+
+section.content.component.usn_cmp_splitcomponent .item_block .component-introduction .info.col,
+section.content.component.usn_cmp_splitcomponent .item_block .component-outro .info.col { 
+    flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/*  
+---------------------------------------------------
+Center column widths
+When a user chooses the center col width on a component setting
+---------------------------------------------------  
+*/
+
+@media (min-width:0) and (max-width:575px) {
+    section.content.component .content-col.center-col.col { 
+        flex: 0 0 var(--center-col);
+        -ms-flex: 0 0 var(--center-col);
+        max-width:var(--center-col);
+    }
+}
+
+@media (min-width:576px) {
+    section.content.component .content-col.center-col.col { 
+        flex: 0 0 var(--center-col_sm);
+        -ms-flex: 0 0 var(--center-col_sm);
+        max-width:var(--center-col_sm);
+    }
+}
+
+@media (min-width:768px) {
+    section.content.component .content-col.center-col.col { 
+        flex: 0 0 var(--center-col_md);
+        -ms-flex: 0 0 var(--center-col_md);
+        max-width:var(--center-col_md);
+    }
+}
+
+@media (min-width:992px) {
+    section.content.component .content-col.center-col.col { 
+        flex: 0 0 var(--center-col_lg);
+        -ms-flex: 0 0 var(--center-col_lg);
+        max-width:var(--center-col_lg);
+    }
+}
+
+@media (min-width:1200px) {
+    section.content.component .content-col.center-col.col { 
+        flex: 0 0 var(--center-col_xl);
+        -ms-flex: 0 0 var(--center-col_xl);
+        max-width:var(--center-col_xl);
+    }
+}
+
+/*  
+---------------------------------------------------
+Page Components - Items per row & Carousels
+---------------------------------------------------  
+*/
+
+.row.slides { 
+    display: block; 
+    flex-wrap: nowrap;
+}
+
+.row.slides .item { 
+    max-width:auto;
+    padding:0 15px; margin-bottom:0;
+}
+
+.row:not(.slides):not(.listing_window-mosaic) .item.items-1 { 
+    flex: 0 0 var(--items-1);
+    -ms-flex: 0 0 var(--items-1);
+    max-width: var(--items-1);
+}
+
+/* Justify child items to end */
+.justify-items-end .component-main.row {
+    justify-content: flex-end!important;
+}
+/* Justify child items to center */
+.justify-items-center .component-main.row {
+    justify-content: center!important;
+}
+
+@media (min-width:576px) {
+
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-2,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-3,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-4,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-5,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-6,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-7,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-8 { 
+        flex: 0 0 var(--items-2);
+        -ms-flex: 0 0 var(--items-2);
+        max-width: var(--items-2);
+    }
+
+}
+
+@media (min-width:768px) {
+
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-3,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-4,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-5,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-6,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-7,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-8 { 
+        flex: 0 0 var(--items-2);
+        -ms-flex: 0 0 var(--items-2);
+        max-width: var(--items-2);
+    }
+
+}
+
+@media (min-width:992px) {
+
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-3 { 
+        flex: 0 0 var(--items-3);
+        -ms-flex: 0 0 var(--items-3);
+        max-width: var(--items-3);
+    }
+
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-4,
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-5 { 
+        flex: 0 0 var(--items-4);
+        -ms-flex: 0 0 var(--items-4);
+        max-width: var(--items-4);
+    }
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-6 { 
+        flex: 0 0 var(--items-5);
+        -ms-flex: 0 0 var(--items-5);
+        max-width: var(--items-5);
+    }
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-7 { 
+        flex: 0 0 var(--items-6);
+        -ms-flex: 0 0 var(--items-6);
+        max-width: var(--items-6);
+    }
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-8 { 
+        flex: 0 0 var(--items-7);
+        -ms-flex: 0 0 var(--items-7);
+        max-width: var(--items-7);
+    }
+
+}
+
+@media (min-width:1200px) {
+
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-5 { 
+        flex: 0 0 var(--items-5);
+        -ms-flex: 0 0 var(--items-5);
+        max-width: var(--items-5);
+    }
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-6 { 
+        flex: 0 0 var(--items-6);
+        -ms-flex: 0 0 var(--items-6);
+        max-width: var(--items-6);
+    }
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-7 { 
+        flex: 0 0 var(--items-7);
+        -ms-flex: 0 0 var(--items-7);
+        max-width: var(--items-7);
+    }
+    .row:not(.slides):not(.listing_window-mosaic) .item.items-8 { 
+        flex: 0 0 var(--items-8);
+        -ms-flex: 0 0 var(--items-8);
+        max-width: var(--items-8);
+    }
+
+}
+
+
+/*  
+---------------------------------------------------
+Item Margins only
+
+Margins relate to the number of items per row at 
+each breakpoint.
+---------------------------------------------------  
+*/
+
+.listing:not(.listing_window-mosaic) .item:last-child {
+    margin-bottom: 0!important;
+}
+
+@media (min-width:576px) and (max-width:767px) {
+
+    .listing:not(.listing_window-mosaic) .item:not(.items-1):nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item:not(.items-1):nth-last-child(1) {
+        margin-bottom: 0!important;
+    }
+
+}
+
+@media (min-width:768px) and (max-width:991px) {
+
+    .listing:not(.listing_window-mosaic) .item:not(.items-1):not(.items-2):nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item:not(.items-1):not(.items-2):nth-last-child(1) {
+        margin-bottom: 0!important;
+    }
+
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(7), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(6), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(5), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(3), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(6), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(5), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(3), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(5), 
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(3), 
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(4), 
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(3),
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(3),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-3:nth-last-child(3),
+    .listing:not(.listing_window-mosaic) .item.items-3:nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item.items-3:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-2:nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item.items-2:nth-last-child(1) {
+        margin-bottom: 0!important;
+    }
+
+}
+
+@media (min-width:1200px) {
+
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(8),
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(7), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(6), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(5), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(3), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-8:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(7),
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(6), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(5), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(3), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-7:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(6), 
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(5), 
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(3), 
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-6:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(5),
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(4), 
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(3),
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(2), 
+    .listing:not(.listing_window-mosaic) .item.items-5:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(4),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(3),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item.items-4:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-3:nth-last-child(3),
+    .listing:not(.listing_window-mosaic) .item.items-3:nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item.items-3:nth-last-child(1),
+    .listing:not(.listing_window-mosaic) .item.items-2:nth-last-child(2),
+    .listing:not(.listing_window-mosaic) .item.items-2:nth-last-child(1) {
+        margin-bottom: 0!important;
+    }
+
+}
+
+
+
+/*  
+---------------------------------------------------
+Sticky
+
+Choose preset class 'Sticky' to sticky anything
+---------------------------------------------------  
+*/
+
+.sticky { 
+    position: -webkit-sticky!important;
+    position: sticky!important; 
+    top: var(--base-spacing); z-index:11;
+    
+    /* Safari OSX, iOS performance improvements */ 
+    will-change: transform, top;
+
+    -webkit-transition: top 0.3s ease-in-out 0s;
+    transition: top 0.3s ease-in-out 0s;
+}
+
+/* IE10+ specific styles go here */ 
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    body .sticky { position:relative!important; top:0!important; }
+}
+
+
+
+/*  
+---------------------------------------------------
+Reusable components
+---------------------------------------------------  
+*/
+
+/* Component padding */
+
+/* Users can add these styles using the Settings on the component */
+/*
+.usn_cmp_reusablecomponents { 
+    padding-bottom: 0!important;
+}
+.usn_cmp_reusablecomponents:not(:first-of-type) { 
+    padding: 0!important;
+}
+*/
+
+/* Component container */
+
+.usn_cmp_reusablecomponents > .component-inner > .container-fluid { 
+    padding-right: 0; padding-left: 0;
+}
+
+/* Tabs */
+
+.usn_cmp_reusablecomponents > .component-inner > .container-fluid > div > .tabbed:not(.tab-basic) > .tabs > .nav,
+.usn_cmp_reusablecomponents > .component-inner > .container > div > .tabbed:not(.tab-basic) > .tabs > .nav { 
+    padding: calc(var(--base-spacing) / 2) 0;
+}
+.usn_cmp_reusablecomponents > .component-inner > .container-fluid > div > .tabbed > .tabs > .nav.justify-content-start.text-left { 
+    padding-left: var(--base-spacing);
+}
+.usn_cmp_reusablecomponents > .component-inner > .container-fluid > div > .tabbed > .tabs > .nav.justify-content-end.text-right { 
+    padding-right: var(--base-spacing);
+}
+
+/* Internal components */
+
+/* Users can add these styles using the Settings on the component */
+/*
+.usn_cmp_reusablecomponents > .component-inner > .container .component { 
+    padding: 0;
+}
+*/
+.usn_cmp_reusablecomponents > .component-inner > .container .component .container { 
+    padding-right: 0; padding-left: 0;
+}

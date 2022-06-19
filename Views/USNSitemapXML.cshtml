@@ -1,0 +1,150 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using System.Globalization
+@using Umbraco.Cms.Core.Services 
+@inject IPublicAccessService _publicAccessService
+@{
+    Layout = null;
+    Context.Response.ContentType = "text/xml";
+
+    const string DATE_TIME_FORMAT = "yyyy-MM-dd";
+
+    Usnhomepage homePage = (Usnhomepage)Model.AncestorOrSelf(1);
+
+    //Ensure decimal contains dot, not comma.
+    CultureInfo culture = new CultureInfo("en-US");
+}
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>@homePage.Url(mode: UrlMode.Absolute)</loc>
+        <lastmod>@homePage.UpdateDate.ToString(DATE_TIME_FORMAT)</lastmod>
+        @if (homePage.SitemapXmlpriority.HasValue() && homePage.SitemapXmlpriority != 0)
+        {
+            <priority>@homePage.SitemapXmlpriority.ToString("0.0", culture)</priority>
+        }
+        @if (homePage.SitemapXmlchangeFrequency.HasValue())
+        {
+            <changefreq>@homePage.SitemapXmlchangeFrequency.ToString().Remove(0, 8).ToLower()</changefreq>
+        }
+    </url>
+    @{await Traverse(homePage, DATE_TIME_FORMAT, culture);}
+</urlset>
+
+@functions{
+    private async Task Traverse(IPublishedContent node, string DATE_TIME_FORMAT, CultureInfo culture)
+    {
+        //Exclude certain nodes from sitemap.
+        var items = node.Children.Where(x => !x.IsDocumentType(UsnsitemapXml.ModelTypeAlias) && !x.IsDocumentType(UsnrobotsTxt.ModelTypeAlias) &&
+        !x.IsDocumentType(UsnblogPostsFolder.ModelTypeAlias) && !x.IsDocumentType(UsnblogCategories.ModelTypeAlias) &&
+        !x.IsDocumentType(UsnblogAuthors.ModelTypeAlias) && !x.IsDocumentType(UsnblogAuthor.ModelTypeAlias) &&
+        !_publicAccessService.IsProtected(x.Path));
+
+        if (items.Any())
+        {
+            foreach (var item in items)
+            {
+                if (!item.Value<bool>("hideFromSearchEngines"))
+                {
+                    <url>
+                        <loc>@item.Url(mode: UrlMode.Absolute)</loc>
+                        <lastmod>@item.UpdateDate.ToString(DATE_TIME_FORMAT)</lastmod>
+                        @if (item.HasValue("updateFrequency"))
+                        {
+                            <changefreq>@item.Value("updateFrequency")</changefreq>
+                        }
+                        @if (item.HasValue("sitemapXmlpriority") && item.Value<decimal>("sitemapXmlpriority") != 0)
+                        {
+                            <priority>@(item.Value<decimal>("sitemapXmlpriority").ToString("0.0", culture))</priority>
+                        }
+                        @if (item.HasValue("sitemapXmlchangeFrequency"))
+                        {
+                            <changefreq>@(item.Value<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
+                        }
+                    </url>
+                }
+                await Traverse(item, DATE_TIME_FORMAT, culture);
+            }
+        }
+
+        if (node.IsDocumentType(UsnblogLandingPage.ModelTypeAlias))
+        {
+
+            var catFolder = node.Children.FirstOrDefault(x => x.IsDocumentType(UsnblogCategories.ModelTypeAlias) && !_publicAccessService.IsProtected(x.Path));
+
+            if (catFolder != null)
+            {
+                await TraverseCategories(catFolder, DATE_TIME_FORMAT, culture);
+            }
+
+            ListBlogPosts(node, DATE_TIME_FORMAT, culture);
+        }
+    }
+
+    private async Task TraverseCategories(IPublishedContent catFolder, string DATE_TIME_FORMAT, CultureInfo culture)
+    {
+        var items = catFolder.Children.Where(x => x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias));
+
+        if (items != null && items.Any())
+        {
+            foreach (var item in items)
+            {
+                if (!item.Value<bool>
+                    ("hideFromSearchEngines"))
+                {
+                    <url>
+                        <loc>@item.Url(mode: UrlMode.Absolute)</loc>
+                        <lastmod>@item.UpdateDate.ToString(DATE_TIME_FORMAT)</lastmod>
+                        @if (item.HasValue("updateFrequency"))
+                        {
+                            <changefreq>@item.Value("updateFrequency")</changefreq>
+                        }
+                        @if (item.HasValue("sitemapXmlpriority") && item.Value<decimal>("sitemapXmlpriority") != 0)
+                        {
+                            <priority>@(item.Value<decimal>("sitemapXmlpriority").ToString("0.0", culture))</priority>
+                        }
+                        @if (item.HasValue("sitemapXmlchangeFrequency"))
+                        {
+                            <changefreq>@(item.Value<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
+                        }
+                    </url>
+                }
+                await TraverseCategories(item, DATE_TIME_FORMAT, culture);
+            }
+        }
+    }
+
+    private void ListBlogPosts(IPublishedContent blogLandingPage, string DATE_TIME_FORMAT, CultureInfo culture)
+    {
+        var blogPages = blogLandingPage.Children.First(x => x.IsDocumentType(UsnblogPostsFolder.ModelTypeAlias)).Children.OrderByDescending(y => y.Value<DateTime>
+            ("postDate"));
+
+        if (blogPages.Any())
+        {
+            foreach (var item in blogPages)
+            {
+                if (!item.Value<bool>
+                    ("hideFromSearchEngines"))
+                {
+                    <url>
+                        <loc>@item.Url(mode: UrlMode.Absolute)</loc>
+                        <lastmod>@item.UpdateDate.ToString(DATE_TIME_FORMAT)</lastmod>
+                        @if (item.HasValue("updateFrequency"))
+                        {
+                            <changefreq>@item.Value("updateFrequency")</changefreq>
+                        }
+                        @if (item.HasValue("sitemapXmlpriority") && item.Value<decimal>("sitemapXmlpriority") != 0)
+                        {
+                            <priority>@(item.Value<decimal>("sitemapXmlpriority").ToString("0.0", culture))</priority>
+                        }
+                        @if (item.HasValue("sitemapXmlchangeFrequency"))
+                        {
+                            <changefreq>@(item.Value<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
+                        }
+                    </url>
+                }
+            }
+        }
+    }
+}

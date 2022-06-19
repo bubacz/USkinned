@@ -1,0 +1,1225 @@
+/*  
+---------------------------------------------------
+Window component - Large Breakpoint
+
+- With spacing
+- No spacing
+---------------------------------------------------  
+*/
+
+
+/*  
+---------------------------------------------------
+Window - With spacing
+---------------------------------------------------  
+*/
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item {
+    width: var(--items-2);
+    width: calc(var(--items-2) - 7.5px);
+}
+html[dir="ltr"] .listing.listing_window-mosaic:not(.listing_no-spacing) .item {
+    margin-left: 0;
+}
+
+html[dir="ltr"] .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+html[dir="ltr"] .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    margin-left: 15px;
+}
+
+/* 4 WINDOWS */
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    height: var(--windows-4_big-item);
+    height: calc(var(--windows-4_big-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    height: var(--windows-4_big-item);
+    height: calc(var(--windows-4_big-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner {
+    padding-top: var(--windows-4_big-item);
+    padding-top: calc(var(--windows-4_big-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner {
+    padding-top: var(--windows-4_big-item);
+    padding-top: calc(var(--windows-4_big-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner {
+    padding-top: var(--windows-4_small-item);
+    padding-top: calc(var(--windows-4_small-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner {
+    padding-top: var(--windows-4_small-item);
+    padding-top: calc(var(--windows-4_small-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner {
+    padding-top: var(--windows-4_small-item);
+    padding-top: calc(var(--windows-4_small-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner {
+    padding-top: var(--windows-4_small-item);
+    padding-top: calc(var(--windows-4_small-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner {
+    padding-top: var(--windows-4_big-item);
+    padding-top: calc(var(--windows-4_big-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner {
+    padding-top: var(--windows-4_big-item);
+    padding-top: calc(var(--windows-4_big-item) - 22.5px);
+}
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4),
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    height: var(--windows-4_big-item);
+    height: calc(var(--windows-4_big-item) - var(--large-header-half) - 22.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4),
+body.header-11-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4),
+body.header-12-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4),
+body.header-15-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4),
+body.header-16-lg .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    height: var(--windows-4_big-item);
+    height: calc(var(--windows-4_big-item) - 22.5px);
+}
+
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    height: var(--windows-4_big-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner {
+    padding-top: var(--windows-4_big-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) {
+    height: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner {
+    padding-top: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) {
+    height: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner {
+    padding-top: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4),
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    height: var(--windows-4_big-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4)::before,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) .inner,
+.container .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner {
+    padding-top: var(--windows-4_big-item_PX);
+}
+
+/* Widths */
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(2) { 
+    margin-bottom:var(--base-half-spacing);
+}
+
+.listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) {
+    position: absolute;
+    bottom: var(--base-half-spacing);
+    width: calc(var(--items-2) - var(--base-half-spacing) - 7.5px);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-4.big-window-first:not(.listing_no-spacing) .item:nth-child(4) {
+    right: var(--base-half-spacing);
+}
+.listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    position: absolute;
+    bottom: var(--base-half-spacing);
+    left: var(--base-half-spacing);
+    width: calc(var(--items-2) - var(--base-half-spacing) - 7.5px);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    left: var(--base-half-spacing);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-4.small-window-first:not(.listing_no-spacing) .item:nth-child(4) {
+    margin-left: auto;
+}
+
+/* 3 WINDOWS */
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    height: var(--windows-3_big-item);
+    height: calc(var(--windows-3_big-item) - var(--large-header) - var(--base-spacing));
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    height: var(--windows-3_big-item);
+    height: calc(var(--windows-3_big-item) - var(--base-spacing));
+}
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner {
+    padding-top: var(--windows-3_big-item);
+    padding-top: calc(var(--windows-3_big-item) - var(--large-header) - var(--base-spacing));
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner {
+    padding-top: var(--windows-3_big-item);
+    padding-top: calc(var(--windows-3_big-item) - var(--base-spacing));
+}
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    height: var(--windows-3_small-item);
+    height: calc(var(--windows-3_small-item) - var(--large-header-half) - var(--base-half-spacing) - 7.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    height: var(--windows-3_small-item);
+    height: calc(var(--windows-3_small-item) - var(--base-half-spacing) - 7.5px);
+}
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner {
+    padding-top: var(--windows-3_small-item);
+    padding-top: calc(var(--windows-3_small-item) - var(--large-header-half) - var(--base-half-spacing) - 7.5px);
+}
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-11-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) .inner {
+    padding-top: var(--windows-3_small-item);
+    padding-top: calc(var(--windows-3_small-item) - var(--base-half-spacing) - 7.5px);
+}
+.container .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1),
+.container .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    height: var(--windows-3_big-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(1) .inner,
+.container .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) .inner {
+    padding-top: var(--windows-3_big-item_PX);
+}
+.container .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2),
+.container .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3),
+.container .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1),
+.container .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    height: var(--windows-3_small-item_PX);
+    height: calc(var(--windows-3_small-item_PX) - 7.5px);
+}
+.container .listing.listing_window-mosaic.windows-3.big-window-first .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.windows-3.big-window-first .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.windows-3.small-window-first .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.windows-3.small-window-first .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.windows-3.big-window-first .item:nth-child(2) .inner,
+.container .listing.listing_window-mosaic.windows-3.big-window-first .item:nth-child(3) .inner,
+.container .listing.listing_window-mosaic.windows-3.small-window-first .item:nth-child(1) .inner,
+.container .listing.listing_window-mosaic.windows-3.small-window-first .item:nth-child(2) .inner {
+    padding-top: var(--windows-3_small-item_PX);
+    padding-top: calc(var(--windows-3_small-item_PX) - 7.5px);
+}
+
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    position: relative;
+    top: 0;
+    width: calc(var(--items-2) - 7.5px);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    right: calc(var(--base-half-spacing) * -1);
+}
+.listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    position: absolute;
+    bottom: var(--base-half-spacing);
+    width: calc(var(--items-2) - var(--base-half-spacing) - 7.5px);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-3.big-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    right: var(--base-half-spacing);
+}
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1) {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: calc(var(--items-2) - 7.5px);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(1) {
+    left: 0;
+}
+.listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    position: absolute;
+    bottom: var(--base-half-spacing);
+    width: calc(var(--items-2) - var(--base-half-spacing) - 7.5px);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(2) {
+    left: var(--base-half-spacing);
+}
+html[dir="ltr"] .listing.listing_window-mosaic.windows-3.small-window-first:not(.listing_no-spacing) .item:nth-child(3) {
+    margin-left: auto;
+}
+
+/* BASIC WINDOWS */
+/*
+.listing.listing_window-mosaic.basic-windows:not(.windows-1):not(.listing_no-spacing) { 
+    padding-right:0; padding-left:0;
+}
+*/
+html[dir="ltr"] .listing.listing_window-mosaic.basic-windows:not(.listing_no-spacing) { 
+    padding-left:0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.basic-windows:not(.listing_no-spacing) .item {
+    margin-left:15px;
+}
+.listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item {
+    width: var(--items-4);
+    width: calc(var(--items-4) - 15px);
+}
+.listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item {
+    width: var(--items-3);
+    width: calc(var(--items-3) - 15px);
+}
+.listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item {
+    width: var(--items-2);
+    width: calc(var(--items-2) - 15px);
+}
+.listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item {
+    width: var(--items-1);
+}
+.listing.listing_window-mosaic.basic-windows:not(.listing_no-spacing) .item {
+    height: var(--windows_basic);
+    height: calc(var(--windows_basic) - var(--large-header) - 30px);
+}
+.listing.listing_window-mosaic.basic-windows:not(.listing_no-spacing) .item::before,
+.listing.listing_window-mosaic.basic-windows:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows_basic);
+    padding-top: calc(var(--windows_basic) - var(--large-header) - 30px);
+}
+
+/* BASIC WINDOWS 4 per row */
+.listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item {
+    height: var(--windows-4_basic);
+    height: calc(var(--windows-4_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item {
+    height: var(--windows-4_basic);
+    height: calc(var(--windows-4_basic) - 30px);
+}
+.listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item::before,
+.listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-4_basic);
+    padding-top: calc(var(--windows-4_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item::before,
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item::before,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item::before,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item::before,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-4_basic);
+    padding-top: calc(var(--windows-4_basic) - 30px);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item {
+    height: var(--windows-4_basic_PX);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item::before,
+.container .listing.listing_window-mosaic.basic-windows.windows-4:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-4_basic_PX);
+}
+
+/* BASIC WINDOWS 3 per row */
+.listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item {
+    height: var(--windows-3_basic);
+    height: calc(var(--windows-3_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item {
+    height: var(--windows-3_basic);
+    height: calc(var(--windows-3_basic) - 30px);
+}
+.listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item::before,
+.listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-3_basic);
+    padding-top: calc(var(--windows-3_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item::before,
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item::before,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item::before,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item::before,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-3_basic);
+    padding-top: calc(var(--windows-3_basic) - 30px);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item {
+    height: var(--windows-3_basic_PX);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item::before,
+.container .listing.listing_window-mosaic.basic-windows.windows-3:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-3_basic_PX);
+}
+
+/* BASIC WINDOWS 2 per row */
+.listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item {
+    height: var(--windows-2_basic);
+    height: calc(var(--windows-2_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item {
+    height: var(--windows-2_basic);
+    height: calc(var(--windows-2_basic) - 30px);
+}
+.listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item::before,
+.listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-2_basic);
+    padding-top: calc(var(--windows-2_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item::before,
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item::before,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item::before,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item::before,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-2_basic);
+    padding-top: calc(var(--windows-2_basic) - 30px);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item {
+    height: var(--windows-2_basic_PX);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item::before,
+.container .listing.listing_window-mosaic.basic-windows.windows-2:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-2_basic_PX);
+}
+
+/* BASIC WINDOWS 1 per row */
+.listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item {
+    height: var(--windows-1_basic);
+    height: calc(var(--windows-1_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item {
+    height: var(--windows-1_basic);
+    height: calc(var(--windows-1_basic) - 30px);
+}
+.listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item::before,
+.listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-1_basic);
+    padding-top: calc(var(--windows-1_basic) - var(--large-header) - 30px);
+}
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item::before,
+body.header-11-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item::before,
+body.header-12-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item::before,
+body.header-15-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item::before,
+body.header-16-lg .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-1_basic);
+    padding-top: calc(var(--windows-1_basic) - 30px);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item {
+    height: var(--windows-1_basic_PX);
+}
+.container .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item::before,
+.container .listing.listing_window-mosaic.basic-windows.windows-1:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows-1_basic_PX);
+}
+
+
+/*  
+---------------------------------------------------
+Window - No spacing
+---------------------------------------------------  
+*/
+
+.listing.listing_window-mosaic.listing_no-spacing:not(.windows-1) .item {
+    width: var(--items-2);
+}
+
+/* 4 WINDOWS */
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1),
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) {
+    height: var(--windows-4_big-item);
+    height: calc(var(--windows-4_big-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) {
+    height: var(--windows-4_big-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) .inner {
+    padding-top: var(--windows-4_big-item);
+    padding-top: calc(var(--windows-4_big-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) .inner {
+    padding-top: var(--windows-4_big-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) .inner {
+    padding-top: var(--windows-4_small-item);
+    padding-top: calc(var(--windows-4_small-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) .inner {
+    padding-top: var(--windows-4_small-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) {
+    height: var(--windows-4_small-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) .inner {
+    padding-top: var(--windows-4_small-item);
+    padding-top: calc(var(--windows-4_small-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) .inner {
+    padding-top: var(--windows-4_small-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3),
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) {
+    height: var(--windows-4_small-item);
+    height: calc(var(--windows-4_small-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) {
+    height: var(--windows-4_small-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) .inner {
+    padding-top: var(--windows-4_big-item);
+    padding-top: calc(var(--windows-4_big-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) .inner {
+    padding-top: var(--windows-4_big-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4),
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) {
+    height: var(--windows-4_big-item);
+    height: calc(var(--windows-4_big-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) {
+    height: var(--windows-4_big-item);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) {
+    height: var(--windows-4_big-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(1) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(2) .inner {
+    padding-top: var(--windows-4_big-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) {
+    height: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(2) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(1) .inner {
+    padding-top: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) {
+    height: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(3) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) .inner {
+    padding-top: var(--windows-4_small-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) {
+    height: var(--windows-4_big-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) .inner {
+    padding-top: var(--windows-4_big-item_PX);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) {
+    position: absolute;
+    bottom: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-4.big-window-first .item:nth-child(4) {
+    right: 0;
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(3) {
+    left: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-4.small-window-first .item:nth-child(4) {
+    margin-left: auto;
+}
+
+/* 3 WINDOWS */
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1),
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) {
+    height: var(--windows-3_big-item);
+    height: calc(var(--windows-3_big-item) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) {
+    height: var(--windows-3_big-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) .inner {
+    padding-top: var(--windows-3_big-item);
+    padding-top: calc(var(--windows-3_big-item) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) .inner {
+    padding-top: var(--windows-3_big-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2),
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3),
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1),
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) {
+    height: var(--windows-3_small-item);
+    height: calc(var(--windows-3_small-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1),
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1),
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1),
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1),
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) {
+    height: var(--windows-3_small-item);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2)::before,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) .inner,
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) .inner {
+    padding-top: var(--windows-3_small-item);
+    padding-top: calc(var(--windows-3_small-item) - var(--large-header-half));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2)::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) .inner,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2)::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2)::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2)::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) .inner {
+    padding-top: var(--windows-3_small-item);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) {
+    height: var(--windows-3_big-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(1) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) .inner {
+    padding-top: var(--windows-3_big-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1),
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) {
+    height: var(--windows-3_small-item_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2)::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) .inner,
+.container .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) .inner {
+    padding-top: var(--windows-3_small-item_PX);
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) {
+    position: absolute;
+    top: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(2) {
+    right: 0;
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) {
+    position: absolute;
+    bottom: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-3.big-window-first .item:nth-child(3) {
+    right: 0;
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) {
+    position: absolute;
+    top: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(1) {
+    left: 0;
+}
+.listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) {
+    position: absolute;
+    bottom: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(2) {
+    left: 0;
+}
+html[dir="ltr"] .listing.listing_window-mosaic.listing_no-spacing.windows-3.small-window-first .item:nth-child(3) {
+    margin-left: auto;
+}
+
+/* BASIC WINDOWS */
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item {
+    width: var(--items-4);
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item {
+    width: var(--items-3);
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item {
+    width: var(--items-2);
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item {
+    width: var(--items-1);
+}
+
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows .item {
+    height: var(--windows_basic);
+    height: calc(var(--windows_basic) - var(--large-header));
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows .item::before,
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows .item .inner {
+    padding-top: var(--windows_basic);
+    padding-top: calc(var(--windows_basic) - var(--large-header));
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows .item {
+    height: var(--windows_basic_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows .item::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows .item .inner {
+    padding-top: var(--windows_basic_PX);
+}
+
+/* BASIC WINDOWS 4 per row */
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item {
+    height: var(--windows-4_basic);
+    height: calc(var(--windows-4_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item {
+    height: var(--windows-4_basic);
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item::before,
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item .inner {
+    padding-top: var(--windows-4_basic);
+    padding-top: calc(var(--windows-4_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item .inner {
+    padding-top: var(--windows-4_basic);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item {
+    height: var(--windows-4_basic_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-4 .item .inner {
+    padding-top: var(--windows-4_basic_PX);
+}
+
+/* BASIC WINDOWS 3 per row */
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item {
+    height: var(--windows-3_basic);
+    height: calc(var(--windows-3_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item {
+    height: var(--windows-3_basic);
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item::before,
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item .inner {
+    padding-top: var(--windows-3_basic);
+    padding-top: calc(var(--windows-3_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item .inner {
+    padding-top: var(--windows-3_basic);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item {
+    height: var(--windows-3_basic_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-3 .item .inner {
+    padding-top: var(--windows-3_basic_PX);
+}
+
+/* BASIC WINDOWS 2 per row */
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item {
+    height: var(--windows-2_basic);
+    height: calc(var(--windows-2_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item {
+    height: var(--windows-2_basic);
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item::before,
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item .inner {
+    padding-top: var(--windows-2_basic);
+    padding-top: calc(var(--windows-2_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item .inner {
+    padding-top: var(--windows-2_basic);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item {
+    height: var(--windows-2_basic_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-2 .item .inner {
+    padding-top: var(--windows-2_basic_PX);
+}
+
+/* BASIC WINDOWS 1 per row */
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item {
+    height: var(--windows-1_basic);
+    height: calc(var(--windows-1_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item {
+    height: var(--windows-1_basic);
+}
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item::before,
+.listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item .inner {
+    padding-top: var(--windows-1_basic);
+    padding-top: calc(var(--windows-1_basic) - var(--large-header));
+}
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item::before,
+body.header-11-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item .inner,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item::before,
+body.header-12-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item .inner,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item::before,
+body.header-15-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item .inner,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item::before,
+body.header-16-lg .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item .inner {
+    padding-top: var(--windows-1_basic);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item {
+    height: var(--windows-1_basic_PX);
+}
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item::before,
+.container .listing.listing_window-mosaic.listing_no-spacing.basic-windows.windows-1 .item .inner {
+    padding-top: var(--windows-1_basic_PX);
+}

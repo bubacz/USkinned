@@ -1,0 +1,95 @@
+/*  
+---------------------------------------------------
+Links 
+---------------------------------------------------  
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_links { }*/
+
+/* Split component block */
+/*
+.item_block.usn_cmp_links { }*/
+
+
+.listing.listing_links:not(.listing_links-mini) { 
+    margin-right:0; margin-left:0;
+    border-width:var(--base-border-width) var(--base-border-width) 0 0; border-style: solid;
+    border-color:  rgba(var(--base-borders), 1);
+}
+
+.listing.listing_links:not(.listing_links-mini) .item { 
+    padding:0; margin:0;
+}
+
+.listing.listing_links:not(.listing_links-mini) .item a { 
+    padding:var(--base-half-spacing);
+    border-width:0 0 var(--base-border-width) var(--base-border-width); border-style: solid;
+    border-color:  rgba(var(--base-borders), 1);
+}
+
+.listing.listing_links:not(.listing_links-mini) .item a:hover { 
+    background-color:  rgba(var(--base-borders), 0.1);
+}
+
+footer#site-footer .listing.listing_links:not(.listing_links-mini) { 
+    border-color:  rgba(var(--footer-borders), 1);
+}
+
+footer#site-footer .listing.listing_links:not(.listing_links-mini) .item a { 
+    border-color:  rgba(var(--footer-borders), 1);
+}
+
+footer#site-footer .listing.listing_links:not(.listing_links-mini) .item a:hover { 
+    background-color:  rgba(var(--footer-borders), 0.1);
+}
+
+.listing.listing_links:not(.listing_links-mini) .item .heading { 
+    margin-top:0;
+}
+
+/*  
+---------------------------------------------------
+Links - Mini Links
+---------------------------------------------------  
+*/
+
+.listing.listing_links.listing_links-mini .item { 
+    margin:5px 0;
+}
+
+.listing.listing_links.listing_links-mini .item a { 
+    position:relative;
+}
+
+.listing.listing_links.listing_links-mini .has-dash .item a,
+.listing.listing_links.listing_links-mini.has-dash .item a { 
+    padding-left:15px;
+}
+
+.listing.listing_links.listing_links-mini .has-dash .item a::after,
+.listing.listing_links.listing_links-mini.has-dash .item a::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 0;
+    display: block;
+    width: 5px;
+    height: var(--base-border-width);
+    background-color:  rgba(var(--base-link), 1);
+}
+
+.listing.listing_links.listing_links-mini .item a:hover::after {
+    width: 8px;
+    background-color:  rgba(var(--base-link-hover), 1);
+}
+
+footer#site-footer .listing.listing_links.listing_links-mini .item a::after {
+    background-color:  rgba(var(--footer-link), 1);
+}
+
+footer#site-footer .listing.listing_links.listing_links-mini .item a:hover::after {
+    background-color:  rgba(var(--footer-link-hover), 1);
+}
+

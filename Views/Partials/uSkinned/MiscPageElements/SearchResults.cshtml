@@ -1,0 +1,138 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using System.Text.RegularExpressions
+@using Umbraco.Cms.Core.Strings
+@using Examine
+@using Examine.Search
+@using System.Threading
+@using Umbraco.Cms.Core
+@inject IExamineManager _examineManager
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    if (globalSettings.SearchResultsPage.HasValue())
+    {
+        string itemHeadingSizeClass = Model.Value<string>("itemHeadingSize");
+
+        int itemsPerPage = Model.Value<int>("searchResultsPageSize"); // How many items per page
+        int currentPagePosition; // The page we are viewing
+        string originalSearchTerm = String.Empty;
+        string searchTerm = String.Empty;
+        int totalNodes = 0;
+        int totalPages = 0;
+        IEnumerable<IPublishedContent> finalSearchList = null;
+
+        if (!String.IsNullOrEmpty(Context.Request.Query["search_field"]))
+        {
+            //Makes search query safe
+            //Match all characters that DO NOT (^) match (\w alphanumeric characters) and \s (white space and tab) and - (hyphen) and replace them with ""
+            originalSearchTerm = Context.Request.Query["search_field"].ToString().Trim();
+            searchTerm = Regex.Replace(originalSearchTerm, @"[^\w\s-]", "");
+
+            //Match any white space character
+            searchTerm = Regex.Replace(searchTerm, @"\s+", " ");
+        }
+
+        if (!int.TryParse(Context.Request.Query["page"], out currentPagePosition))
+        {
+            currentPagePosition = 1;
+        }
+
+        if (!String.IsNullOrEmpty(searchTerm) && _examineManager.TryGetIndex(Constants.UmbracoIndexes.ExternalIndexName, out IIndex index))
+        {
+            var searcher = index.Searcher;
+
+            var homeNode = Model.Root();
+            int cultureCount = homeNode.Cultures.Count;
+
+            string currentCulture = Thread.CurrentThread.CurrentUICulture.Name.ToLower();
+
+            string publishedField = cultureCount == 1 ? "__Published" : string.Concat("__Published_", currentCulture);
+            string combinedField = cultureCount == 1 ? "combinedField" : string.Concat("combinedField_", currentCulture);
+
+            var criteria = searcher.CreateQuery("content", BooleanOperation.And)
+                    .GroupedOr(new List<string> { combinedField }, searchTerm)
+                   .And()
+                   .Field(publishedField, "y")
+                   .And()
+                   .Field("searchablePath", Model.HomeNode.Id.ToString())
+                   .Not()
+                   .Field("hideFromInternalSearch", "1")
+                   .Not()
+                   .Field("__NodeTypeAlias", "usnsitemapxml")
+                   .Not()
+                   .Field("__NodeTypeAlias", "usnrobotstxt");
+
+
+            var searchList = criteria.Execute();
+            var result = searchList.ToPublishedSearchResults(UmbracoContext.PublishedSnapshot.Content);
+            finalSearchList = result.Select(x => x.Content);
+
+            totalNodes = finalSearchList.Count();
+            totalPages = (int)Math.Ceiling(totalNodes / (double)itemsPerPage);
+
+            if (currentPagePosition > totalPages)
+            {
+                currentPagePosition = totalPages;
+            }
+            else if (currentPagePosition < 1)
+            {
+                currentPagePosition = 1;
+            }
+        }
+
+        if (totalNodes == 0)
+        {
+            <p>@Umbraco.GetDictionaryValue("USN Search Results Nothing Found")</p>
+            @await Html.PartialAsync(Model.ThemeFolder + "/Forms/SearchForm", Model)
+        }
+        else
+        {
+            //Only display introduction on first page
+            if (currentPagePosition == 1)
+            {
+                @Html.Raw(Model.Value<IHtmlEncodedString>("listingIntroduction"))
+            }
+
+
+            //Please note the dictionary item should have a {0} and {1} placeholder for string formatting.
+            string searchResultsFeedback = Umbraco.GetDictionaryValue("USN Search Results Feedback");
+            searchResultsFeedback = String.Format(searchResultsFeedback, originalSearchTerm, totalNodes);
+
+            <p>@Html.Raw(searchResultsFeedback)</p>
+            @await Html.PartialAsync(Model.ThemeFolder + "/Forms/SearchForm", Model)
+
+            <div class="component-main row listing listing_basic-grid listing_search-results">
+                @foreach (var item in finalSearchList.Skip((currentPagePosition - 1) * itemsPerPage).Take(itemsPerPage))
+                {
+                    <div class="item items-1 col-12">
+                        <div class="inner">
+                            <a href="@item.Url()">
+                                <div class="info">
+                                    <p class="heading @itemHeadingSizeClass base-heading">@(item.HasValue("onPageTitle") ? item.Value<string>("onPageTitle") : item.Name)</p>
+                                    @if (item.HasValue("pageSummary"))
+                                    {
+                                        <div class="text base-text">@Html.Raw(item.Value<IHtmlEncodedString>("pageSummary"))</div>
+                                    }
+                                    else if (item.HasValue("metaDescription"))
+                                    {
+                                        <div class="text base-text">@Html.Raw(Html.ReplaceLineBreaks(item.Value<string>("metaDescription")))</div>
+                                    }
+                                    <p class="url base-text">@Umbraco.GetDictionaryValue("USN Search Results Link Label") <span class="base-link">@item.Url()</span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            if (totalPages > 1)
+            {
+                <!-- PAGINATION -->
+                @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/Paging", new ViewDataDictionary(ViewData) { { "totalPageCount", totalPages }, { "pageNumber", currentPagePosition } })
+                <!--// PAGINATION -->
+            }
+        }
+    }
+}

@@ -1,0 +1,126 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@using Umbraco.Cms.Core.Services
+@inject ISiteBuilderService _siteBuilderService
+@inject IPublicAccessService publicAccessService
+@{
+    //Available as Component Block and Split Component Block types
+
+    var content = (IUsn_Cmp_Sitemap_Content)Model.BlockContent;
+
+    //Settings taken from compositions common to all block types
+    var uniqueSettings = (IUsn_Cmp_Sitemap_Settings)Model.BlockSettings;
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+    IPublishedContent startPage = content.SitemapStartPage;
+
+    if (startPage != null)
+    {
+        <div class="component-main @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+            <nav class="sitemap">
+                @if (!uniqueSettings.HideStartPage)
+                {
+                    <ul class="nav">
+                        <li class="nav-item level-@(startPage.Level)">
+                            <a class="nav-link" href="@startPage.Url()">
+                                @if (startPage.HasValue("htmlSitemapLinkText"))
+                                {
+                                    @Html.Raw(startPage.Value<string>("htmlSitemapLinkText"))
+                                }
+                                else
+                                {
+                                    @startPage.Name
+                                }
+                            </a>
+                            @{ Traverse(startPage, uniqueSettings); }
+
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    Traverse(startPage, uniqueSettings);
+                }
+            </nav>
+        </div>
+    }
+}
+
+@functions{
+
+    private void Traverse(IPublishedContent node, IUsn_Cmp_Sitemap_Settings uniqueSettings)
+    {
+        IEnumerable<IPublishedContent>
+        items;
+
+        if (uniqueSettings.IncludeProtectedPages)
+        {
+            items = node.Children.Where(x => (x.IsDocumentType(Usnpage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && x.IsVisible());
+        }
+        else
+        {
+            items = node.Children.Where(x => (x.IsDocumentType(Usnpage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && x.IsVisible() && !publicAccessService.IsProtected(x.Path));
+        }
+
+        if (items.Any())
+        {
+            <ul class="nav">
+                @foreach (var item in items)
+                {
+                    <li class="nav-item level-@item.Level">
+                        <a class="nav-link" href="@item.Url()">
+                            @if (item.HasValue("htmlSitemapLinkText"))
+                            {
+                                @Html.Raw(item.Value<string>("htmlSitemapLinkText"))
+                            }
+                            else
+                            {
+                                @item.Name
+                            }
+                        </a>
+                        @{Traverse(item, uniqueSettings);}
+                    </li>
+                }
+            </ul>
+        }
+
+        var catFolder = node.Children.FirstOrDefault(x => x.IsDocumentType(UsnblogCategories.ModelTypeAlias));
+
+        if (catFolder != null)
+        {
+            TraverseCategories(catFolder);
+        }
+    }
+
+    private void TraverseCategories(IPublishedContent catFolder)
+    {
+
+        var items = catFolder.Children.Where(x => (x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)) && x.IsVisible());
+
+        if (items.Any())
+        {
+            <ul class="nav">
+                @foreach (var item in items)
+                {
+                    <li class="nav-item level-@item.Level">
+                        <a class="nav-link" href="@item.Url()">
+                            @if (item.HasValue("htmlSitemapLinkText"))
+                            {
+                                @Html.Raw(item.Value<string>("htmlSitemapLinkText"))
+                            }
+                            else
+                            {
+                                @item.Name
+                            }
+                        </a>
+                        @{TraverseCategories(item);}
+                    </li>
+                }
+            </ul>
+        }
+    }
+}

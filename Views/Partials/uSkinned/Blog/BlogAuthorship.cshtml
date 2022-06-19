@@ -1,0 +1,123 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@using Microsoft.Extensions.Options
+@inject ISiteBuilderService _siteBuilderService
+@inject IOptions<USNAppSettings> _appSettings
+@{
+    int blogLandingPageID = Convert.ToInt32(ViewData["blogLandingPageID"]);
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    UsnblogLandingPage landing = (UsnblogLandingPage)Umbraco.Content(blogLandingPageID);
+
+    UsnblogAuthor authorNode = null;
+
+    if (Model.Value<IEnumerable<IPublishedContent>>("postAuthor") != null && Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault() != null)
+    {
+        authorNode = (UsnblogAuthor)Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
+    }
+    else if (landing.DefaultAuthor != null)
+    {
+        authorNode = (UsnblogAuthor)landing.DefaultAuthor.FirstOrDefault();
+    }
+
+    if (authorNode != null)
+    {
+        string authorName = authorNode.Name;
+
+        <!-- Author Bio -->
+        <section class="content component author-bio base-bg">
+            <div class="item item_text-left">
+
+                @if (authorNode.AuthorImage != null)
+                {
+                    string bgColor = String.Empty;
+
+                    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+                    bgColor = websiteStyle.StyleColors.contentBackground;
+
+                    ImageSettings imageSettings = _siteBuilderService.GetImageSettings(authorNode.ImageStyle, authorNode.BoxPad);
+
+                    <div class="image">
+                        @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/Image", authorNode.AuthorImage, new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+                    </div>
+                }
+                <!-- Info -->
+                <div class="info">
+
+                    <p class="secondary-heading base-secondary-heading sm">@Umbraco.GetDictionaryValue("USN Blog About The Author")</p>
+                    <p class="heading base-heading sm">
+                        @if (authorNode.AuthorPage.HasValue() && _siteBuilderService.DisplayLink(authorNode.AuthorPage))
+                        {
+                            authorName = authorNode.AuthorPage.link.LinkText != authorNode.Name ? authorNode.AuthorPage.link.LinkText : authorNode.Name;
+
+                            <a class="base-heading" href="@(authorNode.AuthorPage.link.LinkUrl)" @Html.Raw(authorNode.AuthorPage.link.LinkTarget) @Html.Raw(authorNode.AuthorPage.link.LinkTitle)>@Html.Raw(authorName)@Html.Raw(authorNode.AuthorPage.link.LinkTargetIcon)</a>
+                        }
+                        else
+                        {
+                            @Html.Raw(authorName)
+                        }
+                    </p>
+                    @if (authorNode.AuthorBio.HasValue())
+                    {
+                        <div class="text base-text">
+                            @Html.Raw(authorNode.AuthorBio)
+                        </div>
+                    }
+
+                    @if (authorNode.SocialLinks.HasValue() && authorNode.SocialLinks.Any())
+                    {
+                        <!-- Social -->
+                        <nav class="social">
+                            <ul>
+                                @foreach (var item in authorNode.SocialLinks)
+                                {
+                                    if (_siteBuilderService.DisplayLink(item))
+                                    {
+                                        <li>
+                                            <span>
+                                                <a href="@item.link.LinkUrl" @Html.Raw(item.link.LinkTarget) @Html.Raw(item.link.LinkTitle)>
+                                                    @if (item.image.HasValue())
+                                                    {
+                                                        if (item.image.Value<string>("umbracoExtension") != "svg")
+                                                        {
+                                                            bool webPEnabled = _appSettings.Value.WebPEnabled;
+
+                                                            <picture>
+                                                                @if (webPEnabled)
+                                                                {
+                                                                    <source type="image/webp" data-srcset="@item.image.Url()?format=webp&height=80 1x, @item.image.Url()?format=webp&height=160 2x">
+
+                                                                }
+                                                                <img class="lazyload" src="@item.image.Url()?height=16" data-srcset="@item.image.Url()?height=80 1x, @item.image.Url()?height=160 2x" alt="@(item.image.Value<string>("alternativeText"))">
+                                                            </picture>
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="@item.image.Url()" alt="@(item.image.Value<string>("alternativeText"))">
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw(item.link.LinkText)
+                                                    }
+                                                </a>
+                                            </span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </nav>
+                        <!--// Social -->
+                    }
+                </div>
+                <!--// Info -->
+
+            </div>
+        </section>
+        <!--// Author Bio -->
+    }
+}

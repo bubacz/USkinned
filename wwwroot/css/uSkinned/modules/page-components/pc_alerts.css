@@ -1,0 +1,19 @@
+/*  
+---------------------------------------------------
+Alert 
+---------------------------------------------------  
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_alertbox { }*/
+
+/* Split component block */
+/*
+.item_block.usn_cmp_alertbox { }*/
+
+.alert { 
+    margin:0; 
+    border-width: var(--base-border-width); 
+    border-radius: var(--base-border-radius); 
+}

@@ -1,0 +1,105 @@
+/*  
+---------------------------------------------------
+Directions - Large Breakpoint
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+Main Navigation
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle nav.main ul li.has-child>span::after {
+    content: "\f280"; /* down */
+}
+.directional-icons-triangle nav.main ul ul li.has-child>span::after { 
+    content: "\f284"; /* right */
+}
+
+/* Arrow */
+.directional-icons-arrow nav.main ul li.has-child>span::after {
+    content: "\f118"; /* down */
+}
+.directional-icons-arrow nav.main ul ul li.has-child>span::after { 
+    content: "\f119"; /* right */
+}
+
+/* Chevron */
+.directional-icons-chevron nav.main ul li.has-child>span::after {
+    content: "\f3d0"; /* down */
+}
+.directional-icons-chevron nav.main ul ul li.has-child>span::after { 
+    content: "\f3d1"; /* right */
+}
+
+
+/* Triangle */
+body.header-03-lg.directional-icons-triangle nav.main ul li.has-child>span::after,
+body.header-11-lg.directional-icons-triangle nav.main ul li.has-child>span::after,
+body.header-12-lg.directional-icons-triangle nav.main ul li.has-child>span::after,
+body.header-15-lg.directional-icons-triangle nav.main ul li.has-child>span::after,
+body.header-16-lg.directional-icons-triangle nav.main ul li.has-child>span::after,
+body.header-17-lg.directional-icons-triangle nav.main ul li.has-child>span::after,
+body.header-19-lg.directional-icons-triangle nav.main ul li.has-child>span::after,
+body.header-20-lg.directional-icons-triangle nav.main ul li.has-child>span::after {
+    content: "\f280"; /* down */
+
+}
+body.header-03-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after, 
+body.header-11-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after, 
+body.header-12-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after, 
+body.header-15-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after, 
+body.header-16-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after, 
+body.header-17-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after, 
+body.header-19-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after, 
+body.header-20-lg.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after {
+    content: "\f286"; /* up */
+}
+
+/* Arrow */
+body.header-03-lg.directional-icons-arrow nav.main ul li.has-child>span::after,
+body.header-11-lg.directional-icons-arrow nav.main ul li.has-child>span::after,
+body.header-12-lg.directional-icons-arrow nav.main ul li.has-child>span::after,
+body.header-15-lg.directional-icons-arrow nav.main ul li.has-child>span::after,
+body.header-16-lg.directional-icons-arrow nav.main ul li.has-child>span::after,
+body.header-17-lg.directional-icons-arrow nav.main ul li.has-child>span::after,
+body.header-19-lg.directional-icons-arrow nav.main ul li.has-child>span::after,
+body.header-20-lg.directional-icons-arrow nav.main ul li.has-child>span::after {
+    content: "\f118"; /* down */
+}
+body.header-03-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-11-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-12-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-15-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-16-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-17-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-19-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after
+body.header-20-lg.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after {
+    content: "\f11a"; /* up */
+}
+
+/* Chevron */
+body.header-03-lg.directional-icons-chevron nav.main ul li.has-child>span::after,
+body.header-11-lg.directional-icons-chevron nav.main ul li.has-child>span::after,
+body.header-12-lg.directional-icons-chevron nav.main ul li.has-child>span::after,
+body.header-15-lg.directional-icons-chevron nav.main ul li.has-child>span::after,
+body.header-16-lg.directional-icons-chevron nav.main ul li.has-child>span::after,
+body.header-17-lg.directional-icons-chevron nav.main ul li.has-child>span::after,
+body.header-19-lg.directional-icons-chevron nav.main ul li.has-child>span::after,
+body.header-20-lg.directional-icons-chevron nav.main ul li.has-child>span::after {
+    content: "\f3d0"; /* down */
+
+}
+body.header-03-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-11-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-12-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-15-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-16-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-17-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-19-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after,
+body.header-20-lg.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after {
+    content: "\f3d8"; /* up */
+}
+

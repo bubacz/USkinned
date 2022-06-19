@@ -1,0 +1,7 @@
+﻿<div ng-controller="USN.CodeEditor.Controller as vm">
+    <div ng-class="{'usn-code-editor tall' : model.config.editorHeight.height == 'tall', 'usn-code-editor short' : model.config.editorHeight.height == 'short'}"
+         umb-ace-editor="vm.aceOption"
+         model="model.value"
+         height="inherit">
+    </div>
+</div>

@@ -1,0 +1,90 @@
+/*	
+--------------------------------------------------
+Reusable Component
+-------------------------------------------------- 
+*/
+
+/* Component only */
+/*
+.component.usn_reusablecomponents { }*/
+
+/* Not available as part of Split Component
+.item_block.usn_reusablecomponents { }*/
+
+
+.component.usn_reusablecomponents {
+    padding:0!important;
+}
+
+.component.usn_reusablecomponents > .container-fluid > .component-introduction,
+.component.usn_reusablecomponents > .container-fluid > .component-outro { 
+    margin:0;
+}
+
+.component.usn_reusablecomponents > .container-fluid { 
+    padding:0;
+}
+
+/* Tabs */
+.component.usn_reusablecomponents:not(.p-0) .repeatable:first-child .tabs { 
+    padding:var(--base-half-spacing) var(--base-half-spacing) 0;
+}
+
+.component.usn_reusablecomponents > .container-fluid >  .component-introduction + .repeatable .tabs { 
+    padding:0 var(--base-half-spacing);
+}
+
+.component.usn_reusablecomponents .repeatable-content.tab-content { 
+    top:0;
+    border:0 none!important;
+}
+
+@media (min-width:0) and (max-width:575px) {
+    .component.usn_reusablecomponents .component-introduction,
+    .component.usn_reusablecomponents:not(.p-0) .repeatable:first-child .tabs {
+        padding-top: var(--pc-spacing);
+    }
+    .component.usn_reusablecomponents .component-outro {
+        padding-bottom: var(--pc-spacing);
+    }
+}
+
+@media (min-width:576px) {
+    .component.usn_reusablecomponents .component-introduction,
+    .component.usn_reusablecomponents:not(.p-0) .repeatable:first-child .tabs {
+        padding-top: var(--pc-spacing_sm);
+    }
+    .component.usn_reusablecomponents .component-outro {
+        padding-bottom: var(--pc-spacing_sm);
+    }
+}
+
+@media (min-width:768px) {
+    .component.usn_reusablecomponents .component-introduction,
+    .component.usn_reusablecomponents:not(.p-0) .repeatable:first-child .tabs {
+        padding-top: var(--pc-spacing_md);
+    }
+    .component.usn_reusablecomponents .component-outro {
+        padding-bottom: var(--pc-spacing_md);
+    }
+}
+
+@media (min-width:992px) {
+    .component.usn_reusablecomponents .component-introduction,
+    .component.usn_reusablecomponents:not(.p-0) .repeatable:first-child .tabs {
+        padding-top: var(--pc-spacing_lg);
+    }
+    .component.usn_reusablecomponents .component-outro {
+        padding-bottom: var(--pc-spacing_lg);
+    }
+}
+
+@media (min-width:1200px) {
+    .component.usn_reusablecomponents .component-introduction,
+    .component.usn_reusablecomponents:not(.p-0) .repeatable:first-child .tabs {
+        padding-top: var(--pc-spacing_xl);
+    }
+    .component.usn_reusablecomponents .component-outro {
+        padding-bottom: var(--pc-spacing_xl);
+    }
+}

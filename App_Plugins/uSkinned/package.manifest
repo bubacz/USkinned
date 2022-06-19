@@ -1,0 +1,467 @@
+﻿{
+	"name": "uSkinned Site Builder",
+	"version": "2.0.3",
+	"propertyEditors": [
+		{
+			"alias": "USN.AdditionalClasses",
+			"name": "USN Additional Classes",
+			"editor": {
+				"valueType": "STRING",
+				"view": "~/App_Plugins/uSkinned/views/additionalclasses-editor.html",
+				"hideLabel": false
+			}
+		},
+		{
+			"alias": "USN.AnimateOptions",
+			"name": "USN Animate Options",
+			"editor": {
+				"valueType": "STRING",
+				"view": "~/App_Plugins/uSkinned/views/animateoptions-editor.html",
+				"hideLabel": false
+			}
+		},
+		{
+			"alias": "USN.BackgroundOptions",
+			"name": "USN Background Options",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/backgroundoptions-editor.html",
+				"valueType": "JSON"
+			}
+		},
+		{
+			"alias": "USN.ColorPicker",
+			"name": "USN Color Picker",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/colorpicker-editor.html",
+				"valueType": "JSON"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Color source",
+						"key": "colorSource",
+						"view": "~/App_Plugins/uSkinned/views/colorpicker-prevalues.html"
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.Heading",
+			"name": "USN Heading",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/heading-editor.html",
+				"valueType": "JSON"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Display all options",
+						"key": "displayAll",
+						"view": "boolean"
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.Label",
+			"name": "USN Label",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/label-editor.html",
+				"hideLabel": true
+			}
+		},
+		{
+			"alias": "USN.MegaNav",
+			"name": "USN Mega Nav",
+			"editor": {
+				"valueType": "JSON",
+				"view": "~/App_Plugins/uSkinned/views/meganav-editor.html"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Class name regex",
+						"key": "styleRegex",
+						"description": "Regex that matches the class name pattern.",
+						"view": "textstring"
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.MultiUrlPicker",
+			"name": "USN Multi Url Picker",
+			"editor": {
+				"valueType": "JSON",
+				"view": "~/App_Plugins/uSkinned/views/multiurlpicker-editor.html",
+				"hideLabel": false
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Minimum number of items",
+						"key": "minNumber",
+						"view": "number"
+					},
+					{
+						"label": "Maximum number of items",
+						"key": "maxNumber",
+						"view": "number"
+					},
+					{
+						"label": "Display button color option",
+						"key": "displayButtonColor",
+						"view": "boolean"
+					},
+					{
+						"label": "Display icon option",
+						"key": "displayIcon",
+						"view": "boolean"
+					},
+					{
+						"label": "Display media option",
+						"key": "displayMedia",
+						"view": "boolean"
+					},
+					{
+						"label": "Display button size option",
+						"key": "displayButtonSize",
+						"view": "boolean"
+					},
+					{
+						"label": "Class name regex",
+						"key": "styleRegex",
+						"description": "Regex that matches the class name pattern.",
+						"view": "textstring"
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.OptionsShowHide",
+			"name": "USN Options Show Hide",
+			"editor": {
+				"valueType": "STRING",
+				"view": "~/App_Plugins/uSkinned/views/optionsshowhide-editor.html",
+				"hideLabel": false
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Hide tabs",
+						"description": "Enter the tabs you would like hidden if nothing is selected.",
+						"key": "hideTabs",
+						"view": "textstring"
+					},
+					{
+						"label": "Hide fields",
+						"description": "Enter the field alias name you would like hidden if nothing is selected.",
+						"key": "hideFields",
+						"view": "textstring"
+					},
+					{
+						"label": "Option values",
+						"hideLabel": true,
+						"key": "items",
+						"view": "~/App_Plugins/uSkinned/views/optionsshowhide-prevalues.html"
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.ReadOnly",
+			"name": "USN Read Only",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/readonly-editor.html"
+			}
+		},
+		{
+			"alias": "USN.SeoMeta",
+			"name": "USN SEO Meta",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/seometa-editor.html",
+				"valueType": "JSON"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Title length from",
+						"key": "titleLengthFrom",
+						"view": "number"
+					},
+					{
+						"label": "Title length limit",
+						"key": "titleLength",
+						"view": "number"
+					},
+					{
+						"label": "Description length from",
+						"key": "descriptionLengthFrom",
+						"view": "number"
+					},
+					{
+						"label": "Description length limit",
+						"key": "descriptionLength",
+						"view": "number"
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.TextPosition",
+			"name": "USN Text Position",
+			"editor": {
+				"valueType": "STRING",
+				"view": "~/App_Plugins/uSkinned/views/textposition-editor.html"
+			}
+		},
+		{
+			"alias": "USN.ThemeColors",
+			"name": "USN Theme Colors",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/themecolors-editor.html",
+				"valueType": "JSON",
+				"hideLabel": true
+			}
+		},
+		{
+			"alias": "USN.ThemeFonts",
+			"name": "USN Theme Fonts",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/themefonts-editor.html",
+				"valueType": "JSON",
+				"hideLabel": true
+			}
+		},
+		{
+			"alias": "USN.ThemePicker",
+			"name": "USN Theme Picker",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/themepicker-editor.html"
+			}
+		},
+		{
+			"alias": "USN.ThemeSpacing",
+			"name": "USN Theme Spacing",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/themespacing-editor.html",
+				"valueType": "JSON",
+				"hideLabel": true
+			}
+		},
+		{
+			"alias": "USN.ThemeLayout",
+			"name": "USN Theme Layout",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/themelayout-editor.html",
+				"valueType": "JSON",
+				"hideLabel": true
+			}
+		},
+		{
+			"alias": "USN.TrueFalseShowHide",
+			"name": "USN True/False Show Hide",
+			"editor": {
+				"view": "~/App_Plugins/uSkinned/views/truefalseshowhide-editor.html",
+				"valueType": "INT"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Hide tabs",
+						"description": "Enter the tabs you would like hidden if nothing is selected.",
+						"key": "hideTabs",
+						"view": "textstring"
+					},
+					{
+						"label": "Hide fields",
+						"description": "Enter the field alias name you would like hidden if nothing is selected.",
+						"key": "hideFields",
+						"view": "textstring"
+					},
+					{
+						"label": "False tabs",
+						"description": "Enter the tabs you would like displayed/hidden if false is selected.",
+						"key": "falseTabs",
+						"view": "textstring"
+					},
+					{
+						"label": "True tabs",
+						"description": "Enter the tabs you would like displayed/hidden if true is selected.",
+						"key": "trueTabs",
+						"view": "textstring"
+					},
+					{
+						"label": "False fields",
+						"description": "Enter the fields you would like displayed/hidden if false is selected.",
+						"key": "falseFields",
+						"view": "textstring"
+					},
+					{
+						"label": "True fields",
+						"description": "Enter the fields you would like displayed/hidden if true is selected.",
+						"key": "trueFields",
+						"view": "textstring"
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.VerticalPosition",
+			"name": "USN Vertical Position",
+			"editor": {
+				"valueType": "STRING",
+				"view": "~/App_Plugins/uSkinned/views/verticalposition-editor.html"
+			}
+		},
+		{
+			"alias": "USN.MultiNodeTreePicker",
+			"name": "USN MultiNode TreePicker",
+			"icon": "icon-page-add",
+			"group": "pickers",
+			"editor": {
+				"valueType": "JSON",
+				"view": "~/App_Plugins/uSkinned/views/multinodetreepicker-editor.html"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Picker start node document type alias",
+						"description": "One alias only.",
+						"key": "pickerStartNodeName",
+						"view": "textstring"
+					},
+					{
+						"label": "Allow items of type",
+						"description": "Seperate multiple alias with comma",
+						"key": "filter",
+						"view": "textstring"
+					},
+					{
+						"label": "Minimum number of items",
+						"key": "minNumber",
+						"view": "number"
+					},
+					{
+						"label": "Maximum number of items",
+						"key": "maxNumber",
+						"view": "number"
+					},
+					{
+						"label": "Show open button (this feature is in preview!)",
+						"key": "showOpenButton",
+						"view": "boolean",
+						"description": "Opens the node in a dialog"
+					},
+					{
+						"label": "Ignore User Start Nodes",
+						"key": "ignoreUserStartNodes",
+						"view": "boolean",
+						"description": "Selecting this option allows a user to choose nodes that they normally don't have access to."
+					}
+				]
+			}
+		},
+		{
+			"alias": "USN.CodeEditor",
+			"name": "USN Code Editor",
+			"editor": {
+				"valueType": "TEXT",
+				"view": "~/App_Plugins/uSkinned/views/code-editor.html"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Editor type",
+						"key": "editorType",
+						"view": "~/App_Plugins/uSkinned/views/code-editor-type-prevalues.html"
+					},
+					{
+						"label": "Editor height",
+						"key": "editorHeight",
+						"view": "~/App_Plugins/uSkinned/views/code-editor-height-prevalues.html"
+					}
+				]
+			}
+		}
+	],
+	"gridEditors": [
+		{
+			"name": "Code",
+			"alias": "code",
+			"view": "textstring",
+			"render": "/App_Plugins/uSkinned/grid/code-grid.cshtml",
+			"icon": "icon-code",
+			"config": {
+				"style": "border-left: 3px solid #ccc; padding: 10px; color: #fff; background-color: #000; font-size: 14px; font-family:monospace;",
+				"markup": "#value#"
+			}
+		}
+	],
+	"javascript": [
+		"~/App_Plugins/uSkinned/controllers/additionalclasses-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/backgroundoptions-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/colorpicker-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/heading-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/label-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/meganav-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/meganav-iconpicker-controller.js",
+		"~/App_Plugins/uSkinned/lib/angular-ui-tree.js",
+		"~/App_Plugins/uSkinned/controllers/multiurlpicker-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/multiurlpicker-iconpicker-controller.js",
+		"~/App_Plugins/uSkinned/controllers/multiurlpicker-colorpicker-controller.js",
+		"~/App_Plugins/uSkinned/controllers/multiurlpicker-sizepicker-controller.js",
+		"~/App_Plugins/uSkinned/controllers/optionsshowhide-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/optionsshowhide-prevalues-controller.js",
+		"~/App_Plugins/uSkinned/controllers/readonly-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/seometa-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/textposition-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/themecolors-editor-controller.js",
+		"~/App_Plugins/uSkinned/lib/usn-spectrum.js",
+		"~/App_Plugins/uSkinned/controllers/themefonts-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/themepicker-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/themespacing-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/themelayout-editor-controller.js",
+		"~/App_Plugins/uSkinned/lib/switcher.js",
+		"~/App_Plugins/uSkinned/controllers/truefalseshowhide-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/verticalposition-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/multinodetreepicker-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/code-editor-controller.js",
+		"~/App_Plugins/uSkinned/controllers/welcome-controller.js",
+		"~/App_Plugins/uSkinned/controllers/license-dashboard.controller.js",
+		"~/App_Plugins/uSkinned/controllers/designs-listview-controller.js",
+		"~/App_Plugins/uSkinned/controllers/global-listview-controller.js",
+		"~/App_Plugins/uSkinned/controllers/components-listview-controller.js",
+		"~/App_Plugins/uSkinned/controllers/pods-listview-controller.js",
+		"~/App_Plugins/uSkinned/controllers/block-controller.js",
+		"~/App_Plugins/uSkinned/lib/optionsshowhide-common.js",
+		"~/App_Plugins/uSkinned/lib/truefalseshowhide-common.js"
+	],
+	"css": [
+		"~/App_Plugins/uSkinned/css/additionalclasses-style.css",
+		"~/App_Plugins/uSkinned/css/backgroundoptions-style.css",
+		"~/App_Plugins/uSkinned/css/colorpicker-editor-style.css",
+		"~/App_Plugins/uSkinned/css/custom-style.css",
+		"~/App_Plugins/uSkinned/css/heading-style.css",
+		"~/App_Plugins/uSkinned/css/label-style.css",
+		"~/App_Plugins/uSkinned/css/meganav-style.css",
+		"~/App_Plugins/uSkinned/css/angular-ui-tree.min.css",
+		"~/App_Plugins/uSkinned/css/app.css",
+		"~/App_Plugins/uSkinned/css/multiurlpicker-style.css",
+		"~/App_Plugins/uSkinned/css/optionsshowhide-prevalues.css",
+		"~/App_Plugins/uSkinned/css/optionsshowhide-style.css",
+		"~/App_Plugins/uSkinned/css/seometa-style.css",
+		"~/App_Plugins/uSkinned/css/textposition-style.css",
+		"~/App_Plugins/uSkinned/css/usn-spectrum.css",
+		"~/App_Plugins/uSkinned/css/truefalseshowhide-style.css",
+		"~/App_Plugins/uSkinned/css/verticalposition-style.css",
+		"~/App_Plugins/uSkinned/css/code-editor-style.css",
+		"~/App_Plugins/uSkinned/css/welcome-style.css",
+		"~/App_Plugins/uSkinned/css/license-style.css",
+		"~/App_Plugins/uSkinned/css/designs-listview-style.css",
+		"~/App_Plugins/uSkinned/css/themecolors-style.css",
+		"~/App_Plugins/uSkinned/css/themefonts-style.css",
+		"~/App_Plugins/uSkinned/css/themelayout-style.css",
+		"~/App_Plugins/uSkinned/css/themespacing-style.css"
+	]
+}

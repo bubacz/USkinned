@@ -1,0 +1,28 @@
+/*  
+---------------------------------------------------
+Window component - Small Breakpoint
+
+- With spacing
+- No spacing
+---------------------------------------------------  
+*/
+
+
+/*  
+---------------------------------------------------
+Window - With spacing
+---------------------------------------------------  
+*/
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item { 
+    margin-bottom:var(--base-half-spacing);
+}
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item:last-of-type { 
+    margin-bottom:0;
+}
+
+/*  
+---------------------------------------------------
+Window - No spacing
+---------------------------------------------------  
+*/

@@ -1,0 +1,30 @@
+/*  
+---------------------------------------------------
+Secondary Navigation - Small Breakpoint
+---------------------------------------------------  
+*/
+
+nav.secondary ul li { 
+    overflow: hidden; height:100%;
+    display: block;
+}
+
+nav.secondary ul li span a,
+nav.secondary ul li span div,
+nav.secondary>ul>li>a { 
+    padding:10px 0;
+}
+nav.secondary ul li.phone-number { 
+    padding-bottom:10px;
+}
+nav.secondary ul li.dropdown .dropdown-menu { 
+    width:100%;
+    border:0 none; 
+    position:relative!important; top:auto!important; left:auto!important;
+    transform:none!important;
+    padding-bottom:10px;
+}
+nav.secondary ul li.dropdown .dropdown-menu > a { 
+    background:none;
+    padding:5px 0;
+}

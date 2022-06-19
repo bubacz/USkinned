@@ -1,0 +1,83 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    // Available as Pod Block type only
+
+    var content = (Usn_Pb_Image)Model.BlockContent;
+
+    //Settings taken from compositions common to all pod block types
+    var uniqueSettings = (IUsn_Cmp_Image_Settings)Model.BlockSettings;
+    var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+    //Headings and secondary headings only present on pods
+    var podContent = Model.BlockContent as Usn_Pb_Image;
+
+    string uniqueId = ViewData["uniqueId"].ToString();
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+    ImageSettings imageSettings = _siteBuilderService.GetImageSettings(uniqueSettings.ImageStyle, uniqueSettings.BoxPad);
+
+    string lightWindow = String.Empty;
+    string title = String.Empty;
+    string footer = String.Empty;
+
+    if (!content.DisableLightWindow)
+    {
+        lightWindow = " data-toggle=\"lightbox\" data-type=\"image\" data-gallery=\"galleryname-" + uniqueId + "\"";
+
+        if (content.LightWindowTitle.HasValue())
+        {
+            title = "data-title=\"" + content.LightWindowTitle + "\"";
+        }
+
+        if (content.LightWindowFooter.HasValue())
+        {
+            footer = "data-footer=\"" + content.LightWindowFooter + "\"";
+        }
+    }
+
+    if (content.Image.HasValue() && content.Image != null)
+    {
+        string linkUrl = String.Empty;
+        string linkTarget = String.Empty;
+        string linkTitle = String.Empty;
+
+        if (content.DisableLightWindow && content.ImageLink.HasValue())
+        {
+            linkUrl = content.ImageLink.link.LinkUrl;
+            linkTarget = content.ImageLink.link.LinkTarget;
+            linkTitle = content.ImageLink.link.LinkTitle;
+        }
+        else if (!content.DisableLightWindow)
+        {
+            linkUrl = content.Image.Url();
+        }
+
+        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", ((Usnstyle)Model.BaseModel.WebsiteStyle).StyleLayout.headingOrder }, { "animation", animation }, { "heading", podContent != null ? podContent.Heading : null }, { "secondaryHeading", podContent != null ? podContent.SecondaryHeading : null }, { "backgroundColorLabel", backgroundColorLabel } })
+
+        <div class="image @imageSettings.CircleClass @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+            @if (linkUrl != String.Empty)
+            {
+                @:<a href="@linkUrl" @Html.Raw(title) @Html.Raw(footer) target="@linkTarget" @Html.Raw(lightWindow) @Html.Raw(linkTitle)>
+                }
+
+            @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Image", content.Image, new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+
+            @if (linkUrl != String.Empty)
+            {
+            @:</a>
+        }
+            @if (content.ImageCaption.HasValue())
+            {
+                <div class="caption">@Html.Raw(content.ImageCaption)</div>
+            }
+        </div>
+    }
+}

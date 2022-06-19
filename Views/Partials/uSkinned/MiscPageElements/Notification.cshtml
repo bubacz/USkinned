@@ -1,0 +1,37 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+
+    string positionClass = websiteStyle.StyleLayout.notificationHorizontalPosition.HasValue() ? websiteStyle.StyleLayout.notificationHorizontalPosition.ToString() : String.Empty;
+
+    if (globalSettings.EnableNotification)
+    {
+        string buttonBackgroundClass = websiteStyle.StyleColors.buttonBackgroundClass;
+        string buttonBackgroundHoverClass = websiteStyle.StyleColors.buttonBackgroundHoverClass;
+
+        <!-- Notification -->
+        <div class="usn-notification @positionClass base-bg closed" id="NotificationPanel">
+            <div class="inner">
+
+                @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", websiteStyle.StyleLayout.headingOrder }, { "animation", null }, { "heading", globalSettings.NotificationHeading }, { "secondaryHeading", globalSettings.NotificationSecondaryHeading }, { "backgroundColorLabel", "base" } })
+
+                @if (globalSettings.NotificationText.HasValue())
+                {
+                    <div class="text base-text">
+                        @Html.Raw(globalSettings.NotificationText)
+                    </div>
+                }
+                <p class="link">
+                    <button class="btn base-btn-bg @buttonBackgroundClass @buttonBackgroundHoverClass base-btn-text base-btn-borders accept-cookies">
+                        <span></span>
+                        @(globalSettings.AcceptNotificationButtonText.HasValue() ? globalSettings.AcceptNotificationButtonText : Umbraco.GetDictionaryValue("USN Notification Button Text"))
+                    </button>
+                </p>
+            </div>
+        </div>
+        <!--// Notification -->
+    }
+}

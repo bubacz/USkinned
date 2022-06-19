@@ -1,0 +1,634 @@
+/*	
+--------------------------------------------------
+Tab/Accordion 
+-------------------------------------------------- 
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_accordiontab { }*/
+
+/* Split component block */
+/*
+.item_block.usn_cmp_accordiontab { }*/
+
+
+.repeatable .nav-tabs { 
+    border:0 none!important;
+}
+
+.repeatable .tab { 
+    position:relative;
+    margin:0;
+}
+
+.repeatable .tab .nav-link { 
+    position:relative;
+    display: block;
+    cursor: pointer;
+    outline: 0 none;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+.repeatable .repeatable-content { 
+    padding: var(--base-half-spacing) 0;
+}
+.repeatable.accordion .repeatable-content {
+    padding: 0;
+}
+.repeatable.accordion .repeatable-content .text { 
+    padding: var(--base-half-spacing) 0;
+}
+
+
+/*	
+--------------------------------------------------
+Tab Basic Style 
+-------------------------------------------------- 
+*/
+
+.repeatable.tab-basic .tab .nav-link { 
+    padding: calc(var(--base-half-spacing) / 1.5) var(--base-half-spacing);
+    border-width: var(--base-border-width); border-style: solid;
+    border-radius: var(--base-border-radius) var(--base-border-radius) 0 0;
+}
+.repeatable.tabbed.tab-basic .tab .nav-link { 
+    border-width: var(--base-border-width) var(--base-border-width) 0;
+}
+.repeatable.accordion.tab-basic .tab .nav-link.collapsed { 
+    border-radius: var(--base-border-radius);
+}
+
+.repeatable.tab-basic .repeatable-content { 
+    padding: var(--base-half-spacing);
+    border-width: var(--base-border-width); border-style: solid;
+    border-radius: 0 var(--base-border-radius) var(--base-border-radius) var(--base-border-radius);
+}
+.repeatable.accordion.tab-basic .repeatable-content { 
+    border-radius: 0 0 var(--base-border-radius) var(--base-border-radius);
+}
+.repeatable.accordion.tab-basic .repeatable-content {
+    padding:0;
+}
+.repeatable.accordion.tab-basic .repeatable-content .text { 
+    padding: var(--base-half-spacing);
+}
+
+.repeatable.tabbed.tab-basic .tab .nav-link.active::after { 
+    content: '';
+    position:absolute; right:0; bottom:0; left:0;
+    height: calc(var(--base-border-width) * 2);
+    background:  rgba(var(--base-highlight), 1);
+}
+
+/* Tabs */
+.repeatable.tab-basic .tab .nav-link { 
+    color:  rgba(var(--base-link-hover), 1);
+    border-color:  rgba(var(--base-borders), 1);
+    background: transparent;
+}
+.repeatable.tabbed.tab-basic .tab .nav-link:not(.active) { 
+    background: rgba(var(--base-borders), 0.15);
+}
+.repeatable.tabbed.tab-basic .tab .nav-link:not(.active):hover,
+.repeatable.accordion.tab-basic .tab .nav-link.collapsed:hover { 
+    color:  rgba(var(--base-link-hover), 1);
+    background: rgba(var(--base-borders), 0.25);
+}
+.repeatable.tabbed.tab-basic .tab .nav-link.active,
+.repeatable.accordion.tab-basic .tab .nav-link { 
+    color:  rgba(var(--base-heading), 1);
+}
+.repeatable.tabbed.tab-basic .tab .nav-link.active { 
+    border-bottom-color: transparent!important;
+}
+.repeatable.tab-basic .repeatable-content { 
+    border-color:  rgba(var(--base-borders), 1);
+    background: transparent;
+}
+/* Footer */
+footer#site-footer .repeatable.tab-basic .tab .nav-link { 
+    color:  rgba(var(--footer-link), 1);
+    border-color:  rgba(var(--footer-borders), 1);
+    background: transparent;
+}
+footer#site-footer .repeatable.tabbed.tab-basic .tab .nav-link { 
+    background: rgba(var(--footer-borders), 0.5);
+}
+footer#site-footer .repeatable.tabbed.tab-basic .tab .nav-link:not(.active):hover,
+footer#site-footer .repeatable.accordion.tab-basic .tab .nav-link.collapsed:hover { 
+    color:  rgba(var(--footer-link-hover), 1);
+    background: rgba(var(--footer-borders), 0.75);
+}
+footer#site-footer .repeatable.tabbed.tab-basic .tab .nav-link.active,
+footer#site-footer .repeatable.accordion.tab-basic .tab .nav-link:not(.collapsed) { 
+    color:  rgba(var(--footer-heading), 1);
+    background: transparent;
+}
+footer#site-footer .repeatable.tab-basic .repeatable-content { 
+    border-color:  rgba(var(--footer-borders), 1);
+}
+
+
+/*	
+--------------------------------------------------
+Tab Button Style 
+-------------------------------------------------- 
+*/
+
+.repeatable.tab-buttons .tab .nav-link { 
+    padding:var(--btn-padding_top) var(--btn-padding_right) var(--btn-padding_bottom) var(--btn-padding_left);
+    border-width: var(--base-border-width); border-style: solid;
+    border-radius: var(--btn-border-radius);
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-btn-borders), var(--btn-box-shadow_o));
+}
+
+.repeatable.tab-buttons .repeatable-content { 
+    padding: var(--base-half-spacing) 0;
+    border:0 none;
+}
+.repeatable.accordion.tab-buttons .repeatable-content {
+    padding:0;
+}
+.repeatable.accordion.tab-buttons .repeatable-content .text { 
+    padding: var(--base-half-spacing) 0;
+}
+
+/* Tabs */
+.repeatable.tab-buttons .tab .nav-link { 
+    color: rgba(var(--base-heading), 1); 
+    border-color: rgba(var(--base-borders), 0.25);
+    background:transparent; 
+}
+.repeatable.tabbed.tab-buttons .tab .nav-link:not(.active):hover,
+.repeatable.accordion.tab-buttons .tab .nav-link.collapsed:hover { 
+    color: rgba(var(--base-heading), 1); 
+    border-color: rgba(var(--base-borders), 1);
+}
+.repeatable.tabbed.tab-buttons .tab .nav-link.active,
+.repeatable.accordion.tab-buttons .tab .nav-link:not(.collapsed) { 
+    color:  rgba(var(--base-heading), 1); 
+    border-color: rgba(var(--base-heading), 1);
+}
+/* Tab Box shadows */
+.repeatable.tab-buttons .tab .nav-link { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-borders), 0.25);
+}
+.repeatable.tabbed.tab-buttons .tab .nav-link:not(.active):hover,
+.repeatable.accordion.tab-buttons .tab .nav-link.collapsed:hover { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-borders), var(--btn-box-shadow_o));
+}
+.repeatable.tabbed.tab-buttons .tab .nav-link.active,
+.repeatable.accordion.tab-buttons .tab .nav-link:not(.collapsed) { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--base-borders), var(--btn-box-shadow_o));
+}
+/* Footer */
+footer#site-footer .repeatable.tab-buttons .tab .nav-link { 
+    color: rgba(var(--footer-heading), 1); 
+    border-color: rgba(var(--footer-borders), 0.25);
+    background:transparent; 
+}
+footer#site-footer .repeatable.tabbed.tab-buttons .tab .nav-link:not(.active):hover,
+footer#site-footer .repeatable.accordion.tab-buttons .tab .nav-link.collapsed:hover { 
+    color: rgba(var(--footer-heading), 1); 
+    border-color: rgba(var(--footer-borders), 1);
+}
+footer#site-footer .repeatable.tabbed.tab-buttons .tab .nav-link.active,
+footer#site-footer .repeatable.accordion.tab-buttons .tab .nav-link:not(.collapsed) { 
+    color:  rgba(var(--footer-heading), 1); 
+    border-color: rgba(var(--footer-heading), 1);
+}
+/* Footer Box shadows */
+footer#site-footer .repeatable.tab-buttons .tab .nav-link { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--footer-borders), 0.25);
+}
+footer#site-footer .repeatable.tabbed.tab-buttons .tab .nav-link:not(.active):hover,
+footer#site-footer .repeatable.accordion.tab-buttons .tab .nav-link.collapsed:hover { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--footer-borders), var(--btn-box-shadow_o));
+}
+footer#site-footer .repeatable.tabbed.tab-buttons .tab .nav-link.active,
+footer#site-footer .repeatable.accordion.tab-buttons .tab .nav-link:not(.collapsed) { 
+    box-shadow: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--footer-borders), var(--btn-box-shadow_o));
+}
+
+
+/*	
+--------------------------------------------------
+Tab Underline Style
+-------------------------------------------------- 
+*/
+
+.repeatable.tab-underline .tab .nav-link { 
+    padding: 5px 0 2px;
+    border-radius: 0;
+    background:transparent;
+}
+
+.repeatable.tab-underline .tab .nav-link::before { 
+    content: '';
+    position:absolute; bottom:2px;
+    width:0; height:var(--base-border-width);
+    opacity: 0;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+html[dir="ltr"] .repeatable.tab-underline .tab .nav-link::before { 
+    left:0;
+}
+.repeatable.tabbed.tab-underline .tab .nav-link.active::before,
+.repeatable.accordion.tab-underline .tab .nav-link:not(.collapsed)::before,
+.repeatable.tabbed.tab-underline .tab .nav-link:not(.active):hover::before,
+.repeatable.accordion.tab-underline .tab .nav-link.collapsed:hover::before  { 
+    opacity:1; width:100%;
+}
+
+.repeatable.tab-underline .repeatable-content { 
+    padding: var(--base-half-spacing) 0;
+    border:0 none;
+}
+.repeatable.accordion.tab-underline .repeatable-content {
+    padding: 0;
+}
+.repeatable.accordion.tab-underline .repeatable-content .text { 
+    padding: var(--base-half-spacing) 0;
+}
+
+.repeatable.tab-underline .tab .nav-link { 
+    color:  rgba(var(--base-link), 1);
+    background: transparent;
+}
+.repeatable.tabbed.tab-underline .tab .nav-link:not(.active):hover,
+.repeatable.accordion.tab-underline .tab .nav-link.collapsed:hover { 
+    color:  rgba(var(--base-link-hover), 1);
+}
+.repeatable.tabbed.tab-underline .tab .nav-link:not(.active):hover::before,
+.repeatable.accordion.tab-underline .tab .nav-link.collapsed:hover::before  { 
+    background:  rgba(var(--base-link-hover), 1);
+}
+.repeatable.tabbed.tab-underline .tab .nav-link.active,
+.repeatable.accordion.tab-underline .tab .nav-link:not(.collapsed) { 
+    color:  rgba(var(--base-heading), 1);
+}
+.repeatable.tabbed.tab-underline .tab .nav-link.active::before,
+.repeatable.accordion.tab-underline .tab .nav-link:not(.collapsed)::before  { 
+    background:  rgba(var(--base-heading), 1);
+}
+/* Footer */
+footer#site-footer .repeatable.tab-underline .tab .nav-link { 
+    color:  rgba(var(--footer-link), 1);
+    background: transparent;
+}
+footer#site-footer .repeatable.tabbed.tab-underline .tab .nav-link:not(.active):hover,
+footer#site-footer .repeatable.accordion.tab-underline .tab .nav-link.collapsed:hover { 
+    color:  rgba(var(--footer-link-hover), 1);
+}
+footer#site-footer .repeatable.tabbed.tab-underline .tab .nav-link:not(.active):hover::before,
+footer#site-footer .repeatable.accordion.tab-underline .tab .nav-link.collapsed:hover::before  { 
+    background:  rgba(var(--footer-link-hover), 1);
+}
+footer#site-footer .repeatable.tabbed.tab-underline .tab .nav-link.active,
+footer#site-footer .repeatable.accordion.tab-underline .tab .nav-link:not(.collapsed) { 
+    color:  rgba(var(--footer-heading), 1);
+}
+footer#site-footer .repeatable.tabbed.tab-underline .tab .nav-link.active::before,
+footer#site-footer .repeatable.accordion.tab-underline .tab .nav-link:not(.collapsed)::before  { 
+    background:  rgba(var(--footer-heading), 1);
+}
+
+/*	
+--------------------------------------------------
+Tab Linethrough Style
+-------------------------------------------------- 
+*/
+
+.repeatable.tabbed.tab-linethrough nav.tabs,
+.repeatable.accordion.tab-linethrough .tab { 
+    margin: 0 -5px;
+}
+
+.repeatable.tab-linethrough .tab .nav-link { 
+    padding: 5px 5px 2px;
+    border-radius: 0;
+    background:transparent;
+}
+
+.repeatable.tab-linethrough .tab .nav-link::before { 
+    content: '';
+    position:absolute; top:50%; 
+    width:0; height:var(--base-border-width);
+    opacity: 0;
+    transform: translateY(-50%);
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+html[dir="ltr"] .repeatable.tab-linethrough .tab .nav-link::before { 
+    left:0;
+}
+.repeatable.tabbed.tab-linethrough .tab .nav-link.active::before,
+.repeatable.accordion.tab-linethrough .tab .nav-link:not(.collapsed)::before  { 
+    opacity:1; width:100%;
+}
+.repeatable.tabbed.tab-linethrough .tab .nav-link:not(.active):hover::before,
+.repeatable.accordion.tab-linethrough .tab .nav-link.collapsed:hover::before  { 
+    opacity:1; width:100%;
+}
+
+.repeatable.tab-linethrough .repeatable-content { 
+    padding: var(--base-half-spacing) 0;
+    border:0 none;
+}
+.repeatable.accordion.tab-linethrough .repeatable-content {
+    padding: 0;
+}
+.repeatable.accordion.tab-linethrough .repeatable-content .text { 
+    padding: var(--base-half-spacing) 0;
+}
+
+.repeatable.tab-linethrough .tab .nav-link { 
+    color:  rgba(var(--base-link), 1);
+    background: transparent;
+}
+.repeatable.tabbed.tab-linethrough .tab .nav-link:not(.active):hover,
+.repeatable.accordion.tab-linethrough .tab .nav-link.collapsed:hover { 
+    color:  rgba(var(--base-link-hover), 1);
+}
+.repeatable.tabbed.tab-linethrough .tab .nav-link:not(.active):hover::before,
+.repeatable.accordion.tab-linethrough .tab .nav-link.collapsed:hover::before  { 
+    background:  rgba(var(--base-link-hover), 1);
+}
+.repeatable.tabbed.tab-linethrough .tab .nav-link.active,
+.repeatable.accordion.tab-linethrough .tab .nav-link:not(.collapsed) { 
+    color:  rgba(var(--base-heading), 1);
+}
+.repeatable.tabbed.tab-linethrough .tab .nav-link.active::before,
+.repeatable.accordion.tab-linethrough .tab .nav-link:not(.collapsed)::before  { 
+    background:  rgba(var(--base-heading), 1);
+}
+/* Footer */
+footer#site-footer .repeatable.tab-linethrough .tab .nav-link { 
+    color:  rgba(var(--footer-link), 1);
+    background: transparent;
+}
+footer#site-footer .repeatable.tabbed.tab-linethrough .tab .nav-link:not(.active):hover,
+footer#site-footer .repeatable.accordion.tab-linethrough .tab .nav-link.collapsed:hover { 
+    color:  rgba(var(--footer-link-hover), 1);
+}
+footer#site-footer .repeatable.tabbed.tab-linethrough .tab .nav-link.active,
+footer#site-footer .repeatable.accordion.tab-linethrough .tab .nav-link:not(.collapsed) { 
+    color:  rgba(var(--footer-heading), 1);
+}
+footer#site-footer .repeatable.tabbed.tab-linethrough .tab .nav-link.active::before,
+footer#site-footer .repeatable.accordion.tab-linethrough .tab .nav-link:not(.collapsed)::before  { 
+    background:  rgba(var(--footer-heading), 1);
+}
+
+
+/*	
+--------------------------------------------------
+Tabbed Component
+-------------------------------------------------- 
+*/
+
+/* Overrides to fix carousels inside tabs */
+/* bootstrap hack: fix content width inside hidden tabs */
+.tab-content {
+    position:relative;
+}
+.tab-content > .tab-pane {
+    position:absolute; top:0; left:0; right:0;
+    display: block;     /* undo display:none          */
+    height: 0;          /* height:0 is also invisible */ 
+    overflow-y: hidden; /* no-overflow                */
+    opacity: 0;
+}
+.tab-content > .tab-pane.active {
+    position:relative;
+    overflow-y: visible;
+    height: 100%;       /* let the content decide it  */
+    opacity: 1;
+} 
+.tab-content > .tab-pane:not(:first-child) .item.os-animation { 
+    opacity:0;
+    transition: opacity 0.7s ease-in-out 0s;
+}
+.tab-content > .tab-pane.active:not(:first-child) .item.os-animation.animated { 
+    opacity:1;
+}
+
+/* bootstrap hack end */
+/*
+.repeatable.tabbed { }*/
+
+.repeatable.tabbed .tabs { 
+    position:relative; z-index:1;
+}
+
+.repeatable.tabbed .tab { 
+    display: inline-block; margin-right:2px;
+}
+
+/* Tab Button Style */
+.repeatable.tabbed.tab-buttons .tab .nav-link { 
+    margin: 0 5px 0 0;
+}
+.text-center .repeatable.tabbed.tab-buttons .tab .nav-link { 
+    margin:0 2.5px;
+}
+.text-right .repeatable.tabbed.tab-buttons .tab .nav-link { 
+    margin:0 0 0 5px;
+}
+
+/* Tab Underline Style */
+.repeatable.tabbed.tab-underline .tab .nav-link { 
+    margin: 0 10px 0 0;
+}
+.text-center .repeatable.tabbed.tab-underline .tab .nav-link { 
+    margin:0 5px;
+}
+.text-right .repeatable.tabbed.tab-underline .tab .nav-link { 
+    margin:0 0 0 10px;
+}
+
+/* Tab Underline Style */
+.repeatable.tabbed.tab-linethrough .tab .nav-link { 
+    margin: 0 10px 0 0;
+}
+.text-center .repeatable.tabbed.tab-linethrough .tab .nav-link { 
+    margin:0 5px;
+}
+.text-right .repeatable.tabbed.tab-linethrough .tab .nav-link { 
+    margin:0 0 0 10px;
+}
+
+.repeatable-content { 
+    position:relative; top:0; z-index:0;
+}
+
+
+/*	
+--------------------------------------------------
+Accordion Component
+-------------------------------------------------- 
+*/
+
+/*
+.repeatable.accordion { }*/
+
+/*
+.repeatable.accordion .tabs { }*/
+
+.repeatable.accordion .tab:not(:first-child) { 
+    margin-top:2px;
+}
+
+.repeatable.accordion.tab-buttons .tab:not(:first-child) { 
+    margin-top:6px;
+}
+
+.repeatable.accordion.tab-underline .tab:not(:first-child) { 
+    margin-top:10px;
+}
+
+.repeatable.accordion .tab .nav-link { 
+    padding-right:50px;   
+}
+
+.repeatable.accordion .tab .nav-link::after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 40px;
+    text-align: center;
+    transform: translateY(-50%);
+}
+.repeatable.accordion.tab-linethrough .tab .nav-link:not(.collapsed)::before,
+.repeatable.accordion.tab-linethrough .tab .nav-link.collapsed:hover::before  { 
+    width:calc(100% - 40px);
+}
+
+html[dir="ltr"] .repeatable.accordion.tab-underline .tab .nav-link::after,
+html[dir="ltr"] .repeatable.accordion.tab-linethrough .tab .nav-link::after  { 
+    text-align: right;
+}
+
+.repeatable.accordion .repeatable-content {
+    border-top:0!important;
+}

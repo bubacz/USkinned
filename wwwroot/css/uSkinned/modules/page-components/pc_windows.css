@@ -1,0 +1,175 @@
+/*  
+---------------------------------------------------
+Window component
+
+- With spacing
+- No spacing
+---------------------------------------------------  
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_windows { }*/
+
+/* Split component block */
+/*
+.item_block.usn_cmp_windows { }*/
+
+
+/*  
+---------------------------------------------------
+Window - With spacing
+---------------------------------------------------  
+*/
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) {
+    position: relative;
+    margin-top: 0; margin-bottom:0;
+}
+
+section.content.p-0 .component-inner>.container-fluid .listing.listing_window-mosaic:not(.listing_no-spacing) {
+    margin-left:0; margin-right:0;
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) {
+    padding:var(--base-half-spacing); 
+}
+.listing.listing_window-mosaic:not(.listing_no-spacing) + .listing.listing_window-mosaic:not(.listing_no-spacing) { 
+    padding-top:0;
+}
+
+.container-fluid:first-child .listing.listing_window-mosaic:not(.listing_no-spacing) {
+    margin-top: 0;
+}
+
+.container-fluid:last-child .listing.listing_window-mosaic:not(.listing_no-spacing) {
+    margin-bottom: 0;
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    width: var(--items-1);
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item::before {
+    content: "";
+    display: block;
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item { 
+    height:var(--windows_basic);
+    height: calc(var(--windows_basic) - var(--small-header-half) - var(--base-half-spacing) - 7.5px);
+}
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item::before,
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item .inner {
+    padding-top: var(--windows_basic);
+    padding-top: calc(var(--windows_basic) - var(--small-header-half) - var(--base-half-spacing) - 7.5px);
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item .inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item .inner .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item .inner .info { 
+    max-width:460px;
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item .inner .info.justify-content-center { 
+    margin:0 auto;
+}
+
+.listing.listing_window-mosaic:not(.listing_no-spacing) .item .inner .info.justify-content-right { 
+    left: auto; right: 0;
+}
+
+
+/*  
+---------------------------------------------------
+Window - No spacing
+---------------------------------------------------  
+*/
+
+.listing.listing_window-mosaic.listing_no-spacing {
+    position: relative;
+    margin: 0;
+}
+
+.container-fluid .listing.listing_window-mosaic.listing_no-spacing {
+    margin-right: -var(--base-half-spacing); margin-left: -var(--base-half-spacing);
+}
+
+.container-fluid:first-child .listing.listing_window-mosaic.listing_no-spacing {
+    margin-top: 0;
+}
+
+.container-fluid:last-child .listing.listing_window-mosaic.listing_no-spacing {
+    margin-bottom: 0;
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    width: var(--items-1);
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item::before {
+    content: "";
+    display: block;
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item { 
+    height:var(--windows_basic);
+    height:calc(var(--windows_basic) - var(--small-header-half));
+}
+.listing.listing_window-mosaic.listing_no-spacing .item::before,
+.listing.listing_window-mosaic.listing_no-spacing .item .inner {
+    padding-top: var(--windows_basic);
+    padding-top: calc(var(--windows_basic) - var(--small-header-half));
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item .inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item .inner .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item .inner .info { 
+    max-width:460px;
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item .inner .info.justify-content-center { 
+    margin:0 auto;
+}
+
+.listing.listing_window-mosaic.listing_no-spacing .item .inner .info.justify-content-right { 
+    left: auto; right: 0;
+}

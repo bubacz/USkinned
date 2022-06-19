@@ -1,0 +1,24 @@
+﻿<div ng-controller="USN.ColorPickerController">
+
+    <div ng-show="model.config.colorSource.type=='button'">
+        <label class="usn-color-item usn-color-button item" title="{{item.label}}-btn" ng-repeat="item in model.config.items">
+            <input name="taboptions_{{$id}}" type="radio" value="{{item}}" ng-model="model.value" ng-click="check($event)">
+            <div class="inner" style="background:{{item.value}}; color:{{item.text}}; border-color:{{item.border}};">
+                <div class="link" style="color:{{item.text}};">Button</div>
+            </div>
+        </label>
+    </div>
+    <div ng-show="model.config.colorSource.type=='content'">
+        <label class="usn-color-item usn-color-background item" title="{{item.label}}" ng-repeat="item in model.config.items">
+            <input name="taboptions_{{$id}}" type="radio" value="{{item}}" ng-model="model.value" ng-click="check($event)">
+            <div class="inner" style="background:{{item.value}}; color:{{item.text}}; border-color:{{item.border}};">
+                <div class="secondary-heading" style="color:{{item.secondaryheading}};">Secondary</div>
+                <div class="heading" style="color:{{item.heading}};">Heading</div>
+                <div class="text" style="color:{{item.text}};">Body text</div>
+            </div>
+        </label>
+    </div>
+
+    <input type="hidden" name="modelValue" ng-model="model.value" val-property-validator="validateMandatory" />
+    
+</div>

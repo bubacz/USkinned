@@ -1,0 +1,74 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    if (Model.HasProperty("hideSubNavigation") && !Model.Value<bool>("hideSubNavigation"))
+    {
+        bool inThisSection = (bool)ViewData["inThisSection"];
+
+        var parent = Model.AncestorOrSelf(2);
+
+        var pages = parent.Children.Where(x => x.IsDocumentType(Usnpage.ModelTypeAlias) && x.IsVisible());
+
+        if (pages.Any())
+        {
+            if (inThisSection)
+            {
+                @:<div class="in-this-section d-lg-none">
+                    <p class="expand-sub">@Umbraco.GetDictionaryValue("USN Sub Navigation Section")<i class="icon usn_ion-md-add after"></i></p>
+                }
+
+                <!-- Sub Navigation -->
+                <nav aria-label="Sub Page Navigation" class="sub">
+                    <p class="heading sm">
+                        <a href="@parent.Url()">
+                            @(parent.HasValue("subNavigationLinkText") ? Html.Raw(parent.Value<string>("subNavigationLinkText")).ToString() : parent.Name)
+                        </a>
+                    </p>
+                    @{Traverse(parent);}
+                </nav>
+                <!--// Sub Navigation -->
+
+                if (inThisSection)
+                {
+                @:</div>
+            }
+        }
+    }
+}
+
+@{
+    void Traverse(IPublishedContent parent)
+    {
+        if (parent.Children.Any(x => x.IsDocumentType(Usnpage.ModelTypeAlias) && x.IsVisible()))
+        {
+            <ul>
+                @foreach (var node in parent.Children.Where(x => x.IsDocumentType(Usnpage.ModelTypeAlias) && x.IsVisible()))
+                {
+                    if (node != null)
+                    {
+                        string selected = Array.IndexOf(Model.Path.Split(','), node.Id.ToString()) >= 0 ? " class=\"active\"" : "";
+
+                        <li @Html.Raw(selected)>
+                            <span>
+                                <a href="@node.Url()">
+                                    @if (node.HasValue("subNavigationLinkText"))
+                                    {
+                                        @Html.Raw(node.Value<string>("subNavigationLinkText"))
+                                    }
+                                    else
+                                    {
+                                        @node.Name
+                                    }
+                                </a>
+                            </span>
+                            @if (selected != String.Empty)
+                            {
+                                Traverse(node);
+                            }
+                        </li>
+                    }
+                }
+            </ul>
+        }
+    }
+}

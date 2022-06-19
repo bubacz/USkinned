@@ -1,0 +1,66 @@
+/*  
+---------------------------------------------------
+RTL support changes only - Small Breakpoint
+---------------------------------------------------  
+*/
+
+/* Main Navigation */
+
+html[dir="rtl"] nav.main ul li span::before {
+    left:auto; right:0;
+}
+html[dir="rtl"] body:not(.header-02-sm) nav.main ul li.has-child span a {
+    padding-right: var(--base-half-spacing); padding-left: var(--expand-nav-width);
+}
+html[dir="rtl"] nav.main ul ul {
+    padding-right:3px; padding-left:0;
+}
+
+/* Secondary Navigation */
+
+html[dir="rtl"] body:not(.header-02-sm) nav.secondary ul li.dropdown .dropdown-menu { 
+    text-align: right;
+}
+
+/* Headers SMALL screen */
+
+/* Header 01 sm */    
+
+html[dir="rtl"] body.header-01-sm header#site-header nav.shopping-cart { 
+    right:auto; left:var(--expand-nav-width);
+}
+
+/* Header 02 sm */
+
+html[dir="rtl"] body.header-03-sm header#site-header nav.shopping-cart { 
+    right:auto; left:var(--expand-nav-width);
+} 
+
+html[dir="rtl"] body.header-03-sm header#site-header nav.main ul ul {
+    padding-right:0;
+}
+
+/* Header 03 sm */ 
+
+html[dir="rtl"] body.header-02-sm header#site-header nav.shopping-cart { 
+    left:auto; right:0;
+} 
+
+html[dir="rtl"] body.header-02-sm header#site-header nav.main ul ul {
+    padding-right:0;
+}
+
+/* Header 04 sm */ 
+
+html[dir="rtl"] body.header-04-sm header#site-header .expand-header {
+    left:auto; right:0;
+}
+
+html[dir="rtl"] body.header-04-sm header#site-header nav.main ul ul {
+    padding-right:0;
+}
+
+html[dir="rtl"] body.header-04-sm header#site-header nav.shopping-cart { 
+    right:auto; left:0;
+}
+

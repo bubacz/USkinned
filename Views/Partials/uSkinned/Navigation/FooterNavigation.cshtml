@@ -1,0 +1,19 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    Usnnavigation navigation = (Usnnavigation)Model.Navigation;
+
+    if (navigation != null && navigation.FooterNavigation != null && navigation.FooterNavigation.Any())
+    {
+
+        foreach (var item in navigation.FooterNavigation)
+        {
+            if (_siteBuilderService.DisplayLink(item))
+            {
+                <li><span><a href="@item.link.LinkUrl" @Html.Raw(item.link.LinkTarget) @Html.Raw(item.link.LinkTitle)>@Html.Raw(item.icon)@Html.Raw(item.link.LinkText)@Html.Raw(item.link.LinkTargetIcon)</a></span></li>
+            }
+        }
+    }
+}

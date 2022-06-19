@@ -1,0 +1,36 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+    string pageLayout = Model.Value<string>("pageLayout");
+    string headerClass = Model.Value<bool>("hideWebsiteHeaderSection") ? "no-header" : String.Empty;
+    string footerClass = Model.Value<bool>("hideWebsiteFooterSection") ? "no-footer" : String.Empty;
+    string customBodyClass = Model.HasValue("customBodyClasses") ? Model.Value<string>("customBodyClasses") : String.Empty;
+    string fixedWidthClass = websiteStyle.StyleSpacing.fixedWidth ? "max-width" : String.Empty;
+    string pageClass = pageLayout == "pageLayoutFull" ? "full-page" : String.Empty;
+    string headingStyles = websiteStyle.StyleLayout.headingStyles.HasValue() ? websiteStyle.StyleLayout.headingStyles.Replace(",", " ") : String.Empty;
+    string headerSmall = websiteStyle.StyleLayout.headerSmall;
+    string headerLarge = websiteStyle.StyleLayout.headerLarge;
+    string showHeaderScrollLarge = websiteStyle.StyleLayout.showHeaderScrollLarge ? "show_header-on-scroll-lg" : "hide_header-on-scroll-lg";
+    string showHeaderScrollSmall = websiteStyle.StyleLayout.showHeaderScrollSmall ? "show_header-on-scroll-sm" : "hide_header-on-scroll-sm";
+    string transparentHeaderLarge = websiteStyle.StyleLayout.transparentLargeHeader ? "transparent-header-lg" : String.Empty;
+    string transparentHeaderSmall = websiteStyle.StyleLayout.transparentSmallHeader ? "transparent-header-sm" : String.Empty;
+    string logoLinkUnderlineInitial = websiteStyle.StyleLayout.logoLinkUnderlineInitial ? "logo-underline-link" : String.Empty;
+    string logoLinkUnderlineHover = websiteStyle.StyleLayout.logoLinkUnderlineHover ? "logo-underline-link-hover" : String.Empty;
+    string mainNavLinkUnderlineInitial = websiteStyle.StyleLayout.mainNavLinkUnderlineInitial ? "main-navigation-underline-link" : String.Empty;
+    string mainNavLinkUnderlineHover = websiteStyle.StyleLayout.mainNavLinkUnderlineHover ? "main-navigation-underline-link-hover" : String.Empty;
+    string secondaryNavLinkUnderlineInitial = websiteStyle.StyleLayout.secondaryNavLinkUnderlineInitial ? "secondary-navigation-underline-link" : String.Empty;
+    string secondaryNavLinkUnderlineHover = websiteStyle.StyleLayout.secondaryNavLinkUnderlineHover ? "secondary-navigation-underline-link-hover" : String.Empty;
+    string contentLinkUnderlineInitial = websiteStyle.StyleLayout.contentLinkUnderlineInitial ? "content-underline-link" : String.Empty;
+    string contentLinkUnderlineHover = websiteStyle.StyleLayout.contentLinkUnderlineHover ? "content-underline-link-hover" : String.Empty;
+    string footerLinkUnderlineInitial = websiteStyle.StyleLayout.footerLinkUnderlineInitial ? "footer-underline-link" : String.Empty;
+    string footerLinkUnderlineHover = websiteStyle.StyleLayout.footerLinkUnderlineHover ? "footer-underline-link-hover" : String.Empty;
+    string buttonLinkUnderlineInitial = websiteStyle.StyleLayout.buttonLinkUnderlineInitial ? "button-underline-link" : String.Empty;
+    string buttonLinkUnderlineHover = websiteStyle.StyleLayout.buttonLinkUnderlineHover ? "button-underline-link-hover" : String.Empty;
+    string arrowStyle = websiteStyle.StyleLayout.arrowStyle;
+    string bodyClass = String.Format(" class=\"{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12} {13} {14} {15} {16} {17} {18} {19} {20} {21} {22} {23} {24} {25}\"", websiteStyle.StyleColors.bodyBackgroundClass, headerLarge, headerSmall, showHeaderScrollLarge, showHeaderScrollSmall, arrowStyle, headerClass, footerClass, pageClass, fixedWidthClass, headingStyles, transparentHeaderLarge, transparentHeaderSmall,
+        logoLinkUnderlineInitial, logoLinkUnderlineHover, mainNavLinkUnderlineInitial, mainNavLinkUnderlineHover, secondaryNavLinkUnderlineInitial, secondaryNavLinkUnderlineHover, contentLinkUnderlineInitial, contentLinkUnderlineHover, footerLinkUnderlineInitial, footerLinkUnderlineHover, buttonLinkUnderlineInitial, buttonLinkUnderlineHover, customBodyClass);
+}
+
+@Html.Raw(bodyClass)

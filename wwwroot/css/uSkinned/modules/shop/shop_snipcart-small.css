@@ -1,0 +1,15 @@
+/*  
+----------------------------------------------------------------------------------------------------
+Snipcart - Small Breakpoint - https://snipcart.com/
+---------------------------------------------------------------------------------------------------- 
+*/
+
+/* 
+---------------------------------- 
+Snipcart overrides
+---------------------------------- 
+*/
+
+.snipcart-cart-summary-side .snipcart-cart__secondary-header { 
+    min-height: var(--small-header); height: var(--small-header);
+}

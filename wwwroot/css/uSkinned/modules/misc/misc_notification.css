@@ -1,0 +1,37 @@
+/*  
+--------------------------------------------------
+Notification
+-------------------------------------------------- 
+*/
+
+.usn-notification {
+    position: fixed;
+    z-index: 1000;
+    opacity: 0;
+    border-radius: var(--base-border-radius);
+    box-shadow: 0 0 0 transparent;
+    transition: bottom 1s ease-in-out 0.2s, opacity 0.75s ease-in-out 0.1s, box-shadow 1s ease-in-out 0.2s;
+}
+
+.usn-notification .inner {
+    padding:var(--base-half-spacing);
+}
+  
+.usn-notification.open {
+    opacity: 1;
+    box-shadow: var(--base-box-shadow_h) var(--base-box-shadow_v) var(--base-box-shadow_b) rgba(var(--true-black), var(--base-box-shadow_o));
+}
+  
+.usn-notification .heading {
+    margin: 0;
+}
+  
+.usn-notification .heading + .text {
+    margin-top: 5px;
+}
+
+.usn-notification .link { 
+    margin-top:var(--base-half-spacing);
+    margin-bottom:0;
+}
+  

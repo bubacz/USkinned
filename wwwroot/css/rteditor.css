@@ -1,0 +1,203 @@
+body { 
+	font-size: 16px;
+	line-height:1.3;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color:#444444;
+} 
+table {
+	width:100%;
+}
+table th {
+	font-weight:bold;
+	padding:5px;
+}
+table td {
+	padding:5px;
+}
+
+/**umb_name:Heading 1 (h1)*/
+h1 {
+	font-weight:bold;
+	font-size:35px;
+}
+
+/**umb_name:Heading 2 (h2)*/
+h2 {
+	font-weight:bold;
+	font-size:30px;
+}
+
+/**umb_name:Heading 3 (h3)*/
+h3 {
+	font-weight:bold;
+	font-size:22px;
+}
+
+/**umb_name:Heading 4 (h4)*/
+h4 {
+	font-weight:bold;
+	font-size:18px;
+}
+
+/**umb_name:Heading 5 (h5)*/
+h5 {
+	font-weight:bold;
+	font-size:16px;
+}
+
+/**umb_name:Heading 6 (h6)*/
+h6 {
+	font-weight:bold;
+	font-size:16px;
+}
+
+/**umb_name:Heading (small)*/
+.heading sm {
+	font-weight:bold;
+	font-size:12px;
+}
+.heading.sm {
+	font-weight:bold;
+	font-size:12px;
+}
+
+/**umb_name:Heading (medium)*/
+.heading {
+	font-weight:bold;
+	font-size:20px;
+}
+
+/**umb_name:Heading (large)*/
+.heading lg {
+	font-weight:bold;
+	font-size:24px;
+}
+.heading.lg {
+	font-weight:bold;
+	font-size:24px;
+}
+
+/**umb_name:Secondary heading (small)*/
+.secondary-heading sm {
+	font-size:12px;
+}
+.secondary-heading.sm {
+	font-size:12px;
+}
+
+/**umb_name:Secondary heading (medium)*/
+.secondary-heading {
+	font-size:18px;
+}
+
+/**umb_name:Secondary heading (large)*/
+.secondary-heading lg {
+	font-size:22px;
+}
+.secondary-heading.lg {
+	font-size:22px;
+}
+
+/**umb_name:Introduction paragraph (small)*/
+.intro sm {
+	font-size:18px;
+}
+.intro.sm {
+	font-size:18px;
+}
+
+/**umb_name:Introduction paragraph (medium)*/
+.intro {
+	font-size:20px;
+}
+
+/**umb_name:Introduction paragraph (large)*/
+.intro lg {
+	font-size:24px;
+}
+.intro.lg {
+	font-size:24px;
+}
+
+/**umb_name:Quote (Small)*/
+.quote sm {
+	font-weight:bold;
+	font-style: italic;
+	font-size:18px;
+}
+.quote.sm {
+	font-weight:bold;
+	font-style: italic;
+	font-size:18px;
+}
+
+/**umb_name:Quote (medium)*/
+.quote {
+	font-weight:bold;
+	font-style: italic;
+	font-size:20px;
+}
+
+/**umb_name:Quote (large)*/
+.quote lg {
+	font-weight:bold;
+	font-style: italic;
+	font-size:24px;
+}
+.quote.lg {
+	font-weight:bold;
+	font-style: italic;
+	font-size:24px;
+}
+
+/**umb_name:Image (max width)*/
+.img-max {
+	width:auto;
+	float:none;
+	margin:0 0 30px;
+}
+
+/**umb_name:Image (full width)*/
+.img-full {
+	width:auto;
+	float:none;
+	margin:0 0 30px;
+}
+
+/**umb_name:Image left*/
+.img-left {
+	width:auto;
+	float:left;
+	margin:10px 30px 30px 0;
+}
+
+/**umb_name:Image right*/
+.img-right {
+	width:auto;
+	float:right;
+	margin:10px 0 30px 30px;
+}
+
+/**umb_name:Image rounded*/
+.img-rounded img {
+	border-radius:5px;
+}
+
+/**umb_name:Image circle*/
+.img-rounded-circle img {
+	border-radius:50%;
+}
+
+/**umb_name:Small text*/
+.small {
+	font-size:85%;
+}
+
+/**umb_name:Label*/
+.label {
+	background-color:#000000;
+	color:#ffffff;
+	padding:1px 3px;
+	display:inline-block;
+	border-radius:3px;
+}

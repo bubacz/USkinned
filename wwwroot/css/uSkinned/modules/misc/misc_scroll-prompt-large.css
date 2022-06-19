@@ -1,0 +1,35 @@
+/*  
+---------------------------------------------------
+Scroll Prompt - Large Breakpoint
+---------------------------------------------------  
+*/
+
+.scroll-prompt {
+    bottom: 50px;
+}
+
+.scroll-prompt a {
+    height: auto;
+    padding-bottom: 0;
+}
+.scroll-prompt a span {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.09em;
+    display: block;
+    margin-top: 15px;
+    display: none;
+}
+.scroll-prompt a i {
+    font-size: 40px;
+}
+
+/*  
+---------------------------------------------------
+- Mouse wheel .scroll-prompt-wheel
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+- Line .scroll-prompt-line
+---------------------------------------------------  
+*/

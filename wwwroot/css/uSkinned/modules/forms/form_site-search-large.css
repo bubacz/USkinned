@@ -1,0 +1,145 @@
+/*  
+---------------------------------------------------
+Site Search Form
+---------------------------------------------------  
+*/
+
+header#site-header .site-search {
+    overflow: visible;
+    position: relative;
+    z-index: 604;
+    width: 22px; height: 50px;
+    background: none;
+    transition: max-width 0.35s ease-in-out 0.1s, left 0.35s ease-in-out 0s, right 0.35s ease-in-out 0s;
+}
+
+header#site-header .site-search:not(.open-search) {
+    left: auto;
+}
+
+header#site-header .site-search.open-search {
+    overflow: visible;
+}
+
+header#site-header .site-search .expand-search {
+    content: "Open";
+    width: 22px; height: 50px;
+    padding: 0;
+    display: block;
+    position: absolute; top: 0; right: 0; z-index: 3;
+    font-size: 25px;
+    cursor: pointer;
+    text-align: center;
+    color: rgba(var(--main-navigation-link), 1);
+
+    background:none; border:0 none; 
+}
+
+header#site-header .site-search .expand-search em {
+    display: none;
+}
+
+header#site-header .site-search:not(.open-search) .expand-search .close-icon { 
+    display: none;
+}
+header#site-header .site-search.open-search .expand-search .search-icon { 
+    display: none;
+}
+
+header#site-header .site-search form {
+    position:absolute; top:50%; right:30px;
+    width:50px; max-width:50px;
+    z-index: -10;
+    display: none;
+    transform: translateY(-50%);
+    transition: max-width 0.35s ease-in-out 0.2s;
+}
+header#site-header .site-search.open-search form {
+    width:360px; max-width:360px;
+    z-index: 1;
+    display: block;
+}
+header#site-header .site-search form fieldset { 
+    margin:0;
+}
+
+header#site-header .site-search button.btn {
+    right: 0;
+    font-size: 25px;
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out 0.1s;
+}
+header#site-header .site-search.open-search button.btn {
+    opacity: 1;
+    transition: opacity 0.35s ease-in-out 0s;
+}
+.site-search button.btn i.icon {
+    position: absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+}
+
+footer#site-footer .site-search .form-control {
+    height: 50px;
+    min-height: 50px;
+    padding-right: 50px;
+}
+footer#site-footer .site-search button.btn { 
+    width: calc(50px - var(--base-border-width) - var(--base-border-width));
+    height: calc(50px - var(--base-border-width) - var(--base-border-width));
+    width: 50px;
+    height: 50px;
+}
+
+
+/* Headers with visible site search */
+
+body.header-03-lg header#site-header .site-search,
+body.header-11-lg header#site-header .site-search,
+body.header-12-lg header#site-header .site-search,
+body.header-15-lg header#site-header .site-search,
+body.header-16-lg header#site-header .site-search,
+body.header-17-lg header#site-header .site-search,
+body.header-18-lg header#site-header .site-search,
+body.header-19-lg header#site-header .site-search,
+body.header-20-lg header#site-header .site-search {
+    width:100%; height:auto;
+}
+
+body.header-03-lg header#site-header .site-search .expand-search,
+body.header-11-lg header#site-header .site-search .expand-search,
+body.header-12-lg header#site-header .site-search .expand-search,
+body.header-15-lg header#site-header .site-search .expand-search,
+body.header-16-lg header#site-header .site-search .expand-search,
+body.header-17-lg header#site-header .site-search .expand-search,
+body.header-18-lg header#site-header .site-search .expand-search,
+body.header-19-lg header#site-header .site-search .expand-search,
+body.header-20-lg header#site-header .site-search .expand-search {
+    display:none;
+}
+
+body.header-03-lg header#site-header .site-search form,
+body.header-11-lg header#site-header .site-search form,
+body.header-12-lg header#site-header .site-search form,
+body.header-15-lg header#site-header .site-search form,
+body.header-16-lg header#site-header .site-search form,
+body.header-17-lg header#site-header .site-search form,
+body.header-18-lg header#site-header .site-search form,
+body.header-19-lg header#site-header .site-search form,
+body.header-20-lg header#site-header .site-search form {
+    display:block;
+    position:relative; top:auto; right:auto;
+    width:100%; max-width:100%;
+    z-index: 0;
+    transform: none;
+}
+body.header-03-lg header#site-header .site-search button.btn,
+body.header-11-lg header#site-header .site-search button.btn,
+body.header-12-lg header#site-header .site-search button.btn,
+body.header-15-lg header#site-header .site-search button.btn,
+body.header-16-lg header#site-header .site-search button.btn,
+body.header-17-lg header#site-header .site-search button.btn,
+body.header-18-lg header#site-header .site-search button.btn,
+body.header-19-lg header#site-header .site-search button.btn,
+body.header-20-lg header#site-header .site-search button.btn {
+    opacity: 1;
+}

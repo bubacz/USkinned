@@ -1,0 +1,23 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block only
+
+    var content = (Usn_Cb_MarkdownEditor)Model.BlockContent;
+    var settings = (Usn_Cbs_MarkdownEditor)Model.BlockSettings;
+
+    Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+    AnimationSettings animation = _siteBuilderService.GetAnimationSettings(settings.Animate, settings.AnimationDelay, settings.AnimationDuration, settings.AnimationStyle);
+    string textAlignmentClass = settings.TextAlignment.HasValue() ? settings.TextAlignment : "text-left";
+
+
+    <div class="text @textAlignmentClass @(settings.BackgroundColor.label)-text @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+        @Html.Raw(content.MarkdownEditor)
+    </div>
+
+
+}

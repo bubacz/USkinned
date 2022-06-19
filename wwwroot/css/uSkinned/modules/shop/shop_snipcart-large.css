@@ -1,0 +1,16 @@
+/*  
+----------------------------------------------------------------------------------------------------
+Snipcart - Large Breakpoint - https://snipcart.com/
+---------------------------------------------------------------------------------------------------- 
+*/
+
+/* 
+---------------------------------- 
+Snipcart overrides
+---------------------------------- 
+*/
+
+body:not(.header-15-lg).snipcart-cart-summary-side .snipcart-cart__secondary-header,
+body:not(.header-16-lg).snipcart-cart-summary-side .snipcart-cart__secondary-header { 
+    min-height: var(--large-header); height: var(--large-header);
+}

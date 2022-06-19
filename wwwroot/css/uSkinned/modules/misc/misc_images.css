@@ -1,0 +1,200 @@
+/* 	
+-------------------------------------------------- 
+Images
+-------------------------------------------------- 
+*/
+
+.image {
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    transform: scale(1);
+    transform-origin: center;
+}
+
+.max-width-images img,
+.max-width-images .image img { 
+    max-width: auto;
+}
+
+.image img,
+.image.background-image,
+.image.icon-image {
+    transform: scale(1);
+    transform-origin: center;
+}
+
+.image img,
+.image.icon-image {
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.image.background-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    transition: transform 0.4s ease-in-out 0s;
+}
+
+.image.background-image.body-background-image,
+.image.background-image.footer-background-image,
+.image.background-image.component-background-image {
+    position:absolute; top:0; right:0; bottom:0; left:0; z-index:0;
+    width:100%; height:100%; 
+}
+.image.background-image.component-background-image + .component-inner { 
+    position: relative; z-index: 1;
+}
+
+.image.lazyload img,
+.image.background-image.lazyload {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* IMAGE TRANSITIONS */
+
+.image,
+.image.video {
+    overflow: hidden;
+    padding: 0;
+}
+
+.image a:hover img,
+a:hover .image img,
+.item a:hover .image.background-image {
+    transform: scale(1.05);
+}
+
+.no-zoom_hover .image a:hover img,
+.no-zoom_hover a:hover .image img,
+.no-zoom_hover .item a:hover .image.background-image {
+    transform: scale(1);
+}
+
+.reverse-zoom_hover .image a:hover img,
+.reverse-zoom_hover a:hover .image img,
+.reverse-zoom_hover .item a:hover .image.background-image {
+    transform: scale(0.95);
+}
+
+/*
+.item.item_overlay a:hover { 
+    transform: scale(0.975);
+    box-shadow: 0 0 5px rgba(@true-black, 0.2);
+}
+*/
+
+.ekko-lightbox img {
+    width: auto;
+    height: auto!important;
+    margin: 0 auto;
+}
+
+.image .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
+    padding: 5px 10px 7px;
+    font-size: 85%;
+    font-style: italic;
+    opacity: 0.8;
+    color: rgba(var(--true-white), 1);
+    background-color: rgba(var(--true-black), 0.6);
+}
+
+.image.rounded-circle .caption {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+i.fa,
+i.before {
+    margin-right: 5px;
+}
+
+i.fa.after,
+i.after {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+i.fa.before.after,
+i.before.after {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+
+/* 	
+-------------------------------------------------- 
+RTE Images
+-------------------------------------------------- 
+*/
+
+.img-max { 
+    display:block;
+    margin:8px 0 var(--base-spacing) 0;
+}
+.img-max > img { 
+    max-width:100%; width:auto;
+}
+
+.img-full { 
+    display:block;
+    margin:8px 0 var(--base-spacing) 0;
+}
+.img-full > img { 
+    max-width:100%; width:100%;
+}
+
+.img-left { 
+    float:left; display:block; max-width:50%; width:auto;
+    margin:8px var(--base-spacing) var(--base-spacing) 0;
+}
+/*
+.img-left > img { }*/
+
+.img-right { 
+    float:right; display:block; max-width:50%; width:auto;
+    margin:8px 0 var(--base-spacing) var(--base-spacing);
+}
+/*
+.img-right > img { }*/
+
+/*
+.img-rounded { }*/
+
+.img-rounded > img { 
+    border-radius: var(--base-border-radius);
+}
+
+/*
+.img-circle { }*/
+
+.img-rounded-circle > img { 
+    border-radius: 50%;
+}
+
+
+/* Image errors */
+
+.image .image-error::after,
+.image.error-background-image::after { 
+    content: attr(data-error-title);
+    position: absolute;
+    top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    font-size: 14px; line-height: 18px;
+    color: #000;
+    text-align: center; text-transform: uppercase;
+} 

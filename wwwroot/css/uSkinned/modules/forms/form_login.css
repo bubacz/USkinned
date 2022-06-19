@@ -1,0 +1,103 @@
+/*  
+---------------------------------------------------
+Login Form
+---------------------------------------------------  
+*/
+
+/*
+.form.login-form { }*/
+
+
+/*  
+---------------------------------------------------
+Show / hide password
+---------------------------------------------------  
+*/
+
+.form .show-password { 
+    position:absolute; top: calc(30px + var(--form-field-border-width));
+    color: rgba(var(--base-text), 1);
+}
+
+html[dir="ltr"] .form .show-password { 
+    right: calc(0px + var(--form-field-border-width));
+}
+
+.form .show-password label { 
+    margin:0;
+}
+
+.form .show-password label span { 
+    display:block;
+    width: calc(40px - var(--form-field-border-width)); 
+    height: calc(40px - var(--form-field-border-width)); 
+    text-align:center;
+    cursor:pointer;
+
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+.form .show-password label input[type="checkbox"] {
+    position: absolute; top:0; left:0;
+    opacity:0;
+}
+
+.form .show-password label i { 
+    position:relative; top:10px;
+    font-size:20px;
+}
+
+.form .show-password label i.usn_ion-md-eye { 
+    display:block;
+}
+
+.form .show-password label i.usn_ion-md-eye-off { 
+    display:none!important;
+}
+
+.form .show-password label input[type="checkbox"]:checked + span i.usn_ion-md-eye { 
+    display:none;
+}
+
+.form .show-password label input[type="checkbox"]:checked + span i.usn_ion-md-eye-off { 
+    display:block!important;
+}

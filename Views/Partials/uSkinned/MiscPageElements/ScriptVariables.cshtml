@@ -1,0 +1,19 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    if (globalSettings.EnableNotification)
+    {
+        <script>
+                @if (globalSettings.RememberAcceptanceDurationDays > 0)
+                {
+                    @Html.Raw("var notificationExDays = " + globalSettings.RememberAcceptanceDurationDays + ";")
+                }
+                else
+                {
+                    @Html.Raw("var notificationExDays = 365;")
+                }
+        </script>
+    }
+}

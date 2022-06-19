@@ -1,0 +1,39 @@
+/*  
+---------------------------------------------------
+Directions - Small Breakpoint
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+Main Navigation
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle nav.main ul li.has-child>span::after,
+.directional-icons-triangle nav.main ul ul li.has-child>span::after {
+    content: "\f280"; /* down */
+}
+.directional-icons-triangle nav.main ul li.has-child.open-child_mobile>span::after {
+    content: "\f286"; /* up */
+}
+
+/* Arrow */
+.directional-icons-arrow nav.main ul li.has-child>span::after,
+.directional-icons-arrow nav.main ul ul li.has-child>span::after {
+    content: "\f118"; /* down */
+}
+.directional-icons-arrow nav.main ul li.has-child.open-child_mobile>span::after {
+    content: "\f11a"; /* up */
+}
+
+/* Chevron */
+.directional-icons-chevron nav.main ul li.has-child>span::after,
+.directional-icons-chevron nav.main ul ul li.has-child>span::after {
+    content: "\f3d0"; /* down */
+}
+.directional-icons-chevron nav.main ul li.has-child.open-child_mobile>span::after {
+    content: "\f3d8"; /* up */
+}
+

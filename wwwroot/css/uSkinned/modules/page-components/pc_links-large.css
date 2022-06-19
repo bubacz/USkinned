@@ -1,0 +1,10 @@
+/*  
+---------------------------------------------------
+Links - Large Breakpoint
+---------------------------------------------------  
+*/
+
+.listing.listing_links:not(.listing_links-mini) .item a { 
+    padding: calc(var(--base-spacing) / 1.5);
+}
+

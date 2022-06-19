@@ -1,0 +1,82 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using System.Globalization
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    string metaTitle = String.Empty;
+    string openGraphImage = String.Empty;
+
+    var siteName = globalSettings.WebsiteName;
+
+    var canonical = Model.HasValue("overrideCanonicalURL") ? Model.Value<string>("overrideCanonicalURL") : Model.Url(mode: UrlMode.Absolute);
+
+    string index = Model.Value<bool>("hideFromSearchEngines") ? "noindex" : "index";
+    string follow = Model.Value<bool>("stopInternalLinksBeingFollowed") ? "nofollow" : "follow";
+
+    if (Model.Value<SiteBuilderSEOMeta>("titleAndDescription") != null && !Model.Value<SiteBuilderSEOMeta>("titleAndDescription").Title.IsNullOrWhiteSpace())
+    {
+        metaTitle = Model.Value<SiteBuilderSEOMeta>("titleAndDescription").Title;
+    }
+    else
+    {
+        metaTitle = Model.Name + " | " + siteName;
+    }
+
+    var metaDescription = Model.Value<SiteBuilderSEOMeta>("titleAndDescription") != null ? Model.Value<SiteBuilderSEOMeta>("titleAndDescription").Description : String.Empty;
+
+    if (Model.Value<IPublishedContent>("openGraphImage") != null)
+    {
+        openGraphImage = Model.Value<IPublishedContent>("openGraphImage").Url(mode: UrlMode.Absolute);
+    }
+    else if (globalSettings.DefaultOpenGraphImage != null)
+    {
+        openGraphImage = globalSettings.DefaultOpenGraphImage.Url(mode: UrlMode.Absolute);
+    }
+
+    if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias))
+    {
+        int year = int.TryParse(Context.Request.Query["year"], out year) ? year : 0;
+        int month = int.TryParse(Context.Request.Query["month"], out month) ? month : 0;
+
+        if (year != 0 && month == 0)
+        {
+            metaTitle = year + " | " + metaTitle + " | " + siteName;
+        }
+        else if (year != 0 && month != 0)
+        {
+            metaTitle = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month) + " | " + year + " | " + metaTitle + " | " + siteName;
+        }
+
+    }
+
+    <link rel="canonical" href="@canonical" />
+    <title>@metaTitle</title>
+    <meta name="description" content="@metaDescription">
+    foreach (var culture in Model.Cultures)
+    {
+        string url = Model.Url(culture: culture.Key, mode: UrlMode.Absolute);
+
+        if (!string.IsNullOrEmpty(url) && url != "#" && culture.Key != String.Empty)
+        {
+            <link rel="alternate" href="@Model.Url(culture: culture.Key, mode: UrlMode.Absolute)" hreflang="@culture.Key" />
+        }
+    }
+    <meta name="twitter:card" content="summary_large_image" />
+    if (globalSettings.TwitterSiteUsername.HasValue())
+    {
+        <meta name="twitter:site" content="@("@" + globalSettings.TwitterSiteUsername)" />
+    }
+    if (Model.HasValue("twitterCreatorUsername"))
+    {
+        <meta name="twitter:creator" content="@("@" + Model.Value<string>("twitterCreatorUsername"))" />
+    }
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@metaTitle" />
+    <meta property="og:image" content="@openGraphImage" />
+    <meta property="og:url" content="@canonical" />
+    <meta property="og:description" content="@metaDescription" />
+    <meta property="og:site_name" content="@siteName" />
+    <meta name="robots" content="@index,@follow">
+}

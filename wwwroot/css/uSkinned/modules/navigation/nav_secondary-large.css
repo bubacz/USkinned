@@ -1,0 +1,61 @@
+/*  
+---------------------------------------------------
+Secondary Navigation - Large Breakpoint
+---------------------------------------------------  
+*/
+
+nav.secondary {
+    z-index: 601;
+}
+nav.secondary>ul {
+    display: flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    -ms-flex-direction: row;
+}
+nav.secondary > ul .dropdown > a > i.icon { 
+    position:relative; top:0px;
+}
+nav.secondary>ul>li>span>div,
+nav.secondary>ul>li>span>a,
+nav.secondary>ul>li>a  {
+    display: block;
+    padding: 0 10px;
+}
+body:not(.header-03-lg):not(.header-11-lg):not(.header-12-lg):not(.header-15-lg):not(.header-16-lg):not(.header-17-lg):not(.header-19-lg):not(.header-20-lg) nav.secondary>ul>li>span>div,
+body:not(.header-03-lg):not(.header-11-lg):not(.header-12-lg):not(.header-15-lg):not(.header-16-lg):not(.header-17-lg):not(.header-19-lg):not(.header-20-lg) nav.secondary>ul>li>span>a,
+body:not(.header-03-lg):not(.header-11-lg):not(.header-12-lg):not(.header-15-lg):not(.header-16-lg):not(.header-17-lg):not(.header-19-lg):not(.header-20-lg) nav.secondary>ul>li>a {
+    line-height: var(--nav-main-height);
+}
+nav.secondary ul li.dropdown .dropdown-menu { 
+    width: calc(var(--nav-main-dropdown-width) / 2);
+    border: 0 none;
+    transform: none!important;
+}
+body:not(.header-03-lg):not(.header-11-lg):not(.header-12-lg):not(.header-15-lg):not(.header-16-lg):not(.header-17-lg):not(.header-19-lg):not(.header-20-lg) nav.secondary ul li.dropdown .dropdown-menu { 
+    border-radius: var(--base-border-radius);
+    box-shadow: var(--base-box-shadow_h) var(--base-box-shadow_v) var(--base-box-shadow_b) rgba(var(--true-black), var(--base-box-shadow_o));
+}
+
+nav.secondary ul li.dropdown .dropdown-menu,
+nav.secondary.navigation-dropdown-bg-solid ul li.dropdown .dropdown-menu { 
+    background: rgba(var(--navigation-dropdown-color1), 1); 
+}
+nav.secondary.navigation-dropdown-bg-linear ul li.dropdown .dropdown-menu { 
+    background: linear-gradient(var(--navigation-dropdown-angle), rgba(var(--navigation-dropdown-color1), 1) 0%, rgba(var(--navigation-dropdown-color2), 1) 100%); 
+}
+nav.secondary.navigation-dropdown-bg-radial ul li.dropdown .dropdown-menu { 
+    background: radial-gradient(farthest-side at var(--navigation-dropdown-start-perc) var(--navigation-dropdown-stop-perc), rgba(var(--navigation-dropdown-color1), 1) 0%, rgba(var(--navigation-dropdown-color2), 1) 100%); 
+}
+
+nav.secondary ul li.dropdown .dropdown-menu > a { 
+    padding: 10px var(--base-half-spacing);
+    color:  rgba(var(--navigation-dropdown-link), 1);
+}
+nav.secondary ul li.dropdown .dropdown-menu > a:hover { 
+    color:  rgba(var(--navigation-dropdown-link-hover), 1)!important;
+}
+
+nav.secondary ul li.dropdown > a.dropdown-toggle::after {
+    top: 4px;
+}

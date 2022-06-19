@@ -1,0 +1,69 @@
+/*  
+---------------------------------------------------
+Main Navigation - Small Breakpoint
+---------------------------------------------------  
+*/
+
+body:not(.header-03-sm) nav.main>ul { 
+    border-width:0 0 var(--base-border-width); border-style:solid; 
+    border-color: rgba(var(--header-borders), 1);
+}
+nav.main ul li { 
+    background:var(--header-bg-color1);
+}
+body:not(.header-03-sm) nav.main ul li { 
+    border-width:var(--base-border-width) 0 0; border-style:solid; 
+    border-color: rgba(var(--header-borders), 1);
+}
+
+/* Block on left */
+nav.main ul li span::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+}
+html.no-touch nav.main ul li:hover>span::before,
+nav.main ul li:focus>span::before,
+nav.main ul li:active>span::before,
+nav.main ul li.active>span::before,
+nav.main ul li.open-child_mobile>span::before,
+nav.main ul li:not(.active).open-child>span::before {
+    width: 3px;
+}
+nav.main ul li:focus-within>span::before {
+    width: 3px;
+}
+
+/* Arrow */
+nav.main ul li.has-child.open-child_mobile>span::after { 
+    content: "\f286";
+}
+nav.main ul li.has-child>span::after { 
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* Link */
+nav.main ul li span a {
+    padding: var(--base-half-spacing);
+}
+body:not(.header-02-sm) nav.main ul li.has-child span a {
+    padding-right: var(--expand-nav-width);
+}
+
+/* Subpages */
+nav.main ul ul { 
+    display: none;
+}
+nav.main ul ul {
+    background-color: rgba(var(--navigation-dropddown-bg-color1), 1);
+}
+nav.main ul>li.open-child_mobile>ul { 
+    display:block;
+}
+/* Touch device open with keyboard focus */
+nav.main ul>li:focus-within>ul { 
+    display:block;
+}

@@ -1,0 +1,192 @@
+﻿@inherits UmbracoViewPage<RegisterFormViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@if (Model.DisplayForm)
+{
+    if (Model.MemberGroups.HasValue())
+    {
+
+        UsnglobalSettings globalSettings = (UsnglobalSettings)Umbraco.Content(Model.GlobalSettingsID);
+
+        var reCAPTCHAV3responseId = "ReCAPTCHAV3_Response_" + Model.UniqueID;
+
+        if (globalSettings.GoogleReCaptchaversion == "V3" && globalSettings.GoogleReCaptchav3SiteKey.HasValue() && globalSettings.GoogleReCaptchav3SecretKey.HasValue())
+        {
+            var reCAPTCHAV3Script = "<script>" +
+                "var interval_" + Model.UniqueID.Replace("-", "") + " = setInterval(function() {" +
+                    "if(window.grecaptcha){" +
+                        "grecaptcha.ready(function () { " +
+                            "grecaptcha.execute('" + globalSettings.GoogleReCaptchav3SiteKey + "', { action: 'register'}).then(function(token) {" +
+                            "document.getElementById('" + reCAPTCHAV3responseId + "').value = token;" +
+                            "});" +
+                        "});" +
+                        "clearInterval(interval_" + Model.UniqueID.Replace("-", "") + ");" +
+                    "}" +
+                "},100);" +
+            "</script>";
+
+            @Html.Raw(reCAPTCHAV3Script);
+        }
+
+        <div class="form register-form ajax-wrap">
+            <div class="inner @(Model.FormBgColorClass) @(Model.FormColorLabel)-text">
+                <form asp-action="HandleRegisterSubmit" asp-controller="MemberSurface"
+                      data-ajax="true" data-ajax-method="POST"
+                      data-ajax-loading="#FormLoading_@Model.UniqueID">
+                    @Html.HiddenFor(m => Model.GlobalSettingsID)
+                    @Html.HiddenFor(m => Model.UniqueID)
+                    @Html.HiddenFor(m => Model.RegisterModel.UsernameIsEmail)
+                    @Html.HiddenFor(m => Model.Info)
+                    @Html.HiddenFor(m => Model.MemberGroups)
+                    @Html.HiddenFor(m => Model.CurrentPageId)
+                    @Html.HiddenFor(m => Model.ThemeFolder)
+
+                    @if (globalSettings.GoogleReCaptchaversion == "V3" && globalSettings.GoogleReCaptchav3SiteKey.HasValue() && globalSettings.GoogleReCaptchav3SecretKey.HasValue())
+                    {
+                        @Html.Hidden(reCAPTCHAV3responseId)
+                    }
+
+                    @if (Model.FormHeading.HasValue() || Model.FormIntroduction.HasValue() || Model.FormSecondaryHeading.HasValue())
+                    {
+                        <div class="info short-margin-bottom">
+
+                            @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", Model.HeadingOrder }, { "animation", null }, { "heading", Model.FormHeading }, { "secondaryHeading", Model.FormSecondaryHeading }, { "backgroundColorLabel", Model.FormColorLabel } })
+
+                            @if (Model.FormIntroduction.HasValue())
+                            {
+                                <div class="text @(Model.FormColorLabel)-text">
+                                    @Html.Raw(Model.FormIntroduction)
+                                </div>
+                            }
+
+                        </div>
+                    }
+
+                    <div class="form-inner">
+                        <div class="alert alert-danger mb-3" id="FormError_@Model.UniqueID" style="display:none">
+                        </div>
+                        <div id="Form_@Model.UniqueID">
+                            <fieldset>
+
+                                <div class="form-group">
+                                    <label for="RegisterModel_Name" class="control-label">
+                                        @Umbraco.GetDictionaryValue("USN Form Name Label")
+                                    </label>
+                                    @Html.TextBoxFor(x => Model.RegisterModel.Name, new { @class = "form-control", aria_label = Umbraco.GetDictionaryValue("USN Form Name Label"), placeholder = Umbraco.GetDictionaryValue("USN Form Name Label") })
+                                </div>
+                                @if (!Model.RegisterModel.UsernameIsEmail)
+                                {
+                                    <div class="form-group">
+                                        <label for="RegisterModel_Email" class="control-label">
+                                            @Umbraco.GetDictionaryValue("USN Form Username Label")
+                                        </label>
+                                        @Html.TextBoxFor(x => Model.RegisterModel.Username, new { @class = "form-control", aria_label = Umbraco.GetDictionaryValue("USN Form Username Label"), placeholder = Umbraco.GetDictionaryValue("USN Form Username Label") })
+                                    </div>
+                                }
+                                <div class="form-group">
+                                    <label for="RegisterModel_Email" class="control-label">
+                                        @Umbraco.GetDictionaryValue("USN Form Email Address Label") <em class="req">*</em>
+                                    </label>
+                                    @Html.TextBoxFor(x => Model.RegisterModel.Email, new { autocapitalize = "off", @class = "form-control", aria_label = Umbraco.GetDictionaryValue("USN Form Email Address Label"), placeholder = Umbraco.GetDictionaryValue("USN Form Email Address Label") })
+                                    @Html.ValidationMessageFor(x => Model.RegisterModel.Email, Umbraco.GetDictionaryValue("USN Form Email Address Validation"))
+                                </div>
+
+                                @if (Model.RegisterModel.MemberProperties != null)
+                                {
+                                    @*
+                        This code will only display properties marked as "Member can edit" on the "Property settings" of the member property.
+                                    *@
+                                    for (var i = 0; i < Model.RegisterModel.MemberProperties.Count; i++)
+                                    {
+                                        @*
+                            By default this will render a textbox but if you want to change the editor template for this property you can
+                            easily change it. For example, if you wanted to render a custom editor for this field called "MyEditor" you would
+                            create a file at ~/Views/Shared/EditorTemplates/MyEditor.cshtml", then you will change the next line of code to
+                            render your specific editor template like:
+                            @Html.EditorFor(x => Model.RegisterModel.MemberProperties[i].Value, "MyEditor")
+                                        *@
+
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                @Model.RegisterModel.MemberProperties[i].Name
+                                            </label>
+                                            @Html.TextBoxFor(x => Model.RegisterModel.MemberProperties[i].Value, new { @class = "form-control" })
+                                            @Html.HiddenFor(m => Model.RegisterModel.MemberProperties[i].Alias)
+                                        </div>
+
+                                    }
+                                }
+
+                                <div class="form-group">
+                                    <label for="RegisterModel_Password" class="control-label">
+                                        @Umbraco.GetDictionaryValue("USN Form Password Label") <em class="req">*</em>
+                                    </label>
+                                    @Html.PasswordFor(x => Model.RegisterModel.Password, new { @class = "form-control", aria_label = Umbraco.GetDictionaryValue("USN Form Password Label"), placeholder = Umbraco.GetDictionaryValue("USN Form Password Label") })
+                                    @Html.ValidationMessageFor(x => Model.RegisterModel.Password, Umbraco.GetDictionaryValue("USN Form Password Validation"))
+
+                                    <!-- Show hide password -->
+                                    <div class="show-password">
+                                        <label>
+                                            <input type="checkbox" onclick="showPasswordFunction('RegisterModel_Password')">
+                                            <span>
+                                                <i class="icon usn_ion-md-eye"></i>
+                                                <i class="icon usn_ion-md-eye-off"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <!--// Show hide password -->
+                                </div>
+
+                                @if (globalSettings.GoogleReCaptchaversion == "V2" && globalSettings.GoogleReCaptchasiteKey.HasValue() && globalSettings.GoogleReCaptchasecretKey.HasValue())
+                                {
+                                    <div class="g-recaptcha" data-sitekey="@globalSettings.GoogleReCaptchasiteKey" data-size="@Model.CaptchaDataSize"></div>
+                                }
+
+                            </fieldset>
+                            <fieldset>
+                                <button role="button" class="btn btn-block @Model.FormButtonColorClass @Model.FormButtonHoverColorClass @(Model.FormButtonColorLabel)-btn-text @(Model.FormButtonColorLabel)-btn-borders" type="submit">
+                                    <span></span>
+                                    @(Model.FormButtonText.HasValue() ? Model.FormButtonText : Umbraco.GetDictionaryValue("USN Register Form Button Text"))
+                                </button>
+                            </fieldset>
+
+                            @if (globalSettings.GoogleReCaptchaversion == "V3" && globalSettings.GoogleReCaptchav3SiteKey.HasValue() && globalSettings.GoogleReCaptchav3SecretKey.HasValue())
+                            {
+                                <div class="note-recaptcha @(Model.FormColorLabel)-text">
+                                    <p class="small">@Html.Raw(Umbraco.GetDictionaryValue("USN Form reCAPTCHA V3 Disclaimer"))</p>
+                                </div>
+                            }
+
+                            <div class="ajax-loading" id="FormLoading_@Model.UniqueID" style="display:none">
+                                <div class="loading">
+                                    <span class="message">@Umbraco.GetDictionaryValue("USN Register Form Sending Message")</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="SubmissionMessage_@Model.UniqueID" style="display:none">
+                            <div class="alert alert-success"><div class="info">@Html.Raw(Model.FormSubmissionMessage)</div></div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger"><p>@Umbraco.GetDictionaryValue("USN Register Form Missing Member Group")</p></div>
+    }
+}
+else
+{
+    if (Model.ConfirmationSuccess)
+    {
+        <div class="alert alert-success"><div class="info">@Umbraco.GetDictionaryValue("USN Register Form Email Confirmed")</div></div>
+    }
+    else
+    {
+        <div class="alert alert-danger"><div class="info">@Umbraco.GetDictionaryValue("USN Register Form Email Not Confirmed")</div></div>
+    }
+}

@@ -1,0 +1,27 @@
+/*  
+----------------------------------------------------------------------------------------------------
+Ecwid - Small Breakpoint - http://open.ecwid.com/39sfFq
+----------------------------------------------------------------------------------------------------
+*/
+
+/*  
+---------------------------------------------------
+Cart icon
+---------------------------------------------------  
+*/
+
+html#ecwid_html.usn body#ecwid_body .ec-cart-widget { 
+    width: 100%;
+    height: var(--small-header);
+}
+
+html#ecwid_html.usn body#ecwid_body .ec-cart-widget .ec-minicart { 
+    position: absolute; 
+    top:0; left:0;
+    width: 100%;
+    height: var(--small-header);
+}
+html#ecwid_html.usn body#ecwid_body .ec-minicart__counter { 
+    top: calc(50% - 10px)!important; 
+    left: calc(50% + 12px)!important;
+}

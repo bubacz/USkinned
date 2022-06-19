@@ -1,0 +1,29 @@
+/*  
+--------------------------------------------------
+Notification - Large Breakpoint
+-------------------------------------------------- 
+*/
+
+.usn-notification {
+    max-width: 460px;
+    bottom: calc((100% + var(--notification-spacing_below_lg)) * -1);
+}
+
+.usn-notification.open {
+    bottom: var(--notification-spacing_below_lg);
+}
+
+.usn-notification.position-left {
+    left: var(--notification-spacing_side_lg);
+}
+.usn-notification.position-center {
+    left: 50%; 
+    transform:translateX(-50%);
+}
+.usn-notification.position-right {
+    right: var(--notification-spacing_side_lg);
+}
+
+.usn-notification .inner {
+    padding:var(--base-spacing);
+}

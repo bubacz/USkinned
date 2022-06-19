@@ -1,0 +1,58 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block and Split Component Block types
+
+    var content = (IUsn_Cmp_Pods_Content)Model.BlockContent;
+
+    //Settings taken from compositions common to all block types
+    var uniqueSettings = (IUsn_Cmp_Pods_Settings)Model.BlockSettings;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    var pods = content.Pods.Where(x => !x.Settings.Value<bool>("hideFromWebsite"));
+
+    if (pods != null && pods.Any())
+    {
+        Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+        CarouselSettings carouselSettings = _siteBuilderService.GetCarouselSettings(uniqueSettings.ItemsPerRow, uniqueSettings.EnableCarousel, uniqueSettings.AutoRotateSpeed, uniqueSettings.ShowDots, uniqueSettings.ShowArrows);
+        string uniqueID = Guid.NewGuid().ToString();
+        string listSpacingClass = uniqueSettings.RemoveItemSpacing ? "listing_no-spacing" : String.Empty;
+        pods = uniqueSettings.EnableRandomOrder ? pods.Randomize() : pods;
+
+        <div class="component-main row listing @listSpacingClass listing_basic-grid listing-pods @carouselSettings.CarouselRowClass" @Html.Raw(carouselSettings.SlickAttributes)>
+            @foreach (var item in pods)
+            {
+                if (item?.ContentUdi != null)
+                {
+                    var podItem = new SiteBuilderBlock(Model.BaseModel, item);
+                    string blockViewName = _siteBuilderService.GetBlockViewName(item.Content.ContentType.Alias);
+
+                    if (blockViewName == "RelatedContent" || blockViewName == "TextImage"
+                        || blockViewName == "ReusablePods")
+                    {
+                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", backgroundColorLabel }, { "itemClass", @carouselSettings.ItemsClass }, { "uniqueID", uniqueID } })
+                    }
+                    else
+                    {
+                        var itemCommonBlockSettings = (IUsn_Cmp_CommonBlockSettings)item.Settings;
+
+                        string podStyle = "usn_pod_" + _siteBuilderService.GetBlockStyleName(podItem.BlockContent.ContentType.Alias);
+
+                        <div class="item @podStyle @carouselSettings.ItemsClass @itemCommonBlockSettings.CustomClasses">
+                            <div class="inner">
+                                @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blocks/" + blockViewName, podItem, new ViewDataDictionary(ViewData) { { "blockLocation", "pod" }, { "backgroundColorLabel", backgroundColorLabel }, { "uniqueID", uniqueID } })
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    }
+}

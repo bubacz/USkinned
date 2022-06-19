@@ -1,0 +1,21 @@
+<div ng-controller="USN.OptionShowHideController">
+
+    <div class="usn-Loading" ng-show="!isLoaded">Loading ...</div>
+
+    <div ng-show="isLoaded && !items.length">There are no items to display.</div>
+
+    <section ng-show="isLoaded && items.length">
+
+        <label class="usn-item item {{item.css}} {{item.icon}}" ng-repeat="item in items">
+            <input value="{{item.key}}" name="taboptions_{{$id}}" type="radio" ng-model="model.value" ng-click="check($event)">
+            <span></span>
+            <div class="inner" ng-bind-html="item.svgTrusted">
+
+               
+            </div>
+            <div class="name" ng-bind-html="item.text"></div>
+        </label>
+
+    </section>
+
+</div>

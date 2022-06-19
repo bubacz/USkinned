@@ -1,0 +1,353 @@
+/*  
+---------------------------------------------------
+Links
+
+- Logo
+- Main Navigation
+- Secondary Navigation
+- Content
+- Footer
+- Buttons
+
+---------------------------------------------------  
+*/
+
+/*  
+---------------------------------------------------
+Logo
+---------------------------------------------------  
+*/
+
+body:not(.logo-underline-link) header#site-header #logo a:not(:hover):not(:focus):not(:active) { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body:not(.logo-underline-link-hover) header#site-header #logo a:hover,
+body:not(.logo-underline-link-hover) header#site-header #logo a:focus, 
+body:not(.logo-underline-link-hover) header#site-header #logo a:active { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body.logo-underline-link header#site-header #logo a:not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+body.logo-underline-link-hover header#site-header #logo a:hover,
+body.logo-underline-link-hover header#site-header #logo a:focus, 
+body.logo-underline-link-hover header#site-header #logo a:active { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+/*  
+---------------------------------------------------
+Main Navigation
+---------------------------------------------------  
+*/
+
+body:not(.main-navigation-underline-link) header#site-header nav.main a:not(:hover):not(:focus):not(:active) { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body:not(.main-navigation-underline-link-hover) header#site-header nav.main a:hover,
+body:not(.main-navigation-underline-link-hover) header#site-header nav.main a:focus, 
+body:not(.main-navigation-underline-link-hover) header#site-header nav.main a:active { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body.main-navigation-underline-link header#site-header nav.main a:not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+body.main-navigation-underline-link-hover header#site-header nav.main a:hover,
+body.main-navigation-underline-link-hover header#site-header nav.main a:focus, 
+body.main-navigation-underline-link-hover header#site-header nav.main a:active { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+/*  
+---------------------------------------------------
+Secondary Navigation
+---------------------------------------------------  
+*/
+
+body:not(.secondary-navigation-underline-link) header#site-header nav.secondary a:not(:hover):not(:focus):not(:active) { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body:not(.secondary-navigation-underline-link-hover) header#site-header nav.secondary a:hover,
+body:not(.secondary-navigation-underline-link-hover) header#site-header nav.secondary a:focus, 
+body:not(.secondary-navigation-underline-link-hover) header#site-header nav.secondary a:active { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body.secondary-navigation-underline-link header#site-header nav.secondary a:not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+body.secondary-navigation-underline-link-hover header#site-header nav.secondary a:hover,
+body.secondary-navigation-underline-link-hover header#site-header nav.secondary a:focus, 
+body.secondary-navigation-underline-link-hover header#site-header nav.secondary a:active { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+
+/*  
+---------------------------------------------------
+Content
+---------------------------------------------------  
+*/
+
+body:not(.content-underline-link) #site-content a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body:not(.content-underline-link) .modal a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body:not(.content-underline-link-hover) #site-content a:not(.btn):not(.nav-button-link):hover,
+body:not(.content-underline-link-hover) #site-content a:not(.btn):not(.nav-button-link):focus, 
+body:not(.content-underline-link-hover) #site-content a:not(.btn):not(.nav-button-link):active,
+body:not(.content-underline-link-hover) .modal a:not(.btn):not(.nav-button-link):hover,
+body:not(.content-underline-link-hover) .modal a:not(.btn):not(.nav-button-link):focus, 
+body:not(.content-underline-link-hover) .modal a:not(.btn):not(.nav-button-link):active { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body.content-underline-link #site-content a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link .modal a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+body.content-underline-link-hover #site-content a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover #site-content a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover #site-content a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover .modal a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover .modal a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover .modal a:not(.btn):not(.nav-button-link):active { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+/* Content - Items only */
+
+body.content-underline-link #site-content .item a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link .modal .item a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+body.content-underline-link #site-content .item a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) .heading,
+body.content-underline-link #site-content .item .heading a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link #site-content .item .text a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link #site-content .item .nav a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link #site-content .item nav a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link .modal.item a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) .heading,
+body.content-underline-link .modal .item .heading a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link .modal .item .text a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link .modal .item .nav a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.content-underline-link .modal .item nav a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline!important;
+    text-decoration-color: inherit!important;
+}
+
+body.content-underline-link-hover #site-content .item a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover #site-content .item a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover #site-content .item a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover .modal .item a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover .modal .item a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover .modal .item a:not(.btn):not(.nav-button-link):active { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+body.content-underline-link-hover #site-content .item a:not(.btn):not(.nav-button-link):hover .heading,
+body.content-underline-link-hover #site-content .item a:not(.btn):not(.nav-button-link):focus .heading, 
+body.content-underline-link-hover #site-content .item a:not(.btn):not(.nav-button-link):active .heading,
+body.content-underline-link-hover #site-content .item .heading a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover #site-content .item .heading a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover #site-content .item .heading a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover #site-content .item .text a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover #site-content .item .text a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover #site-content .item .text a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover #site-content .item .nav a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover #site-content .item .nav a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover #site-content .item .nav a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover #site-content .item nav a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover #site-content .item nav a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover #site-content .item nav a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover .modal .item a:not(.btn):not(.nav-button-link):hover .heading,
+body.content-underline-link-hover .modal .item a:not(.btn):not(.nav-button-link):focus .heading, 
+body.content-underline-link-hover .modal .item a:not(.btn):not(.nav-button-link):active .heading,
+body.content-underline-link-hover .modal .item .heading a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover .modal .item .heading a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover .modal .item .heading a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover .modal .item .text a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover .modal .item .text a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover .modal .item .text a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover .modal .item .nav a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover .modal .item .nav a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover .modal .item .nav a:not(.btn):not(.nav-button-link):active,
+body.content-underline-link-hover .modal .item nav a:not(.btn):not(.nav-button-link):hover,
+body.content-underline-link-hover .modal .item nav a:not(.btn):not(.nav-button-link):focus, 
+body.content-underline-link-hover .modal .item nav a:not(.btn):not(.nav-button-link):active{ 
+    text-decoration: underline!important;
+    text-decoration-color: inherit!important;
+}
+
+
+/*  
+---------------------------------------------------
+Footer
+---------------------------------------------------  
+*/
+
+body:not(.footer-underline-link) footer#site-footer a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body:not(.footer-underline-link-hover) footer#site-footer a:not(.btn):not(.nav-button-link):hover,
+body:not(.footer-underline-link-hover) footer#site-footer a:not(.btn):not(.nav-button-link):focus, 
+body:not(.footer-underline-link-hover) footer#site-footer a:not(.btn):not(.nav-button-link):active { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+
+body.footer-underline-link footer#site-footer a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+body.footer-underline-link-hover footer#site-footer a:not(.btn):not(.nav-button-link):hover,
+body.footer-underline-link-hover footer#site-footer a:not(.btn):not(.nav-button-link):focus, 
+body.footer-underline-link-hover footer#site-footer a:not(.btn):not(.nav-button-link):active { 
+    text-decoration: underline;
+    text-decoration-color: inherit;
+}
+
+/* Footer - Items only */
+
+body.footer-underline-link footer#site-footer .item a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+body.footer-underline-link footer#site-footer .item a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) .heading,
+body.footer-underline-link footer#site-footer .item .text a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.footer-underline-link footer#site-footer .item .nav a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active),
+body.footer-underline-link footer#site-footer .item nav a:not(.btn):not(.nav-button-link):not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline!important;
+    text-decoration-color: inherit!important;
+}
+
+body.footer-underline-link-hover footer#site-footer .item a:not(.btn):not(.nav-button-link):hover,
+body.footer-underline-link-hover footer#site-footer .item a:not(.btn):not(.nav-button-link):focus, 
+body.footer-underline-link-hover footer#site-footer .item a:not(.btn):not(.nav-button-link):active { 
+    text-decoration: none;
+    text-decoration-color: transparent;
+}
+body.footer-underline-link-hover footer#site-footer .item a:not(.btn):not(.nav-button-link):hover .heading,
+body.footer-underline-link-hover footer#site-footer .item a:not(.btn):not(.nav-button-link):focus .heading, 
+body.footer-underline-link-hover footer#site-footer .item a:not(.btn):not(.nav-button-link):active .heading,
+body.footer-underline-link-hover footer#site-footer .item .text a:not(.btn):not(.nav-button-link):hover,
+body.footer-underline-link-hover footer#site-footer .item .text a:not(.btn):not(.nav-button-link):focus, 
+body.footer-underline-link-hover footer#site-footer .item .text a:not(.btn):not(.nav-button-link):active,
+body.footer-underline-link-hover footer#site-footer .item .nav a:not(.btn):not(.nav-button-link):hover,
+body.footer-underline-link-hover footer#site-footer .item .nav a:not(.btn):not(.nav-button-link):focus, 
+body.footer-underline-link-hover footer#site-footer .item .nav a:not(.btn):not(.nav-button-link):active,
+body.footer-underline-link-hover footer#site-footer .item nav a:not(.btn):not(.nav-button-link):hover,
+body.footer-underline-link-hover footer#site-footer .item nav a:not(.btn):not(.nav-button-link):focus, 
+body.footer-underline-link-hover footer#site-footer .item nav a:not(.btn):not(.nav-button-link):active { 
+    text-decoration: underline!important;
+    text-decoration-color: inherit!important;
+}
+
+
+
+/*  
+---------------------------------------------------
+Buttons
+---------------------------------------------------  
+*/
+
+body:not(.button-underline-link) .btn a:not(:hover):not(:focus):not(:active),
+body:not(.button-underline-link) a:not(:hover):not(:focus):not(:active) .btn,
+body:not(.button-underline-link) .btn:not(:hover):not(:focus):not(:active),
+body:not(.button-underline-link) .nav-button-link:not(:hover):not(:focus):not(:active) { 
+    text-decoration: none!important;
+    text-decoration-color: transparent;
+}
+
+body:not(.button-underline-link-hover) .btn a:hover,
+body:not(.button-underline-link-hover) .btn a:focus, 
+body:not(.button-underline-link-hover) .btn a:active,
+body:not(.button-underline-link-hover) a:hover .btn,
+body:not(.button-underline-link-hover) a:focus .btn, 
+body:not(.button-underline-link-hover) a:active .btn,
+body:not(.button-underline-link-hover) .btn:hover,
+body:not(.button-underline-link-hover) .btn:focus, 
+body:not(.button-underline-link-hover) .btn:active,
+body:not(.button-underline-link-hover) .nav-button-link:hover,
+body:not(.button-underline-link-hover) .nav-button-link:focus, 
+body:not(.button-underline-link-hover) .nav-button-link:active { 
+    text-decoration: none!important;
+    text-decoration-color: transparent;
+}
+
+body.button-underline-link .btn a:not(:hover):not(:focus):not(:active),
+body.button-underline-link a:not(:hover):not(:focus):not(:active) .btn,
+body.button-underline-link .btn:not(:hover):not(:focus):not(:active),
+body.button-underline-link .nav-button-link:not(:hover):not(:focus):not(:active) { 
+    text-decoration: underline!important;
+    text-decoration-color: inherit;
+}
+
+body.button-underline-link-hover .btn a:hover,
+body.button-underline-link-hover .btn a:focus, 
+body.button-underline-link-hover .btn a:active,
+body.button-underline-link-hover a:hover .btn,
+body.button-underline-link-hover a:focus .btn, 
+body.button-underline-link-hover a:active .btn,
+body.button-underline-link-hover .btn:hover,
+body.button-underline-link-hover .btn:focus, 
+body.button-underline-link-hover .btn:active,
+body.button-underline-link-hover .nav-button-link:hover,
+body.button-underline-link-hover .nav-button-link:focus, 
+body.button-underline-link-hover .nav-button-link:active { 
+    text-decoration: underline!important;
+    text-decoration-color: inherit;
+}
+
+
+
+/*  
+---------------------------------------------------
+Navigation override for active state
+---------------------------------------------------  
+*/
+
+a.active,
+a.active:hover,
+a.active:focus,
+a.active:active,
+.active > a,
+.active > a:hover,
+.active > a:focus,
+.active > a:active,
+.active > span > a,
+.active > span > a:hover,
+.active > span > a:focus,
+.active > span > a:active { 
+    text-decoration: none!important;
+    text-decoration-color: transparent!important;
+}

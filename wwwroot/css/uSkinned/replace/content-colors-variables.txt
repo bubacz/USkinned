@@ -1,0 +1,13 @@
+--c{position}-bg-color1: {backgroundColor1};
+--c{position}-bg-color2:  {backgroundColor2};
+--c{position}-bg-start-perc: {backgroundStartPerc};
+--c{position}-bg-stop-perc: {backgroundStopPerc};
+--c{position}-bg-angle: {backgroundAngle};
+--c{position}-heading: {heading};
+--c{position}-secondary-heading: {secondaryHeading};
+--c{position}-text: {text};
+--c{position}-link: {link};
+--c{position}-link-hover: {linkHover};
+--c{position}-borders: {border};
+--c{position}-highlight: {highlightBackground};
+--c{position}-highlight-text: {highlightText};

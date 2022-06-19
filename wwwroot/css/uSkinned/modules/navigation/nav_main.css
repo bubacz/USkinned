@@ -1,0 +1,175 @@
+/*  
+---------------------------------------------------
+Main Navigation
+---------------------------------------------------  
+*/
+
+nav.main { 
+    position: relative; z-index:2;
+}
+
+nav.main ul li {
+    position: relative;
+}
+
+nav.main ul li span {
+    position: relative;
+    display: block;
+}
+
+html.touch nav.main ul li span {
+    pointer-events: none;
+}
+
+nav.main ul li span::before {
+    content: "";
+    position: absolute;
+    transition: all 0.15s ease-in-out 0s;
+}
+
+html.no-touch nav.main ul li:not(.active):hover>span::before,
+nav.main ul li:not(.active):focus>span::before,
+nav.main ul li:not(.active):active>span::before,
+nav.main ul li:not(.active).open-child>span::before {
+    background:  rgba(var(--main-navigation-link-hover), 1);
+}
+
+nav.main ul li:not(.active):focus-within>span::before {
+    background:  rgba(var(--main-navigation-link-active), 1);
+}
+
+nav.main ul li.active>span::before {
+    background:  rgba(var(--main-navigation-link-active), 1);
+}
+
+nav.main ul li.has-child>span::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    padding-top: 15px;
+    text-align: center;
+    color: rgba(var(--main-navigation-link), 1);
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+html.touch nav.main ul li span::after {
+    pointer-events: all;
+    z-index: 10;
+}
+
+nav.main ul li:not(.active):hover>span::after,
+nav.main ul li:not(.active):focus>span::after,
+nav.main ul li:not(.active):active>span::after,
+nav.main ul li:not(.active).open-child>span::after {
+    color: rgba(var(--main-navigation-link-hover), 1);
+}
+
+nav.main ul li:not(.active):focus-within>span::after {
+    color: rgba(var(--main-navigation-link-hover), 1);
+}
+
+nav.main ul li.active.has-child>span::after { 
+    color: rgba(var(--main-navigation-link-active), 1);
+}
+
+nav.main ul li span a {
+    display: block;
+    color:  rgba(var(--main-navigation-link), 1);
+    pointer-events: all;
+    
+    -webkit-transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+    transition:
+        opacity 0.3s ease-in-out 0s,
+        color 0.3s ease-in-out 0s,
+        background-color 0.3s ease-in-out 0s,
+        text-decoration 0.3s ease-in-out 0s,
+        top 0.3s ease-in-out 0s,
+        right 0.3s ease-in-out 0s,
+        bottom 0.3s ease-in-out 0s,
+        left 0.3s ease-in-out 0s,
+        width 0.3s ease-in-out 0s,
+        max-width 0.3s ease-in-out 0s,
+        height 0.3s ease-in-out 0s,
+        max-height 0.3s ease-in-out 0s,
+        padding-top 0.3s ease-in-out 0s,
+        padding-right 0.3s ease-in-out 0s,
+        padding-bottom 0.3s ease-in-out 0s,
+        padding-left 0.3s ease-in-out 0s,
+        box-shadow 0.3s ease-in-out 0s,
+        border-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
+}
+
+nav.main ul>li>span>a:hover,
+nav.main ul>li:hover>span>a {
+    color:  rgba(var(--main-navigation-link-hover), 1);
+}
+
+nav.main ul>li:focus-within>span>a {
+    color:  rgba(var(--main-navigation-link-hover), 1);
+}
+
+nav.main ul>li.active>span>a {
+    color:  rgba(var(--main-navigation-link-active), 1);
+}

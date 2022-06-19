@@ -1,0 +1,122 @@
+﻿@inherits UmbracoViewPage<ResetRequestFormViewModel>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@if (Model.FormResetPasswordPage.HasValue())
+{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Umbraco.Content(Model.GlobalSettingsID);
+
+    var reCAPTCHAV3responseId = "ReCAPTCHAV3_Response_" + Model.UniqueID;
+
+    if (globalSettings.GoogleReCaptchaversion == "V3" && globalSettings.GoogleReCaptchav3SiteKey.HasValue() && globalSettings.GoogleReCaptchav3SecretKey.HasValue())
+    {
+        var reCAPTCHAV3Script = "<script>" +
+            "var interval_" + Model.UniqueID.Replace("-", "") + " = setInterval(function() {" +
+                "if(window.grecaptcha){" +
+                    "grecaptcha.ready(function () { " +
+                        "grecaptcha.execute('" + globalSettings.GoogleReCaptchav3SiteKey + "', { action: 'reset_password'}).then(function(token) {" +
+                        "document.getElementById('" + reCAPTCHAV3responseId + "').value = token;" +
+                        "});" +
+                    "});" +
+                    "clearInterval(interval_" + Model.UniqueID.Replace("-", "") + ");" +
+                "}" +
+            "},100);" +
+        "</script>";
+
+        @Html.Raw(reCAPTCHAV3Script);
+    }
+
+    <div class="form password-request-form ajax-wrap">
+        <div class="inner @(Model.FormBgColorClass) @(Model.FormColorLabel)-text">
+            <form asp-action="HandleResetRequestSubmit" asp-controller="MemberSurface"
+                  data-ajax="true" data-ajax-method="POST"
+                  data-ajax-loading="#FormLoading_@Model.UniqueID">
+                @Html.HiddenFor(m => Model.GlobalSettingsID)
+                @Html.HiddenFor(m => Model.UniqueID)
+                @Html.HiddenFor(m => Model.FormResetPasswordPageId)
+                @Html.HiddenFor(m => Model.ThemeFolder)
+
+                @if (globalSettings.GoogleReCaptchaversion == "V3" && globalSettings.GoogleReCaptchav3SiteKey.HasValue() && globalSettings.GoogleReCaptchav3SecretKey.HasValue())
+                {
+                    @Html.Hidden(reCAPTCHAV3responseId)
+                }
+
+
+                @if (Model.FormHeading.HasValue() || Model.FormIntroduction.HasValue() || Model.FormSecondaryHeading.HasValue())
+                {
+                    <div class="info short-margin-bottom">
+
+                        @await Html.PartialAsync(Model.ThemeFolder + "/MiscPageElements/Headings", new ViewDataDictionary(ViewData) { { "headingOrder", Model.HeadingOrder }, { "animation", null }, { "heading", Model.FormHeading }, { "secondaryHeading", Model.FormSecondaryHeading }, { "backgroundColorLabel", Model.FormColorLabel } })
+
+                        @if (Model.FormIntroduction.HasValue())
+                        {
+                            <div class="text @(Model.FormColorLabel)-text">
+                                @Html.Raw(Model.FormIntroduction)
+                            </div>
+                        }
+
+                    </div>
+                }
+
+                <div class="form-inner">
+
+                    <div class="alert alert-danger mb-3" id="FormError_@Model.UniqueID" style="display:none">
+                    </div>
+
+                    <div id="Form_@Model.UniqueID">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="Username" class="control-label">
+                                    @Umbraco.GetDictionaryValue("USN Form Username Label") <em class="req">*</em>
+                                </label>
+                                @Html.TextBoxFor(x => Model.Username, new { autocapitalize = "off", @class = "form-control", aria_label = Umbraco.GetDictionaryValue("USN Form Username Label"), placeholder = Umbraco.GetDictionaryValue("USN Form Username Label") })
+                                @Html.ValidationMessageFor(x => Model.Username, Umbraco.GetDictionaryValue("USN Form Username Validation"))
+                            </div>
+
+
+                            @if (globalSettings.GoogleReCaptchaversion == "V2" && globalSettings.GoogleReCaptchasiteKey.HasValue() && globalSettings.GoogleReCaptchasecretKey.HasValue())
+                            {
+                                <div class="g-recaptcha" data-sitekey="@globalSettings.GoogleReCaptchasiteKey" data-size="@Model.CaptchaDataSize"></div>
+                            }
+                        </fieldset>
+                        <fieldset>
+                            <button role="button" class="btn btn-block @Model.FormButtonColorClass @Model.FormButtonHoverColorClass @(Model.FormButtonColorLabel)-btn-text @(Model.FormButtonColorLabel)-btn-borders" type="submit">
+                                <span></span>
+                                @(Model.FormButtonText.HasValue() ? Model.FormButtonText : Umbraco.GetDictionaryValue("USN Reset Request Form Button Text"))
+                            </button>
+                        </fieldset>
+                        @if (Model.FormLoginPage.HasValue())
+                        {
+                            <p><a href="@Model.FormLoginPage.Url()">@Umbraco.GetDictionaryValue("USN Reset Request Form Login Link")</a></p>
+                        }
+
+                        @if (globalSettings.GoogleReCaptchaversion == "V3" && globalSettings.GoogleReCaptchav3SiteKey.HasValue() && globalSettings.GoogleReCaptchav3SecretKey.HasValue())
+                        {
+                            <div class="note-recaptcha @(Model.FormColorLabel)-text">
+                                <p class="small">@Html.Raw(Umbraco.GetDictionaryValue("USN Form reCAPTCHA V3 Disclaimer"))</p>
+                            </div>
+                        }
+
+                        <div class="ajax-loading" id="FormLoading_@Model.UniqueID" style="display:none">
+                            <div class="loading">
+                                <span class="message">@Umbraco.GetDictionaryValue("USN Reset Request Form Sending Message")</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="SubmissionMessage_@Model.UniqueID" style="display:none">
+                        <div class="alert alert-success"><div class="info">@Html.Raw(Model.FormSubmissionMessage)</div></div>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <p>@Html.Raw(Umbraco.GetDictionaryValue("USN Reset Request Form Reset Password Page Missing"))</p>
+    </div>
+}

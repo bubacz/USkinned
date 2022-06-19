@@ -1,0 +1,10 @@
+/*  
+---------------------------------------------------
+Newsletter Form  - Large Breakpoint
+---------------------------------------------------  
+*/
+
+.item_form-single_field .form fieldset.buttons .btn { 
+    height:calc(50px - var(--base-border-width) - var(--base-border-width));
+    height: 50px;
+}

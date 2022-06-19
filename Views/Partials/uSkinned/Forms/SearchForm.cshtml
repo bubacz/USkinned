@@ -1,0 +1,34 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBaseViewModel>
+@using USNSiteBuilder.Core.Models
+@{
+    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+
+    IPublishedContent searchResultsPage = globalSettings.SearchResultsPage;
+
+    if (searchResultsPage != null)
+    {
+        Usnstyle websiteStyle = (Usnstyle)Model.WebsiteStyle;
+        string buttonBackgroundClass = websiteStyle.StyleColors.buttonBackgroundClass;
+        string buttonBackgroundHoverClass = websiteStyle.StyleColors.buttonBackgroundHoverClass;
+
+        <div class="form site-search-form site-search" aria-label="Site Search">
+            <form role="search" action="@searchResultsPage.Url()" method="get" name="searchForm">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label d-none" for="search_field">@Umbraco.GetDictionaryValue("USN Search Form Placeholder")</label>
+                        <input type="text" class="form-control" name="search_field" aria-label="@Umbraco.GetDictionaryValue("USN Search Form Placeholder")" placeholder="@Umbraco.GetDictionaryValue("USN Search Form Placeholder")" value="@Context.Request.Query["search_field"]">
+                    </div>
+                    <button type="submit" role="button" aria-label="Search" class="btn @buttonBackgroundClass @buttonBackgroundHoverClass base-btn-text base-btn-borders btn-search">
+                        <span></span>
+                        <i class="icon usn_ion-ios-search"></i>
+                    </button>
+                </fieldset>
+            </form>
+            <button class="expand-search" data-toggle="collapse" type="button" aria-expanded="false" aria-label="Expand Site Search Button">
+                <em>@Umbraco.GetDictionaryValue("USN Search Form Expand")</em>
+                <i class="icon usn_ion-ios-search search-icon"></i>
+                <i class="icon usn_ion-md-close close-icon"></i>
+            </button>
+        </div>
+    }
+}

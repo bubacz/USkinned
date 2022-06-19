@@ -1,0 +1,29 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@{
+    //Available as Component Block only
+
+    var content = (Usn_Cb_AnchorNavigation)Model.BlockContent;
+    var settings = (Usn_Cbs_AnchorNavigation)Model.BlockSettings;
+
+    AnimationSettings animation = (AnimationSettings)ViewData["animation"];
+
+    if (content.AnchorNavigation.HasValue())
+    {
+        string alignment = settings.NavigationAlignment.HasValue() ? settings.NavigationAlignment : "justify-content-start text-left";
+        string tabStyle = settings.LinkStyle.HasValue() ? settings.LinkStyle : "tab-basic";
+
+        <div class="expand @alignment">
+            <span>@Umbraco.GetDictionaryValue("USN Menu")</span>
+        </div>
+        <nav class="@tabStyle @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+            <ul class="nav @alignment">
+                @foreach (var item in content.AnchorNavigation)
+                {
+                    <li class="nav-item"><span><a class="nav-link nav-anchor-link nav-button-link" href="@item.link.LinkUrl" @Html.Raw(item.link.LinkTarget) @Html.Raw(item.link.LinkTitle)>@Html.Raw(item.icon)@Html.Raw(item.link.LinkText)@Html.Raw(item.link.LinkTargetIcon)</a></span></li>
+                }
+            </ul>
+        </nav>
+    }
+}

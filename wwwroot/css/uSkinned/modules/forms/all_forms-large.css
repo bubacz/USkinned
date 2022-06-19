@@ -1,0 +1,31 @@
+/*  
+----------------------------------------------------------------------------------------------------
+All Forms - Large Breakpoint
+---------------------------------------------------------------------------------------------------- 
+*/
+
+.form-control,
+.umbraco-forms-field:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input,
+.umbraco-forms-field.longanswer textarea {
+    padding: var(--base-half-spacing);
+}
+.form-control,
+.umbraco-forms-field:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input,
+.umbraco-forms-field.longanswer textarea,
+.form-group.dropdown::after,
+.form-group.date::after,
+.umbraco-forms-field.date .umbraco-forms-field-wrapper::after,
+.umbraco-forms-field.dropdown .umbraco-forms-field-wrapper select,
+.umbraco-forms-field.dropdown .umbraco-forms-field-wrapper::after {
+    min-height: 50px;
+}
+.form-group.dropdown::after,
+.form-group.date::after,
+.umbraco-forms-field.date .umbraco-forms-field-wrapper::after,
+.umbraco-forms-field.dropdown .umbraco-forms-field-wrapper::after {
+    padding: 10px var(--base-half-spacing) 0 0;
+}
+.form-group.uploadafile .form-control,
+.umbraco-forms-field.fileupload:not(.checkbox):not(.multiplechoice):not(.title):not(.recaptcha):not(.dataconsent):not(.singlechoice) input {
+    padding-top: 10px;
+}

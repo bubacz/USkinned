@@ -1,0 +1,115 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using Umbraco.Cms.Core.Models.Blocks
+@using USNSiteBuilder.Core.Interfaces
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block Only
+
+    var content = (Usn_Cb_ReusableComponents)Model.BlockContent;
+    var settings = (Usn_Cbs_ReusableComponents)Model.BlockSettings;
+    string uniqueID = Guid.NewGuid().ToString();
+
+    if (content.ReusableComponentGroups.HasValue() && content.ReusableComponentGroups.Any())
+    {
+        //This loops around the reusable nodes that have been created. Inside these nodes components can be added.
+        //Need to loop around all nodes and all components to build up a full block list.
+
+        List<BlockListItem> allBlocks = new List<BlockListItem>();
+
+        foreach (IPublishedContent component in content.ReusableComponentGroups)
+        {
+            BlockListModel pageComponents = component.Value<BlockListModel>("components");
+
+            if (pageComponents != null && pageComponents.Where(x => !x.Settings.Value<bool>("hideFromWebsite")).Any())
+            {
+                foreach (var item in pageComponents.Where(x => !x.Settings.Value<bool>("hideFromWebsite")))
+                {
+                    if (item?.ContentUdi != null)
+                    {
+                        allBlocks.Add(item);
+
+                    }
+                }
+            }
+
+        }
+
+        if (allBlocks.HasValue() && allBlocks.Any())
+        {
+            bool hasTabs = (settings.Style == "layoutTabbed" && allBlocks.Count() > 1) ? true : false;
+
+            int componentCount = 0;
+            string textAlignmentClass = settings.TabAlignment.HasValue() ? settings.TabAlignment : "justify-content-start text-left";
+            string tabStyle = settings.TabStyle.HasValue() ? settings.TabStyle : "tab-basic";
+
+            //Settings taken from compositions common to all block types
+            var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+
+            AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+            <div class="@animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+
+                @{
+                    if (hasTabs)
+                    {
+                        <!-- ROW -->
+                        <div class="repeatable tabbed @tabStyle">
+
+                            <nav class="tabs">
+                                <ul class="nav @textAlignmentClass" role="tablist">
+                                    @foreach (var component in allBlocks)
+                                    {
+                                        string itemName = component.Settings.HasValue("itemName") ? component.Settings.Value<string>("itemName") : "[*****]";
+
+                                        <li class="tab" role="presentation">
+                                            <a class="nav-item nav-button-link nav-link @(componentCount == 0 ? "active" : "")" id="nav-tab-@uniqueID-@componentCount" data-toggle="tab" href="#nav-@uniqueID-@componentCount" role="tab" aria-controls="nav-@uniqueID-@componentCount" aria-selected="true">
+                                                @itemName
+                                            </a>
+                                        </li>
+                                        componentCount += 1;
+                                    }
+                                </ul>
+                            </nav>
+
+                        </div>
+                        <!--// ROW -->
+                        componentCount = 1;
+                    }
+
+                    componentCount = 0;
+
+                    if (hasTabs)
+                    {
+                        @:<div class="repeatable-content tab-content">
+                        }
+
+                        foreach (var item in allBlocks)
+                        {
+
+                            if (hasTabs)
+                            {
+                                @:<div id="nav-@uniqueID-@componentCount" role="tabpanel" class="tab-pane @(componentCount == 0 ? "show active" : String.Empty)">
+                                }
+
+                                var pageComponent = new SiteBuilderBlock(Model.BaseModel, item, "pageLayoutFull");
+
+                                @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/BlockContainers/ComponentSection", pageComponent)
+
+                                if (hasTabs)
+                                {
+                                    componentCount += 1;
+                                @:</div>
+                            }
+                        }
+
+                        if (hasTabs)
+                        {
+                        @:</div>
+                    }
+                }
+            </div>
+        }
+    }
+}

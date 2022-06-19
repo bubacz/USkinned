@@ -1,0 +1,125 @@
+/*  
+---------------------------------------------------
+Scroll Prompt 
+---------------------------------------------------  
+*/
+
+.scroll-prompt {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    z-index: 100;
+    width: 40px;
+    text-align:center;
+    transform:translateX(-50%);
+}
+.scroll-prompt.os-animation {
+    opacity:0;
+
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 0.75s;
+    animation-delay: 0.75s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.scroll-prompt a {
+    display: inline-block;
+    width: 100%; height: 30px;
+    margin: 0 auto;
+    cursor: pointer;
+    text-decoration: none !important;
+    color: rgba(var(--base-heading), 1);
+    overflow: hidden;
+}
+
+.scroll-prompt a i {
+    font-size: 30px; line-height: 1;
+    display: block;
+    padding: 0; margin: 0 0 0 2px;
+    color: rgba(var(--base-heading), 1);
+}
+
+.scroll-prompt .mouse-scroll {
+    position: relative;
+    width: 21px; height: 35px;
+    margin: 0 auto;
+    transform-origin: top;
+}
+
+.scroll-prompt .mouse-scroll::before {
+    content: "";
+    position: absolute;
+    background-color: rgba(var(--base-heading), 1);
+}
+
+.scroll-prompt.os-animation .mouse-scroll::before {
+    opacity:0;
+
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 1.25s;
+    animation-duration: 1.25s;
+    -webkit-animation-delay: 0.75s;
+    animation-delay: 0.75s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+
+.scroll-prompt a span { 
+    display:none;
+}
+
+.scroll-prompt:not(.scroll-prompt-arrow) a > i.icon,
+.scroll-prompt.scroll-prompt-arrow a > .mouse-scroll { 
+    display:none!important;
+}
+
+@media (min-width:0) and (max-width:575px) {
+    
+    .component.usn_cmp_banner .item.item_scale-banner .scroll-prompt {
+        position: relative;
+        bottom: 0;
+    }
+
+}
+
+
+/*  
+---------------------------------------------------
+- Mouse wheel .scroll-prompt-wheel
+---------------------------------------------------  
+*/
+
+.scroll-prompt.scroll-prompt-wheel .mouse-scroll {
+    border-width: 2px; border-style: solid; 
+    border-color: rgba(var(--base-heading), 1);
+    border-radius: 10px;
+}
+
+.scroll-prompt.scroll-prompt-wheel .mouse-scroll::before {
+    top: 10px; left: 7px;
+    width: 3px; height: 6px;
+    border-radius: 50%;
+}
+
+
+/*  
+---------------------------------------------------
+- Line .scroll-prompt-line
+---------------------------------------------------  
+*/
+
+.scroll-prompt.scroll-prompt-line .mouse-scroll {
+    border:0 none!important;
+}
+
+.scroll-prompt.scroll-prompt-line .mouse-scroll::before {
+    top: 10px; left: 9px;
+    width: var(--base-border-width); height: 40px;
+}

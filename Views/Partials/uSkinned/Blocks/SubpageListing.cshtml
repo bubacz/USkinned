@@ -1,0 +1,281 @@
+﻿@inherits UmbracoViewPage<SiteBuilderBlock>
+@using USNSiteBuilder.Core.Models
+@using USNSiteBuilder.Core.Extensions
+@using USNSiteBuilder.Core.Interfaces
+@using Umbraco.Cms.Core.Strings
+@inject ISiteBuilderService _siteBuilderService
+@{
+    //Available as Component Block and Split Component Block types
+
+    var content = (IUsn_Cmp_SubpageListing_Content)Model.BlockContent;
+
+    string backgroundColorLabel = ViewData["backgroundColorLabel"].ToString();
+    bool disableModalLinks = Convert.ToBoolean(ViewData["disableModalLinks"]);
+
+    //Clear view data before calling next partial
+    ViewData.Clear();
+
+    if (content.LinkToListing != null && content.LinkToListing.Any())
+    {
+        //Intro used for text alignment of tabs
+        var intro = (IUsn_Cmp_IntroOutro)Model.BlockContent;
+
+        //Settings taken from compositions common to all block types
+        var animateSettings = (IUsn_Cmp_AnimateSettings)Model.BlockSettings;
+        var uniqueSettings = (IUsn_Cmp_SubpageListing_Component_Settings)Model.BlockSettings;
+
+        Usnstyle websiteStyle = (Usnstyle)Model.BaseModel.WebsiteStyle;
+
+        string overlayImageClass = uniqueSettings.ItemTextPosition == "item_text-boxed item_overlay" ? _siteBuilderService.GetBackgroundColorClass(uniqueSettings.OverlayBackgroundColor.sortOrder, "content", websiteStyle) : String.Empty;
+        backgroundColorLabel = uniqueSettings.ItemTextPosition == "item_text-boxed item_overlay" ? uniqueSettings.OverlayBackgroundColor.label : backgroundColorLabel;
+        string itemStyleClass = uniqueSettings.ItemTextPosition.HasValue() ? uniqueSettings.ItemTextPosition : "item_text-below";
+        string itemTextAlignment = uniqueSettings.ItemTextAlignment.HasValue() ? uniqueSettings.ItemTextAlignment : "text-left";
+        string itemHeadingSizeClass = uniqueSettings.ItemHeadingSize;
+        string itemSecondaryHeadingSizeClass = uniqueSettings.ItemSecondaryHeadingSize;
+        string listSpacingClass = uniqueSettings.RemoveItemSpacing ? "listing_no-spacing" : String.Empty;
+        string tabStyle = uniqueSettings.TabStyle.HasValue() ? uniqueSettings.TabStyle : "tab-basic";
+        string verticalAlignmentClass = uniqueSettings.ItemTextPosition == "item_text-boxed item_overlay" ? (uniqueSettings.OverlayTextPosition.HasValue() ? uniqueSettings.OverlayTextPosition.ToString() : "align-self-center") : String.Empty;
+        string itemBackgroundClass = uniqueSettings.ItemTextPosition != "item_text-boxed item_overlay" && uniqueSettings.AddBackgroundColor ? "item_has-bg" : String.Empty;
+        backgroundColorLabel = uniqueSettings.ItemTextPosition != "item_text-boxed item_overlay" && uniqueSettings.AddBackgroundColor ? uniqueSettings.ItemBackgroundColor.label : backgroundColorLabel;
+        string innerBackgroundClass = uniqueSettings.ItemTextPosition != "item_text-boxed item_overlay" && uniqueSettings.AddBackgroundColor ? _siteBuilderService.GetBackgroundColorClass(uniqueSettings.ItemBackgroundColor.sortOrder, "content", websiteStyle) : String.Empty;
+
+        string tabTextAlignment = intro.IntroTextAlignment.HasValue() ? intro.IntroTextAlignment : "justify-content-start text-left";
+        ImageSettings imageSettings = _siteBuilderService.GetImageSettings(uniqueSettings.ImageStyle, uniqueSettings.BoxPad);
+        AnimationSettings animation = _siteBuilderService.GetAnimationSettings(animateSettings.Animate, animateSettings.AnimationDelay, animateSettings.AnimationDuration, animateSettings.AnimationStyle);
+
+        string uniqueID = Guid.NewGuid().ToString();
+
+        string itemsPerRowValue = String.Empty;
+
+        if (uniqueSettings.ItemTextPosition == "item_text-below" || uniqueSettings.ItemTextPosition == "item_text-above" || uniqueSettings.ItemTextPosition == "item_text-boxed item_overlay")
+        {
+            itemsPerRowValue = uniqueSettings.ItemsPerRow8;
+        }
+        else if (uniqueSettings.ItemTextPosition == "item_text-left" || uniqueSettings.ItemTextPosition == "item_text-right")
+        {
+            itemsPerRowValue = uniqueSettings.ItemsPerRow4;
+        }
+        else
+        {
+            itemsPerRowValue = uniqueSettings.ItemsPerRow8;
+        }
+
+        CarouselSettings carouselSettings = _siteBuilderService.GetCarouselSettings(itemsPerRowValue, uniqueSettings.EnableCarousel, uniqueSettings.AutoRotateSpeed, uniqueSettings.ShowDots, uniqueSettings.ShowArrows);
+
+        int listPage = 0;
+
+        //Get all main pages to display
+        List<IPublishedContent> mainPages = new List<IPublishedContent>();
+        List<string> tabHeadings = new List<string>();
+        List<string> tabIcons = new List<string>();
+
+        if (content.LinkToListing != null && content.LinkToListing.Any())
+        {
+            foreach (var pageLink in content.LinkToListing)
+            {
+                if (pageLink.link.LinkType == SiteBuilderLink.UrlPickerTypes.Content && _siteBuilderService.DisplayLink(pageLink, disableModalLinks))
+                {
+                    var page = Umbraco.Content(pageLink.link.LinkUdi);
+
+                    if (page != null && (page.IsDocumentType(Usnpage.ModelTypeAlias) || page.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || page.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)))
+                    {
+                        mainPages.Add(page);
+                        tabHeadings.Add(pageLink.link.LinkText);
+                        tabIcons.Add(pageLink.icon);
+                    }
+                }
+            }
+        }
+
+        if (mainPages.Any() && mainPages.Count() > 1)
+        {
+            <div class="repeatable tabbed @tabStyle @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+
+                <nav class="tabs">
+                    <ul class="nav @tabTextAlignment" role="tablist">
+                        @foreach (var item in mainPages)
+                        {
+                            <li class="tab" role="presentation">
+                                <a class="nav-item nav-link nav-button-link @(listPage == 0 ? "active" : "")" id="nav_tab_@(uniqueID)_@listPage" data-toggle="tab" href="#nav_@(uniqueID)_@listPage" role="tab" aria-controls="nav_@(uniqueID)_@listPage" aria-selected="true">
+                                    @Html.Raw(tabIcons[listPage])@Html.Raw(tabHeadings[listPage])
+                                </a>
+                            </li>
+                            listPage += 1;
+                        }
+                    </ul>
+                </nav>
+
+            </div>
+        }
+
+        listPage = 0;
+
+        if (mainPages.Any())
+        {
+            <div class="repeatable-content tab-content">
+
+                @foreach (var landingPage in mainPages)
+                {
+                    <div id="nav_@(uniqueID)_@listPage" role="tabpanel" class="tab-pane @(listPage == 0 ? "show active" : String.Empty)">
+
+                        <div class="component-main row @carouselSettings.CarouselRowClass listing @listSpacingClass listing_basic-grid" @Html.Raw(carouselSettings.SlickAttributes)>
+                            @if (landingPage.IsDocumentType(Usnpage.ModelTypeAlias))
+                            {
+                                var pages = landingPage.Children.Where(x => x.IsDocumentType(Usnpage.ModelTypeAlias) && x.IsVisible());
+
+                                if (uniqueSettings.PagesToDisplay.HasValue() && uniqueSettings.PagesToDisplay != 0)
+                                {
+                                    pages = uniqueSettings.EnableRandomOrder ? pages.Randomize() : pages;
+                                    pages = pages.Take(uniqueSettings.PagesToDisplay).ToList();
+                                }
+
+                                foreach (var subPage in pages)
+                                {
+                                    string pageName = subPage.HasValue("pageListingHeading") ? subPage.Value<string>("pageListingHeading") : subPage.Name;
+
+                                    <div class="item @itemBackgroundClass @carouselSettings.ItemsClass @itemStyleClass @itemTextAlignment @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                                        <div class="inner @innerBackgroundClass @overlayImageClass @imageSettings.CircleClass">
+                                            <a href="@subPage.Url()">
+                                                @if (!uniqueSettings.HideImage && subPage.Value<IPublishedContent>("pageListingImage") != null && uniqueSettings.ItemTextPosition != "item_text-above")
+                                                {
+                                                    <div class="image @overlayImageClass @imageSettings.CircleClass">
+                                                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Image", subPage.Value<IPublishedContent>("pageListingImage"), new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+                                                    </div>
+                                                }
+                                                <div class="info @verticalAlignmentClass">
+
+                                                    @if (subPage.HasValue("pageListingSecondaryHeading") && websiteStyle.StyleLayout.headingOrder != "heading-first")
+                                                    {
+                                                        <p class="secondary-heading @itemSecondaryHeadingSizeClass @(backgroundColorLabel)-secondary-heading">@Html.Raw(subPage.Value<string>("pageListingSecondaryHeading"))</p>
+                                                    }
+
+                                                    <p class="heading @itemHeadingSizeClass @(backgroundColorLabel)-heading">@Html.Raw(pageName)</p>
+
+                                                    @if (subPage.HasValue("pageListingSecondaryHeading") && websiteStyle.StyleLayout.headingOrder == "heading-first")
+                                                    {
+                                                        <p class="secondary-heading @itemSecondaryHeadingSizeClass @(backgroundColorLabel)-secondary-heading">@Html.Raw(subPage.Value<string>("pageListingSecondaryHeading"))</p>
+                                                    }
+
+                                                    @if (subPage.HasValue("pageSummary"))
+                                                    {
+                                                        <div class="text @(backgroundColorLabel)-text">@(subPage.Value<IHtmlEncodedString>("pageSummary"))</div>
+                                                    }
+
+                                                </div>
+                                                @if (!uniqueSettings.HideImage && subPage.Value<IPublishedContent>("pageListingImage") != null && uniqueSettings.ItemTextPosition == "item_text-above")
+                                                {
+                                                    <div class="image @overlayImageClass @imageSettings.CircleClass">
+                                                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Image", subPage.Value<IPublishedContent>("pageListingImage"), new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+                                                    </div>
+                                                }
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                            else if (landingPage.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || landingPage.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+                            {
+                                string category = null;
+                                IPublishedContent blogLandingPage;
+
+                                if (landingPage.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+                                {
+                                    category = landingPage.Id.ToString();
+                                    blogLandingPage = landingPage.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+                                }
+                                else
+                                {
+                                    blogLandingPage = landingPage;
+                                }
+
+                                int pagesToDisplay = (uniqueSettings.PagesToDisplay.HasValue() && uniqueSettings.PagesToDisplay != 0) ? uniqueSettings.PagesToDisplay : -1;
+
+                                var blogPages = blogLandingPage.Children.First(x => x.IsDocumentType(UsnblogPostsFolder.ModelTypeAlias)).Children.OrderByDescending(y => y.Value<DateTime>("postDate"));
+
+                                //Filter Blog Posts on Category if required
+                                blogPages = category != null && blogPages.Any() ? blogPages.Where(x => x.Value<IEnumerable<IPublishedContent>>("postCategories") != null ? x.Value<IEnumerable<IPublishedContent>>("postCategories").Contains(landingPage) : false).OrderByDescending(y => y.Value<DateTime>("postDate")) : blogPages;
+
+                                //Only get requested number of pages
+                                blogPages = pagesToDisplay != -1 && blogPages.Any() ? blogPages.Take(pagesToDisplay).OrderByDescending(y => y.Value<DateTime>("postDate")) : blogPages;
+
+                                if (blogPages.Any())
+                                {
+                                    var blogPagesOrdered = uniqueSettings.EnableRandomOrder ? blogPages.Randomize() : blogPages;
+
+                                    foreach (var blogPage in blogPagesOrdered)
+                                    {
+                                        string pageName = blogPage.HasValue("pageListingHeading") ? blogPage.Value<string>("pageListingHeading") : blogPage.Name;
+
+                                        <div class="item item-blog @itemBackgroundClass @carouselSettings.ItemsClass @itemStyleClass @itemTextAlignment @animation.AnimationClass" data-os-animation="@animation.AnimationStyle" data-os-animation-delay="@animation.AnimationDelay" data-os-animation-duration="@animation.AnimationDuration">
+                                            <div class="inner @innerBackgroundClass @overlayImageClass @imageSettings.CircleClass">
+                                                <a href="@blogPage.Url()">
+                                                    @if (!uniqueSettings.HideImage && blogPage.Value<IPublishedContent>("pageListingImage") != null && uniqueSettings.ItemTextPosition != "item_text-above")
+                                                    {
+                                                        <div class="image @overlayImageClass @imageSettings.CircleClass">
+                                                            @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Image", blogPage.Value<IPublishedContent>("pageListingImage"), new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+                                                        </div>
+                                                    }
+                                                    <div class="info @verticalAlignmentClass">
+
+                                                        @if (blogPage.HasValue("pageListingSecondaryHeading") && websiteStyle.StyleLayout.headingOrder != "heading-first")
+                                                        {
+                                                            <p class="secondary-heading @itemSecondaryHeadingSizeClass @(backgroundColorLabel)-secondary-heading">@Html.Raw(blogPage.Value<string>("pageListingSecondaryHeading"))</p>
+                                                        }
+
+                                                        <p class="heading @itemHeadingSizeClass @(backgroundColorLabel)-heading">@Html.Raw(pageName)</p>
+
+                                                        @if (blogPage.HasValue("pageListingSecondaryHeading") && websiteStyle.StyleLayout.headingOrder == "heading-first")
+                                                        {
+                                                            <p class="secondary-heading @itemSecondaryHeadingSizeClass @(backgroundColorLabel)-secondary-heading">@Html.Raw(blogPage.Value<string>("pageListingSecondaryHeading"))</p>
+                                                        }
+
+                                                        @if (blogPage.HasValue("pageSummary"))
+                                                        {
+                                                            <div class="text @(backgroundColorLabel)-text">@(blogPage.Value<IHtmlEncodedString>("pageSummary"))</div>
+                                                        }
+
+                                                        @if (uniqueSettings.ItemTextPosition == "item_text-boxed item_overlay")
+                                                        {
+                                                            <!-- Meta -->
+                                                            <div class="meta @(backgroundColorLabel)-text">
+                                                                <p class="date"><time>@(blogPage.Value<DateTime>("postDate").ToString("dd MMM yyyy"))</time></p>
+                                                            </div>
+                                                            <!--// Meta -->
+                                                        }
+
+                                                    </div>
+                                                    @if (!uniqueSettings.HideImage && blogPage.Value<IPublishedContent>("pageListingImage") != null && uniqueSettings.ItemTextPosition == "item_text-above")
+                                                    {
+                                                        <div class="image @overlayImageClass @imageSettings.CircleClass">
+                                                            @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/MiscPageElements/Image", blogPage.Value<IPublishedContent>("pageListingImage"), new ViewDataDictionary(ViewData) { { "imageSettings", imageSettings } })
+                                                        </div>
+                                                    }
+                                                </a>
+                                                @if (uniqueSettings.ItemTextPosition != "item_text-boxed item_overlay")
+                                                {
+                                                    <!-- Meta -->
+                                                    <div class="meta @(backgroundColorLabel)-text">
+                                                        <p class="date"><time>@(blogPage.Value<DateTime>("postDate").ToString("dd MMM yyyy"))</time></p>
+                                                        @await Html.PartialAsync(Model.BaseModel.ThemeFolder + "/Blog/BlogPostCategories", blogPage)
+                                                    </div>
+                                                    <!--// Meta -->
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+
+                    </div>
+
+                    listPage += 1;
+
+                }
+
+            </div>
+        }
+    }
+
+}

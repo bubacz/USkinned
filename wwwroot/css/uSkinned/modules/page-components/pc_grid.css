@@ -1,0 +1,19 @@
+/*  
+---------------------------------------------------
+Grid 
+---------------------------------------------------  
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_gridlayout { }*/
+
+/* Split component block */
+/*
+.item_block.usn_cmp_gridlayout { }*/
+
+
+.usn_cmp_gridlayout .umb-grid { 
+    margin-right: calc(var(--base-half-spacing) * -1);
+    margin-left: calc(var(--base-half-spacing) * -1);
+}

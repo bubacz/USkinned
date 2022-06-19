@@ -1,0 +1,235 @@
+/*  
+---------------------------------------------------
+Directions
+
+- Main Navigation
+- Back to top
+- Accordions
+- Secondary Navigation
+- Slick Navigation
+- Breadcrumb Navigation
+- Pagination
+- Scroll prompt
+
+---------------------------------------------------  
+*/
+
+nav.main ul li.has-child>span::after,
+.usn_back-to-top i.icon:before,
+.repeatable.accordion .tab .nav-link::after,
+nav.secondary ul li.dropdown > a.dropdown-toggle::after,
+.slick-prev i.icon:before,
+.slick-next i.icon:before,
+.breadcrumb-trail ol.breadcrumb li.breadcrumb-item i.icon:before,
+nav#pagination .pagination li i.icon:before,
+.scroll-prompt-arrow a > i.icon:before {
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*  
+---------------------------------------------------
+Main Navigation
+---------------------------------------------------  
+*/
+
+
+
+/*  
+---------------------------------------------------
+Secondary Navigation
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle nav.secondary ul li.dropdown > a.dropdown-toggle::after {
+    content: "\f280"; /* down */
+
+}
+
+/* Arrow */
+.directional-icons-arrow nav.secondary ul li.dropdown > a.dropdown-toggle::after {
+    content: "\f118"; /* down */
+
+}
+
+/* Chevron */
+.directional-icons-chevron nav.secondary ul li.dropdown > a.dropdown-toggle::after {
+    content: "\f3d0"; /* down */
+
+}
+
+/*  
+---------------------------------------------------
+Back to top
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle .usn_back-to-top i.icon:before {
+    content: "\f286"; /* up */
+}
+
+/* Arrow */
+.directional-icons-arrow .usn_back-to-top i.icon:before {
+    content: "\f11a"; /* up */
+}
+
+/* Chevron */
+.directional-icons-chevron .usn_back-to-top i.icon:before {
+    content: "\f3d8"; /* up */
+}
+
+/*  
+---------------------------------------------------
+Accordions
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle .repeatable.accordion .tab .nav-link::after {
+    content: "\f280"; /* down */
+
+}
+.directional-icons-triangle .repeatable.accordion .tab .nav-link:not(.collapsed)::after {
+    content: "\f286"; /* up */
+}
+
+/* Arrow */
+.directional-icons-arrow .repeatable.accordion .tab .nav-link::after {
+    content: "\f118"; /* down */
+
+}
+.directional-icons-arrow .repeatable.accordion .tab .nav-link:not(.collapsed)::after {
+    content: "\f11a"; /* up */
+}
+
+/* Chevron */
+.directional-icons-chevron .repeatable.accordion .tab .nav-link::after {
+    content: "\f3d0"; /* down */
+
+}
+.directional-icons-chevron .repeatable.accordion .tab .nav-link:not(.collapsed)::after {
+    content: "\f3d8"; /* up */
+}
+
+
+/*  
+---------------------------------------------------
+Slick Navigation & Lightbox
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle .slick-prev i.icon:before,
+.directional-icons-triangle .ekko-lightbox-nav-overlay a:nth-child(1)::before { 
+    content: "\f282"; /* left */
+}
+.directional-icons-triangle .slick-next i.icon:before,
+.directional-icons-triangle .ekko-lightbox-nav-overlay a:nth-child(2)::before { 
+    content: "\f284"; /* right */
+}
+
+/* Arrow */
+.directional-icons-arrow .slick-prev i.icon:before,
+.directional-icons-arrow .ekko-lightbox-nav-overlay a:nth-child(1)::before { 
+    content: "\f117"; /* left */
+}
+.directional-icons-arrow .slick-next i.icon:before,
+.directional-icons-arrow .ekko-lightbox-nav-overlay a:nth-child(2)::before { 
+    content: "\f119"; /* right */
+}
+
+/* Chevron */
+.directional-icons-chevron .slick-prev i.icon:before,
+.directional-icons-chevron .ekko-lightbox-nav-overlay a:nth-child(1)::before { 
+    content: "\f3cf"; /* left */
+}
+.directional-icons-chevron .slick-next i.icon:before,
+.directional-icons-chevron .ekko-lightbox-nav-overlay a:nth-child(2)::before { 
+    content: "\f3d1"; /* right */
+}
+
+/*  
+---------------------------------------------------
+Breadcrumb Navigation
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle .breadcrumb-trail ol.breadcrumb li.breadcrumb-item i.icon:before { 
+    content: "\f282"; /* left */
+}
+
+/* Arrow */
+.directional-icons-arrow .breadcrumb-trail ol.breadcrumb li.breadcrumb-item i.icon:before { 
+    content: "\f117"; /* left */
+}
+
+/* Chevron */
+.directional-icons-chevron .breadcrumb-trail ol.breadcrumb li.breadcrumb-item i.icon:before { 
+    content: "\f3cf"; /* left */
+}
+
+/*  
+---------------------------------------------------
+Pagination
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle nav#pagination .pagination li.prev i.icon:before {
+    content: "\f282"; /* left */
+}
+.directional-icons-triangle nav#pagination .pagination li.next i.icon:before  {
+    content: "\f284"; /* right */
+}
+
+/* Arrow */
+.directional-icons-arrow nav#pagination .pagination li.prev i.icon:before {
+    content: "\f117"; /* left */
+}
+.directional-icons-arrow nav#pagination .pagination li.next i.icon:before  {
+    content: "\f119"; /* right */
+}
+
+/* Chevron */
+.directional-icons-chevron nav#pagination .pagination li.prev i.icon:before {
+    content: "\f3cf"; /* left */
+}
+.directional-icons-chevron nav#pagination .pagination li.next i.icon:before  {
+    content: "\f3d1"; /* right */
+}
+
+/*  
+---------------------------------------------------
+Scroll prompt
+---------------------------------------------------  
+*/
+
+/* Triangle */
+.directional-icons-triangle .scroll-prompt-arrow a > i.icon:before {
+    content: "\f280"; /* down */
+
+}
+
+/* Arrow */
+.directional-icons-arrow .scroll-prompt-arrow a > i.icon:before {
+    content: "\f118"; /* down */
+
+}
+
+/* Chevron */
+.directional-icons-chevron .scroll-prompt-arrow a > i.icon:before {
+    content: "\f3d0"; /* down */
+
+}

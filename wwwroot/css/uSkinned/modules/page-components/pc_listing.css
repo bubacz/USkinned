@@ -1,0 +1,430 @@
+/*  
+---------------------------------------------------
+Listing 
+
+This is also the basis for:
+
+- Windows
+- Pods
+- Footer items
+
+---------------------------------------------------  
+*/
+
+.listing.listing_no-spacing { 
+    overflow: hidden;
+}
+
+.listing.listing_search-results { 
+    margin-top:var(--base-half-spacing);
+    margin-bottom:var(--base-half-spacing);
+}
+
+.p-0 .listing.listing_no-spacing:not(.listing_window-mosaic):first-child { 
+    margin-top: 0;
+}
+
+.p-0 .listing.listing_no-spacing:not(.listing_window-mosaic):last-child { 
+    margin-bottom: 0;
+}
+
+.row.listing.listing_no-spacing:not(.listing_window-mosaic) {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.container-fluid .row.listing:not(.listing_no-spacing):not(.listing_window-mosaic) {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.repeatable.tabbed + .repeatable-content .listing { 
+    margin-top: var(--base-spacing);
+}
+
+.listing .item {
+    margin-bottom: var(--base-spacing);
+}
+
+.listing.listing_no-spacing:not(.listing_window-mosaic) .item {
+    padding: 0;
+    margin: 0;
+}
+
+.item .inner {
+    position: relative;
+    width: 100%;
+    /*
+    overflow: hidden;
+    */
+}
+
+.item.item_text-boxed .inner::after {
+    content: "";
+    display: block;
+}
+
+.item a:not(.btn) {
+    display: block;
+}
+
+.item.item_text-boxed a:not(.btn) {
+    overflow: hidden; height:100%;
+}
+
+.item .text a:not(.btn) { 
+    display:inline;
+}
+
+.hide-buttons .item .link { 
+    display:none;
+}
+
+.item .image {
+    position: relative;
+    z-index: 0;
+}
+
+.item .image img { 
+    width:100%;
+}
+
+/* Icon images */
+
+.icon-images .image * { 
+    max-width: 80px!important;
+}
+.icon-images .text-center .image * { 
+    margin: 0 auto;
+}
+.icon-images .text-right .image * { 
+    margin-left: auto;
+}
+
+/* Icon images - add padding around icon image if there is a background color selected */
+.icon-images .listing:not(.listing_window-mosaic) .item.item_has-bg .image {
+    margin-bottom: 0;
+    padding: var(--base-spacing);
+}
+
+/* Icon images — remove padding from info div if there is a background color selected and an icon image used */
+.icon-images .listing:not(.listing_window-mosaic) .item.item_has-bg .image + .info {
+    padding-top:0;
+}
+
+/*
+.item.item_text-boxed .inner,
+.item.item_text-boxed .inner > a { 
+    height:100%;
+}
+*/
+
+.item.item_overlay .image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    opacity: 0.4; /* Overlay Variable TO DO */
+    transition: opacity 0.3s ease-in-out 0s;
+}
+
+.item.item_overlay a:hover .image::before {
+    opacity: 0.8; /* Overlay Variable TO DO */
+}
+
+.item.item_text-boxed .info {
+    padding: var(--base-spacing);
+    max-width:560px;
+}
+
+.item.item_text-boxed.text-center .info { 
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.item.item_text-boxed.text-right .info { 
+    margin-left:auto;
+}
+
+.listing .item.item_text-boxed .image + .info {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Align top */
+.listing .item.item_text-boxed .image + .info.align-self-start {
+    top: 0;
+}
+
+/* Align middle */
+.listing .item.item_text-boxed .image + .info.align-self-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Align bottom */
+.listing .item.item_text-boxed .image + .info.align-self-end {
+    top: auto;
+    bottom: 0;
+}
+
+.listing .item.item_text-boxed .image + .info:not(.align-self-start):not(.align-self-center):not(.align-self-end) {
+    top: auto;
+    bottom: 0;
+}
+
+
+/* Overlay item with button and text reveal on hover */
+
+/* Intitial state */
+html.no-touch .item.item_text-boxed.item_hover-reveal a .image + .info .text, 
+html.no-touch .item.item_text-boxed.item_hover-reveal a .image + .info .link {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+/* Hover state */
+html.no-touch .item.item_text-boxed.item_hover-reveal a:hover .image + .info .text, 
+html.no-touch .item.item_text-boxed.item_hover-reveal a:hover .image + .info .link,
+html.no-touch .item.item_text-boxed.item_hover-reveal a:focus .image + .info .text, 
+html.no-touch .item.item_text-boxed.item_hover-reveal a:focus .image + .info .link,
+html.no-touch .item.item_text-boxed.item_hover-reveal a:active .image + .info .text, 
+html.no-touch .item.item_text-boxed.item_hover-reveal a:active .image + .info .link {
+    opacity: 1;
+    max-height: 300px;
+    overflow: visible;
+}
+
+/* Focus within */
+html.no-touch .item.item_text-boxed.item_hover-reveal a:focus-within .image + .info .text, 
+html.no-touch .item.item_text-boxed.item_hover-reveal a:focus-within .image + .info .link {
+    opacity: 1;
+    max-height: 300px;
+    overflow: visible;
+}
+
+
+/* Overlay item with image reveal on hover */
+
+/* Intitial state */
+html.no-touch .item.item_text-boxed.item_hover-reveal_image .image::before { 
+    display: none;
+}
+html.no-touch .item.item_text-boxed.item_hover-reveal_image a .image {
+    opacity: 0;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+/* Hover state */
+html.no-touch .item.item_text-boxed.item_hover-reveal_image a:hover .image, 
+html.no-touch .item.item_text-boxed.item_hover-reveal_image a:focus .image, 
+html.no-touch .item.item_text-boxed.item_hover-reveal_image a:active .image {
+    opacity: 1;
+}
+
+/* Focus within */
+html.no-touch .item.item_text-boxed.item_hover-reveal_image a:focus-within .image {
+    opacity: 1;
+}
+
+
+/* Overlay item with hide image on hover */
+
+/* Intitial state */
+html.no-touch .item.item_text-boxed.item_hover-hide_image a .image {
+    opacity: 1;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+/* Hover state */
+html.no-touch .item.item_text-boxed.item_hover-hide_image a:hover .image, 
+html.no-touch .item.item_text-boxed.item_hover-hide_image a:focus .image, 
+html.no-touch .item.item_text-boxed.item_hover-hide_image a:active .image {
+    opacity: 0;
+}
+
+/* Focus within */
+html.no-touch .item.item_text-boxed.item_hover-hide_image a:focus-within .image {
+    opacity: 0;
+}
+
+@media (min-width:0) and (max-width:575px) {}
+
+@media (min-width:576px) and (max-width:991px) { }
+
+@media (min-width:768px) { }
+
+@media (min-width:992px) { 
+
+    .listing.listing_search-results { 
+        margin-top:var(--base-spacing);
+        margin-bottom:var(--base-spacing);
+    }
+
+}
+
+@media (min-width:1200px) {}
+
+
+/*  
+---------------------------------------------------
+LISTING - Standard Layout
+---------------------------------------------------  
+*/
+
+/*
+.listing.listing_basic-grid {}*/
+
+/*
+.listing.listing_basic-grid .item {}*/
+
+.item.item_text-below:not(.item_has-bg) .image,
+.item.item_text-left:not(.item_has-bg) .image,
+.item.item_text-right:not(.item_has-bg) .image {
+    margin-bottom: var(--base-half-spacing);
+}
+
+.item.item_text-above:not(.item_has-bg) .image {
+    margin-top: var(--base-half-spacing);
+}
+
+.item.item_text-below.item_has-bg .info,
+.item.item_text-left.item_has-bg .info,
+.item.item_text-right.item_has-bg .info,
+.item.item_text-above.item_has-bg .info {
+    padding: var(--base-spacing);
+}
+
+.item.item_text-left .image,
+.item.item_text-right .image { 
+    align-self: flex-start;
+}
+
+.icon-images .item.item_text-left .image,
+.icon-images .item.item_text-right .image { 
+    max-width: 50px;
+}
+
+@media (min-width:0) and (max-width:575px) {}
+
+@media (min-width:768px) {
+
+    .item.item_text-above:not(.item_has-bg) .image {
+        margin-top: var(--base-half-spacing);
+    }
+    .item.item_text-below:not(.item_has-bg) .image {
+        margin-bottom: var(--base-half-spacing);
+    }
+
+    .item.item_text-left,
+    .item.item_text-right,
+    .item.item_text-left .inner,
+    .item.item_text-right .inner,
+    .item.item_text-left .inner > a:not(.btn),
+    .item.item_text-right .inner > a:not(.btn) { 
+        display: flex;
+        display: -ms-flexbox;
+        flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+    }
+    .item.item_text-left .inner,
+    .item.item_text-right .inner,
+    .item.item_text-left .inner > a:not(.btn),
+    .item.item_text-right .inner > a:not(.btn) { 
+        width:100%;
+    }
+    .item.item_text-right,
+    .item.item_text-right .inner,
+    .item.item_text-right .inner > a:not(.btn) { 
+        flex-direction: row;
+        -ms-flex-direction: row;
+    }
+    
+    .item.item_text-left .image,
+    .item.item_text-right .image {
+        flex: 0 0 40%;
+        -ms-flex: 0 0 40%;
+        max-width: 40%; 
+        margin: 0!important;
+    }
+    .icon-images .item.item_text-left .image,
+    .icon-images .item.item_text-right .image { 
+        flex: 0 0 10%;
+        -ms-flex: 0 0 10%;
+        max-width: 10%;
+    }
+    .item.item_text-left .info,
+    .item.item_text-right .info {
+        flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .item.item_text-left .image + .info,
+    .item.item_text-right .image + .info {
+        flex: 0 0 60%;
+        -ms-flex: 0 0 60%;
+        max-width: 60%;
+    }
+    .icon-images .item.item_text-left .image + .info,
+    .icon-images .item.item_text-right .image + .info {
+        flex: 0 0 90%;
+        -ms-flex: 0 0 90%;
+        max-width: 90%;
+    }
+    
+    /* Blog items - text left, text right */
+    .item.item-blog.item_text-right .info,
+    .item.item-blog.item_text-left .info {
+        padding-bottom: calc(60px + (var(--base-spacing) * 2));
+    }
+    .item.item-blog.item_text-right:not(.item_has-bg) .info,
+    .item.item-blog.item_text-left:not(.item_has-bg) .info {
+        padding-bottom: calc(var(--base-spacing) * 3);
+    }
+    .item.item-blog.item_text-right:not(.item_has-bg) .image + .info {
+        padding-left: var(--base-spacing);
+    }
+    .item.item-blog.item_text-left:not(.item_has-bg) .image + .info {
+        padding-right: var(--base-spacing);
+    }
+
+    /* Non blog items - text left, text right */
+    .item.item_text-right:not(.item_has-bg):not(.item-blog) .info {
+        padding: 0 0 var(--base-spacing) 0;
+    }
+    .item.item_text-left:not(.item_has-bg):not(.item-blog) .info {
+        padding: 0 0 var(--base-spacing) 0;
+    }
+    .item.item_text-right:not(.item_has-bg):not(.item-blog) .image + .info {
+        padding: 0 0 var(--base-spacing) var(--base-spacing);
+    }
+    .item.item_text-left:not(.item_has-bg):not(.item-blog) .image + .info {
+        padding: 0 var(--base-spacing) var(--base-spacing) 0;
+    }
+    .icon-images .item.item_text-right:not(.item_has-bg):not(.item-blog) .image + .info {
+        padding: 0 0 var(--base-spacing) var(--base-half-spacing);
+    }
+    .icon-images .item.item_text-left:not(.item_has-bg):not(.item-blog) .image + .info {
+        padding: 0 var(--base-half-spacing) var(--base-spacing) 0;
+    }
+    
+}
+
+/*  
+---------------------------------------------------
+Listing Short
+---------------------------------------------------  
+*/
+
+/*
+.listing.listing_short { }*/
+
+/*
+.listing.listing_short .item.item_text-only { }*/

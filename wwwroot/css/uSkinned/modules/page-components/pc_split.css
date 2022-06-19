@@ -1,0 +1,151 @@
+/*	
+--------------------------------------------------
+Split Component
+-------------------------------------------------- 
+*/
+
+/* Component only */
+/*
+.component.usn_cmp_splitcomponent { }*/
+
+/* Not available as part of Split Component
+.item_block.usn_cmp_splitcomponent { }*/
+
+
+/* Item */
+.component.usn_cmp_splitcomponent .component-main > .item.item_block { 
+    position:relative; z-index:1;
+    /*
+    margin:var(--base-half-spacing)) 0;*/
+}
+
+/* Accordions & Tabs */
+/*
+.item_block.usn_cmp_accordiontab { }*/
+
+/* Alert */
+/*
+.item_block.usn_cmp_alertbox { }*/
+
+/* Code */
+/*
+.item_block.usn_cmp_codeblock { }*/
+
+/* Form */
+/*
+.item_block.usn_cmp_form { }*/
+
+/* Gallery */
+/*
+.item_block.usn_cmp_gallery { }*/
+
+.component.usn_cmp_splitcomponent.p-0 .container-fluid .item_block.usn_cmp_gallery { 
+    margin: 0;
+    padding: 0;
+}
+
+/* Grid */
+/*
+.item_block.usn_cmp_gridlayout { }*/
+
+/* Instagram feed */
+/*
+.item_block.usn_cmp_instagramfeed { }*/
+
+/* Links */
+/*
+.item_block.usn_cmp_links { }*/
+
+/* Pricelist */
+/*
+.item_block.usn_cmp_datalist { }*/
+
+/* Pods */
+/*
+.item_block.usn_cmp_pods { }*/
+
+/* Sitemap */
+/*
+.item_block.usn_cmp_sitemap { }*/
+
+/* Subpage listing */
+/*
+.item_block.usn_cmp_subpagelisting { }*/
+
+/* Text */
+/*
+.item_block.usn_cmp_text { }*/
+
+.usn_cmp_splitcomponent.p-0 .container-fluid .item_block.usn_cmp_text .info { 
+    padding: var(--base-half-spacing);
+}
+
+/* Windows */
+/*
+.item_block.usn_cmp_windows { }*/
+
+@media (min-width:0) and (max-width:767px) {
+
+    .component.usn_cmp_splitcomponent .component-main > .item.item_block.order-2 {
+        margin-top:var(--base-spacing);
+    }
+
+}
+
+
+/* xs */
+@media (min-width:0) and (max-width:575px) {
+
+}
+
+/* sm */
+@media (min-width:576px) {
+
+}
+
+/* md */
+@media (min-width:768px) {
+
+}
+
+/* lg */
+@media (min-width:992px) {
+
+    /* Overlap item blocks */
+    .component.usn_cmp_splitcomponent .component-main > .item.item_block.item_overlap-pull-left,
+    .component.usn_cmp_splitcomponent .component-main > .item.item_block.item_overlap-pull-right { 
+        position:relative; z-index:2;
+    }
+    /* Overlap item blocks - pull left */
+    .component.usn_cmp_splitcomponent .component-main > .item.item_block.order-md-2.item_overlap-pull-left { 
+        left:-8.3333333%;
+    }
+    .component.usn_cmp_splitcomponent .component-main > .item.item_block.order-md-1.item_overlap-pull-left.item_overlap-double { 
+        left:-16.7%;
+    }
+    /* Overlap item blocks - pull right */
+    .component.usn_cmp_splitcomponent .component-main > .item.item_block.order-md-1.item_overlap-pull-right { 
+        right:-8.3333333%;
+    }
+    .component.usn_cmp_splitcomponent .component-main > .item.item_block.order-md-1.item_overlap-pull-right.item_overlap-double { 
+        right:-16.7%;
+    }
+
+    /* Text Block */
+    .component.usn_cmp_splitcomponent .container-fluid .item_block.usn_cmp_text .info { 
+        max-width:500px;
+        padding: var(--base-spacing);
+        margin-left:auto; margin-right:auto;
+    }
+
+}
+
+/* xl */
+@media (min-width:1200px) {
+
+    /* Text Block */
+    .component.usn_cmp_splitcomponent .container-fluid .item_block.usn_cmp_text .info { 
+        max-width:600px;
+    }
+
+}

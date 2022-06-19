@@ -1,0 +1,506 @@
+/*  
+----------------------------------------------------------------------------------------------------
+Snipcart - https://snipcart.com/
+---------------------------------------------------------------------------------------------------- 
+*/
+
+/* 
+---------------------------------- 
+Snipcart overrides
+---------------------------------- 
+*/
+
+html.usn #snipcart {
+
+    /* ----------------- 
+    Buttons
+    ----------------- */
+
+    /* Default */
+    --color-buttonPrimary: rgba(var(--base-btn-text), 1);
+    --borderColor-buttonPrimary: rgba(var(--base-btn-borders), 1);
+    --bgColor-buttonPrimary: rgba(var(--base-btn-bg-color1), 1);
+
+    /* Hover */
+    --color-buttonPrimary-hover: rgba(var(--base-btn-text-hover), 1);
+    --borderColor-buttonPrimary-hover: rgba(var(--base-btn-borders-hover),1);
+    --bgColor-buttonPrimary-hover: rgba(var(--base-btn-bg-hover-color1), 1);
+    --shadow-buttonPrimary-hover: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--true-black), var(--btn-box-shadow_o));
+
+    /* Active */
+    --color-buttonPrimary-active: rgba(var(--base-btn-text-hover), 1);
+    --borderColor-buttonPrimary-active: rgba(var(--base-btn-borders-hover),1);
+    --bgColor-buttonPrimary-active: rgba(var(--base-btn-bg-hover-color1), 1);
+    --shadow-buttonPrimary-active: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--true-black), var(--btn-box-shadow_o));
+
+    /* Focus */
+    --color-buttonPrimary-focus: rgba(var(--base-btn-text-hover), 1);
+    --borderColor-buttonPrimary-focus: rgba(var(--base-btn-borders-hover),1);
+    --bgColor-buttonPrimary-focus: rgba(var(--base-btn-bg-hover-color1), 1);
+    --shadow-buttonPrimary-focus: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--true-black), var(--btn-box-shadow_o));
+
+    /* Default */
+    --color-buttonSecondary: rgba(var(--base-btn-text), 1);
+    --borderColor-buttonSecondary: rgba(var(--base-btn-borders), 1);
+    --bgColor-buttonSecondary: rgba(var(--base-btn-bg-color1), 1);
+
+    /* Hover */
+    --color-buttonSecondary-hover: rgba(var(--base-btn-text-hover), 1);
+    --borderColor-buttonSecondary-hover: rgba(var(--base-btn-borders-hover),1);
+    --bgColor-buttonSecondary-hover: rgba(var(--base-btn-bg-hover-color1), 1);
+    --shadow-buttonSecondary-hover: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--true-black), var(--btn-box-shadow_o));
+
+    /* Active */
+    --color-buttonSecondary-active: rgba(var(--base-btn-text-hover), 1);
+    --borderColor-buttonSecondary-active: rgba(var(--base-btn-borders-hover),1);
+    --bgColor-buttonSecondary-active: rgba(var(--base-btn-bg-hover-color1), 1);
+    --shadow-buttonSecondary-active: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--true-black), var(--btn-box-shadow_o));
+
+    /* Focus */
+    --color-buttonSecondary-focus: rgba(var(--base-btn-text-hover), 1);
+    --borderColor-buttonSecondary-focus: rgba(var(--base-btn-borders-hover),1);
+    --bgColor-buttonSecondary-focus: rgba(var(--base-btn-bg-hover-color1), 1);
+    --shadow-buttonSecondary-focus: var(--btn-box-shadow_h) var(--btn-box-shadow_v) var(--btn-box-shadow_b) rgba(var(--true-black), var(--btn-box-shadow_o));
+
+    /* Success */
+    --color-buttonPrimary-success: #fff;
+    --borderColor-buttonPrimary-success: rgba(var(--form-success), 1);
+    --bgColor-buttonPrimary-success: rgba(var(--form-success), 1);
+
+    /* Error */
+    --color-buttonPrimary-error: #fff;
+    --borderColor-buttonPrimary-error: rgba(var(--form-errors), 1);
+    --bgColor-buttonPrimary-error: rgba(var(--form-errors), 1);
+
+
+    /* ----------------- 
+    Links
+    ----------------- */
+
+    /* Default */
+    --color-link: rgba(var(--base-link), 1);
+    --borderColor-link: rgba(var(--base-link), 1);
+    --bgColor-link: transparent;
+
+    /* Hover */
+    --color-link-hover: rgba(var(--base-link), 1);
+    --borderColor-link-hover: rgba(var(--base-link), 1);
+    --bgColor-link-hover: transparent;
+
+    /* Active */
+    --color-link-active: rgba(var(--base-link), 1);
+    --borderColor-link-active: rgba(var(--base-link), 1);
+    --bgColor-link-active: transparent;
+
+    /* Focus */
+    --color-link-focus: rgba(var(--base-link), 1);
+    --borderColor-link-focus: rgba(var(--base-link), 1);
+    --bgColor-link-focus: transparent;
+    --shadow-link-focus: none;
+
+
+    /* ----------------------- 
+    PART: Input
+    ----------------------- */
+
+    --color-input: rgba(var(--base-text), 1);
+    --borderColor-input: rgba(var(--base-borders), 1);
+    --bgColor-input: rgba(var(--base-bg-color1), 1);
+
+    /* Hover */
+    --color-input-hover: rgba(var(--base-text), 1);
+    --borderColor-input-hover: rgba(var(--base-highlight), 1);
+    --bgColor-input-hover: rgba(var(--base-bg-color1), 1);
+    --shadow-input-hover: none;
+
+    /* Focus */
+    --color-input-focus: rgba(var(--base-text), 1);
+    --borderColor-input-focus: rgba(var(--base-highlight), 1);
+    --bgColor-input-focus: rgba(var(--base-bg-color1), 1);
+    --shadow-input-focus: none;
+
+    /* Active */
+    --color-input-active: rgba(var(--base-text), 1);
+    --borderColor-input-active: rgba(var(--base-highlight), 1);
+    --bgColor-input-active: rgba(var(--base-bg-color1), 1);
+    --shadow-input-active: none;
+
+    /* Checked */
+    --color-input-checked: rgba(var(--base-highlight-text), 1);
+    --borderColor-input-checked: rgba(var(--base-highlight), 1);
+    --bgColor-input-checked: rgba(var(--base-highlight), 1);
+    --shadow-input-checked: none;
+
+    /* Disabled */
+    /* --color-input-disabled
+    --borderColor-input-disabled
+    --bgColor-input-disabled */
+
+    /* Error */
+    --color-input-error: rgba(var(--form-errors), 1);
+    --borderColor-input-error: rgba(var(--form-errors), 1);
+    --bgColor-input-error: rgba(var(--base-bg-color1), 1);
+
+    /* Autofill */
+    --bgColor-input-autofill: rgba(var(--base-bg-color1), 1);
+
+    /* ----------------------- 
+    PART: Label
+    ----------------------- */
+
+    --color-inputLabel: rgba(var(--base-text), 1);
+
+    /* Hover */
+    --color-inputLabel-hover: rgba(var(--base-text), 1);
+
+    /* Focus */
+    --color-inputLabel-focus: rgba(var(--base-text), 1);
+
+    /* ----------------------- 
+    PART: Icon
+    ----------------------- */
+
+    --color-icon: rgba(var(--base-link), 1);
+
+    --color-inputIcon: rgba(var(--base-link), 1);
+
+    /* Hover */
+    --color-inputIcon-hover: rgba(var(--base-link-hover), 1);
+
+    /* Focus */
+    --color-inputIcon-focus: rgba(var(--base-link-hover), 1);
+
+    /* Checked */
+    --color-inputIcon-checked: rgba(var(--base-link-hover), 1);
+
+    /* Disabled */
+    /* --color-inputIcon-error */
+
+    /* -----------------------
+    PART: Placeholder
+    ----------------------- */
+
+    --color-inputPlaceholder: rgba(var(--base-text), 1);
+
+
+    /* -----------------------
+    Badges
+    ----------------------- */
+
+    /* Complete */
+    --color-badge: rgba(var(--base-highlight-text), 1);
+    --borderColor-badge: rgba(var(--base-highlight), 1);
+    --bgColor-badge: rgba(var(--base-highlight), 1);
+
+    /* Active */
+    --color-badge-active: rgba(var(--base-highlight-text), 1);
+    --borderColor-badge-active: rgba(var(--base-highlight), 1);
+    --bgColor-badge-active: rgba(var(--base-highlight), 1);
+
+    /* Disabled */
+    --color-badge-disabled: rgba(var(--base-text), 1);
+    --borderColor-badge-disabled: rgba(var(--base-borders), 1);
+    --bgColor-badge-disabled: rgba(var(--base-bg-color1), 1);
+
+
+    /* -----------------------
+    Global
+    ----------------------- */
+
+    /* Default */
+    --color-default: rgba(var(--base-text), 1);
+    --borderColor-default: rgba(var(--base-borders), 1);
+    --bgColor-default: rgba(var(--base-bg-color1), 1);
+
+    /* Alt */
+    --color-alt: rgba(var(--base-text), 1);
+    --bgColor-alt: rgba(var(--base-bg-color1), 1);
+
+    /* Success */
+    --color-success: #ffffff;
+    --bgColor-success: rgba(var(--form-success), 1);
+
+    /* Error */
+    --color-error: #ffffff;
+    --borderColor-error: rgba(var(--form-errors), 1);
+    --bgColor-error: rgba(var(--form-errors), 1);
+
+    /* Modal */
+    --bgColor-modal: rgba(var(--base-bg-color1), 1);
+    --bgColor-modalVeil: rgba(var(--base-bg-color1), 0.5);
+
+}
+
+
+/* ----------------- 
+    Color fixes
+----------------- */
+
+html.usn #snipcart legend, 
+html.usn #snipcart label, 
+html.usn #snipcart p {
+    color: rgba(var(--base-text), 1)!important;
+}
+
+html.usn #snipcart .snipcart__box,
+html.usn #snipcart .snipcart-cart-summary__content,
+html.usn #snipcart .snipcart-layout__content:not(.snipcart-layout__content--side):not(.snipcart-checkout__content) .snipcart-item-line__container { 
+    border: var(--base-border-width) solid rgba(var(--base-borders), 1);
+}
+
+html.usn #snipcart .snipcart-item-line { 
+    box-shadow: none;
+}
+
+html.usn #snipcart .snipcart-summary-fees__total,
+html.usn #snipcart .snipcart-modal__header-summary span { 
+    color:rgba(var(--base-heading), 1);
+}
+
+html.usn #snipcart .snipcart-cart-summary,
+html.usn #snipcart .snipcart__box--gray,
+html.usn #snipcart .snipcart-cart-summary-side .snipcart-cart__secondary-header {
+    background-color: var(--bgColor-default);
+}
+
+html.usn #snipcart .snipcart-cart-summary--edit.snipcart-modal__container { 
+    box-shadow: var(--site-box-shadow_h) var(--site-box-shadow_v) var(--site-box-shadow_b) rgba(var(--true-black), var(--site-box-shadow_o));
+}
+
+html.usn #snipcart .snipcart-summary-fees__discounts-icon > svg > path { 
+    fill:rgba(var(--base-link), 1)
+}
+
+html.usn #snipcart .snipcart-flash-message--error * { 
+    color: #fff !important;
+}
+html.usn #snipcart .snipcart-flash-message--error svg > path {
+    fill: #fff !important;
+}
+
+/* ----------------- 
+    Spacing fixes
+----------------- */
+
+html.usn #snipcart .snipcart-summary-fees .snipcart-summary-fees__notice { 
+    padding-bottom:var(--base-half-spacing);
+}
+
+html.usn #snipcart .snipcart-cart-summary-item { 
+    margin-right:0;
+}
+
+html.usn #snipcart .snipcart-layout__content.snipcart-checkout__content .snipcart-item-line { 
+    margin:0; padding:0; 
+}
+
+@media (min-width: 1024px) {
+    html.usn #snipcart .snipcart-layout__content.snipcart-checkout__content .snipcart-cart__secondary-header,
+    html.usn #snipcart .snipcart-layout__content.snipcart-checkout__content .snipcart-cart__footer {
+        padding-left:32px; padding-right:32px;
+    }
+}
+
+html.usn #snipcart h1::before,
+html.usn #snipcart h2::before,
+html.usn #snipcart h3::before,
+html.usn #snipcart h4::before,
+html.usn #snipcart h5::before,
+html.usn #snipcart h6::before,
+html.usn #snipcart .heading::before,
+html.usn #snipcart h1::after,
+html.usn #snipcart h2::after,
+html.usn #snipcart h3::after,
+html.usn #snipcart h4::after,
+html.usn #snipcart h5::after,
+html.usn #snipcart h6::after,
+html.usn #snipcart .heading::after { 
+    display: none;
+}
+
+
+/* ----------------- 
+    Border width & radius
+----------------- */
+
+html.usn #snipcart .snipcart__box,
+html.usn #snipcart .snipcart-cart-summary__content,
+html.usn #snipcart .snipcart-layout__content:not(.snipcart-layout__content--side):not(.snipcart-checkout__content) .snipcart-item-line__container { 
+    border-radius: var(--base-border-radius);
+}
+
+html.usn #snipcart .snipcart-input__input, 
+html.usn #snipcart .snipcart-input,
+html.usn #snipcart .snipcart-item-quantity__quantity,
+html.usn #snipcart .snipcart-form__select,
+html.usn #snipcart .snipcart-form__select-wrapper { 
+    border-radius: var(--form-field-border-radius);
+}
+
+html.usn #snipcart .snipcart-typeahead__select--focus .snipcart-form__select { 
+    border-radius: var(--form-field-border-radius) var(--form-field-border-radius) 0 0;
+}
+
+html.usn #snipcart .snipcart-typeahead__select--focus .snipcart-typeahead__suggestions { 
+    border-radius: 0 0 var(--form-field-border-radius) var(--form-field-border-radius);
+}
+
+html.usn #snipcart .snipcart-button, 
+html.usn #snipcart .snipcart-button-primary, 
+html.usn #snipcart .snipcart-button-secondary,
+html.usn #snipcart .snipcart-discount-box__button {
+    border-radius: var(--btn-border-radius);
+    border-width: var(--btn-border-width); 
+}
+
+
+/* ----------------- 
+    Typography
+----------------- */
+
+html.usn #snipcart,
+html.usn #snipcart .snipcart__font--secondary, 
+html.usn #snipcart .snipcart__font--subtitle, 
+html.usn #snipcart .snipcart__font--subtitle-small, 
+html.usn #snipcart .snipcart__font--tiny {
+    font-family:    var(--body-typography_font-name);
+    font-weight:    var(--body-typography_font-weight);
+    font-style:     var(--body-typography_font-style);
+    line-height:    var(--body-typography_font-line-height);
+    letter-spacing: var(--body-typography_font-letter-spacing);
+    text-transform: var(--body-typography_font-transform);
+
+    font-size:      var(--body-typography_font-size); 
+}
+
+@media (min-width:576px) and (max-width:767px) { 
+    html.usn #snipcart,
+    html.usn #snipcart .snipcart__font--secondary, 
+    html.usn #snipcart .snipcart__font--subtitle, 
+    html.usn #snipcart .snipcart__font--subtitle-small, 
+    html.usn #snipcart .snipcart__font--tiny {
+        font-size:  var(--body-typography_font-size_sm); 
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) { 
+    html.usn #snipcart,
+    html.usn #snipcart .snipcart__font--secondary, 
+    html.usn #snipcart .snipcart__font--subtitle, 
+    html.usn #snipcart .snipcart__font--subtitle-small, 
+    html.usn #snipcart .snipcart__font--tiny {
+        font-size:  var(--body-typography_font-size_md); 
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px) { 
+    html.usn #snipcart,
+    html.usn #snipcart .snipcart__font--secondary, 
+    html.usn #snipcart .snipcart__font--subtitle, 
+    html.usn #snipcart .snipcart__font--subtitle-small, 
+    html.usn #snipcart .snipcart__font--tiny {
+        font-size:  var(--body-typography_font-size_lg); 
+    }
+}
+
+@media (min-width:1200px) { 
+    html.usn #snipcart,
+    html.usn #snipcart .snipcart__font--secondary, 
+    html.usn #snipcart .snipcart__font--subtitle, 
+    html.usn #snipcart .snipcart__font--subtitle-small, 
+    html.usn #snipcart .snipcart__font--tiny {
+        font-size:  var(--body-typography_font-size_xl); 
+    }
+}
+
+html.usn #snipcart h1.snipcart__font--secondary,
+html.usn #snipcart h1.snipcart__font--subtitle,
+html.usn #snipcart .snipcart__font--large { 
+    font-family:    var(--p-heading-typography_font-name);
+    font-weight:    var(--p-heading-typography_font-weight);
+    font-style:     var(--p-heading-typography_font-style);
+    line-height:    var(--p-heading-typography_font-line-height);
+    letter-spacing: var(--p-heading-typography_font-letter-spacing);
+    text-transform: var(--p-heading-typography_font-transform);
+
+    font-size:      var(--p-heading-typography_font-size); 
+}
+
+@media (min-width:576px) and (max-width:767px) { 
+    html.usn #snipcart h1.snipcart__font--secondary,
+    html.usn #snipcart h1.snipcart__font--subtitle,
+    html.usn #snipcart .snipcart__font--large {
+        font-size:  var(--p-heading-typography_font-size_sm); 
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) { 
+    html.usn #snipcart h1.snipcart__font--secondary,
+    html.usn #snipcart h1.snipcart__font--subtitle,
+    html.usn #snipcart .snipcart__font--large {
+        font-size:  var(--p-heading-typography_font-size_md); 
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px) { 
+    html.usn #snipcart h1.snipcart__font--secondary,
+    html.usn #snipcart h1.snipcart__font--subtitle,
+    html.usn #snipcart .snipcart__font--large {
+        font-size:  var(--p-heading-typography_font-size_lg); 
+    }
+}
+
+@media (min-width:1200px) { 
+    html.usn #snipcart h1.snipcart__font--secondary,
+    html.usn #snipcart h1.snipcart__font--subtitle,
+    html.usn #snipcart .snipcart__font--large {
+        font-size:  var(--p-heading-typography_font-size_xl); 
+    }
+}
+
+html.usn #snipcart h2.snipcart__font--secondary,
+html.usn #snipcart h3.snipcart-cart-header__title { 
+    font-family:    var(--p-heading-typography_font-name);
+    font-weight:    var(--p-heading-typography_font-weight);
+    font-style:     var(--p-heading-typography_font-style);
+    line-height:    var(--p-heading-typography_font-line-height);
+    letter-spacing: var(--p-heading-typography_font-letter-spacing);
+    text-transform: var(--p-heading-typography_font-transform);
+
+    font-size:      var(--p-heading-typography_font-size); 
+}
+
+html.usn #snipcart .snipcart-base-button__label { 
+    font-family:    var(--btn-typography_font-name);
+    font-weight:    var(--btn-typography_font-weight);
+    font-style:     var(--btn-typography_font-style);
+    line-height:    var(--btn-typography_font-line-height);
+    letter-spacing: var(--btn-typography_font-letter-spacing);
+    text-transform: var(--btn-typography_font-transform);
+
+    font-size:      var(--btn-typography_font-size); 
+}
+
+@media (min-width:576px) and (max-width:767px) { 
+    html.usn #snipcart .snipcart-base-button__label { 
+        font-size:  var(--btn-typography_font-size_sm); 
+    }
+}
+
+@media (min-width:768px) and (max-width:991px) { 
+    html.usn #snipcart .snipcart-base-button__label { 
+        font-size:  var(--btn-typography_font-size_md); 
+    }
+}
+
+@media (min-width:992px) and (max-width:1199px) { 
+    html.usn #snipcart .snipcart-base-button__label { 
+        font-size:  var(--btn-typography_font-size_lg); 
+    }
+}
+
+@media (min-width:1200px) { 
+    html.usn #snipcart .snipcart-base-button__label { 
+        font-size:  var(--btn-typography_font-size_xl); 
+    }
+}
